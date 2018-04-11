@@ -52,22 +52,22 @@ struct Colors {
 }
 
 struct Fonts {
-    static let names: [String?] = UIFont.fontNames(forFamilyName: "SourceSansPro")
+    static let names: [String?] = UIFont.fontNames(forFamilyName: "Source Sans Pro")
     
-    static var textFont_Regular: UIFont {
+    static var textFont_Light: UIFont {
         get {
             if let fontName = Fonts.names[0] {
-                return UIFont.init(name: fontName, size: 16)!
+                return UIFont.init(name: fontName, size: 18)!
             }
             
             return UIFont.init()
         }
     }
     
-    static var textFont_SemiBold: UIFont {
+    static var textFont_Regular: UIFont {
         get {
             if let fontName = Fonts.names[1] {
-                return UIFont.init(name: fontName, size: 16)!
+                return UIFont.init(name: fontName, size: 18)!
             }
             
             return UIFont.init()
@@ -77,17 +77,17 @@ struct Fonts {
     static var textFont_Bold: UIFont {
         get {
             if let fontName = Fonts.names[2] {
-                return UIFont.init(name: fontName, size: 16)!
+                return UIFont.init(name: fontName, size: 18)!
             }
             
             return UIFont.init()
         }
     }
     
-    static var textFont_Light: UIFont {
+    static var textFont_SemiBold: UIFont {
         get {
             if let fontName = Fonts.names[3] {
-                return UIFont.init(name: fontName, size: 16)!
+                return UIFont.init(name: fontName, size: 18)!
             }
             
             return UIFont.init()
@@ -97,9 +97,7 @@ struct Fonts {
 
 struct StoryboardIds {
     static let SelectLanguageViewController: String = "SelectLanguageViewController"
-    static let SignupStep1ViewController: String = "SignupStep1ViewController"
-    static let SignupStep2ViewController: String = "SignupStep2ViewController"
-    static let SignupStep3ViewController: String = "SignupStep3ViewController"
+    static let SignupViewController: String = "SignupViewController"
     static let NewsViewController: String = "NewsViewController"
     static let NotificationsViewController: String = "NotificationsViewController"
     static let ContactUsViewController: String = "ContactUsViewController"
@@ -122,6 +120,7 @@ struct StoryboardIds {
 
 struct CellIdentifiers {
     static let NotificationTableViewCell: String = "NotificationTableViewCell"
+    static let TeamCollectionViewCell: String = "TeamCollectionViewCell"
 }
 
 enum Keys: String {

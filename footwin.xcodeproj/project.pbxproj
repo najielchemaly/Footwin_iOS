@@ -15,9 +15,7 @@
 		420AE3E82069823400A24AD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 420AE3E62069823400A24AD5 /* LaunchScreen.storyboard */; };
 		425B77FC207CA6E90083D084 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B77FB207CA6E90083D084 /* LoginViewController.swift */; };
 		425B77FE207CA6F60083D084 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B77FD207CA6F60083D084 /* ForgotPasswordViewController.swift */; };
-		425B7800207CA7190083D084 /* SignupStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B77FF207CA7190083D084 /* SignupStep1ViewController.swift */; };
-		425B7802207CA7240083D084 /* SignupStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B7801207CA7240083D084 /* SignupStep2ViewController.swift */; };
-		425B7804207CA72F0083D084 /* SignupStep3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B7803207CA72F0083D084 /* SignupStep3ViewController.swift */; };
+		425B7800207CA7190083D084 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B77FF207CA7190083D084 /* SignupViewController.swift */; };
 		425B7806207CA7690083D084 /* PredictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B7805207CA7690083D084 /* PredictViewController.swift */; };
 		425B7808207CA7750083D084 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B7807207CA7750083D084 /* NewsViewController.swift */; };
 		425B780A207CA7880083D084 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B7809207CA7880083D084 /* LeaderboardViewController.swift */; };
@@ -63,9 +61,7 @@
 		420AE3E92069823400A24AD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		425B77FB207CA6E90083D084 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		425B77FD207CA6F60083D084 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
-		425B77FF207CA7190083D084 /* SignupStep1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupStep1ViewController.swift; sourceTree = "<group>"; };
-		425B7801207CA7240083D084 /* SignupStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupStep2ViewController.swift; sourceTree = "<group>"; };
-		425B7803207CA72F0083D084 /* SignupStep3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupStep3ViewController.swift; sourceTree = "<group>"; };
+		425B77FF207CA7190083D084 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		425B7805207CA7690083D084 /* PredictViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictViewController.swift; sourceTree = "<group>"; };
 		425B7807207CA7750083D084 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		425B7809207CA7880083D084 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
@@ -168,9 +164,7 @@
 			children = (
 				425B77FB207CA6E90083D084 /* LoginViewController.swift */,
 				425B77FD207CA6F60083D084 /* ForgotPasswordViewController.swift */,
-				425B77FF207CA7190083D084 /* SignupStep1ViewController.swift */,
-				425B7801207CA7240083D084 /* SignupStep2ViewController.swift */,
-				425B7803207CA72F0083D084 /* SignupStep3ViewController.swift */,
+				425B77FF207CA7190083D084 /* SignupViewController.swift */,
 			);
 			path = Initial;
 			sourceTree = "<group>";
@@ -200,8 +194,6 @@
 		425B781E207CA8CA0083D084 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				42700645207D69E20007793E /* TeamCollectionViewCell.swift */,
-				42700646207D69E20007793E /* TeamCollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -209,6 +201,8 @@
 		425B781F207CA8D50083D084 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				42700645207D69E20007793E /* TeamCollectionViewCell.swift */,
+				42700646207D69E20007793E /* TeamCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -431,7 +425,6 @@
 				425B782F207CABEC0083D084 /* Services.swift in Sources */,
 				425B77FE207CA6F60083D084 /* ForgotPasswordViewController.swift in Sources */,
 				425B7831207CABFC0083D084 /* AppDefaults.swift in Sources */,
-				425B7802207CA7240083D084 /* SignupStep2ViewController.swift in Sources */,
 				425B7814207CA7FC0083D084 /* CoinStashViewController.swift in Sources */,
 				425B7812207CA7C40083D084 /* ChangePasswordViewController.swift in Sources */,
 				425B783A207CBB000083D084 /* Country.swift in Sources */,
@@ -446,12 +439,11 @@
 				420AE3DD2069823400A24AD5 /* BaseViewController.swift in Sources */,
 				425B7842207CBB490083D084 /* Prediction.swift in Sources */,
 				425B780C207CA7950083D084 /* ProfileViewController.swift in Sources */,
-				425B7800207CA7190083D084 /* SignupStep1ViewController.swift in Sources */,
+				425B7800207CA7190083D084 /* SignupViewController.swift in Sources */,
 				425B781A207CA84F0083D084 /* MyPredictionsViewController.swift in Sources */,
 				425B782B207CABDA0083D084 /* Extensions.swift in Sources */,
 				425B7806207CA7690083D084 /* PredictViewController.swift in Sources */,
 				425B780A207CA7880083D084 /* LeaderboardViewController.swift in Sources */,
-				425B7804207CA72F0083D084 /* SignupStep3ViewController.swift in Sources */,
 				425B7840207CBB300083D084 /* Notification.swift in Sources */,
 				425B783E207CBB1D0083D084 /* News.swift in Sources */,
 				42700647207D69E20007793E /* TeamCollectionViewCell.swift in Sources */,

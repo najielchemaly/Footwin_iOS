@@ -26,10 +26,6 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         swipe.direction = .down
         self.view.addGestureRecognizer(swipe)
-        
-        if hasToolBar() {
-            self.setupToolBarView()
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,10 +82,6 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.imagePickerDelegate.didCancelPickingMedia()
         
         dismiss(animated: true, completion: nil)
-    }
-    
-    func hasToolBar() -> Bool {
-        return false
     }
     
     func saveUserInUserDefaults() {

@@ -19,7 +19,10 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var buttonLogin: UIButton!
     @IBOutlet weak var buttonForgotPassword: UIButton!
     @IBOutlet weak var buttonContinueWithFB: UIButton!
+    @IBOutlet weak var buttonContinueWithGmail: UIButton!
     @IBOutlet weak var buttonSignup: UIButton!
+    @IBOutlet weak var viewEmail: UIView!
+    @IBOutlet weak var viewPassword: UIView!
     
     var loginButton: FBSDKLoginButton!
     var loginManager: FBSDKLoginManager!
@@ -71,14 +74,6 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func buttonForgotPasswordTapped(_ sender: Any) {
-        self.redirectToVC(storyboardId: StoryboardIds.ForgotPasswordViewController, type: .present)
-    }
-    
-    @IBAction func buttonSignupTapped(_ sender: Any) {
-        self.redirectToVC(storyboardId: StoryboardIds.SignupViewController, type: .fromBottom)
-    }
-    
     @IBAction func buttonContinueWithFBTapped(_ sender: Any) {
         // show loader
         if (FBSDKAccessToken.current()) != nil
@@ -104,8 +99,10 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     }
     
     func initializeViews() {
-        self.buttonForgotPassword.setAttributedText(firstText: "OOPS! ", secondText: "I FORGOT MY PASSWORD", color: .white)
-        self.buttonSignup.setAttributedText(firstText: "NEW USER? ", secondText: "SIGN UP HERE", color: Colors.appBlue)
+        self.buttonForgotPassword.setAttributedText(firstText: "FORGOT YOUR PASSWORD?", secondText: " RECOVER IT", color: .white)
+        
+        self.viewEmail.customizeBorder(color: Colors.white)
+        self.viewPassword.customizeBorder(color: Colors.white)
         
         self.loginButton = FBSDKLoginButton()
         self.loginButton.readPermissions = ["public_profile", "email"]
@@ -152,7 +149,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                                             currentUser = user
                                             
                                             if currentUser.avatar == nil {
-                                                
+                                                self.redirectToVC(storyboardId: StoryboardIds.SignupViewController, type: .push)
                                             } else {
                                                 self.navigateToHome()
                                             }
@@ -211,7 +208,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @objc func navigateToHome() {
-        self.redirectToVC(storyboardId: StoryboardIds.InitialMenuViewController, type: .push)
+//        self.redirectToVC(storyboardId: StoryboardIds.InitialViewController, type: .push)
     }
     
     /*

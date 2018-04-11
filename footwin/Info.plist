@@ -39,12 +39,21 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>UIAppFonts</key>
-    <array>
-        <string>SourceSansPro-Bold.ttf</string>
-        <string>SourceSansPro-Light.ttf</string>
-        <string>SourceSansPro-Regular.ttf</string>
-        <string>SourceSansPro-SemiBold.ttf</string>
-    </array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SourceSansPro-Bold.ttf</string>
+		<string>SourceSansPro-Light.ttf</string>
+		<string>SourceSansPro-Regular.ttf</string>
+		<string>SourceSansPro-SemiBold.ttf</string>
+	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>FOOTWIN needs to access your Camera so you be able to capture your profile picture.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>FOOTWIN needs to access your Photo Library so you be able to select your profile picture.</string>
 </dict>
 </plist>

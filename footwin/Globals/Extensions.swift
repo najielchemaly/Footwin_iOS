@@ -250,10 +250,10 @@ extension UIButton {
     func setSelected(value: Bool) {
         if value {
             self.backgroundColor = Colors.appBlue
-            self.setTitleColor(Colors.lightGray, for: .normal)
+            self.setTitleColor(Colors.lightText, for: .normal)
         } else {
-            self.backgroundColor = Colors.lightGray
-            self.setTitleColor(Colors.textDark, for: .normal)
+            self.backgroundColor = Colors.lightText
+            self.setTitleColor(Colors.darkText, for: .normal)
         }
     }
     

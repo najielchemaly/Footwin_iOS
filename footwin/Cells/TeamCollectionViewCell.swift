@@ -10,6 +10,11 @@ import UIKit
 
 class TeamCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var selectedTeamOverlay: UIImageView!
+    @IBOutlet weak var selectedCheckmark: UIImageView!
+    @IBOutlet weak var labelTeamName: UILabel!
+    @IBOutlet weak var imageTeam: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
