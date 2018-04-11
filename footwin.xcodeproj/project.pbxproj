@@ -46,6 +46,8 @@
 		425B7840207CBB300083D084 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B783F207CBB300083D084 /* Notification.swift */; };
 		425B7842207CBB490083D084 /* Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B7841207CBB490083D084 /* Prediction.swift */; };
 		425B7844207CBB590083D084 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B7843207CBB590083D084 /* Team.swift */; };
+		42700647207D69E20007793E /* TeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42700645207D69E20007793E /* TeamCollectionViewCell.swift */; };
+		42700648207D69E20007793E /* TeamCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42700646207D69E20007793E /* TeamCollectionViewCell.xib */; };
 		C2569F0A044CAC9A839B17A6 /* Pods_footwin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB19A8AA5D2245E1E2EDEEB /* Pods_footwin.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +94,8 @@
 		425B783F207CBB300083D084 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		425B7841207CBB490083D084 /* Prediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prediction.swift; sourceTree = "<group>"; };
 		425B7843207CBB590083D084 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		42700645207D69E20007793E /* TeamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCollectionViewCell.swift; sourceTree = "<group>"; };
+		42700646207D69E20007793E /* TeamCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamCollectionViewCell.xib; sourceTree = "<group>"; };
 		5C1796446543466432504A2F /* Pods-footwin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-footwin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-footwin/Pods-footwin.debug.xcconfig"; sourceTree = "<group>"; };
 		CCFEDE0888A30A78659561D6 /* Pods-footwin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-footwin.release.xcconfig"; path = "Pods/Target Support Files/Pods-footwin/Pods-footwin.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,6 +200,8 @@
 		425B781E207CA8CA0083D084 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				42700645207D69E20007793E /* TeamCollectionViewCell.swift */,
+				42700646207D69E20007793E /* TeamCollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -325,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				425B7826207CAB520083D084 /* SourceSansPro-Bold.ttf in Resources */,
+				42700648207D69E20007793E /* TeamCollectionViewCell.xib in Resources */,
 				425B7827207CAB520083D084 /* SourceSansPro-Light.ttf in Resources */,
 				425B7828207CAB520083D084 /* SourceSansPro-Regular.ttf in Resources */,
 				425B7829207CAB520083D084 /* SourceSansPro-SemiBold.ttf in Resources */,
@@ -447,6 +454,7 @@
 				425B7804207CA72F0083D084 /* SignupStep3ViewController.swift in Sources */,
 				425B7840207CBB300083D084 /* Notification.swift in Sources */,
 				425B783E207CBB1D0083D084 /* News.swift in Sources */,
+				42700647207D69E20007793E /* TeamCollectionViewCell.swift in Sources */,
 				420AE3DB2069823400A24AD5 /* AppDelegate.swift in Sources */,
 				425B783C207CBB0B0083D084 /* Match.swift in Sources */,
 			);
