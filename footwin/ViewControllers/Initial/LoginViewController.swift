@@ -63,14 +63,14 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                             }
                         }
                     } else if let message = response?.message {
-//                        self.showAlertView(message: message)
+                        self.showAlertView(message: message)
                     }
                     
                     self.hideLoader()
                 }
             }
         } else {
-//            self.showAlertView(message: errorMessage)
+            self.showAlertView(message: errorMessage)
         }
     }
     
@@ -158,7 +158,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                                 }
                             } else {
                                 if let message = response?.message {
-//                                    self.showAlertView(message: message, doneTitle: "Ok")
+                                    self.showAlertView(message: message, doneTitle: "Ok")
                                 }
                             }
                             
@@ -208,7 +208,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @objc func navigateToHome() {
-//        self.redirectToVC(storyboardId: StoryboardIds.InitialViewController, type: .push)
+        self.redirectToVC(storyboardId: StoryboardIds.MainNavigationController, type: .push)
     }
     
     /*

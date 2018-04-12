@@ -283,14 +283,19 @@ class Services {
         return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
     }
     
-    func registerUser(fullname: String, email: String, password: String, phoneNumber: String) -> ResponseData? {
+    func registerUser(user: User) -> ResponseData? {
         
-        let parameters = [
-            "fullname": fullname,
-            "email": email,
-            "password": password,
-            "phoneNumber": phoneNumber
+        var parameters = [
+            "fullname": user.fullname ?? "",
+            "username": user.username ?? "",
+            "email": user.email ?? "",
+            "password": user.password ?? ""
         ]
+        
+        parameters["phone"] = user.phone
+        parameters["country"] = user.country
+        parameters["gender"] = user.gender
+        parameters["favorite_team"] = user.favorite_team
         
         let serviceName = ServiceName.registerUser
         return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)

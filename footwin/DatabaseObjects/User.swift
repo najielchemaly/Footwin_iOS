@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 public class User: NSObject, NSCoding {
     public var id : String?
     public var fullname : String?
     public var username : String?
     public var email : String?
+    public var password : String?
     public var phone : String?
     public var gender: String?
     public var country: String?
@@ -29,6 +31,7 @@ public class User: NSObject, NSCoding {
     public var rank: String?
     public var expected_winning_team: String?
     public var is_loggedIn: Bool?
+    public var image: UIImage?
     
     /**
      Returns an array of models based on given dictionary.

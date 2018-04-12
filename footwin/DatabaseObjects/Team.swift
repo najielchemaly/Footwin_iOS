@@ -14,6 +14,7 @@ public class Team: NSObject, NSCoding {
     public var flag : String?
     public var type : String?
     public var group : String?
+    public var is_selected : Bool?
     
     /**
      Returns an array of models based on given dictionary.

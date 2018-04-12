@@ -13,11 +13,13 @@ class ForgotPasswordViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var textFieldEmail: UITextField!
     @IBOutlet weak var buttonResetPassword: UIButton!
     @IBOutlet weak var buttonClose: UIButton!
+    @IBOutlet weak var viewEmail: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        self.initializeViews()
         self.setupDelegates()
     }
     
@@ -39,23 +41,27 @@ class ForgotPasswordViewController: BaseViewController, UITextFieldDelegate {
                     if response?.status == ResponseStatus.SUCCESS.rawValue {
                         alertTitle = "WOW!"
                         
-//                        self.alertView.buttonDone.addTarget(self, action: #selector(self.dismissVC), for: .touchUpInside)
+                        self.alertView.buttonDone.addTarget(self, action: #selector(self.dismissVC), for: .touchUpInside)
                     }
                     
                     if let message = response?.message {
-//                        self.showAlertView(title: alertTitle, message: message)
+                        self.showAlertView(title: alertTitle, message: message)
                     }
                     
                     self.hideLoader()
                 }
             }
         } else {
-//            self.showAlertView(message: errorMessage)
+            self.showAlertView(message: errorMessage)
         }
     }
     
     @IBAction func buttonCloseTapped(_ sender: Any) {
         self.dismissVC()
+    }
+    
+    func initializeViews() {
+        self.viewEmail.customizeBorder(color: Colors.white)
     }
     
     func setupDelegates() {

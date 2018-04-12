@@ -1,0 +1,11 @@
+framework module Planet {
+  umbrella header "Planet.h"
+
+  export *
+  module * { export * }
+}
+
+module Planet.Swift {
+    header "Planet-Swift.h"
+    requires objc
+}

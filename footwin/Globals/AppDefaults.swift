@@ -16,8 +16,8 @@ var currentVC: UIViewController!
 var isUserLoggedIn: Bool = false
 var isReview: Bool = false
 var currentUser: User = User()
-var defaultBackground: String!
 var notificationBadge: Int = 0
+var activeRound: Int = 0
 
 var appDelegate: AppDelegate {
     get {
@@ -116,11 +116,20 @@ struct StoryboardIds {
     static let LeaderboardViewController: String = "LeaderboardViewController"
     static let PredictViewController: String = "PredictViewController"
     static let CoinStashViewController: String = "CoinStashViewController"
+    static let MainNavigationController: String = "MainNavigationController"
 }
 
 struct CellIdentifiers {
     static let NotificationTableViewCell: String = "NotificationTableViewCell"
     static let TeamCollectionViewCell: String = "TeamCollectionViewCell"
+    static let PredictionTableViewCell: String = "PredictionTableViewCell"
+}
+
+struct Views {
+    static let AlertView: String = "AlertView"
+    static let EmptyView: String = "EmptyView"
+    static let HelperView: String = "HelperView"
+    static let TutorialView: String = "TutorialView"
 }
 
 enum Keys: String {

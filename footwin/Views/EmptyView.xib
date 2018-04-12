@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SourceSansPro-Regular.ttf">
+            <string>SourceSansPro-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="EmptyView" id="iN0-l3-epB" customClass="EmptyView" customModule="footwin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oops" translatesAutoresizingMaskIntoConstraints="NO" id="JD8-Zp-XzR">
+                    <rect key="frame" x="87" y="73.5" width="200" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="Vz8-Yn-Why"/>
+                        <constraint firstAttribute="width" constant="200" id="pKC-UG-Bke"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOU DO NOT HAVE DATA YET!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9o-RN-dc9">
+                    <rect key="frame" x="19" y="281" width="338" height="28"/>
+                    <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="24"/>
+                    <color key="textColor" red="0.51147848370000004" green="0.54474467039999996" blue="0.55831879380000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="JD8-Zp-XzR" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="IxI-W4-hwE"/>
+                <constraint firstItem="JD8-Zp-XzR" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" constant="-14" id="NYV-XR-xd4"/>
+                <constraint firstItem="l9o-RN-dc9" firstAttribute="top" secondItem="JD8-Zp-XzR" secondAttribute="bottom" constant="8" id="hh2-Wp-TOC"/>
+                <constraint firstItem="l9o-RN-dc9" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="xFV-WX-shY"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="labelTitle" destination="l9o-RN-dc9" id="P3v-Hm-0cI"/>
+            </connections>
+            <point key="canvasLocation" x="32.5" y="96.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="oops" width="256" height="256"/>
+    </resources>
+</document>

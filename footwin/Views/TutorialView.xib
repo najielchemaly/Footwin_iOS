@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SourceSansPro-Regular.ttf">
+            <string>SourceSansPro-Regular</string>
+        </array>
+        <array key="SourceSansPro-SemiBold.ttf">
+            <string>SourceSansPro-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="TutorialView" id="iN0-l3-epB" customClass="TutorialView" customModule="footwin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blurred_background" translatesAutoresizingMaskIntoConstraints="NO" id="BCU-eN-Tqw">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="53S-uA-cHT">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9wm-Gg-Hrj">
+                    <rect key="frame" x="16" y="270" width="343" height="147"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOTIFICATIONS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tj5-bV-WP9">
+                            <rect key="frame" x="0.0" y="0.0" width="343" height="86.5"/>
+                            <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="32"/>
+                            <color key="textColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP YOUR IMAGE ON TOP TO ACCESS YOUR NOTIFICATIONS." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zU-56-JeY">
+                            <rect key="frame" x="0.0" y="60.5" width="343" height="86.5"/>
+                            <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="20"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="147" id="0KO-qb-5ZT"/>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q77-hT-xY4">
+                    <rect key="frame" x="139.5" y="617" width="95" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Gw3-4E-jcz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="18"/>
+                    <state key="normal" title="NEXT STEP">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="BCU-eN-Tqw" secondAttribute="bottom" id="3Cq-0l-Ljh"/>
+                <constraint firstItem="BCU-eN-Tqw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7D5-wx-Way"/>
+                <constraint firstItem="53S-uA-cHT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="89R-80-dAa"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9wm-Gg-Hrj" secondAttribute="trailing" constant="16" id="909-wD-GmW"/>
+                <constraint firstAttribute="bottom" secondItem="53S-uA-cHT" secondAttribute="bottom" id="B6k-xR-Bsh"/>
+                <constraint firstItem="53S-uA-cHT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="NUa-2O-7Cc"/>
+                <constraint firstItem="9wm-Gg-Hrj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="PB0-UO-vGg"/>
+                <constraint firstItem="9wm-Gg-Hrj" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="WE3-4H-Oqk"/>
+                <constraint firstItem="BCU-eN-Tqw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Xid-6l-xxx"/>
+                <constraint firstAttribute="trailing" secondItem="53S-uA-cHT" secondAttribute="trailing" id="h5B-mz-eUp"/>
+                <constraint firstItem="Q77-hT-xY4" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="oCl-uA-iwN"/>
+                <constraint firstAttribute="trailing" secondItem="BCU-eN-Tqw" secondAttribute="trailing" id="tr2-3r-FwZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Q77-hT-xY4" secondAttribute="bottom" constant="20" id="xPC-p6-wu3"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="25.5" y="51.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="blurred_background" width="1080" height="1920"/>
+    </resources>
+</document>

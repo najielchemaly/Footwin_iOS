@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SourceSansPro-Light.ttf">
+            <string>SourceSansPro-Light</string>
+        </array>
+        <array key="SourceSansPro-Regular.ttf">
+            <string>SourceSansPro-Regular</string>
+        </array>
+        <array key="SourceSansPro-SemiBold.ttf">
+            <string>SourceSansPro-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="HelperView" id="iN0-l3-epB" customClass="HelperView" customModule="footwin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cq6-ta-oQ7">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H5R-wb-8ri">
+                    <rect key="frame" x="8" y="156" width="359" height="375"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELCOME!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hte-fW-Cly">
+                            <rect key="frame" x="16" y="16" width="148" height="40.5"/>
+                            <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="32"/>
+                            <color key="textColor" red="0.050523705779999997" green="0.18217900400000001" blue="0.82575476169999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HELLO USER, WELCOME TO FOOTWIN, ENJOY FOOTING AND WINNING :D" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02Q-4s-Bu6">
+                            <rect key="frame" x="16" y="72.5" width="300" height="45.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="300" id="OtM-AH-8Ev"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="SourceSansPro-Light" family="Source Sans Pro" pointSize="18"/>
+                            <color key="textColor" red="0.050523705779999997" green="0.18217900400000001" blue="0.82575476169999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THIS IS YOUR MAIN PREDICTION SCREEN, WE WILL NOW SHOW YOU A FEW STEPS TO HELP YOU GET STARTED." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDJ-cX-G7A">
+                            <rect key="frame" x="16" y="154" width="300" height="68"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="300" id="OIW-ee-IeG"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="SourceSansPro-Light" family="Source Sans Pro" pointSize="18"/>
+                            <color key="textColor" red="0.050523705779999997" green="0.18217900400000001" blue="0.82575476169999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFP-FK-oym">
+                            <rect key="frame" x="107" y="326" width="144" height="33"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="144" id="lHv-B9-YEc"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="16"/>
+                            <state key="normal" title="START THE TUTORIAL">
+                                <color key="titleColor" red="0.050523705779999997" green="0.18217900400000001" blue="0.82575476169999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="02Q-4s-Bu6" firstAttribute="leading" secondItem="H5R-wb-8ri" secondAttribute="leading" constant="16" id="21l-Y1-5yc"/>
+                        <constraint firstItem="02Q-4s-Bu6" firstAttribute="top" secondItem="hte-fW-Cly" secondAttribute="bottom" constant="16" id="2x1-NZ-pV5"/>
+                        <constraint firstItem="hte-fW-Cly" firstAttribute="top" secondItem="H5R-wb-8ri" secondAttribute="top" constant="16" id="7EH-R7-AzC"/>
+                        <constraint firstItem="hte-fW-Cly" firstAttribute="leading" secondItem="H5R-wb-8ri" secondAttribute="leading" constant="16" id="A6p-HK-TiZ"/>
+                        <constraint firstItem="GFP-FK-oym" firstAttribute="centerX" secondItem="H5R-wb-8ri" secondAttribute="centerX" id="BAL-YY-CU8"/>
+                        <constraint firstAttribute="height" constant="375" id="MRa-jU-57e"/>
+                        <constraint firstItem="FDJ-cX-G7A" firstAttribute="centerY" secondItem="H5R-wb-8ri" secondAttribute="centerY" id="PCd-0p-D3I"/>
+                        <constraint firstItem="FDJ-cX-G7A" firstAttribute="leading" secondItem="H5R-wb-8ri" secondAttribute="leading" constant="16" id="WQW-5X-Ayw"/>
+                        <constraint firstAttribute="bottom" secondItem="GFP-FK-oym" secondAttribute="bottom" constant="16" id="ufy-34-4rt"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="H5R-wb-8ri" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="6vU-ff-KhZ"/>
+                <constraint firstItem="H5R-wb-8ri" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-8" id="91S-yl-UJf"/>
+                <constraint firstItem="H5R-wb-8ri" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="M6E-Cz-9K2"/>
+                <constraint firstItem="cq6-ta-oQ7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="lF4-cf-fkd"/>
+                <constraint firstAttribute="bottom" secondItem="cq6-ta-oQ7" secondAttribute="bottom" id="nD2-S8-UDx"/>
+                <constraint firstAttribute="trailing" secondItem="cq6-ta-oQ7" secondAttribute="trailing" id="uCG-Qz-6Vr"/>
+                <constraint firstItem="cq6-ta-oQ7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="uzO-9W-EFq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="26.5" y="51.5"/>
+        </view>
+    </objects>
+</document>

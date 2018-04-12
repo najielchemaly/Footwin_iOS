@@ -14,5 +14,6 @@ pod 'Firebase/Messaging'
 pod 'FSPagerView'
 pod 'NVActivityIndicatorView'
 pod 'FBSDKLoginKit'
+#pod 'CountryPickerView'
 
 end
