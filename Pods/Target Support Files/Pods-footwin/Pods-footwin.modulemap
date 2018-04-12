@@ -1,0 +1,6 @@
+framework module Pods_footwin {
+  umbrella header "Pods-footwin-umbrella.h"
+
+  export *
+  module * { export * }
+}
