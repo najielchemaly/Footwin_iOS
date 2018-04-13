@@ -72,7 +72,7 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
     }
     
     func setupCollectionView() {
-        self.collectionViewTeam.register(UINib.init(nibName: CellIdentifiers.TeamCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: "TeamCollectionViewCell")
+        self.collectionViewTeam.register(UINib.init(nibName: CellIds.TeamCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: "TeamCollectionViewCell")
         
         self.collectionViewTeam.delegate = self
         self.collectionViewTeam.dataSource = self
@@ -132,7 +132,7 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.TeamCollectionViewCell, for: indexPath) as? TeamCollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIds.TeamCollectionViewCell, for: indexPath) as? TeamCollectionViewCell {
             
             let team = Objects.teams[indexPath.row]
             cell.labelTeamName.text = team.name
@@ -291,7 +291,8 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
                 }
                 break
             case 3:
-                if tempUser.image != nil {
+                // TODO change condition
+                if tempUser.image == nil {
                     self.fillUserInfo()
                     self.showLoader()
                     
@@ -299,6 +300,10 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
                         let response = appDelegate.services.registerUser(user: self.tempUser)
                         
                         DispatchQueue.main.async {
+                            
+                            self.redirectToVC(storyboardId: StoryboardIds.MainNavigationController, type: .present)
+                            return
+                            
                             if response?.status == ResponseStatus.SUCCESS.rawValue {
                                 if let json = response?.json?.first {
                                     if let jsonUser = json["user"] as? NSDictionary {

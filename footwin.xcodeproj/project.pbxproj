@@ -70,6 +70,8 @@
 		42F8DE5D2080B7F0006B3323 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F8DE5C2080B7F0006B3323 /* RulesView.swift */; };
 		42F8DE5F2080D2C0006B3323 /* ExactScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F8DE5E2080D2C0006B3323 /* ExactScoreView.swift */; };
 		42F8DE612080D2C9006B3323 /* ExactScoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42F8DE602080D2C9006B3323 /* ExactScoreView.xib */; };
+		42F8DE642080F1C3006B3323 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F8DE622080F1C3006B3323 /* NotificationsTableViewCell.swift */; };
+		42F8DE652080F1C3006B3323 /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42F8DE632080F1C3006B3323 /* NotificationsTableViewCell.xib */; };
 		C2569F0A044CAC9A839B17A6 /* Pods_footwin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB19A8AA5D2245E1E2EDEEB /* Pods_footwin.framework */; };
 /* End PBXBuildFile section */
 
@@ -152,6 +154,8 @@
 		42F8DE5C2080B7F0006B3323 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
 		42F8DE5E2080D2C0006B3323 /* ExactScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExactScoreView.swift; sourceTree = "<group>"; };
 		42F8DE602080D2C9006B3323 /* ExactScoreView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExactScoreView.xib; sourceTree = "<group>"; };
+		42F8DE622080F1C3006B3323 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
+		42F8DE632080F1C3006B3323 /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsTableViewCell.xib; sourceTree = "<group>"; };
 		5C1796446543466432504A2F /* Pods-footwin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-footwin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-footwin/Pods-footwin.debug.xcconfig"; sourceTree = "<group>"; };
 		CCFEDE0888A30A78659561D6 /* Pods-footwin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-footwin.release.xcconfig"; path = "Pods/Target Support Files/Pods-footwin/Pods-footwin.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,11 +196,11 @@
 			isa = PBXGroup;
 			children = (
 				42B73F20207FE0A6003DCB05 /* CountryPicker */,
-				427816FE207F3D0A00A5A528 /* Views */,
 				425B7834207CACB20083D084 /* DatabaseObjects */,
 				425B7821207CAA8D0083D084 /* Fonts */,
 				425B7820207CA8DC0083D084 /* Globals */,
 				425B781F207CA8D50083D084 /* Cells */,
+				427816FE207F3D0A00A5A528 /* Views */,
 				425B77FA207CA6920083D084 /* ViewControllers */,
 				420AE3DA2069823400A24AD5 /* AppDelegate.swift */,
 				420AE3DE2069823400A24AD5 /* Main.storyboard */,
@@ -248,8 +252,8 @@
 			isa = PBXGroup;
 			children = (
 				425B7807207CA7750083D084 /* NewsViewController.swift */,
-				425B780D207CA7A90083D084 /* NotificationsViewController.swift */,
 				425B7815207CA81E0083D084 /* NewsDetailViewController.swift */,
+				425B780D207CA7A90083D084 /* NotificationsViewController.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -261,6 +265,8 @@
 				42700646207D69E20007793E /* TeamCollectionViewCell.xib */,
 				42B73F3820800DFD003DCB05 /* PredictionTableViewCell.swift */,
 				42B73F3920800DFD003DCB05 /* PredictionTableViewCell.xib */,
+				42F8DE622080F1C3006B3323 /* NotificationsTableViewCell.swift */,
+				42F8DE632080F1C3006B3323 /* NotificationsTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -428,6 +434,7 @@
 				425B7828207CAB520083D084 /* SourceSansPro-Regular.ttf in Resources */,
 				425B7829207CAB520083D084 /* SourceSansPro-SemiBold.ttf in Resources */,
 				42B73F3B20800DFD003DCB05 /* PredictionTableViewCell.xib in Resources */,
+				42F8DE652080F1C3006B3323 /* NotificationsTableViewCell.xib in Resources */,
 				420AE3E82069823400A24AD5 /* LaunchScreen.storyboard in Resources */,
 				420AE3E52069823400A24AD5 /* Assets.xcassets in Resources */,
 				420AE3E02069823400A24AD5 /* Main.storyboard in Resources */,
@@ -528,6 +535,7 @@
 				420AE3E32069823400A24AD5 /* footwin.xcdatamodeld in Sources */,
 				425B7810207CA7B90083D084 /* EditProfileViewController.swift in Sources */,
 				42B73F28207FE0D0003DCB05 /* CountryPickerViewControllerDelegate.swift in Sources */,
+				42F8DE642080F1C3006B3323 /* NotificationsTableViewCell.swift in Sources */,
 				425B7833207CAC190083D084 /* Localization.swift in Sources */,
 				420AE3DD2069823400A24AD5 /* BaseViewController.swift in Sources */,
 				425B7842207CBB490083D084 /* Prediction.swift in Sources */,

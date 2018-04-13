@@ -14,6 +14,7 @@ class Objects {
     static var teams: [Team] = [Team]()
     static var matches: [Match] = [Match]()
     static var activeRound: Round = Round()
+    static var notifications: [Notification] = [Notification]()
     
     static var gender: [String] = [
         "Male",

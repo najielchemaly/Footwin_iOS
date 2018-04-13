@@ -10,6 +10,8 @@ import UIKit
 
 class HelperView: UIView {
 
+    @IBOutlet weak var buttonStartTutorial: UIButton!
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

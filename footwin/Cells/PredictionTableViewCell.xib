@@ -25,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="215"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="215"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="214.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bzt-uF-Kuk">
@@ -56,6 +56,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="y7b-oH-P9L" secondAttribute="bottom" constant="2" id="CHB-GD-VO1"/>
                             <constraint firstAttribute="height" constant="40" id="Jr6-1E-l9a"/>
@@ -68,6 +69,17 @@
                             <constraint firstItem="Io1-90-rAF" firstAttribute="leading" secondItem="m9x-Xo-ElJ" secondAttribute="leading" constant="16" id="poM-mV-btn"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hlB-KC-9Ab">
+                        <rect key="frame" x="14" y="38" width="110" height="110"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="selected_team_background" translatesAutoresizingMaskIntoConstraints="NO" id="e5j-bS-Uo6">
+                                <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="germany" translatesAutoresizingMaskIntoConstraints="NO" id="gt1-r5-Qtw">
                         <rect key="frame" x="24" y="48" width="90" height="90"/>
                         <constraints>
@@ -76,7 +88,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GERMANY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vtW-zK-XVf">
-                        <rect key="frame" x="24" y="146" width="90" height="15.5"/>
+                        <rect key="frame" x="24" y="146" width="90" height="16.5"/>
                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="13"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -89,13 +101,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BRAZIL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKh-M9-fH1">
-                        <rect key="frame" x="261" y="146" width="90" height="15.5"/>
+                        <rect key="frame" x="261" y="146" width="90" height="16.5"/>
                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="13"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Wn-JN-fak">
-                        <rect key="frame" x="134" y="70" width="107" height="37.5"/>
+                        <rect key="frame" x="134" y="70" width="107" height="40.5"/>
                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="32"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -131,7 +143,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbB-oI-JAd">
-                        <rect key="frame" x="142.5" y="116" width="90" height="30"/>
+                        <rect key="frame" x="142.5" y="119" width="90" height="31"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="90" id="ljB-Go-MfW"/>
                         </constraints>
@@ -141,10 +153,10 @@
                         </state>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DFi-uf-XpR">
-                        <rect key="frame" x="0.0" y="170" width="375" height="30"/>
+                        <rect key="frame" x="0.0" y="171" width="375" height="30"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREDICT THE EXACT SCORE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkq-aT-vCt">
-                                <rect key="frame" x="8" y="2" width="359" height="15.5"/>
+                                <rect key="frame" x="8" y="2" width="359" height="16.5"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -221,6 +233,7 @@
         <image name="brazil" width="222" height="222"/>
         <image name="checked_blue" width="71" height="54"/>
         <image name="germany" width="222" height="222"/>
+        <image name="selected_team_background" width="350" height="350"/>
         <image name="time_remaining_background" width="897" height="120"/>
     </resources>
 </document>

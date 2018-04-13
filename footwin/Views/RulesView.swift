@@ -16,7 +16,11 @@ class RulesView: UIView {
     @IBOutlet weak var buttonClose: UIButton!
     
     @IBAction func buttonCloseTapped(_ sender: Any) {
-        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.alpha = 0
+        }, completion: { success in
+            self.removeFromSuperview()
+        })
     }
     
     /*

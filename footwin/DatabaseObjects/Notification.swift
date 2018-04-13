@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class Notification: NSObject, NSCoding {
     public var id : String?
@@ -15,6 +16,8 @@ public class Notification: NSObject, NSCoding {
     public var date : String?
     public var type : String?
     public var match_id : String?
+    public var row_height: CGFloat?
+    public var is_read: Bool?
     
     /**
      Returns an array of models based on given dictionary.

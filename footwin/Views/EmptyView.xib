@@ -28,8 +28,8 @@
                         <constraint firstAttribute="width" constant="200" id="pKC-UG-Bke"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOU DO NOT HAVE DATA YET!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9o-RN-dc9">
-                    <rect key="frame" x="19" y="281" width="338" height="28"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOU DO NOT HAVE DATA YET!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9o-RN-dc9">
+                    <rect key="frame" x="16" y="281" width="343" height="28"/>
                     <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="24"/>
                     <color key="textColor" red="0.51147848370000004" green="0.54474467039999996" blue="0.55831879380000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -37,10 +37,11 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="l9o-RN-dc9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Aag-Do-5cD"/>
                 <constraint firstItem="JD8-Zp-XzR" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="IxI-W4-hwE"/>
                 <constraint firstItem="JD8-Zp-XzR" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" constant="-14" id="NYV-XR-xd4"/>
-                <constraint firstItem="l9o-RN-dc9" firstAttribute="top" secondItem="JD8-Zp-XzR" secondAttribute="bottom" constant="8" id="hh2-Wp-TOC"/>
-                <constraint firstItem="l9o-RN-dc9" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="xFV-WX-shY"/>
+                <constraint firstItem="l9o-RN-dc9" firstAttribute="top" secondItem="JD8-Zp-XzR" secondAttribute="bottom" constant="8" id="jFz-vu-g0j"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="l9o-RN-dc9" secondAttribute="trailing" constant="16" id="mEL-45-fxT"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

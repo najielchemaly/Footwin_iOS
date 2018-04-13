@@ -48,6 +48,8 @@ struct Colors {
     static let red: UIColor = UIColor(hexString: "#d80e3f")!
     static let darkText: UIColor = UIColor(hexString: "#616b9a")!
     static let lightText: UIColor = UIColor(hexString: "#adb3d3")!
+    static let xDarkBlue: UIColor = UIColor(hexString: "#102152")!
+    static let black: UIColor = UIColor(hexString: "#000000")!
 }
 
 struct Fonts {
@@ -106,7 +108,6 @@ struct StoryboardIds {
     static let LoginViewController: String = "LoginViewController"
     static let ForgotPasswordViewController: String = "ForgotPasswordViewController"
     static let HomeViewController: String = "HomeViewController"
-    static let HomeNavigationController: String = "HomeNavigationController"
     static let LoginNavigationController: String = "LoginNavigationController"
     static let WebViewController: String = "WebViewController"
     static let ChangePasswordViewController: String = "ChangePasswordViewController"
@@ -118,7 +119,7 @@ struct StoryboardIds {
     static let MainNavigationController: String = "MainNavigationController"
 }
 
-struct CellIdentifiers {
+struct CellIds {
     static let NotificationTableViewCell: String = "NotificationTableViewCell"
     static let TeamCollectionViewCell: String = "TeamCollectionViewCell"
     static let PredictionTableViewCell: String = "PredictionTableViewCell"
@@ -129,6 +130,8 @@ struct Views {
     static let EmptyView: String = "EmptyView"
     static let HelperView: String = "HelperView"
     static let TutorialView: String = "TutorialView"
+    static let RulesView: String = "RulesView"
+    static let ExactScoreView: String = "ExactScoreView"
 }
 
 enum Keys: String {

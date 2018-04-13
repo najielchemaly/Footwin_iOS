@@ -32,50 +32,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     let gcmMessageIDKey: String = "gcm.message_id"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        getConfig() { data in
-            if let jsonData = data as Data? {
-                if let json = String(data: jsonData, encoding: .utf8) {
-                    if let dict = JSON.init(parseJSON: json).dictionary {
-                        if let base_url = dict["base_url"] {
-                            Services.setBaseUrl(url: base_url.stringValue)
-                        }
-                        if let media_url = dict["media_url"] {
-                            Services.setMediaUrl(url: media_url.stringValue)
-                        }
-                        if let is_review = dict["is_review"] {
-                            isReview = is_review.boolValue
-                        }
-                        if let countries = dict["countries"] {
-                            if let jsonArray = countries.arrayObject as? [NSDictionary] {
-                                for json in jsonArray {
-                                    let country = _Country.init(dictionary: json)
-                                    Objects.countries.append(country!)
-                                }
-                            }
-                        }
-                        if let teams = dict["teams"] {
-                            if let jsonArray = teams.arrayObject as? [NSDictionary] {
-                                for json in jsonArray {
-                                    let team = Team.init(dictionary: json)
-                                    Objects.teams.append(team!)
-                                }
-                            }
-                        }
-                        if let active_round = dict["active_round"] {
-                            if let json = active_round.dictionaryObject as NSDictionary? {
-                                Objects.activeRound = Round.init(dictionary: json)!
-                            }
-                        }
-                    }
-                }
-            }
-            
-            if let data = UserDefaults.standard.data(forKey: "user"),
-                let user = NSKeyedUnarchiver.unarchiveObject(with: data) as? User {
-                
-            }
-        }
+//        getConfig() { data in
+//            if let jsonData = data as Data? {
+//                if let json = String(data: jsonData, encoding: .utf8) {
+//                    if let dict = JSON.init(parseJSON: json).dictionary {
+//                        if let base_url = dict["base_url"] {
+//                            Services.setBaseUrl(url: base_url.stringValue)
+//                        }
+//                        if let media_url = dict["media_url"] {
+//                            Services.setMediaUrl(url: media_url.stringValue)
+//                        }
+//                        if let is_review = dict["is_review"] {
+//                            isReview = is_review.boolValue
+//                        }
+//                        if let countries = dict["countries"] {
+//                            if let jsonArray = countries.arrayObject as? [NSDictionary] {
+//                                for json in jsonArray {
+//                                    let country = _Country.init(dictionary: json)
+//                                    Objects.countries.append(country!)
+//                                }
+//                            }
+//                        }
+//                        if let teams = dict["teams"] {
+//                            if let jsonArray = teams.arrayObject as? [NSDictionary] {
+//                                for json in jsonArray {
+//                                    let team = Team.init(dictionary: json)
+//                                    Objects.teams.append(team!)
+//                                }
+//                            }
+//                        }
+//                        if let active_round = dict["active_round"] {
+//                            if let json = active_round.dictionaryObject as NSDictionary? {
+//                                Objects.activeRound = Round.init(dictionary: json)!
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
         
         //        Localization.doTheExchange()
         
@@ -102,6 +96,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
             self.registerForRemoteNotifications()
             
             Messaging.messaging().delegate = self
+        }
+        
+        if let data = UserDefaults.standard.data(forKey: "user"),
+            let user = NSKeyedUnarchiver.unarchiveObject(with: data) as? User {
+            
         }
         
         return true

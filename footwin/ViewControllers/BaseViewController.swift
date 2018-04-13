@@ -225,6 +225,38 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
+    var customView = UIView()
+    func showView(name: String) -> UIView {
+        let duration = 0.3
+        let view = Bundle.main.loadNibNamed(name, owner: self.view, options: nil)
+        if let helperView = view?.first as? HelperView {
+            customView = helperView
+            customView.center = self.view.center
+            customView.backgroundColor = Colors.black.withAlphaComponent(0.6)
+        } else if let tutorialView = view?.first as? TutorialView {
+            customView = tutorialView
+            customView.frame = self.view.bounds
+            customView.backgroundColor = Colors.black.withAlphaComponent(0.6)
+        } else if let rulesView = view?.first as? RulesView {
+            customView = rulesView
+            customView.frame = self.view.bounds
+            customView.backgroundColor = Colors.black.withAlphaComponent(0.8)
+        } else if let exactScoreView = view?.first as? ExactScoreView {
+            customView = exactScoreView
+            customView.frame = self.view.bounds
+            customView.backgroundColor = Colors.black.withAlphaComponent(0.8)
+        }
+        
+        customView.alpha = 0
+        appDelegate.window?.addSubview(customView)
+        
+        UIView.animate(withDuration: duration, animations: {
+            self.customView.alpha = 1
+        })
+        
+        return customView
+    }
+    
     /*
      // MARK: - Navigation
      

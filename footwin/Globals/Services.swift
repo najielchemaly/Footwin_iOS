@@ -67,7 +67,7 @@ class Services {
                 Services._UserId = token
             }
             
-            return Services._UserId
+            return Services._UserId.isEmpty ? "1" : Services._UserId
         }
     }
     
