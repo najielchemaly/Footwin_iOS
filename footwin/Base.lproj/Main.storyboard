@@ -645,13 +645,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STEP 1" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QpV-XH-aUH">
-                                <rect key="frame" x="16" y="39" width="93" height="33"/>
+                                <rect key="frame" x="16" y="39.5" width="93" height="33"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="28"/>
                                 <color key="textColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PICK YOUR FAVORITE TEAM" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSf-mz-dxN">
-                                <rect key="frame" x="16" y="72" width="343" height="100"/>
+                                <rect key="frame" x="16" y="72.5" width="343" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="cnK-ae-ABQ"/>
                                 </constraints>
@@ -660,7 +660,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="i2J-wJ-t3M">
-                                <rect key="frame" x="16" y="180" width="343" height="409"/>
+                                <rect key="frame" x="16" y="180.5" width="343" height="408.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yup-St-R86">
                                     <size key="itemSize" width="50" height="50"/>
@@ -680,7 +680,7 @@
                                 </cells>
                             </collectionView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Mm-Zm-oyy">
-                                <rect key="frame" x="16" y="202" width="343" height="350"/>
+                                <rect key="frame" x="16" y="202.5" width="343" height="350"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aE9-uS-jkk">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>

@@ -29,7 +29,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ROUND RULES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4B-Nq-sAe">
-                            <rect key="frame" x="111.5" y="30" width="153" height="30.5"/>
+                            <rect key="frame" x="111" y="30" width="153" height="30.5"/>
                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="24"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -40,21 +40,14 @@
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blue_coin_large" translatesAutoresizingMaskIntoConstraints="NO" id="9So-oW-f8P">
                                     <rect key="frame" x="0.0" y="0.0" width="135" height="135"/>
                                 </imageView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="u9c-rx-KUP">
-                                    <rect key="frame" x="50" y="16" width="35" height="35"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="35" id="gpy-uR-hyq"/>
-                                        <constraint firstAttribute="height" constant="35" id="rlD-J9-HNC"/>
-                                    </constraints>
-                                </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRDICT FOR" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bak-mc-bpn">
-                                    <rect key="frame" x="8" y="59" width="119" height="19"/>
-                                    <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="15"/>
+                                    <rect key="frame" x="8" y="56.5" width="119" height="20.5"/>
+                                    <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRH-Fj-mcN">
-                                    <rect key="frame" x="8" y="78" width="119" height="45.5"/>
+                                    <rect key="frame" x="8" y="81.5" width="119" height="45.5"/>
                                     <string key="text">100
 COINS</string>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="18"/>
@@ -64,21 +57,19 @@ COINS</string>
                                 </label>
                             </subviews>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="TRH-Fj-mcN" secondAttribute="trailing" constant="8" id="9C5-CA-Izj"/>
                                 <constraint firstItem="9So-oW-f8P" firstAttribute="top" secondItem="QWb-au-oDZ" secondAttribute="top" id="DBH-K9-gxu"/>
-                                <constraint firstItem="Bak-mc-bpn" firstAttribute="leading" secondItem="QWb-au-oDZ" secondAttribute="leading" constant="8" id="JSq-gJ-Q08"/>
+                                <constraint firstItem="TRH-Fj-mcN" firstAttribute="leading" secondItem="QWb-au-oDZ" secondAttribute="leading" constant="8" id="JpL-gc-jMz"/>
                                 <constraint firstAttribute="width" secondItem="QWb-au-oDZ" secondAttribute="height" multiplier="1:1" id="Moa-40-ARv"/>
                                 <constraint firstAttribute="width" constant="135" id="NHY-83-Pxw"/>
-                                <constraint firstAttribute="trailing" secondItem="TRH-Fj-mcN" secondAttribute="trailing" constant="8" id="OxS-dR-8eo"/>
-                                <constraint firstAttribute="trailing" secondItem="Bak-mc-bpn" secondAttribute="trailing" constant="8" id="Riz-Wl-b5P"/>
                                 <constraint firstAttribute="trailing" secondItem="9So-oW-f8P" secondAttribute="trailing" id="Vtc-1c-kLx"/>
-                                <constraint firstItem="u9c-rx-KUP" firstAttribute="centerX" secondItem="QWb-au-oDZ" secondAttribute="centerX" id="XTO-qf-quG"/>
                                 <constraint firstAttribute="height" constant="135" id="aAO-0A-o8m"/>
-                                <constraint firstItem="u9c-rx-KUP" firstAttribute="top" secondItem="QWb-au-oDZ" secondAttribute="top" constant="16" id="czv-5G-W8f"/>
+                                <constraint firstAttribute="bottom" secondItem="TRH-Fj-mcN" secondAttribute="bottom" constant="8" id="ehK-Lf-zGp"/>
+                                <constraint firstAttribute="trailing" secondItem="Bak-mc-bpn" secondAttribute="trailing" constant="8" id="fKn-md-KyB"/>
                                 <constraint firstItem="9So-oW-f8P" firstAttribute="leading" secondItem="QWb-au-oDZ" secondAttribute="leading" id="fXk-4D-3hA"/>
-                                <constraint firstItem="TRH-Fj-mcN" firstAttribute="top" secondItem="Bak-mc-bpn" secondAttribute="bottom" id="iZj-x5-EiY"/>
-                                <constraint firstItem="Bak-mc-bpn" firstAttribute="top" secondItem="u9c-rx-KUP" secondAttribute="bottom" constant="8" id="q1J-bg-ms9"/>
+                                <constraint firstItem="TRH-Fj-mcN" firstAttribute="top" secondItem="Bak-mc-bpn" secondAttribute="bottom" constant="4" id="hrk-JR-DfE"/>
+                                <constraint firstItem="Bak-mc-bpn" firstAttribute="leading" secondItem="QWb-au-oDZ" secondAttribute="leading" constant="8" id="lMO-60-Xit"/>
                                 <constraint firstAttribute="bottom" secondItem="9So-oW-f8P" secondAttribute="bottom" id="vf4-TY-3NQ"/>
-                                <constraint firstItem="TRH-Fj-mcN" firstAttribute="leading" secondItem="QWb-au-oDZ" secondAttribute="leading" constant="8" id="x1R-fT-mON"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
@@ -92,21 +83,14 @@ COINS</string>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellow_coin_large" translatesAutoresizingMaskIntoConstraints="NO" id="qGe-fC-2vV">
                                     <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                 </imageView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="winning_coin" translatesAutoresizingMaskIntoConstraints="NO" id="UDd-Fh-l6u">
-                                    <rect key="frame" x="65" y="16" width="50" height="50"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="50" id="lln-Ab-fpk"/>
-                                        <constraint firstAttribute="height" constant="50" id="owe-Kf-siM"/>
-                                    </constraints>
-                                </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WIN" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crY-7L-gpE">
-                                    <rect key="frame" x="16" y="74" width="148" height="23"/>
-                                    <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="18"/>
+                                    <rect key="frame" x="8" y="79" width="164" height="25.5"/>
+                                    <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="20"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBD-bG-Hbo">
-                                    <rect key="frame" x="8" y="97" width="164" height="55.5"/>
+                                    <rect key="frame" x="8" y="108.5" width="164" height="55.5"/>
                                     <string key="text">150
 COINS</string>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="22"/>
@@ -117,19 +101,17 @@ COINS</string>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="b24-Yy-Xyc" secondAttribute="height" multiplier="1:1" id="9HB-Fn-lib"/>
+                                <constraint firstAttribute="trailing" secondItem="crY-7L-gpE" secondAttribute="trailing" constant="8" id="A4n-GR-7Z3"/>
                                 <constraint firstAttribute="height" constant="180" id="EpL-UJ-Dsv"/>
-                                <constraint firstItem="crY-7L-gpE" firstAttribute="leading" secondItem="b24-Yy-Xyc" secondAttribute="leading" constant="16" id="KmE-Ot-ho5"/>
+                                <constraint firstItem="JBD-bG-Hbo" firstAttribute="top" secondItem="crY-7L-gpE" secondAttribute="bottom" constant="4" id="QKb-Vh-8fh"/>
                                 <constraint firstAttribute="trailing" secondItem="qGe-fC-2vV" secondAttribute="trailing" id="RaA-53-khV"/>
-                                <constraint firstItem="JBD-bG-Hbo" firstAttribute="leading" secondItem="b24-Yy-Xyc" secondAttribute="leading" constant="8" id="T9T-d8-nK6"/>
-                                <constraint firstItem="UDd-Fh-l6u" firstAttribute="top" secondItem="b24-Yy-Xyc" secondAttribute="top" constant="16" id="VrX-X0-w2B"/>
-                                <constraint firstItem="JBD-bG-Hbo" firstAttribute="top" secondItem="crY-7L-gpE" secondAttribute="bottom" id="b2p-4W-Igz"/>
-                                <constraint firstItem="UDd-Fh-l6u" firstAttribute="centerX" secondItem="b24-Yy-Xyc" secondAttribute="centerX" id="bL5-Qa-yqf"/>
-                                <constraint firstAttribute="trailing" secondItem="JBD-bG-Hbo" secondAttribute="trailing" constant="8" id="c0a-Fa-3SD"/>
+                                <constraint firstAttribute="trailing" secondItem="JBD-bG-Hbo" secondAttribute="trailing" constant="8" id="WZW-tH-lE4"/>
+                                <constraint firstAttribute="bottom" secondItem="JBD-bG-Hbo" secondAttribute="bottom" constant="16" id="e16-M6-uMg"/>
                                 <constraint firstItem="qGe-fC-2vV" firstAttribute="top" secondItem="b24-Yy-Xyc" secondAttribute="top" id="fWt-g4-sS8"/>
                                 <constraint firstAttribute="width" constant="180" id="fia-re-pQx"/>
-                                <constraint firstAttribute="trailing" secondItem="crY-7L-gpE" secondAttribute="trailing" constant="16" id="fvG-iP-F5T"/>
+                                <constraint firstItem="JBD-bG-Hbo" firstAttribute="leading" secondItem="b24-Yy-Xyc" secondAttribute="leading" constant="8" id="jDP-5c-pfz"/>
                                 <constraint firstItem="qGe-fC-2vV" firstAttribute="leading" secondItem="b24-Yy-Xyc" secondAttribute="leading" id="p6a-9r-n9O"/>
-                                <constraint firstItem="crY-7L-gpE" firstAttribute="top" secondItem="UDd-Fh-l6u" secondAttribute="bottom" constant="8" id="wuw-y6-3Sn"/>
+                                <constraint firstItem="crY-7L-gpE" firstAttribute="leading" secondItem="b24-Yy-Xyc" secondAttribute="leading" constant="8" id="xhh-XT-rH4"/>
                                 <constraint firstAttribute="bottom" secondItem="qGe-fC-2vV" secondAttribute="bottom" id="xkU-X0-RbH"/>
                             </constraints>
                             <variation key="default">
@@ -144,21 +126,14 @@ COINS</string>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blue_coin_large" translatesAutoresizingMaskIntoConstraints="NO" id="6mM-iZ-NaN">
                                     <rect key="frame" x="0.0" y="0.0" width="135" height="135"/>
                                 </imageView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="1zM-gh-FVY">
-                                    <rect key="frame" x="50" y="16" width="35" height="35"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="35" id="eAq-aT-peC"/>
-                                        <constraint firstAttribute="height" constant="35" id="s1C-Cb-SJB"/>
-                                    </constraints>
-                                </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* EXACT SCORE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIf-q6-zBE">
-                                    <rect key="frame" x="8" y="59" width="119" height="19"/>
-                                    <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="15"/>
+                                    <rect key="frame" x="8" y="57.5" width="119" height="20.5"/>
+                                    <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giP-0y-219">
-                                    <rect key="frame" x="8" y="78" width="119" height="45.5"/>
+                                    <rect key="frame" x="8" y="81.5" width="119" height="45.5"/>
                                     <string key="text">50
 COINS</string>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="18"/>
@@ -170,19 +145,17 @@ COINS</string>
                             <constraints>
                                 <constraint firstItem="6mM-iZ-NaN" firstAttribute="leading" secondItem="d9j-qF-OPh" secondAttribute="leading" id="0m1-JK-U3g"/>
                                 <constraint firstAttribute="height" constant="135" id="3bX-zK-eEn"/>
-                                <constraint firstItem="giP-0y-219" firstAttribute="leading" secondItem="d9j-qF-OPh" secondAttribute="leading" constant="8" id="4yf-No-KTC"/>
-                                <constraint firstAttribute="trailing" secondItem="giP-0y-219" secondAttribute="trailing" constant="8" id="EL8-cG-m7A"/>
+                                <constraint firstItem="qIf-q6-zBE" firstAttribute="leading" secondItem="d9j-qF-OPh" secondAttribute="leading" constant="8" id="F7x-JR-s2H"/>
                                 <constraint firstAttribute="width" constant="135" id="Fau-yw-Vqy"/>
-                                <constraint firstItem="1zM-gh-FVY" firstAttribute="centerX" secondItem="d9j-qF-OPh" secondAttribute="centerX" id="FtK-Pu-zWy"/>
-                                <constraint firstItem="giP-0y-219" firstAttribute="top" secondItem="qIf-q6-zBE" secondAttribute="bottom" id="GNc-ld-ejm"/>
                                 <constraint firstItem="6mM-iZ-NaN" firstAttribute="top" secondItem="d9j-qF-OPh" secondAttribute="top" id="J4k-ZR-dNR"/>
                                 <constraint firstAttribute="width" secondItem="d9j-qF-OPh" secondAttribute="height" multiplier="1:1" id="Kq9-YT-7V0"/>
-                                <constraint firstItem="qIf-q6-zBE" firstAttribute="top" secondItem="1zM-gh-FVY" secondAttribute="bottom" constant="8" id="Ryo-ca-Lgj"/>
                                 <constraint firstAttribute="trailing" secondItem="6mM-iZ-NaN" secondAttribute="trailing" id="THA-Yp-WFJ"/>
-                                <constraint firstItem="qIf-q6-zBE" firstAttribute="leading" secondItem="d9j-qF-OPh" secondAttribute="leading" constant="7.5" id="TTq-Wu-5wG"/>
-                                <constraint firstItem="1zM-gh-FVY" firstAttribute="top" secondItem="d9j-qF-OPh" secondAttribute="top" constant="16" id="bDd-7M-GbT"/>
+                                <constraint firstItem="giP-0y-219" firstAttribute="top" secondItem="qIf-q6-zBE" secondAttribute="bottom" constant="4" id="ein-kj-b00"/>
+                                <constraint firstAttribute="trailing" secondItem="giP-0y-219" secondAttribute="trailing" constant="8" id="fNV-vJ-IY2"/>
                                 <constraint firstAttribute="bottom" secondItem="6mM-iZ-NaN" secondAttribute="bottom" id="gfY-6v-4GD"/>
-                                <constraint firstAttribute="trailing" secondItem="qIf-q6-zBE" secondAttribute="trailing" constant="8.5" id="nxY-7A-97R"/>
+                                <constraint firstAttribute="bottom" secondItem="giP-0y-219" secondAttribute="bottom" constant="8" id="rfd-fD-s8l"/>
+                                <constraint firstItem="giP-0y-219" firstAttribute="leading" secondItem="d9j-qF-OPh" secondAttribute="leading" constant="8" id="vsa-Hh-lf0"/>
+                                <constraint firstAttribute="trailing" secondItem="qIf-q6-zBE" secondAttribute="trailing" constant="8" id="x7b-TL-izM"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
@@ -191,7 +164,7 @@ COINS</string>
                             </variation>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hid-iM-Xje">
-                            <rect key="frame" x="64.5" y="542.5" width="246" height="45.5"/>
+                            <rect key="frame" x="65" y="542.5" width="246" height="45.5"/>
                             <string key="text">*IF YOU LOSE THE EXACT SCORE
 YOU LOSE THE PREDICTION</string>
                             <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="18"/>
@@ -211,9 +184,6 @@ YOU LOSE THE PREDICTION</string>
                                 <action selector="buttonCloseTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="uif-kr-Xxf"/>
                             </connections>
                         </button>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="i0l-HM-eyU">
-                            <rect key="frame" x="41" y="31.5" width="294" height="558"/>
-                        </stackView>
                     </subviews>
                     <color key="backgroundColor" red="0.061553694309999997" green="0.1278477609" blue="0.32042750720000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -222,14 +192,10 @@ YOU LOSE THE PREDICTION</string>
                         <constraint firstItem="h4B-Nq-sAe" firstAttribute="centerX" secondItem="qIp-KS-iaT" secondAttribute="centerX" id="2Vf-Uv-Xch"/>
                         <constraint firstItem="h4B-Nq-sAe" firstAttribute="top" secondItem="qIp-KS-iaT" secondAttribute="top" constant="30" id="70C-V2-42Q"/>
                         <constraint firstItem="QWb-au-oDZ" firstAttribute="centerX" secondItem="qIp-KS-iaT" secondAttribute="centerX" id="AqJ-bh-aZx"/>
-                        <constraint firstAttribute="trailing" secondItem="i0l-HM-eyU" secondAttribute="trailing" constant="40.5" id="BNI-kA-wNb"/>
                         <constraint firstItem="b24-Yy-Xyc" firstAttribute="top" secondItem="QWb-au-oDZ" secondAttribute="bottom" constant="8" id="FpI-qy-5V0"/>
                         <constraint firstItem="QWb-au-oDZ" firstAttribute="top" secondItem="h4B-Nq-sAe" secondAttribute="bottom" constant="8" id="IlH-sV-j5T"/>
-                        <constraint firstItem="i0l-HM-eyU" firstAttribute="top" secondItem="qIp-KS-iaT" secondAttribute="top" constant="31.5" id="Lbv-yD-Df4"/>
                         <constraint firstAttribute="bottom" secondItem="xXc-fX-LnX" secondAttribute="bottom" constant="16" id="RmY-am-Bnl"/>
-                        <constraint firstItem="xXc-fX-LnX" firstAttribute="top" secondItem="i0l-HM-eyU" secondAttribute="bottom" constant="31.5" id="ZBJ-5f-Kah"/>
                         <constraint firstItem="Hid-iM-Xje" firstAttribute="centerX" secondItem="qIp-KS-iaT" secondAttribute="centerX" id="a2h-Jz-LQ3"/>
-                        <constraint firstItem="i0l-HM-eyU" firstAttribute="leading" secondItem="qIp-KS-iaT" secondAttribute="leading" constant="40.5" id="bbW-EU-fsX"/>
                         <constraint firstItem="Hid-iM-Xje" firstAttribute="top" secondItem="d9j-qF-OPh" secondAttribute="bottom" constant="8" id="ef9-Qv-ZIj"/>
                         <constraint firstItem="b24-Yy-Xyc" firstAttribute="centerX" secondItem="qIp-KS-iaT" secondAttribute="centerX" id="h0e-X9-ubl"/>
                         <constraint firstItem="xXc-fX-LnX" firstAttribute="centerX" secondItem="qIp-KS-iaT" secondAttribute="centerX" id="lim-Iu-JxO"/>
@@ -256,8 +222,6 @@ YOU LOSE THE PREDICTION</string>
     </objects>
     <resources>
         <image name="blue_coin_large" width="389" height="388"/>
-        <image name="coin" width="102" height="101"/>
-        <image name="winning_coin" width="103" height="101"/>
         <image name="yellow_coin_large" width="522" height="520"/>
     </resources>
 </document>
