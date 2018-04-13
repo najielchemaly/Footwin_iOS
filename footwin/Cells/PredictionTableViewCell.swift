@@ -10,9 +10,22 @@ import UIKit
 
 class PredictionTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var labelTimeTitle: UILabel!
+    @IBOutlet weak var labelTime: UILabel!
+    @IBOutlet weak var homeImage: UIImageView!
+    @IBOutlet weak var labelHome: UILabel!
+    @IBOutlet weak var awayImage: UIImageView!
+    @IBOutlet weak var labelAway: UILabel!
+    @IBOutlet weak var labelVS: UILabel!
+    @IBOutlet weak var buttonDraw: UIButton!
+    @IBOutlet weak var viewExactScore: UIView!
+    @IBOutlet weak var viewConfirm: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        buttonDraw.customizeBorder(color: Colors.white)
+        viewConfirm.layer.cornerRadius = viewConfirm.frame.size.width/2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

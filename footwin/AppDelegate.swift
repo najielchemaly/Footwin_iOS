@@ -43,9 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                         if let media_url = dict["media_url"] {
                             Services.setMediaUrl(url: media_url.stringValue)
                         }
-                        if let active_round = dict["active_round"] {
-                            activeRound = active_round.intValue
-                        }
                         if let is_review = dict["is_review"] {
                             isReview = is_review.boolValue
                         }
@@ -63,6 +60,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                                     let team = Team.init(dictionary: json)
                                     Objects.teams.append(team!)
                                 }
+                            }
+                        }
+                        if let active_round = dict["active_round"] {
+                            if let json = active_round.dictionaryObject as NSDictionary? {
+                                Objects.activeRound = Round.init(dictionary: json)!
                             }
                         }
                     }

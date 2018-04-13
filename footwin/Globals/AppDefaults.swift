@@ -17,7 +17,6 @@ var isUserLoggedIn: Bool = false
 var isReview: Bool = false
 var currentUser: User = User()
 var notificationBadge: Int = 0
-var activeRound: Int = 0
 
 var appDelegate: AppDelegate {
     get {

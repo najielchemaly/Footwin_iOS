@@ -65,6 +65,11 @@
 		42B73F37207FFFCA003DCB05 /* TutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B73F36207FFFCA003DCB05 /* TutorialView.xib */; };
 		42B73F3A20800DFD003DCB05 /* PredictionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B73F3820800DFD003DCB05 /* PredictionTableViewCell.swift */; };
 		42B73F3B20800DFD003DCB05 /* PredictionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B73F3920800DFD003DCB05 /* PredictionTableViewCell.xib */; };
+		42F8DE592080B50D006B3323 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F8DE582080B50D006B3323 /* Round.swift */; };
+		42F8DE5B2080B7DF006B3323 /* RulesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42F8DE5A2080B7DF006B3323 /* RulesView.xib */; };
+		42F8DE5D2080B7F0006B3323 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F8DE5C2080B7F0006B3323 /* RulesView.swift */; };
+		42F8DE5F2080D2C0006B3323 /* ExactScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F8DE5E2080D2C0006B3323 /* ExactScoreView.swift */; };
+		42F8DE612080D2C9006B3323 /* ExactScoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42F8DE602080D2C9006B3323 /* ExactScoreView.xib */; };
 		C2569F0A044CAC9A839B17A6 /* Pods_footwin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB19A8AA5D2245E1E2EDEEB /* Pods_footwin.framework */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +147,11 @@
 		42B73F36207FFFCA003DCB05 /* TutorialView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialView.xib; sourceTree = "<group>"; };
 		42B73F3820800DFD003DCB05 /* PredictionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionTableViewCell.swift; sourceTree = "<group>"; };
 		42B73F3920800DFD003DCB05 /* PredictionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PredictionTableViewCell.xib; sourceTree = "<group>"; };
+		42F8DE582080B50D006B3323 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
+		42F8DE5A2080B7DF006B3323 /* RulesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RulesView.xib; sourceTree = "<group>"; };
+		42F8DE5C2080B7F0006B3323 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
+		42F8DE5E2080D2C0006B3323 /* ExactScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExactScoreView.swift; sourceTree = "<group>"; };
+		42F8DE602080D2C9006B3323 /* ExactScoreView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExactScoreView.xib; sourceTree = "<group>"; };
 		5C1796446543466432504A2F /* Pods-footwin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-footwin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-footwin/Pods-footwin.debug.xcconfig"; sourceTree = "<group>"; };
 		CCFEDE0888A30A78659561D6 /* Pods-footwin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-footwin.release.xcconfig"; path = "Pods/Target Support Files/Pods-footwin/Pods-footwin.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -290,6 +300,7 @@
 				425B783F207CBB300083D084 /* Notification.swift */,
 				425B7841207CBB490083D084 /* Prediction.swift */,
 				425B7843207CBB590083D084 /* Team.swift */,
+				42F8DE582080B50D006B3323 /* Round.swift */,
 			);
 			path = DatabaseObjects;
 			sourceTree = "<group>";
@@ -305,6 +316,10 @@
 				42B73F30207FFA89003DCB05 /* HelperView.xib */,
 				42B73F34207FFFC2003DCB05 /* TutorialView.swift */,
 				42B73F36207FFFCA003DCB05 /* TutorialView.xib */,
+				42F8DE5C2080B7F0006B3323 /* RulesView.swift */,
+				42F8DE5A2080B7DF006B3323 /* RulesView.xib */,
+				42F8DE5E2080D2C0006B3323 /* ExactScoreView.swift */,
+				42F8DE602080D2C9006B3323 /* ExactScoreView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -406,7 +421,9 @@
 				42B73F31207FFA89003DCB05 /* HelperView.xib in Resources */,
 				42700648207D69E20007793E /* TeamCollectionViewCell.xib in Resources */,
 				42B73F37207FFFCA003DCB05 /* TutorialView.xib in Resources */,
+				42F8DE612080D2C9006B3323 /* ExactScoreView.xib in Resources */,
 				425B7827207CAB520083D084 /* SourceSansPro-Light.ttf in Resources */,
+				42F8DE5B2080B7DF006B3323 /* RulesView.xib in Resources */,
 				4278170F207F73D500A5A528 /* EmptyView.xib in Resources */,
 				425B7828207CAB520083D084 /* SourceSansPro-Regular.ttf in Resources */,
 				425B7829207CAB520083D084 /* SourceSansPro-SemiBold.ttf in Resources */,
@@ -503,8 +520,11 @@
 				425B7844207CBB590083D084 /* Team.swift in Sources */,
 				425B782D207CABE20083D084 /* Alamofire+Synchronous.swift in Sources */,
 				4278170E207F73D500A5A528 /* EmptyView.swift in Sources */,
+				42F8DE5D2080B7F0006B3323 /* RulesView.swift in Sources */,
 				425B7838207CBAF30083D084 /* Package.swift in Sources */,
 				425B7808207CA7750083D084 /* NewsViewController.swift in Sources */,
+				42F8DE5F2080D2C0006B3323 /* ExactScoreView.swift in Sources */,
+				42F8DE592080B50D006B3323 /* Round.swift in Sources */,
 				420AE3E32069823400A24AD5 /* footwin.xcdatamodeld in Sources */,
 				425B7810207CA7B90083D084 /* EditProfileViewController.swift in Sources */,
 				42B73F28207FE0D0003DCB05 /* CountryPickerViewControllerDelegate.swift in Sources */,

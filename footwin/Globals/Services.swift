@@ -184,7 +184,7 @@ class Services {
         return makeHttpRequest(method: .post, serviceName: serviceName, headers: headers)
     }
     
-    func getMatches(type: String) -> ResponseData? {
+    func getMatches() -> ResponseData? {
         
         let headers: HTTPHeaders = [
             "User-Id": USER_ID

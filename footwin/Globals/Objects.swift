@@ -12,6 +12,8 @@ class Objects {
     
     static var countries: [_Country] = [_Country]()
     static var teams: [Team] = [Team]()
+    static var matches: [Match] = [Match]()
+    static var activeRound: Round = Round()
     
     static var gender: [String] = [
         "Male",

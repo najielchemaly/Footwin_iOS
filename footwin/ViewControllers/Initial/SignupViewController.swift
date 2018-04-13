@@ -8,7 +8,6 @@
 
 import UIKit
 import Planet
-import Kingfisher
 
 class SignupViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIPickerViewDelegate, UIPickerViewDataSource, ImagePickerDelegate {
    

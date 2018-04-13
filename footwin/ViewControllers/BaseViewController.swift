@@ -8,6 +8,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import Kingfisher
 
 protocol ImagePickerDelegate {
     func didFinishPickingMedia(data: UIImage?)
