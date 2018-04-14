@@ -26,28 +26,25 @@
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.352112676056338" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fOx-cP-KLO">
-                    <rect key="frame" x="50" y="250" width="275" height="187"/>
+                    <rect key="frame" x="32" y="230" width="311" height="227"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OOPS!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7c-lK-1Ku">
-                            <rect key="frame" x="8" y="8" width="259" height="40"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="iDD-CF-AiQ"/>
-                            </constraints>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oops!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7c-lK-1Ku">
+                            <rect key="frame" x="8" y="8" width="295" height="30.5"/>
                             <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="24"/>
                             <color key="textColor" red="0.34509803919999998" green="0.34509803919999998" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An error has occured, try again later" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dd1-Oq-RA5">
-                            <rect key="frame" x="16" y="48" width="243" height="86"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="An error has occured, try again later" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dd1-Oq-RA5">
+                            <rect key="frame" x="16" y="38.5" width="279" height="135.5"/>
                             <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="22"/>
                             <color key="textColor" red="0.34509803919999998" green="0.34509803919999998" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zgy-8D-Ulc">
-                            <rect key="frame" x="5" y="142" width="265" height="40"/>
+                            <rect key="frame" x="5" y="182" width="301" height="40"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZId-JU-LWy">
-                                    <rect key="frame" x="0.0" y="0.0" width="130" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="148" height="40"/>
                                     <color key="backgroundColor" red="0.050523705779999997" green="0.18217900400000001" blue="0.82575476169999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="20"/>
                                     <state key="normal" title="Cancel">
@@ -58,7 +55,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zua-CN-Bq1">
-                                    <rect key="frame" x="135" y="0.0" width="130" height="40"/>
+                                    <rect key="frame" x="153" y="0.0" width="148" height="40"/>
                                     <color key="backgroundColor" red="0.050523705779999997" green="0.18217900400000001" blue="0.82575476169999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="20"/>
                                     <state key="normal" title="Done">
@@ -101,13 +98,13 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="fOx-cP-KLO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="3OE-zm-gjL"/>
-                <constraint firstItem="fOx-cP-KLO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="230" id="83Y-cA-Bdw"/>
+                <constraint firstItem="fOx-cP-KLO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="3OE-zm-gjL"/>
+                <constraint firstItem="fOx-cP-KLO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="210" id="83Y-cA-Bdw"/>
                 <constraint firstItem="oQj-BK-O2Q" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="IbB-E5-cbX"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fOx-cP-KLO" secondAttribute="trailing" constant="50" id="LHg-gr-Djo"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fOx-cP-KLO" secondAttribute="trailing" constant="32" id="LHg-gr-Djo"/>
                 <constraint firstItem="oQj-BK-O2Q" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Ybj-ec-w7f"/>
                 <constraint firstItem="fOx-cP-KLO" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="hap-yV-kb5"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="fOx-cP-KLO" secondAttribute="bottom" constant="230" id="jwF-Zz-9ky"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="fOx-cP-KLO" secondAttribute="bottom" constant="210" id="jwF-Zz-9ky"/>
                 <constraint firstItem="oQj-BK-O2Q" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="r9h-pK-ObC"/>
                 <constraint firstItem="oQj-BK-O2Q" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="rkj-eq-dSh"/>
                 <constraint firstItem="fOx-cP-KLO" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="zKL-up-8LB"/>

@@ -13,13 +13,19 @@ class PredictionTableViewCell: UITableViewCell {
     @IBOutlet weak var labelTimeTitle: UILabel!
     @IBOutlet weak var labelTime: UILabel!
     @IBOutlet weak var homeImage: UIImageView!
+    @IBOutlet weak var homeShadow: UIImageView!
     @IBOutlet weak var labelHome: UILabel!
     @IBOutlet weak var awayImage: UIImageView!
+    @IBOutlet weak var awayShadow: UIImageView!
     @IBOutlet weak var labelAway: UILabel!
     @IBOutlet weak var labelVS: UILabel!
     @IBOutlet weak var buttonDraw: UIButton!
     @IBOutlet weak var viewExactScore: UIView!
     @IBOutlet weak var viewConfirm: UIView!
+    @IBOutlet weak var awayWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var awayShadowWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var homeWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var homeShadowWidthConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()

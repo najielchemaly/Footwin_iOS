@@ -69,7 +69,7 @@ class TutorialView: UIView {
     }
     
     func showFirstTutorial() {
-        UIView.animate(withDuration: 0.5, delay: 1, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseInOut, animations: {
             self.viewNotif.alpha = 1
         }, completion: nil)
     }

@@ -74,9 +74,9 @@ extension UIView {
         }
     }
     
-    func customizeBorder(color: UIColor) {
+    func customizeBorder(color: UIColor, border: CGFloat = 1.0) {
         self.layer.borderColor = color.cgColor
-        self.layer.borderWidth = 1.0
+        self.layer.borderWidth = border
     }
     
     func addTopBorderWithColor(color: UIColor, width: CGFloat) {
@@ -109,7 +109,7 @@ extension UIView {
     
     func isEnabled(enable: Bool) {
         self.isUserInteractionEnabled = enable
-        self.alpha = enable ? 1 : 0.5
+        self.alpha = enable ? 1 : 0.8
     }
     
 }

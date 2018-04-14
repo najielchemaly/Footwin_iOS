@@ -200,6 +200,88 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
             cell.viewExactScore.addGestureRecognizer(exactScoreTap)
             cell.viewExactScore.tag = indexPath.row
             
+            cell.viewConfirm.layer.cornerRadius = cell.viewConfirm.frame.size.width/2
+            
+            let homeTap = UITapGestureRecognizer(target: self, action: #selector(homeTapped(sender:)))
+            cell.homeImage.addGestureRecognizer(homeTap)
+            cell.homeImage.tag = indexPath.row
+            
+            let awayTap = UITapGestureRecognizer(target: self, action: #selector(awayTapped(sender:)))
+            cell.awayImage.addGestureRecognizer(awayTap)
+            cell.awayImage.tag = indexPath.row
+            
+            let confirmTap = UITapGestureRecognizer(target: self, action: #selector(confirmTapoed(sender:)))
+            cell.viewConfirm.addGestureRecognizer(confirmTap)
+            cell.viewConfirm.tag = indexPath.row
+            
+            cell.buttonDraw.customizeBorder(color: Colors.white, border: 2.0)
+            cell.buttonDraw.addTarget(self, action: #selector(drawTapped(sender:)), for: .touchUpInside)
+            cell.buttonDraw.tag = indexPath.row
+            
+            let match = Objects.matches[indexPath.row]
+            if let homeFlag = match.home_flag {
+//                cell.homeImage.kf.setImage(with: URL(string: homeFlag))
+            }
+            if let awayFlag = match.away_flag {
+//                cell.awayImage.kf.setImage(with: URL(string: awayFlag))
+            }
+            cell.labelHome.text = match.home_name
+            cell.labelAway.text = match.away_name
+           
+            cell.buttonDraw.backgroundColor = .clear
+            cell.buttonDraw.isEnabled = true
+            
+            if match.selectedTeam == "home" {
+                cell.homeWidthConstraint.constant = 100
+                cell.homeShadowWidthConstraint.constant = 120
+                cell.homeShadow.alpha = 1
+                cell.awayWidthConstraint.constant = 80
+                cell.awayShadowWidthConstraint.constant = 110
+                cell.awayShadow.alpha = 0
+                cell.viewConfirm.alpha = 1
+                cell.labelVS.alpha = 0
+            } else if match.selectedTeam == "away" {
+                cell.awayWidthConstraint.constant = 100
+                cell.awayShadowWidthConstraint.constant = 120
+                cell.awayShadow.alpha = 1
+                cell.homeWidthConstraint.constant = 80
+                cell.homeShadowWidthConstraint.constant = 110
+                cell.homeShadow.alpha = 0
+                cell.viewConfirm.alpha = 1
+                cell.labelVS.alpha = 0
+            } else if match.selectedTeam == "draw" {
+                cell.homeWidthConstraint.constant = 90
+                cell.homeShadowWidthConstraint.constant = 110
+                cell.homeShadow.alpha = 0
+                cell.awayWidthConstraint.constant = 90
+                cell.awayShadowWidthConstraint.constant = 110
+                cell.awayShadow.alpha = 0
+                cell.viewConfirm.alpha = 1
+                cell.labelVS.alpha = 0
+                
+                cell.buttonDraw.layer.borderColor = Colors.appBlue.cgColor
+                cell.buttonDraw.backgroundColor = Colors.appBlue
+                cell.buttonDraw.isEnabled = false
+            }
+            
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
+            
+            if match.confirmed != nil && match.confirmed! {
+                cell.viewConfirm.alpha = 0
+                cell.labelVS.alpha = 1
+                cell.labelVS.text = "CONFIRMED"
+                cell.labelVS.font = Fonts.textFont_Bold
+                cell.isUserInteractionEnabled = false
+                cell.contentView.isEnabled(enable: false)
+            } else {
+                cell.labelVS.text = "VS"
+                cell.labelVS.font = Fonts.textFont_Bold_XLarge
+                cell.isUserInteractionEnabled = true
+                cell.contentView.isEnabled(enable: true)
+            }
+            
             return cell
         }
         
@@ -218,8 +300,43 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 }
                 exactScoreView.labelHome.text = match.home_name
                 exactScoreView.labelAway.text = match.away_name
+                
+                exactScoreView.textFieldHome.layer.cornerRadius = 10
+                exactScoreView.textFieldAway.layer.cornerRadius = 10
             }
         }
+    }
+    
+    @objc func homeTapped(sender: UITapGestureRecognizer) {
+        if let view = sender.view {
+            Objects.matches[view.tag].selectedTeam = "home"
+            tableView.reloadData()
+        }
+    }
+    
+    @objc func awayTapped(sender: UITapGestureRecognizer) {
+        if let view = sender.view {
+            Objects.matches[view.tag].selectedTeam = "away"
+            tableView.reloadData()
+        }
+    }
+    
+    @objc func drawTapped(sender: UIButton) {
+        Objects.matches[sender.tag].selectedTeam = "draw"
+        tableView.reloadData()
+    }
+    
+    @objc func confirmTapoed(sender: UITapGestureRecognizer) {
+        if let view = sender.view {
+            self.showAlertView(title: "", message: "ARE YOU SURE YOU WANT TO CONFIRM THE PREDICTION? \nONCE CONFIRMED YOU CANNOT EDIT IT!!", cancelTitle: "EDIT", doneTitle: "CONFIRM")
+            self.alertView.buttonDone.addTarget(self, action: #selector(confirmPrediction(sender:)), for: .touchUpInside)
+            self.alertView.buttonDone.tag = view.tag
+        }
+    }
+    
+    @objc func confirmPrediction(sender: UIButton) {
+        Objects.matches[sender.tag].confirmed = true
+        tableView.reloadData()
     }
     
     @IBAction func buttonViewRulesTapped(_ sender: Any) {

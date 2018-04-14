@@ -23,6 +23,8 @@ public class Match: NSObject, NSCoding {
     public var prediction_coins : String?
     public var winning_coins : String?
     public var exact_score_coins : String?
+    public var selectedTeam: String?
+    public var confirmed: Bool?
     
     /**
      Returns an array of models based on given dictionary.

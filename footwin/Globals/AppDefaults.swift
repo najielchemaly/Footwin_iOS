@@ -43,6 +43,7 @@ let mainStoryboard = AppStoryboard.Main.instance
 
 struct Colors {
     static let appBlue: UIColor = UIColor(hexString: "#0e30dd")!
+    static let appGreen: UIColor = UIColor(hexString: "#239D58")!
     static let darkBlue: UIColor = UIColor(hexString: "#071a7b")!
     static let white: UIColor = UIColor(hexString: "#eef0f6")!
     static let red: UIColor = UIColor(hexString: "#d80e3f")!
@@ -89,6 +90,16 @@ struct Fonts {
         get {
             if let fontName = Fonts.names[3] {
                 return UIFont.init(name: fontName, size: 18)!
+            }
+            
+            return UIFont.init()
+        }
+    }
+    
+    static var textFont_Bold_XLarge: UIFont {
+        get {
+            if let fontName = Fonts.names[2] {
+                return UIFont.init(name: fontName, size: 32)!
             }
             
             return UIFont.init()
