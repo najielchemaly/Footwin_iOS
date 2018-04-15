@@ -31,6 +31,8 @@
 	<string>FOOTWIN needs to access your Camera so you be able to capture your profile picture.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>FOOTWIN needs to access your Photo Library so you be able to select your profile picture.</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>FOOTWIN needs to access your Photo Library so you be able to select your profile picture.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SourceSansPro-Bold.ttf</string>
@@ -57,27 +59,25 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>fb1461553117306764</string>
-            </array>
-        </dict>
-    </array>
-    <key>FacebookAppID</key>
-    <string>1461553117306764</string>
-    <key>FacebookDisplayName</key>
-    <string>Footwin</string>
-    
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>fbapi</string>
-        <string>fb-messenger-share-api</string>
-        <string>fbauth2</string>
-        <string>fbshareextension</string>
-    </array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1461553117306764</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>1461553117306764</string>
+	<key>FacebookDisplayName</key>
+	<string>Footwin</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 </dict>
 </plist>

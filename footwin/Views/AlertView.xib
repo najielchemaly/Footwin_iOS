@@ -73,54 +73,35 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="Dd1-Oq-RA5" firstAttribute="top" secondItem="fOx-cP-KLO" secondAttribute="top" constant="8" id="4uS-QF-hpv"/>
                         <constraint firstItem="m7c-lK-1Ku" firstAttribute="leading" secondItem="fOx-cP-KLO" secondAttribute="leading" constant="8" id="5YC-9e-GFQ"/>
                         <constraint firstItem="m7c-lK-1Ku" firstAttribute="top" secondItem="fOx-cP-KLO" secondAttribute="top" constant="8" id="A8b-OQ-7GA"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="227" id="Ehf-tB-I0v"/>
                         <constraint firstItem="Zgy-8D-Ulc" firstAttribute="top" secondItem="Dd1-Oq-RA5" secondAttribute="bottom" constant="8" id="GI3-pU-wCv"/>
                         <constraint firstAttribute="bottom" secondItem="Zgy-8D-Ulc" secondAttribute="bottom" constant="5" id="O43-Bb-QBY"/>
-                        <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="200" id="Rop-ih-4Op"/>
                         <constraint firstAttribute="trailing" secondItem="Zgy-8D-Ulc" secondAttribute="trailing" constant="5" id="TQ5-GQ-UoE"/>
                         <constraint firstItem="Dd1-Oq-RA5" firstAttribute="top" secondItem="m7c-lK-1Ku" secondAttribute="bottom" id="Uay-Ok-STR"/>
                         <constraint firstItem="Dd1-Oq-RA5" firstAttribute="leading" secondItem="fOx-cP-KLO" secondAttribute="leading" constant="16" id="c8I-gx-3Rk"/>
                         <constraint firstAttribute="trailing" secondItem="Dd1-Oq-RA5" secondAttribute="trailing" constant="16" id="ggd-r9-Cpn"/>
-                        <constraint firstAttribute="width" constant="300" id="lYp-nX-FDI"/>
                         <constraint firstAttribute="trailing" secondItem="m7c-lK-1Ku" secondAttribute="trailing" constant="8" id="tI3-o7-XnZ"/>
                         <constraint firstItem="Zgy-8D-Ulc" firstAttribute="leading" secondItem="fOx-cP-KLO" secondAttribute="leading" constant="5" id="vYo-Fz-IO3"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="Rop-ih-4Op"/>
-                            <exclude reference="lYp-nX-FDI"/>
-                            <exclude reference="4uS-QF-hpv"/>
-                        </mask>
-                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="fOx-cP-KLO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="3OE-zm-gjL"/>
-                <constraint firstItem="fOx-cP-KLO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="210" id="83Y-cA-Bdw"/>
                 <constraint firstItem="oQj-BK-O2Q" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="IbB-E5-cbX"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fOx-cP-KLO" secondAttribute="trailing" constant="32" id="LHg-gr-Djo"/>
+                <constraint firstItem="fOx-cP-KLO" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="V9R-6z-MkV"/>
                 <constraint firstItem="oQj-BK-O2Q" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Ybj-ec-w7f"/>
-                <constraint firstItem="fOx-cP-KLO" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="hap-yV-kb5"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="fOx-cP-KLO" secondAttribute="bottom" constant="210" id="jwF-Zz-9ky"/>
                 <constraint firstItem="oQj-BK-O2Q" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="r9h-pK-ObC"/>
                 <constraint firstItem="oQj-BK-O2Q" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="rkj-eq-dSh"/>
-                <constraint firstItem="fOx-cP-KLO" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="zKL-up-8LB"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="hap-yV-kb5"/>
-                    <exclude reference="zKL-up-8LB"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="buttonCancel" destination="ZId-JU-LWy" id="VRm-Ml-91n"/>
                 <outlet property="buttonDone" destination="Zua-CN-Bq1" id="fon-kO-aQb"/>
-                <outlet property="contentTopConstraint" destination="83Y-cA-Bdw" id="qUX-J6-AFw"/>
                 <outlet property="labelMessage" destination="Dd1-Oq-RA5" id="Z5B-sB-YDH"/>
                 <outlet property="labelTitle" destination="m7c-lK-1Ku" id="LyY-Q3-jea"/>
                 <outlet property="viewContent" destination="fOx-cP-KLO" id="EaI-1p-hJm"/>

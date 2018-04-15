@@ -9,7 +9,7 @@
 import UIKit
 import Planet
 
-class SignupViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIPickerViewDelegate, UIPickerViewDataSource, ImagePickerDelegate {
+class SignupViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIPickerViewDelegate, UIPickerViewDataSource, ImagePickerDelegate, UITextFieldDelegate {
    
     @IBOutlet weak var buttonCancel: UIButton!
     @IBOutlet weak var labelStep: UILabel!
@@ -49,6 +49,7 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
         self.initializeViews()
         self.setupCollectionView()
         self.setupPickerView()
+        self.setupDelegates()
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,10 +66,12 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
         self.viewGender.customizeBorder(color: Colors.white)
         self.viewCountry.customizeBorder(color: Colors.white)
         
-        if isReview {
+        if isReview {            
             self.textFieldPhone.placeholder = "(Optional)"
             self.buttonGender.setTitle("(Optional)", for: .normal)
         }
+        
+        Objects.teams.forEach({ $0.is_selected = false })
     }
     
     func setupCollectionView() {
@@ -240,6 +243,7 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
             tempUser.image = image
             
             self.viewTakePicture.alpha = 0
+            self.imageProfile.image = image
         }
     }
     
@@ -255,6 +259,26 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
         tempUser.country = buttonCountry.titleLabel?.text
         tempUser.phone = labelDialingCode.text! + textFieldPhone.text!
         tempUser.gender = buttonGender.titleLabel?.text
+    }
+    
+    func setupDelegates() {
+        textFieldFullname.delegate = self
+        textFieldUsername.delegate = self
+        textFieldEmail.delegate = self
+        textFieldPassword.delegate = self
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        
+        if textField == textFieldFullname {
+            textFieldUsername.becomeFirstResponder()
+        } else if textField == textFieldUsername {
+            textFieldEmail.becomeFirstResponder()
+        } else if textField == textFieldEmail {
+            textFieldPassword.becomeFirstResponder()
+        }
+        
+        return true
     }
     
     @IBAction func buttonCancelTapped(_ sender: Any) {

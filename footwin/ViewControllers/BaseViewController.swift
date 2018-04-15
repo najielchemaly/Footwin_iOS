@@ -27,6 +27,10 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         swipe.direction = .down
         self.view.addGestureRecognizer(swipe)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,23 +69,22 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         present(self.imagePickerController, animated: true, completion: nil)
     }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.imagePickerDelegate.didCancelPickingMedia()
+
+        dismiss(animated: true, completion: nil)
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
         var pickedImage: UIImage? = nil
-        
+
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             pickedImage = image
         } else if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             pickedImage = image
         }
-        
+
         self.imagePickerDelegate.didFinishPickingMedia(data: pickedImage)
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.imagePickerDelegate.didCancelPickingMedia()
-        
         dismiss(animated: true, completion: nil)
     }
     
@@ -183,17 +186,14 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
         self.alertView.frame = self.view.bounds
         self.alertView.viewOverlay.alpha = 0
+        self.alertView.viewContent.frame.origin.y = self.alertView.frame.size.height
         self.view.addSubview(self.alertView)
-
-        let originalTopConstraint = self.alertView.contentTopConstraint.constant
-        self.alertView.contentTopConstraint.constant = self.alertView.frame.size.height
 
         UIView.animate(withDuration: 0.1, animations: {
             self.alertView.viewOverlay.alpha = 1
         }, completion: { success in
-            self.alertView.contentTopConstraint.constant = originalTopConstraint
             UIView.animate(withDuration: 0.2, animations: {
-                self.view.layoutIfNeeded()
+                
             })
         })
 
@@ -202,9 +202,8 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
     func hideAlertView() {
         if self.alertView != nil {
-            self.alertView.contentTopConstraint.constant = self.alertView.frame.size.height
             UIView.animate(withDuration: 0.2, animations: {
-                self.view.layoutIfNeeded()
+                
             }, completion: { success in
                 self.alertView.removeFromSuperview()
             })

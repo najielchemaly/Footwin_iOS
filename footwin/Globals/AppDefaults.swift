@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftValidator
 
 let GMS_APIKEY = ""
 let APPLE_LANGUAGE_KEY = "AppleLanguages"
@@ -31,15 +32,17 @@ var appDelegate: AppDelegate {
 var termsUrlString = Services.getBaseUrl() + "/terms"
 var privacyUrlString = Services.getBaseUrl() + "/privacy"
 
-enum AppStoryboard : String {
+enum Storyboards : String {
     case Main
+    case LaunchScreen
     
     var instance : UIStoryboard {
         return UIStoryboard(name: self.rawValue, bundle: Bundle.main)
     }
 }
 
-let mainStoryboard = AppStoryboard.Main.instance
+let mainStoryboard = Storyboards.Main.instance
+let launchStoryboard = Storyboards.LaunchScreen.instance
 
 struct Colors {
     static let appBlue: UIColor = UIColor(hexString: "#0e30dd")!
@@ -128,6 +131,7 @@ struct StoryboardIds {
     static let PredictViewController: String = "PredictViewController"
     static let CoinStashViewController: String = "CoinStashViewController"
     static let MainNavigationController: String = "MainNavigationController"
+    static let LoadingViewController: String = "LoadingViewController"
 }
 
 struct CellIds {
@@ -176,21 +180,30 @@ enum NewsType {
 }
 
 public enum WebViewComingFrom {
-    case none
-    case terms
-    case privacy
+    case None
+    case Terms
+    case Privacy
 }
 
-public enum SelectAvatarComingFrom {
-    case none
-    case signup
-    case edit
+enum FieldType: String {
+    case Fullname
+    case Username
+    case Email
+    case Password
+    case Country
+    case Phone
+    case Gender
+    
+    var title: String {
+        return String(describing: self)
+    }
 }
 
-enum MediaComingFrom {
-    case none
-    case photos
-    case videos
+enum ValidationType: String {
+    case Required
+    case MaxLength
+    case MinLength
+    case Regex
 }
 
 func getYears() -> NSMutableArray {

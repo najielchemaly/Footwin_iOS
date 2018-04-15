@@ -129,6 +129,60 @@ extension UITextField {
         return (self.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty)!
     }
     
+    func count() -> Int {
+        if let text = self.text {
+            return text.count.advanced(by: 0)
+        }
+        
+        return 0
+    }
+    
+    func isValidEmail() -> Bool {
+        if let text = self.text {
+            let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+            
+            let email = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+            return email.evaluate(with: text)
+        }
+        
+        return false
+    }
+    
+    func validate(validationType: ValidationType = .Required, fieldType: FieldType) -> String {
+        switch validationType {
+        case .MaxLength:
+            if fieldType == .Fullname && self.count() > 50 {
+                return fieldType.title + " cannot be more than 50 characters"
+            } else if fieldType == .Username && self.count() > 20 {
+                return fieldType.title + " cannot be more than 20 characters"
+            } else if fieldType == .Phone && self.count() > 15 {
+                return fieldType.title + " cannot be more than 15 characters"
+            } else if fieldType == .Password && self.count() > 16 {
+                return fieldType.title + " cannot be more than 16 characters"
+            }
+        case .MinLength:
+            if fieldType == .Fullname && self.count() < 2 {
+                return fieldType.title + " must be at least 2 characters"
+            } else if fieldType == .Username && self.count() < 4 {
+                return fieldType.title + " must be at least 4 characters"
+            } else if fieldType == .Phone && self.count() < 8 {
+                return fieldType.title + " must be at least 8 characters"
+            } else if fieldType == .Password && self.count() < 6 {
+                return fieldType.title + " must be at least 6 characters"
+            }
+        case .Regex:
+            if !isValidEmail() {
+                return "You must enter a valid email"
+            }
+        case .Required:
+            if self.isEmpty() {
+                return fieldType.title + " cannot be empty"
+            }
+        }
+        
+        return ""
+    }
+    
 }
 
 extension UITextView {
@@ -393,3 +447,8 @@ extension Bluring where Self: UIView {
 // Conformance
 extension UIView: Bluring {}
 
+extension Array {
+    public init(count: Int, elementCreator: @autoclosure () -> Element) {
+        self = (0 ..< count).map { _ in elementCreator() }
+    }
+}

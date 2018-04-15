@@ -10,7 +10,6 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 import FirebaseMessaging
-import NVActivityIndicatorView
 
 class LoginViewController: BaseViewController, UITextFieldDelegate {
     
@@ -185,12 +184,12 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     
     var errorMessage: String!
     func isValidData() -> Bool {
-        if textFieldEmail.text == nil || textFieldEmail.text == "" {
-            errorMessage = "Email field cannot be empty"
+        errorMessage = textFieldEmail.validate(validationType: .Regex, fieldType: .Email)
+        if !errorMessage.isEmpty {
             return false
         }
-        if textFieldPassword.text == nil || textFieldPassword.text == "" {
-            errorMessage = "Password field cannot be empty"
+        errorMessage = textFieldPassword.validate(fieldType: .Password)
+        if !errorMessage.isEmpty {
             return false
         }
         

@@ -51,6 +51,8 @@
 		4278170E207F73D500A5A528 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4278170A207F73D500A5A528 /* EmptyView.swift */; };
 		4278170F207F73D500A5A528 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4278170B207F73D500A5A528 /* EmptyView.xib */; };
 		42781711207F8C5400A5A528 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42781710207F8C5400A5A528 /* Objects.swift */; };
+		4285EA952083233C005BE6C2 /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4285EA942083233C005BE6C2 /* LoginNavigationController.swift */; };
+		4285EA9720832397005BE6C2 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4285EA9620832397005BE6C2 /* MainNavigationController.swift */; };
 		42B73F26207FE0D0003DCB05 /* CountryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B73F21207FE0D0003DCB05 /* CountryDataSource.swift */; };
 		42B73F27207FE0D0003DCB05 /* CountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B73F22207FE0D0003DCB05 /* CountryPickerViewController.swift */; };
 		42B73F28207FE0D0003DCB05 /* CountryPickerViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B73F23207FE0D0003DCB05 /* CountryPickerViewControllerDelegate.swift */; };
@@ -137,6 +139,8 @@
 		4278170A207F73D500A5A528 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		4278170B207F73D500A5A528 /* EmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
 		42781710207F8C5400A5A528 /* Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
+		4285EA942083233C005BE6C2 /* LoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
+		4285EA9620832397005BE6C2 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		42B73F21207FE0D0003DCB05 /* CountryDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryDataSource.swift; sourceTree = "<group>"; };
 		42B73F22207FE0D0003DCB05 /* CountryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerViewController.swift; sourceTree = "<group>"; };
 		42B73F23207FE0D0003DCB05 /* CountryPickerViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 				425B7805207CA7690083D084 /* PredictViewController.swift */,
 				425B7809207CA7880083D084 /* LeaderboardViewController.swift */,
 				425B7813207CA7FC0083D084 /* CoinStashViewController.swift */,
+				4285EA9620832397005BE6C2 /* MainNavigationController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -232,6 +237,7 @@
 				425B77FB207CA6E90083D084 /* LoginViewController.swift */,
 				425B77FD207CA6F60083D084 /* ForgotPasswordViewController.swift */,
 				425B77FF207CA7190083D084 /* SignupViewController.swift */,
+				4285EA942083233C005BE6C2 /* LoginNavigationController.swift */,
 			);
 			path = Initial;
 			sourceTree = "<group>";
@@ -453,7 +459,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-footwin/Pods-footwin-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
-				"${BUILT_PRODUCTS_DIR}/CountryPickerView/CountryPickerView.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
@@ -462,6 +467,7 @@
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftValidator/SwiftValidator.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -469,7 +475,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPickerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
@@ -478,6 +483,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftValidator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -518,6 +524,7 @@
 				42781711207F8C5400A5A528 /* Objects.swift in Sources */,
 				425B782F207CABEC0083D084 /* Services.swift in Sources */,
 				425B77FE207CA6F60083D084 /* ForgotPasswordViewController.swift in Sources */,
+				4285EA952083233C005BE6C2 /* LoginNavigationController.swift in Sources */,
 				425B7831207CABFC0083D084 /* AppDefaults.swift in Sources */,
 				425B7814207CA7FC0083D084 /* CoinStashViewController.swift in Sources */,
 				42B73F35207FFFC2003DCB05 /* TutorialView.swift in Sources */,
@@ -534,6 +541,7 @@
 				42F8DE592080B50D006B3323 /* Round.swift in Sources */,
 				420AE3E32069823400A24AD5 /* footwin.xcdatamodeld in Sources */,
 				425B7810207CA7B90083D084 /* EditProfileViewController.swift in Sources */,
+				4285EA9720832397005BE6C2 /* MainNavigationController.swift in Sources */,
 				42B73F28207FE0D0003DCB05 /* CountryPickerViewControllerDelegate.swift in Sources */,
 				42F8DE642080F1C3006B3323 /* NotificationsTableViewCell.swift in Sources */,
 				425B7833207CAC190083D084 /* Localization.swift in Sources */,
