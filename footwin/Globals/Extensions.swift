@@ -74,7 +74,7 @@ extension UIView {
         }
     }
     
-    func customizeBorder(color: UIColor, border: CGFloat = 1.0) {
+    func customizeBorder(color: UIColor, border: CGFloat = 2.0) {
         self.layer.borderColor = color.cgColor
         self.layer.borderWidth = border
     }
@@ -148,7 +148,7 @@ extension UITextField {
         return false
     }
     
-    func validate(validationType: ValidationType = .Required, fieldType: FieldType) -> String {
+    func validate(validationType: ValidationType = .Required, fieldType: FieldType, password: String = "") -> String {
         switch validationType {
         case .MaxLength:
             if fieldType == .Fullname && self.count() > 50 {
@@ -177,6 +177,10 @@ extension UITextField {
         case .Required:
             if self.isEmpty() {
                 return fieldType.title + " cannot be empty"
+            }
+        case .Passwords:
+            if self.text != password {
+                return "Password do not match"
             }
         }
         
@@ -317,6 +321,30 @@ extension UIButton {
         } else {
             return false
         }
+    }
+    
+    func count() -> Int {
+        if let text = self.titleLabel?.text {
+            return text.count.advanced(by: 0)
+        }
+        
+        return 0
+    }
+    
+    func isEmpty() -> Bool {
+        if let text = self.titleLabel?.text {
+            return text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty
+        }
+        
+        return true
+    }
+    
+    func validate(fieldType: FieldType) -> String {
+        if self.isEmpty() {
+            return fieldType.title + " cannot be empty"
+        }
+        
+        return ""
     }
     
 }

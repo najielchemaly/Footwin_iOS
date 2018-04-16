@@ -20,11 +20,12 @@ struct ServiceName {
     static let forgotPassword = "/forgotPassword/"
     static let getAboutUs = "/getAboutUs/"
     static let getCountries = "/getCountries/"
+    static let getLeaderboards = "/getLeaderboards/"
     static let getMatches = "/getMatches/"
     static let getNews = "/getNews/"
     static let getNotifications = "/getNotifications/"
     static let getPackages = "/getPackages/"
-    static let getMyPredictions = "/getMyPredictions/"
+    static let getPredictions = "/getPredictions/"
     static let getTeams = "/getTeams/"
     static let googleLogin = "/googleLogin/"
     static let login = "/login/"
@@ -127,13 +128,15 @@ class Services {
         return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
     }
     
-    func editUser(id: String, fullname: String, phoneNumber: String, email: String) -> ResponseData? {
+    func editUser(id: String, fullname: String, email: String, country: String, phone: String, gender: String) -> ResponseData? {
         
         let parameters: Parameters = [
             "id": id,
             "fullname": fullname,
-            "phoneNumber": phoneNumber,
-            "email": email
+            "email": email,
+            "country": country,
+            "phone": phone,
+            "gender": gender
         ]
         
         let serviceName = ServiceName.editUser
@@ -184,6 +187,16 @@ class Services {
         return makeHttpRequest(method: .post, serviceName: serviceName, headers: headers)
     }
     
+    func getLeaderboards() -> ResponseData? {
+        
+        let headers: HTTPHeaders = [
+            "User-Id": USER_ID
+        ]
+        
+        let serviceName = ServiceName.getLeaderboards
+        return makeHttpRequest(method: .post, serviceName: serviceName, headers: headers)
+    }
+    
     func getMatches() -> ResponseData? {
         
         let headers: HTTPHeaders = [
@@ -224,13 +237,13 @@ class Services {
         return makeHttpRequest(method: .post, serviceName: serviceName, headers: headers)
     }
     
-    func getMyPredictions() -> ResponseData? {
+    func getPredictions() -> ResponseData? {
         
         let headers: HTTPHeaders = [
             "User-Id": USER_ID
         ]
         
-        let serviceName = ServiceName.getMyPredictions
+        let serviceName = ServiceName.getPredictions
         return makeHttpRequest(method: .post, serviceName: serviceName, headers: headers)
     }
     
@@ -292,6 +305,7 @@ class Services {
             "password": user.password ?? ""
         ]
         
+        parameters["phone_code"] = user.phone_code
         parameters["phone"] = user.phone
         parameters["country"] = user.country
         parameters["gender"] = user.gender

@@ -16,6 +16,7 @@ class AlertView: UIView {
     @IBOutlet weak var buttonCancel: UIButton!
     @IBOutlet weak var buttonDone: UIButton!
     @IBOutlet weak var labelTitle: UILabel!
+    @IBOutlet weak var viewCenterYConstraint: NSLayoutConstraint!
     
     @IBAction func buttonCancelTapped(_ sender: Any) {
         if let baseVC = currentVC as? BaseViewController {

@@ -40,29 +40,26 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HELLO USER, WELCOME TO FOOTWIN, ENJOY FOOTING AND WINNING :D" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02Q-4s-Bu6">
-                            <rect key="frame" x="16" y="72.5" width="300" height="45.5"/>
+                            <rect key="frame" x="16" y="72.5" width="300" height="75.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="300" id="OtM-AH-8Ev"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="SourceSansPro-Light" family="Source Sans Pro" pointSize="18"/>
+                            <fontDescription key="fontDescription" name="SourceSansPro-Light" family="Source Sans Pro" pointSize="20"/>
                             <color key="textColor" red="0.050523705779999997" green="0.18217900400000001" blue="0.82575476169999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THIS IS YOUR MAIN PREDICTION SCREEN, WE WILL NOW SHOW YOU A FEW STEPS TO HELP YOU GET STARTED." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDJ-cX-G7A">
-                            <rect key="frame" x="16" y="154" width="300" height="68"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="300" id="OIW-ee-IeG"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="SourceSansPro-Light" family="Source Sans Pro" pointSize="18"/>
+                            <rect key="frame" x="16" y="168" width="327" height="75.5"/>
+                            <fontDescription key="fontDescription" name="SourceSansPro-Light" family="Source Sans Pro" pointSize="20"/>
                             <color key="textColor" red="0.050523705779999997" green="0.18217900400000001" blue="0.82575476169999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFP-FK-oym">
-                            <rect key="frame" x="107" y="326" width="144" height="33"/>
+                            <rect key="frame" x="79" y="324" width="200" height="35"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="144" id="lHv-B9-YEc"/>
+                                <constraint firstAttribute="width" constant="200" id="lHv-B9-YEc"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="18"/>
                             <state key="normal" title="START THE TUTORIAL">
                                 <color key="titleColor" red="0.050523705779999997" green="0.18217900400000001" blue="0.82575476169999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -75,9 +72,10 @@
                         <constraint firstItem="hte-fW-Cly" firstAttribute="top" secondItem="H5R-wb-8ri" secondAttribute="top" constant="16" id="7EH-R7-AzC"/>
                         <constraint firstItem="hte-fW-Cly" firstAttribute="leading" secondItem="H5R-wb-8ri" secondAttribute="leading" constant="16" id="A6p-HK-TiZ"/>
                         <constraint firstItem="GFP-FK-oym" firstAttribute="centerX" secondItem="H5R-wb-8ri" secondAttribute="centerX" id="BAL-YY-CU8"/>
+                        <constraint firstAttribute="trailing" secondItem="FDJ-cX-G7A" secondAttribute="trailing" constant="16" id="ERf-2d-06a"/>
                         <constraint firstAttribute="height" constant="375" id="MRa-jU-57e"/>
-                        <constraint firstItem="FDJ-cX-G7A" firstAttribute="centerY" secondItem="H5R-wb-8ri" secondAttribute="centerY" id="PCd-0p-D3I"/>
-                        <constraint firstItem="FDJ-cX-G7A" firstAttribute="leading" secondItem="H5R-wb-8ri" secondAttribute="leading" constant="16" id="WQW-5X-Ayw"/>
+                        <constraint firstItem="FDJ-cX-G7A" firstAttribute="leading" secondItem="H5R-wb-8ri" secondAttribute="leading" constant="16" id="Ngr-2z-zGc"/>
+                        <constraint firstItem="FDJ-cX-G7A" firstAttribute="top" secondItem="02Q-4s-Bu6" secondAttribute="bottom" constant="20" id="PGJ-w0-Wr1"/>
                         <constraint firstAttribute="bottom" secondItem="GFP-FK-oym" secondAttribute="bottom" constant="16" id="ufy-34-4rt"/>
                     </constraints>
                 </view>

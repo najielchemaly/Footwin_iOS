@@ -13,6 +13,7 @@ public class Package: NSObject, NSCoding {
     public var title : String?
     public var coins : String?
     public var price : String?
+    public var desc: String?
     
     /**
      Returns an array of models based on given dictionary.
@@ -52,6 +53,7 @@ public class Package: NSObject, NSCoding {
         title = decoder.decodeObject(forKey:"title") as? String
         coins = decoder.decodeObject(forKey:"coins") as? String
         price = decoder.decodeObject(forKey:"price") as? String
+        desc = decoder.decodeObject(forKey:"description") as? String
     }
     
     public func encode(with coder: NSCoder) {
@@ -59,6 +61,7 @@ public class Package: NSObject, NSCoding {
         coder.encode(title, forKey: "title")
         coder.encode(coins, forKey: "coins")
         coder.encode(price, forKey: "price")
+        coder.encode(desc, forKey: "description")
     }
     
     required public init?(dictionary: NSDictionary) {
@@ -67,6 +70,7 @@ public class Package: NSObject, NSCoding {
         title = dictionary["title"] as? String
         coins = dictionary["coins"] as? String
         price = dictionary["price"] as? String
+        desc = dictionary["description"] as? String
     }
     
     /**
@@ -82,6 +86,7 @@ public class Package: NSObject, NSCoding {
         dictionary.setValue(title, forKey: "title")
         dictionary.setValue(coins, forKey: "coins")
         dictionary.setValue(price, forKey: "price")
+        dictionary.setValue(desc, forKey: "description")
         
         return dictionary
     }

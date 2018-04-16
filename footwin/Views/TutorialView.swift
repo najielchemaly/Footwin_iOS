@@ -18,11 +18,14 @@ class TutorialView: UIView {
     @IBOutlet weak var labelDescription: UILabel!
     @IBOutlet weak var buttonNext: UIButton!
     @IBOutlet weak var viewCoins: UIView!
+    @IBOutlet weak var imageProfile: UIImageView!
+    @IBOutlet weak var imageHome: UIImageView!
+    @IBOutlet weak var labelHome: UILabel!
     
     @IBAction func buttonNextTapped(_ sender: Any) {
         if buttonNext.tag == 1 {
             labelTitle.text = "COIN STASH"
-            labelDescription.text = "TAP ON THE YELLO COIN TO CHECK YOUR BALANCE, AND GET MORE WHENEVER YOU ARE OUT OF COINS"
+            labelDescription.text = "TAP ON THE YELLOW COIN TO CHECK YOUR BALANCE, AND GET MORE WHENEVER YOU ARE OUT OF COINS"
             
             UIView.animate(withDuration: 0.1, animations: {
                 self.viewNotif.alpha = 0

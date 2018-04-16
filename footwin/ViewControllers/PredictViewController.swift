@@ -18,6 +18,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var labelRound: UILabel!
     @IBOutlet weak var buttonViewRules: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var imageCoins: UIImageView!
     
     var refreshControl = UIRefreshControl()
     
@@ -44,7 +45,17 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
             UIView.animate(withDuration: 0.1, animations: {
                 helperView.alpha = 0
             }, completion: { success in
-                if let tutorialView = self.showView(name: Views.TutorialView) as? TutorialView {
+                if let tutorialView = self.showView(name: Views.TutorialView) as? TutorialView {                    
+                    tutorialView.imageProfile.layer.cornerRadius = tutorialView.imageProfile.frame.size.width/2
+                    tutorialView.imageProfile.image = self.imageProfile.image
+                    if let match = Objects.matches.first {
+                        if let homeFlag = match.home_flag {
+                            tutorialView.imageHome.kf.setImage(with: URL(string: homeFlag))
+                        }
+                        if let homeName = match.home_name {
+                            tutorialView.labelHome.text = homeName
+                        }
+                    }
                     tutorialView.showFirstTutorial()
                 }
             })
@@ -82,8 +93,15 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                     self.tableView.reloadData()
                     self.removeEmptyView()
                     
-                    if let helperView = self.showView(name: Views.HelperView) as? HelperView {
-                        helperView.buttonStartTutorial.addTarget(self, action: #selector(self.startTutorial(sender:)), for: .touchUpInside)
+                    let userDefaults = UserDefaults.standard
+                    if !userDefaults.bool(forKey: "didShowHelper") {
+                        if let helperView = self.showView(name: Views.HelperView) as? HelperView {
+                            helperView.buttonStartTutorial.addTarget(self, action: #selector(self.startTutorial(sender:)), for: .touchUpInside)
+
+                            // TODO
+//                            userDefaults.set(true, forKey: "didShowHelper")
+//                            userDefaults.synchronize()
+                        }
                     }
                 }
             }
@@ -93,9 +111,12 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     func initializeViews() {
         self.imageProfile.isUserInteractionEnabled = true
         self.imageProfile.layer.cornerRadius = self.imageProfile.frame.size.width/2
-        let tap = UITapGestureRecognizer(target: self, action: #selector(navigateToNotifications))
-        self.imageProfile.addGestureRecognizer(tap)
+        let profileTap = UITapGestureRecognizer(target: self, action: #selector(navigateToNotifications))
+        self.imageProfile.addGestureRecognizer(profileTap)
 
+        let coinsTap = UITapGestureRecognizer(target: self, action: #selector(navigateToCoinStash))
+        self.imageCoins.addGestureRecognizer(coinsTap)
+        
         self.labelCoins.text = currentUser.coins
         self.labelWinningCoins.text = currentUser.winning_coins
         
@@ -103,14 +124,26 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         
         if let avatar = currentUser.avatar {
             self.imageProfile.kf.setImage(with: URL(string: avatar))
+        } else {
+            if let gender = currentUser.gender, gender.lowercased() == "male" {
+                self.imageProfile.image = #imageLiteral(resourceName: "avatar_male")
+            } else if let gender = currentUser.gender, gender.lowercased() == "female" {
+                self.imageProfile.image = #imageLiteral(resourceName: "avatar_female")
+            }
         }
         
         self.labelBadge.layer.cornerRadius = self.labelBadge.frame.size.width/2
         self.labelBadge.clipsToBounds = true
+        
+        self.setNotificationBadgeNumber(label: self.labelBadge)
     }
     
     @objc func navigateToNotifications() {
         self.redirectToVC(storyboardId: StoryboardIds.NotificationsViewController, type: .present)
+    }
+    
+    @objc func navigateToCoinStash() {
+        self.redirectToVC(storyboardId: StoryboardIds.CoinStashViewController, type: .present)
     }
     
     func setupTableView() {
@@ -146,7 +179,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 215
+        return 220
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -171,7 +204,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
             cell.viewConfirm.addGestureRecognizer(confirmTap)
             cell.viewConfirm.tag = indexPath.row
             
-            cell.buttonDraw.customizeBorder(color: Colors.white, border: 2.0)
+            cell.buttonDraw.customizeBorder(color: Colors.white)
             cell.buttonDraw.addTarget(self, action: #selector(drawTapped(sender:)), for: .touchUpInside)
             cell.buttonDraw.tag = indexPath.row
             
@@ -188,7 +221,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
             cell.buttonDraw.backgroundColor = .clear
             cell.buttonDraw.isEnabled = true
             
-            if match.selectedTeam == "home" {
+            if match.selected_team == "home" {
                 cell.homeWidthConstraint.constant = 100
                 cell.homeShadowWidthConstraint.constant = 120
                 cell.homeShadow.alpha = 1
@@ -197,7 +230,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 cell.awayShadow.alpha = 0
                 cell.viewConfirm.alpha = 1
                 cell.labelVS.alpha = 0
-            } else if match.selectedTeam == "away" {
+            } else if match.selected_team == "away" {
                 cell.awayWidthConstraint.constant = 100
                 cell.awayShadowWidthConstraint.constant = 120
                 cell.awayShadow.alpha = 1
@@ -206,7 +239,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 cell.homeShadow.alpha = 0
                 cell.viewConfirm.alpha = 1
                 cell.labelVS.alpha = 0
-            } else if match.selectedTeam == "draw" {
+            } else if match.selected_team == "draw" {
                 cell.homeWidthConstraint.constant = 90
                 cell.homeShadowWidthConstraint.constant = 110
                 cell.homeShadow.alpha = 0
@@ -219,6 +252,19 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 cell.buttonDraw.layer.borderColor = Colors.appBlue.cgColor
                 cell.buttonDraw.backgroundColor = Colors.appBlue
                 cell.buttonDraw.isEnabled = false
+            } else {
+                cell.homeWidthConstraint.constant = 90
+                cell.homeShadowWidthConstraint.constant = 110
+                cell.homeShadow.alpha = 0
+                cell.awayWidthConstraint.constant = 80
+                cell.awayShadowWidthConstraint.constant = 110
+                cell.awayShadow.alpha = 0
+                cell.viewConfirm.alpha = 0
+                cell.labelVS.alpha = 1
+                
+                cell.buttonDraw.layer.borderColor = Colors.white.cgColor
+                cell.buttonDraw.backgroundColor = .clear
+                cell.buttonDraw.isEnabled = true
             }
             
             UIView.animate(withDuration: 0.3) {
@@ -226,15 +272,18 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
             }
             
             if match.confirmed != nil && match.confirmed! {
-                cell.viewConfirm.alpha = 0
-                cell.labelVS.alpha = 1
-                cell.labelVS.text = "CONFIRMED"
-                cell.labelVS.font = Fonts.textFont_Bold
+                cell.labelConfirm.textColor = Colors.white
+                cell.viewConfirm.backgroundColor = Colors.appGreen
+                cell.viewConfirm.alpha = 1
+                cell.labelVS.alpha = 0
                 cell.isUserInteractionEnabled = false
                 cell.contentView.isEnabled(enable: false)
             } else {
                 cell.labelVS.text = "VS"
                 cell.labelVS.font = Fonts.textFont_Bold_XLarge
+                cell.buttonDraw.alpha = 1
+                cell.labelConfirm.textColor = Colors.appBlue
+                cell.viewConfirm.backgroundColor = Colors.white
                 cell.isUserInteractionEnabled = true
                 cell.contentView.isEnabled(enable: true)
             }
@@ -260,26 +309,33 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 
                 exactScoreView.textFieldHome.layer.cornerRadius = 10
                 exactScoreView.textFieldAway.layer.cornerRadius = 10
+                
+                exactScoreView.textFieldHome.text = match.home_score
+                exactScoreView.textFieldAway.text = match.away_score
+                
+                exactScoreView.buttonConfirm.tag = view.tag
+                
+                exactScoreView.setupNotificationCenter()
             }
         }
     }
     
     @objc func homeTapped(sender: UITapGestureRecognizer) {
         if let view = sender.view {
-            Objects.matches[view.tag].selectedTeam = "home"
+            Objects.matches[view.tag].selected_team = "home"
             tableView.reloadData()
         }
     }
     
     @objc func awayTapped(sender: UITapGestureRecognizer) {
         if let view = sender.view {
-            Objects.matches[view.tag].selectedTeam = "away"
+            Objects.matches[view.tag].selected_team = "away"
             tableView.reloadData()
         }
     }
     
     @objc func drawTapped(sender: UIButton) {
-        Objects.matches[sender.tag].selectedTeam = "draw"
+        Objects.matches[sender.tag].selected_team = "draw"
         tableView.reloadData()
     }
     

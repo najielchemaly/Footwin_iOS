@@ -73,17 +73,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                         }
                         
                         DispatchQueue.main.async {
-                            if let data = UserDefaults.standard.data(forKey: "user"),
-                                let user = NSKeyedUnarchiver.unarchiveObject(with: data) as? User {
-                                if let window = self.window, let mainNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.MainNavigationController) as? MainNavigationController {
-                                    currentUser = user
-                                    window.rootViewController = mainNavigationController
-                                }
-                            } else {
-                                if let window = self.window, let loginNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.LoginNavigationController) as? LoginNavigationController {
-                                    window.rootViewController = loginNavigationController
-                                }
+                            // TODO
+                            if let window = self.window, let mainNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.MainNavigationController) as? MainNavigationController {
+//                                currentUser = user
+                                window.rootViewController = mainNavigationController
                             }
+//                            if let data = UserDefaults.standard.data(forKey: "user"),
+//                                let user = NSKeyedUnarchiver.unarchiveObject(with: data) as? User {
+//                                if let window = self.window, let mainNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.MainNavigationController) as? MainNavigationController {
+//                                    currentUser = user
+//                                    window.rootViewController = mainNavigationController
+//                                }
+//                            } else {
+//                                if let window = self.window, let loginNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.LoginNavigationController) as? LoginNavigationController {
+//                                    window.rootViewController = loginNavigationController
+//                                }
+//                            }
                         }
                     }
                 }

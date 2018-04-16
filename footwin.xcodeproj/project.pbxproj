@@ -13,6 +13,14 @@
 		420AE3E32069823400A24AD5 /* footwin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 420AE3E12069823400A24AD5 /* footwin.xcdatamodeld */; };
 		420AE3E52069823400A24AD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 420AE3E42069823400A24AD5 /* Assets.xcassets */; };
 		420AE3E82069823400A24AD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 420AE3E62069823400A24AD5 /* LaunchScreen.storyboard */; };
+		423EDE082084E02300865F6D /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423EDE062084E02300865F6D /* LeaderboardTableViewCell.swift */; };
+		423EDE092084E02300865F6D /* LeaderboardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423EDE072084E02300865F6D /* LeaderboardTableViewCell.xib */; };
+		423EDE0B2084E3DD00865F6D /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423EDE0A2084E3DD00865F6D /* Leaderboard.swift */; };
+		423EDE0E2085499000865F6D /* MyPredictionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423EDE0C2085499000865F6D /* MyPredictionTableViewCell.swift */; };
+		423EDE0F2085499000865F6D /* MyPredictionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423EDE0D2085499000865F6D /* MyPredictionTableViewCell.xib */; };
+		42419F602084AE6600A6F19D /* CountingProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42419F5F2084AE6600A6F19D /* CountingProcess.swift */; };
+		42419F632084C92700A6F19D /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42419F612084C92700A6F19D /* NewsTableViewCell.swift */; };
+		42419F642084C92700A6F19D /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42419F622084C92700A6F19D /* NewsTableViewCell.xib */; };
 		425B77FC207CA6E90083D084 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B77FB207CA6E90083D084 /* LoginViewController.swift */; };
 		425B77FE207CA6F60083D084 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B77FD207CA6F60083D084 /* ForgotPasswordViewController.swift */; };
 		425B7800207CA7190083D084 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B77FF207CA7190083D084 /* SignupViewController.swift */; };
@@ -74,6 +82,10 @@
 		42F8DE612080D2C9006B3323 /* ExactScoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42F8DE602080D2C9006B3323 /* ExactScoreView.xib */; };
 		42F8DE642080F1C3006B3323 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F8DE622080F1C3006B3323 /* NotificationsTableViewCell.swift */; };
 		42F8DE652080F1C3006B3323 /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42F8DE632080F1C3006B3323 /* NotificationsTableViewCell.xib */; };
+		42F946D52083BB9300643EFC /* PurchaseCoins.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42F946D42083BB9300643EFC /* PurchaseCoins.xib */; };
+		42F946D72083BB9D00643EFC /* PurchaseCoins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F946D62083BB9D00643EFC /* PurchaseCoins.swift */; };
+		42F946DA2083C22000643EFC /* PurchaseCoinsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F946D82083C22000643EFC /* PurchaseCoinsViewCell.swift */; };
+		42F946DB2083C22000643EFC /* PurchaseCoinsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42F946D92083C22000643EFC /* PurchaseCoinsViewCell.xib */; };
 		C2569F0A044CAC9A839B17A6 /* Pods_footwin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB19A8AA5D2245E1E2EDEEB /* Pods_footwin.framework */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +113,14 @@
 		420AE3E42069823400A24AD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		420AE3E72069823400A24AD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		420AE3E92069823400A24AD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		423EDE062084E02300865F6D /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
+		423EDE072084E02300865F6D /* LeaderboardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaderboardTableViewCell.xib; sourceTree = "<group>"; };
+		423EDE0A2084E3DD00865F6D /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
+		423EDE0C2085499000865F6D /* MyPredictionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPredictionTableViewCell.swift; sourceTree = "<group>"; };
+		423EDE0D2085499000865F6D /* MyPredictionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPredictionTableViewCell.xib; sourceTree = "<group>"; };
+		42419F5F2084AE6600A6F19D /* CountingProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountingProcess.swift; sourceTree = "<group>"; };
+		42419F612084C92700A6F19D /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		42419F622084C92700A6F19D /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 		425B77FB207CA6E90083D084 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		425B77FD207CA6F60083D084 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		425B77FF207CA7190083D084 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +180,10 @@
 		42F8DE602080D2C9006B3323 /* ExactScoreView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExactScoreView.xib; sourceTree = "<group>"; };
 		42F8DE622080F1C3006B3323 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		42F8DE632080F1C3006B3323 /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsTableViewCell.xib; sourceTree = "<group>"; };
+		42F946D42083BB9300643EFC /* PurchaseCoins.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseCoins.xib; sourceTree = "<group>"; };
+		42F946D62083BB9D00643EFC /* PurchaseCoins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCoins.swift; sourceTree = "<group>"; };
+		42F946D82083C22000643EFC /* PurchaseCoinsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCoinsViewCell.swift; sourceTree = "<group>"; };
+		42F946D92083C22000643EFC /* PurchaseCoinsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseCoinsViewCell.xib; sourceTree = "<group>"; };
 		5C1796446543466432504A2F /* Pods-footwin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-footwin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-footwin/Pods-footwin.debug.xcconfig"; sourceTree = "<group>"; };
 		CCFEDE0888A30A78659561D6 /* Pods-footwin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-footwin.release.xcconfig"; path = "Pods/Target Support Files/Pods-footwin/Pods-footwin.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -273,6 +297,14 @@
 				42B73F3920800DFD003DCB05 /* PredictionTableViewCell.xib */,
 				42F8DE622080F1C3006B3323 /* NotificationsTableViewCell.swift */,
 				42F8DE632080F1C3006B3323 /* NotificationsTableViewCell.xib */,
+				42F946D82083C22000643EFC /* PurchaseCoinsViewCell.swift */,
+				42F946D92083C22000643EFC /* PurchaseCoinsViewCell.xib */,
+				42419F612084C92700A6F19D /* NewsTableViewCell.swift */,
+				42419F622084C92700A6F19D /* NewsTableViewCell.xib */,
+				423EDE062084E02300865F6D /* LeaderboardTableViewCell.swift */,
+				423EDE072084E02300865F6D /* LeaderboardTableViewCell.xib */,
+				423EDE0C2085499000865F6D /* MyPredictionTableViewCell.swift */,
+				423EDE0D2085499000865F6D /* MyPredictionTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -286,6 +318,7 @@
 				425B7830207CABFC0083D084 /* AppDefaults.swift */,
 				425B7832207CAC190083D084 /* Localization.swift */,
 				42781710207F8C5400A5A528 /* Objects.swift */,
+				42419F5F2084AE6600A6F19D /* CountingProcess.swift */,
 			);
 			path = Globals;
 			sourceTree = "<group>";
@@ -313,6 +346,7 @@
 				425B7841207CBB490083D084 /* Prediction.swift */,
 				425B7843207CBB590083D084 /* Team.swift */,
 				42F8DE582080B50D006B3323 /* Round.swift */,
+				423EDE0A2084E3DD00865F6D /* Leaderboard.swift */,
 			);
 			path = DatabaseObjects;
 			sourceTree = "<group>";
@@ -332,6 +366,8 @@
 				42F8DE5A2080B7DF006B3323 /* RulesView.xib */,
 				42F8DE5E2080D2C0006B3323 /* ExactScoreView.swift */,
 				42F8DE602080D2C9006B3323 /* ExactScoreView.xib */,
+				42F946D62083BB9D00643EFC /* PurchaseCoins.swift */,
+				42F946D42083BB9300643EFC /* PurchaseCoins.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -428,6 +464,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42F946D52083BB9300643EFC /* PurchaseCoins.xib in Resources */,
 				4278170D207F73D500A5A528 /* AlertView.xib in Resources */,
 				425B7826207CAB520083D084 /* SourceSansPro-Bold.ttf in Resources */,
 				42B73F31207FFA89003DCB05 /* HelperView.xib in Resources */,
@@ -439,10 +476,14 @@
 				4278170F207F73D500A5A528 /* EmptyView.xib in Resources */,
 				425B7828207CAB520083D084 /* SourceSansPro-Regular.ttf in Resources */,
 				425B7829207CAB520083D084 /* SourceSansPro-SemiBold.ttf in Resources */,
+				423EDE0F2085499000865F6D /* MyPredictionTableViewCell.xib in Resources */,
+				42F946DB2083C22000643EFC /* PurchaseCoinsViewCell.xib in Resources */,
+				423EDE092084E02300865F6D /* LeaderboardTableViewCell.xib in Resources */,
 				42B73F3B20800DFD003DCB05 /* PredictionTableViewCell.xib in Resources */,
 				42F8DE652080F1C3006B3323 /* NotificationsTableViewCell.xib in Resources */,
 				420AE3E82069823400A24AD5 /* LaunchScreen.storyboard in Resources */,
 				420AE3E52069823400A24AD5 /* Assets.xcassets in Resources */,
+				42419F642084C92700A6F19D /* NewsTableViewCell.xib in Resources */,
 				420AE3E02069823400A24AD5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,6 +500,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-footwin/Pods-footwin-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/CircleProgressView/CircleProgressView.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
@@ -467,7 +509,6 @@
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftValidator/SwiftValidator.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -475,6 +516,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CircleProgressView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
@@ -483,7 +525,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftValidator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -524,10 +565,13 @@
 				42781711207F8C5400A5A528 /* Objects.swift in Sources */,
 				425B782F207CABEC0083D084 /* Services.swift in Sources */,
 				425B77FE207CA6F60083D084 /* ForgotPasswordViewController.swift in Sources */,
+				423EDE0B2084E3DD00865F6D /* Leaderboard.swift in Sources */,
 				4285EA952083233C005BE6C2 /* LoginNavigationController.swift in Sources */,
 				425B7831207CABFC0083D084 /* AppDefaults.swift in Sources */,
 				425B7814207CA7FC0083D084 /* CoinStashViewController.swift in Sources */,
+				423EDE082084E02300865F6D /* LeaderboardTableViewCell.swift in Sources */,
 				42B73F35207FFFC2003DCB05 /* TutorialView.swift in Sources */,
+				42F946DA2083C22000643EFC /* PurchaseCoinsViewCell.swift in Sources */,
 				425B7812207CA7C40083D084 /* ChangePasswordViewController.swift in Sources */,
 				425B783A207CBB000083D084 /* _Country.swift in Sources */,
 				425B780E207CA7A90083D084 /* NotificationsViewController.swift in Sources */,
@@ -535,15 +579,19 @@
 				425B782D207CABE20083D084 /* Alamofire+Synchronous.swift in Sources */,
 				4278170E207F73D500A5A528 /* EmptyView.swift in Sources */,
 				42F8DE5D2080B7F0006B3323 /* RulesView.swift in Sources */,
+				423EDE0E2085499000865F6D /* MyPredictionTableViewCell.swift in Sources */,
+				42419F602084AE6600A6F19D /* CountingProcess.swift in Sources */,
 				425B7838207CBAF30083D084 /* Package.swift in Sources */,
 				425B7808207CA7750083D084 /* NewsViewController.swift in Sources */,
 				42F8DE5F2080D2C0006B3323 /* ExactScoreView.swift in Sources */,
 				42F8DE592080B50D006B3323 /* Round.swift in Sources */,
+				42F946D72083BB9D00643EFC /* PurchaseCoins.swift in Sources */,
 				420AE3E32069823400A24AD5 /* footwin.xcdatamodeld in Sources */,
 				425B7810207CA7B90083D084 /* EditProfileViewController.swift in Sources */,
 				4285EA9720832397005BE6C2 /* MainNavigationController.swift in Sources */,
 				42B73F28207FE0D0003DCB05 /* CountryPickerViewControllerDelegate.swift in Sources */,
 				42F8DE642080F1C3006B3323 /* NotificationsTableViewCell.swift in Sources */,
+				42419F632084C92700A6F19D /* NewsTableViewCell.swift in Sources */,
 				425B7833207CAC190083D084 /* Localization.swift in Sources */,
 				420AE3DD2069823400A24AD5 /* BaseViewController.swift in Sources */,
 				425B7842207CBB490083D084 /* Prediction.swift in Sources */,

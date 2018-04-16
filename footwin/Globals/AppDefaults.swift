@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftValidator
 
 let GMS_APIKEY = ""
 let APPLE_LANGUAGE_KEY = "AppleLanguages"
@@ -46,7 +45,7 @@ let launchStoryboard = Storyboards.LaunchScreen.instance
 
 struct Colors {
     static let appBlue: UIColor = UIColor(hexString: "#0e30dd")!
-    static let appGreen: UIColor = UIColor(hexString: "#239D58")!
+    static let appGreen: UIColor = UIColor(hexString: "#59cb21")!
     static let darkBlue: UIColor = UIColor(hexString: "#071a7b")!
     static let white: UIColor = UIColor(hexString: "#eef0f6")!
     static let red: UIColor = UIColor(hexString: "#d80e3f")!
@@ -82,7 +81,7 @@ struct Fonts {
     static var textFont_Bold: UIFont {
         get {
             if let fontName = Fonts.names[2] {
-                return UIFont.init(name: fontName, size: 18)!
+                return UIFont.init(name: fontName, size: 20)!
             }
             
             return UIFont.init()
@@ -138,6 +137,10 @@ struct CellIds {
     static let NotificationTableViewCell: String = "NotificationTableViewCell"
     static let TeamCollectionViewCell: String = "TeamCollectionViewCell"
     static let PredictionTableViewCell: String = "PredictionTableViewCell"
+    static let PurchaseCoinsViewCell: String = "PurchaseCoinsViewCell"
+    static let NewsTableViewCell: String = "NewsTableViewCell"
+    static let LeaderboardTableViewCell: String = "LeaderboardTableViewCell"
+    static let MyPredictionTableViewCell: String = "MyPredictionTableViewCell"
 }
 
 struct Views {
@@ -147,6 +150,7 @@ struct Views {
     static let TutorialView: String = "TutorialView"
     static let RulesView: String = "RulesView"
     static let ExactScoreView: String = "ExactScoreView"
+    static let PurchaseCoins: String = "PurchaseCoins"
 }
 
 enum Keys: String {
@@ -204,6 +208,7 @@ enum ValidationType: String {
     case MaxLength
     case MinLength
     case Regex
+    case Passwords
 }
 
 func getYears() -> NSMutableArray {

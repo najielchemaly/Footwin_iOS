@@ -109,6 +109,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         self.loginManager = FBSDKLoginManager()
         
         Messaging.messaging().unsubscribe(fromTopic: "/topics/footwinnews")
+        appDelegate.unregisterFromRemoteNotifications()
     }
     
     func getFacebookParameters(){

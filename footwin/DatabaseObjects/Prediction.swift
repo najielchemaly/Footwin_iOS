@@ -14,6 +14,11 @@ public class Prediction: NSObject, NSCoding {
     public var winning_score : String?
     public var losing_score : String?
     public var status : String?
+    public var home_flag : String?
+    public var away_flag : String?
+    public var home_name : String?
+    public var away_name : String?
+    public var selected_team : String?
     
     /**
      Returns an array of models based on given dictionary.

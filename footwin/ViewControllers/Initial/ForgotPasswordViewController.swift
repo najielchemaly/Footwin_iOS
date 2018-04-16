@@ -70,8 +70,8 @@ class ForgotPasswordViewController: BaseViewController, UITextFieldDelegate {
     
     var errorMessage: String!
     func isValidData() -> Bool {
-        if textFieldEmail.text == nil || textFieldEmail.text == "" {
-            errorMessage = "Email field cannot be empty"
+        errorMessage = textFieldEmail.validate(validationType: .Regex, fieldType: .Email)
+        if !errorMessage.isEmpty {
             return false
         }
         

@@ -37,8 +37,9 @@
                 <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oXe-2P-8Ui">
                     <rect key="frame" x="16" y="50" width="138" height="60"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="messi" translatesAutoresizingMaskIntoConstraints="NO" id="SZk-k0-FYQ">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SZk-k0-FYQ">
                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="Yqk-TN-yoT"/>
                             </constraints>
@@ -70,7 +71,7 @@
                     </variation>
                 </view>
                 <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k4p-fR-aKo">
-                    <rect key="frame" x="272" y="30" width="83" height="60"/>
+                    <rect key="frame" x="272" y="50" width="83" height="60"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="up9-Fm-BDF">
                             <rect key="frame" x="48" y="12" width="35" height="35"/>
@@ -124,17 +125,17 @@
                     </constraints>
                 </view>
                 <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66P-lg-uzE">
-                    <rect key="frame" x="0.0" y="155" width="182" height="120"/>
+                    <rect key="frame" x="0.0" y="160" width="182" height="120"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="germany" translatesAutoresizingMaskIntoConstraints="NO" id="faW-UV-iYm">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="faW-UV-iYm">
                             <rect key="frame" x="16" y="0.0" width="90" height="90"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="90" id="ITW-SI-2s6"/>
                                 <constraint firstAttribute="height" constant="90" id="rL2-E2-ANj"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GERMANY" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q44-Bu-1gQ">
-                            <rect key="frame" x="16" y="94" width="90" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q44-Bu-1gQ">
+                            <rect key="frame" x="16" y="94" width="90" height="0.0"/>
                             <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="18"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -263,9 +264,9 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="oXe-2P-8Ui" secondAttribute="trailing" constant="16" id="kYp-Nf-3Vb"/>
                 <constraint firstItem="DEW-B9-TrD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="75" id="maD-My-xCe"/>
                 <constraint firstItem="Q77-hT-xY4" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="oCl-uA-iwN"/>
-                <constraint firstItem="66P-lg-uzE" firstAttribute="top" secondItem="DEW-B9-TrD" secondAttribute="bottom" id="qUz-tt-PvB"/>
+                <constraint firstItem="66P-lg-uzE" firstAttribute="top" secondItem="DEW-B9-TrD" secondAttribute="bottom" constant="5" id="qUz-tt-PvB"/>
                 <constraint firstAttribute="trailing" secondItem="BCU-eN-Tqw" secondAttribute="trailing" id="tr2-3r-FwZ"/>
-                <constraint firstItem="k4p-fR-aKo" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="uqQ-C3-q3t"/>
+                <constraint firstItem="k4p-fR-aKo" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="uqQ-C3-q3t"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Q77-hT-xY4" secondAttribute="bottom" constant="20" id="xPC-p6-wu3"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -277,7 +278,10 @@
             </variation>
             <connections>
                 <outlet property="buttonNext" destination="Q77-hT-xY4" id="NHU-Ne-owh"/>
+                <outlet property="imageHome" destination="faW-UV-iYm" id="bfe-ZE-Zzn"/>
+                <outlet property="imageProfile" destination="SZk-k0-FYQ" id="Ruz-Zr-iN6"/>
                 <outlet property="labelDescription" destination="7zU-56-JeY" id="Iqa-kS-35C"/>
+                <outlet property="labelHome" destination="q44-Bu-1gQ" id="kLM-a3-uDI"/>
                 <outlet property="labelTitle" destination="tj5-bV-WP9" id="Ssf-Tm-pb7"/>
                 <outlet property="viewCoins" destination="k4p-fR-aKo" id="YP9-de-phs"/>
                 <outlet property="viewExactScore" destination="3dg-IO-EBy" id="IQe-Ob-z3I"/>
@@ -295,7 +299,5 @@
         <image name="arrow_helper_right" width="600" height="457"/>
         <image name="blurred_background" width="1080" height="1920"/>
         <image name="coin" width="102" height="101"/>
-        <image name="germany" width="222" height="222"/>
-        <image name="messi" width="146" height="146"/>
     </resources>
 </document>

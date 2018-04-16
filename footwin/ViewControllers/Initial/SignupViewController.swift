@@ -205,33 +205,44 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
     
     var errorMessage: String!
     func isValidData() -> Bool {
-        
-        if textFieldFullname.text == nil || textFieldFullname.text == "" {
-            errorMessage = "FULLNAME FIELD CANNOT BE EMPTY"
+        errorMessage = textFieldFullname.validate(validationType: .MaxLength, fieldType: .Fullname)
+        if !errorMessage.isEmpty {
             return false
         }
-        if textFieldUsername.text == nil || textFieldUsername.text == "" {
-            errorMessage = "USERNAME FIELD CANNOT BE EMPTY"
+        errorMessage = textFieldUsername.validate(validationType: .MinLength, fieldType: .Username)
+        if !errorMessage.isEmpty {
             return false
         }
-        if textFieldEmail.text == nil || textFieldEmail.text == "" {
-            errorMessage = "EMAIL FIELD CANNOT BE EMPTY"
+        errorMessage = textFieldUsername.validate(validationType: .MaxLength, fieldType: .Fullname)
+        if !errorMessage.isEmpty {
             return false
         }
-        if textFieldPassword.text == nil || textFieldPassword.text == "" {
-            errorMessage = "PASSWORD FIELD CANNOT BE EMPTY"
+        errorMessage = textFieldEmail.validate(validationType: .Regex, fieldType: .Email)
+        if !errorMessage.isEmpty {
             return false
         }
-        if buttonCountry.titleLabel?.text == nil || buttonCountry.titleLabel?.text == "" {
-            errorMessage = "COUNTRY FIELD CANNOT BE EMPTY"
+        errorMessage = textFieldPassword.validate(validationType: .MinLength, fieldType: .Password)
+        if !errorMessage.isEmpty {
             return false
         }
-        if !isReview && (textFieldPhone.text == nil || textFieldPhone.text == "") {
-            errorMessage = "PHONE NUMBER FIELD CANNOT BE EMPTY"
+        errorMessage = textFieldPassword.validate(validationType: .MaxLength, fieldType: .Password)
+        if !errorMessage.isEmpty {
             return false
         }
-        if !isReview && (buttonGender.titleLabel?.text == nil || buttonGender.titleLabel?.text == "") {
-            errorMessage = "GENDER FIELD CANNOT BE EMPTY"
+        errorMessage = textFieldPhone.validate(validationType: .MinLength, fieldType: .Phone)
+        if !errorMessage.isEmpty {
+            return false
+        }
+        errorMessage = buttonCountry.validate(fieldType: .Phone)
+        if !errorMessage.isEmpty {
+            return false
+        }
+        errorMessage = textFieldPhone.validate(validationType: .MaxLength, fieldType: .Phone)
+        if !isReview && !errorMessage.isEmpty {
+            return false
+        }
+        errorMessage = buttonGender.validate(fieldType: .Phone)
+        if !isReview && !errorMessage.isEmpty {
             return false
         }
         
@@ -268,8 +279,7 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
         textFieldPassword.delegate = self
     }
     
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == textFieldFullname {
             textFieldUsername.becomeFirstResponder()
         } else if textField == textFieldUsername {
@@ -315,8 +325,7 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
                 }
                 break
             case 3:
-                // TODO change condition
-                if tempUser.image == nil {
+                if tempUser.image != nil {
                     self.fillUserInfo()
                     self.showLoader()
                     
@@ -324,7 +333,6 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
                         let response = appDelegate.services.registerUser(user: self.tempUser)
                         
                         DispatchQueue.main.async {
-                            
                             self.redirectToVC(storyboardId: StoryboardIds.MainNavigationController, type: .present)
                             return
                             

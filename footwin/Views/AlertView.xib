@@ -104,6 +104,7 @@
                 <outlet property="buttonDone" destination="Zua-CN-Bq1" id="fon-kO-aQb"/>
                 <outlet property="labelMessage" destination="Dd1-Oq-RA5" id="Z5B-sB-YDH"/>
                 <outlet property="labelTitle" destination="m7c-lK-1Ku" id="LyY-Q3-jea"/>
+                <outlet property="viewCenterYConstraint" destination="V9R-6z-MkV" id="w3g-Dk-POe"/>
                 <outlet property="viewContent" destination="fOx-cP-KLO" id="EaI-1p-hJm"/>
                 <outlet property="viewOverlay" destination="oQj-BK-O2Q" id="J7g-TJ-aIo"/>
             </connections>

@@ -18,13 +18,74 @@ class ExactScoreView: UIView {
     @IBOutlet weak var textFieldAway: UITextField!
     @IBOutlet weak var buttonConfirm: UIButton!
     @IBOutlet weak var buttonCancel: UIButton!
+    @IBOutlet weak var stackHeightConstraint: NSLayoutConstraint!
+    
+    var stackViewOriginalY: CGFloat = 0
     
     @IBAction func buttonCancelTapped(_ sender: Any) {
         UIView.animate(withDuration: 0.3, animations: {
             self.alpha = 0
         }, completion: { success in
             self.removeFromSuperview()
+            
+            NotificationCenter.default.removeObserver(self)
         })
+    }
+    
+    func setupNotificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        self.stackViewOriginalY = self.stackHeightConstraint.constant
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        self.addGestureRecognizer(tap)
+                
+        self.buttonConfirm.addTarget(self, action: #selector(self.buttonConfirmTapped), for: .touchUpInside)
+    }
+    
+    @objc func buttonConfirmTapped(sender: UIButton) {
+        if !textFieldHome.isEmpty() && !textFieldAway.isEmpty() {
+            Objects.matches[sender.tag].home_score = textFieldHome.text
+            Objects.matches[sender.tag].away_score = textFieldAway.text
+            
+            buttonCancelTapped(buttonCancel)
+        } else {
+            if let predictViewController = currentVC as? PredictViewController {
+                predictViewController.showAlertView(title: "WOW", message: "ARE YOU SURE YOU WANT TO LEAVE WITHOUT SETTING EXACT SCORE?", cancelTitle: "CANCEL", doneTitle: "LEAVE")
+                
+                predictViewController.alertView.buttonDone.tag = sender.tag
+                predictViewController.alertView.buttonDone.addTarget(self, action: #selector(self.leaveWithoutSettingExactScores(sender:)), for: .touchUpInside)
+            }
+        }
+    }
+    
+    @objc func leaveWithoutSettingExactScores(sender: UIButton) {
+        Objects.matches[sender.tag].home_score = nil
+        Objects.matches[sender.tag].away_score = nil
+        
+        buttonCancelTapped(buttonCancel)
+    }
+    
+    @objc func dismissKeyboard() {
+        self.endEditing(true)
+        
+        self.stackHeightConstraint.constant = self.stackViewOriginalY
+        UIView.animate(withDuration: 0.3, animations: {
+            self.layoutIfNeeded()
+        })
+    }
+    
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        if textFieldHome.isFirstResponder || textFieldAway.isFirstResponder {
+            if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+                let keyboardRectangle = keyboardFrame.cgRectValue
+                
+                self.stackHeightConstraint.constant -= (keyboardRectangle.height/2)+20
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.layoutIfNeeded()
+                })
+            }
+        }
     }
     
     /*

@@ -115,6 +115,7 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 let userDefaults = UserDefaults.standard
                 userDefaults.removeObject(forKey: "user")
                 userDefaults.removeObject(forKey: "isUserLoggedIn")
+                userDefaults.removeObject(forKey: "firebaseToken")
                 userDefaults.synchronize()
                 
                 if let window = appDelegate.window {
@@ -141,7 +142,7 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     private var emptyView: EmptyView!
-    func addEmptyView(message: String? = nil, frame: CGRect? = nil) {
+    func addEmptyView(message: String? = nil, frame: CGRect? = nil, padding: CGFloat = 0) {
         if self.emptyView == nil {
             let view = Bundle.main.loadNibNamed("EmptyView", owner: self.view, options: nil)
             if let emptyView = view?.first as? EmptyView {
@@ -153,6 +154,10 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.emptyView.frame = frame ?? self.view.frame
         self.emptyView.labelTitle.text = message
         self.emptyView.isUserInteractionEnabled = false
+        
+        if padding > 0 {
+            self.emptyView.imageCenterYConstraint.constant -= padding
+        }
     }
 
     func removeEmptyView() {
@@ -186,14 +191,15 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
         self.alertView.frame = self.view.bounds
         self.alertView.viewOverlay.alpha = 0
-        self.alertView.viewContent.frame.origin.y = self.alertView.frame.size.height
-        self.view.addSubview(self.alertView)
+        self.alertView.viewCenterYConstraint.constant = self.alertView.frame.size.height
+        appDelegate.window?.addSubview(self.alertView)
 
         UIView.animate(withDuration: 0.1, animations: {
             self.alertView.viewOverlay.alpha = 1
         }, completion: { success in
+            self.alertView.viewCenterYConstraint.constant = 0
             UIView.animate(withDuration: 0.2, animations: {
-                
+                appDelegate.window?.layoutIfNeeded()
             })
         })
 
@@ -202,8 +208,9 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
     func hideAlertView() {
         if self.alertView != nil {
+            self.alertView.viewCenterYConstraint.constant = self.alertView.frame.size.height
             UIView.animate(withDuration: 0.2, animations: {
-                
+                appDelegate.window?.layoutIfNeeded()
             }, completion: { success in
                 self.alertView.removeFromSuperview()
             })
@@ -230,7 +237,7 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let view = Bundle.main.loadNibNamed(name, owner: self.view, options: nil)
         if let helperView = view?.first as? HelperView {
             customView = helperView
-            customView.center = self.view.center
+            customView.frame = self.view.bounds
             customView.backgroundColor = Colors.black.withAlphaComponent(0.6)
         } else if let tutorialView = view?.first as? TutorialView {
             customView = tutorialView
@@ -244,6 +251,10 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             customView = exactScoreView
             customView.frame = self.view.bounds
             customView.backgroundColor = Colors.black.withAlphaComponent(0.8)
+        } else if let purchaseCoins = view?.first as? PurchaseCoins {
+            customView = purchaseCoins
+            customView.frame = self.view.bounds
+            customView.backgroundColor = Colors.black.withAlphaComponent(0.9)
         }
         
         customView.alpha = 0

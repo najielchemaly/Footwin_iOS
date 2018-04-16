@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SourceSansPro-Bold.ttf">
+            <string>SourceSansPro-Bold</string>
+        </array>
+        <array key="SourceSansPro-SemiBold.ttf">
+            <string>SourceSansPro-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="PurchaseCoins" id="iN0-l3-epB" customClass="PurchaseCoins" customModule="footwin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUY MORE COINS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uA-HQ-y1d">
+                    <rect key="frame" x="112" y="195" width="151" height="25.5"/>
+                    <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8o-zV-L4k" customClass="FSPagerView" customModule="FSPagerView">
+                    <rect key="frame" x="0.0" y="228.5" width="375" height="230"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="230" id="Myv-9x-CaM"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCa-Q9-eBb">
+                    <rect key="frame" x="162" y="612" width="51" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="APT-xD-Mgq"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="18"/>
+                    <state key="normal" title="CLOSE">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonCloseTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="M8p-Rc-oSM"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.30298195420000001" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="e8o-zV-L4k" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="44K-th-b4s"/>
+                <constraint firstItem="7uA-HQ-y1d" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="DkR-mt-Hxu"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="HCa-Q9-eBb" secondAttribute="bottom" constant="20" id="Hvi-ci-gzB"/>
+                <constraint firstItem="e8o-zV-L4k" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="Mpf-0j-VWF"/>
+                <constraint firstItem="e8o-zV-L4k" firstAttribute="top" secondItem="7uA-HQ-y1d" secondAttribute="bottom" constant="8" id="XKz-di-Jui"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e8o-zV-L4k" secondAttribute="trailing" id="rIS-KW-kjC"/>
+                <constraint firstItem="HCa-Q9-eBb" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="vbh-mc-Hp2"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="buttonClose" destination="HCa-Q9-eBb" id="IWg-85-IKc"/>
+                <outlet property="pagerHeightConstraint" destination="Myv-9x-CaM" id="u4K-4W-HeZ"/>
+                <outlet property="pagerView" destination="e8o-zV-L4k" id="fwn-19-CS4"/>
+            </connections>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
+        </view>
+    </objects>
+</document>

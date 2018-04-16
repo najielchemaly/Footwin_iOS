@@ -14,4 +14,5 @@ pod 'Firebase/Messaging'
 pod 'FSPagerView'
 pod 'NVActivityIndicatorView'
 pod 'FBSDKLoginKit'
+pod 'CircleProgressView', '~> 1.0'
 end

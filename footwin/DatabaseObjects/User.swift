@@ -16,6 +16,7 @@ public class User: NSObject, NSCoding {
     public var email : String?
     public var password : String?
     public var phone : String?
+    public var phone_code : String?
     public var gender: String?
     public var country: String?
     public var facebook_id : String?
@@ -72,6 +73,7 @@ public class User: NSObject, NSCoding {
         username = decoder.decodeObject(forKey:"username") as? String
         email = decoder.decodeObject(forKey:"email") as? String
         phone = decoder.decodeObject(forKey:"phone") as? String
+        phone_code = decoder.decodeObject(forKey:"phone_code") as? String
         gender = decoder.decodeObject(forKey:"gender") as? String
         country = decoder.decodeObject(forKey:"country") as? String
         facebook_id = decoder.decodeObject(forKey:"facebook_id") as? String
@@ -95,6 +97,7 @@ public class User: NSObject, NSCoding {
         coder.encode(username, forKey: "username")
         coder.encode(email, forKey: "email")
         coder.encode(phone, forKey: "phone")
+        coder.encode(phone_code, forKey: "phone_code")
         coder.encode(gender, forKey: "gender")
         coder.encode(country, forKey: "country")
         coder.encode(facebook_id, forKey: "facebook_id")
@@ -119,6 +122,7 @@ public class User: NSObject, NSCoding {
         username = dictionary["username"] as? String
         email = dictionary["email"] as? String
         phone = dictionary["phone"] as? String
+        phone_code = dictionary["phone_code"] as? String
         gender = dictionary["gender"] as? String
         country = dictionary["country"] as? String
         facebook_id = dictionary["facebook_id"] as? String
@@ -150,6 +154,7 @@ public class User: NSObject, NSCoding {
         dictionary.setValue(username, forKey: "username")
         dictionary.setValue(email, forKey: "email")
         dictionary.setValue(phone, forKey: "phone")
+        dictionary.setValue(phone_code, forKey: "phone_code")
         dictionary.setValue(gender, forKey: "gender")
         dictionary.setValue(country, forKey: "country")
         dictionary.setValue(facebook_id, forKey: "facebook_id")

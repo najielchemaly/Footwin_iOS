@@ -26,6 +26,7 @@ class PredictionTableViewCell: UITableViewCell {
     @IBOutlet weak var awayShadowWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var homeWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var homeShadowWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var labelConfirm: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

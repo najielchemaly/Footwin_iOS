@@ -8,12 +8,31 @@
 
 import UIKit
 
-class EditProfileViewController: BaseViewController {
+class EditProfileViewController: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var viewFullname: UIView!
+    @IBOutlet weak var textFieldFullname: UITextField!
+    @IBOutlet weak var viewEmail: UIView!
+    @IBOutlet weak var textFieldEmail: UITextField!
+    @IBOutlet weak var viewCountry: UIView!
+    @IBOutlet weak var buttonCountry: UIButton!
+    @IBOutlet weak var viewPhone: UIView!
+    @IBOutlet weak var labelDialingCode: UILabel!
+    @IBOutlet weak var textFieldPhone: UITextField!
+    @IBOutlet weak var viewGender: UIView!
+    @IBOutlet weak var buttonGender: UIButton!
+    
+    var pickerView: UIPickerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.initializeViews()
+        self.setupPickerView()
+        self.setupDelegates()
+        self.fillUserInfo()
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +40,162 @@ class EditProfileViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func fillUserInfo() {
+        textFieldFullname.text = currentUser.fullname
+        textFieldEmail.text = currentUser.email
+        buttonCountry.setTitle(currentUser.country, for: .normal)
+        labelDialingCode.text = currentUser.phone_code
+        textFieldPhone.text = currentUser.phone
+        buttonGender.setTitle(currentUser.gender, for: .normal)
+    }
+    
+    func initializeViews() {
+        self.viewFullname.customizeBorder(color: Colors.white)
+        self.viewEmail.customizeBorder(color: Colors.white)
+        self.viewPhone.customizeBorder(color: Colors.white)
+        self.viewGender.customizeBorder(color: Colors.white)
+        self.viewCountry.customizeBorder(color: Colors.white)
+        
+        if isReview {
+            self.textFieldPhone.placeholder = "(Optional)"
+            self.buttonGender.setTitle("(Optional)", for: .normal)
+        }
+    }
+    
+    func setupPickerView() {
+        self.pickerView = UIPickerView()
+        self.pickerView.delegate = self
+        self.pickerView.dataSource = self
+        
+        self.pickerView.backgroundColor = Colors.white
+        self.pickerView.frame.size.width = self.view.frame.size.width
+        self.pickerView.frame.origin.y = self.view.frame.size.height
+        self.view.addSubview(self.pickerView)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideGenderPicker))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Objects.gender.count
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return Objects.gender[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.buttonGender.setTitle(Objects.gender[row], for: .normal)
+        
+        self.hideGenderPicker()
+    }
+    
+    @objc func hideGenderPicker() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.pickerView.frame.origin.y = self.view.frame.size.height
+        })
+    }
+    
+    func showGenderPicker() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.pickerView.frame.origin.y -= self.pickerView.frame.size.height
+        })
+    }
+    
+    func setupDelegates() {
+        textFieldFullname.delegate = self
+        textFieldEmail.delegate = self
+    }
+    
+    var errorMessage: String!
+    func isValidData() -> Bool {
+        errorMessage = textFieldFullname.validate(validationType: .MaxLength, fieldType: .Fullname)
+        if !errorMessage.isEmpty {
+            return false
+        }
+        errorMessage = textFieldEmail.validate(validationType: .Regex, fieldType: .Email)
+        if !errorMessage.isEmpty {
+            return false
+        }
+        errorMessage = buttonCountry.validate(fieldType: .Phone)
+        if !errorMessage.isEmpty {
+            return false
+        }
+        errorMessage = textFieldPhone.validate(validationType: .MinLength, fieldType: .Phone)
+        if !errorMessage.isEmpty {
+            return false
+        }
+        errorMessage = textFieldPhone.validate(validationType: .MaxLength, fieldType: .Phone)
+        if !isReview && !errorMessage.isEmpty {
+            return false
+        }
+        errorMessage = buttonGender.validate(fieldType: .Phone)
+        if !isReview && !errorMessage.isEmpty {
+            return false
+        }
+        
+        return true
+    }
+    
+    @IBAction func buttonCountryTapped(_ sender: Any) {
+        let viewController = CountryPickerViewController()
+        viewController.delegate = self
+        
+        let navigationController = UINavigationController(rootViewController: viewController)
+        present(navigationController, animated: true, completion: nil)
+    }
+    
+    @IBAction func buttonGenderTapped(_ sender: Any) {
+        self.showGenderPicker()
+    }
+    
+    @IBAction func buttonCancelTapped(_ sender: Any) {
+        self.dismissVC()
+    }
+    
+    @IBAction func buttonSaveTapped(_ sender: Any) {
+        if isValidData() {
+            self.showLoader()
+            
+            let userId = currentUser.id
+            let fullname = textFieldFullname.text
+            let country = buttonCountry.titleLabel?.text
+            let phone = labelDialingCode.text! + textFieldPhone.text!
+            let email = textFieldEmail.text
+            let gender = buttonGender.titleLabel?.text
+            
+            DispatchQueue.global(qos: .background).async {
+                let response = appDelegate.services.editUser(id: userId!, fullname: fullname!, email: email!, country: country!, phone: phone, gender: gender!)
+                
+                DispatchQueue.main.async {
+                    if response?.status == ResponseStatus.SUCCESS.rawValue {
+                        if let json = response?.json?.first {
+                            if let jsonUser = json["user"] as? NSDictionary {
+                                if let user = User.init(dictionary: jsonUser) {
+                                    currentUser = user
+                                    
+                                    self.saveUserInUserDefaults()
+                                    
+                                    self.showAlertView(message: "YOUR PROFILE HAS BEEN UPDATED SUCCESSFULLY")
+                                    self.alertView.buttonDone.addTarget(self, action: #selector(self.dismissVC), for: .touchUpInside)
+                                }
+                            }
+                        }
+                    } else if let message = response?.message {
+                        self.showAlertView(message: message)
+                    }
+                }
+            }
+        } else {
+            self.showAlertView(message: errorMessage)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -32,4 +206,17 @@ class EditProfileViewController: BaseViewController {
     }
     */
 
+}
+
+extension EditProfileViewController: CountryPickerViewControllerDelegate {
+    func countryPickerViewControllerDidCancel(_ countryPickerViewController: CountryPickerViewController) {
+        self.dismissVC()
+    }
+    
+    func countryPickerViewController(_ countryPickerViewController: CountryPickerViewController, didSelectCountry country: Country) {
+        self.labelDialingCode.text = country.callingCode
+        self.buttonCountry.setTitle(country.name, for: .normal)
+        
+        self.dismissVC()
+    }
 }

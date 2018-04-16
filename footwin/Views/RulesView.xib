@@ -41,15 +41,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="135" height="135"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRDICT FOR" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bak-mc-bpn">
-                                    <rect key="frame" x="8" y="61.5" width="119" height="19"/>
+                                    <rect key="frame" x="8" y="56.5" width="119" height="19"/>
                                     <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRH-Fj-mcN">
-                                    <rect key="frame" x="8" y="85" width="119" height="42"/>
-                                    <string key="text">100
-COINS</string>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRH-Fj-mcN">
+                                    <rect key="frame" x="8" y="80" width="119" height="47"/>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="18"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -61,6 +59,7 @@ COINS</string>
                                 <constraint firstItem="9So-oW-f8P" firstAttribute="top" secondItem="QWb-au-oDZ" secondAttribute="top" id="DBH-K9-gxu"/>
                                 <constraint firstItem="TRH-Fj-mcN" firstAttribute="leading" secondItem="QWb-au-oDZ" secondAttribute="leading" constant="8" id="JpL-gc-jMz"/>
                                 <constraint firstAttribute="width" secondItem="QWb-au-oDZ" secondAttribute="height" multiplier="1:1" id="Moa-40-ARv"/>
+                                <constraint firstItem="Bak-mc-bpn" firstAttribute="top" secondItem="QWb-au-oDZ" secondAttribute="top" constant="56.5" id="N24-RM-Qhd"/>
                                 <constraint firstAttribute="width" constant="135" id="NHY-83-Pxw"/>
                                 <constraint firstAttribute="trailing" secondItem="9So-oW-f8P" secondAttribute="trailing" id="Vtc-1c-kLx"/>
                                 <constraint firstAttribute="height" constant="135" id="aAO-0A-o8m"/>
@@ -84,15 +83,13 @@ COINS</string>
                                     <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WIN" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crY-7L-gpE">
-                                    <rect key="frame" x="8" y="85" width="164" height="23.5"/>
+                                    <rect key="frame" x="8" y="79" width="164" height="23.5"/>
                                     <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="20"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBD-bG-Hbo">
-                                    <rect key="frame" x="8" y="112.5" width="164" height="51.5"/>
-                                    <string key="text">150
-COINS</string>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBD-bG-Hbo">
+                                    <rect key="frame" x="8" y="106.5" width="164" height="57.5"/>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="22"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -111,6 +108,7 @@ COINS</string>
                                 <constraint firstAttribute="width" constant="180" id="fia-re-pQx"/>
                                 <constraint firstItem="JBD-bG-Hbo" firstAttribute="leading" secondItem="b24-Yy-Xyc" secondAttribute="leading" constant="8" id="jDP-5c-pfz"/>
                                 <constraint firstItem="qGe-fC-2vV" firstAttribute="leading" secondItem="b24-Yy-Xyc" secondAttribute="leading" id="p6a-9r-n9O"/>
+                                <constraint firstItem="crY-7L-gpE" firstAttribute="top" secondItem="b24-Yy-Xyc" secondAttribute="top" constant="79" id="tK4-u1-G1w"/>
                                 <constraint firstItem="crY-7L-gpE" firstAttribute="leading" secondItem="b24-Yy-Xyc" secondAttribute="leading" constant="8" id="xhh-XT-rH4"/>
                                 <constraint firstAttribute="bottom" secondItem="qGe-fC-2vV" secondAttribute="bottom" id="xkU-X0-RbH"/>
                             </constraints>
@@ -127,15 +125,13 @@ COINS</string>
                                     <rect key="frame" x="0.0" y="0.0" width="135" height="135"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* EXACT SCORE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIf-q6-zBE">
-                                    <rect key="frame" x="8" y="44" width="119" height="37.5"/>
+                                    <rect key="frame" x="8" y="57.5" width="119" height="37.5"/>
                                     <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giP-0y-219">
-                                    <rect key="frame" x="8" y="85" width="119" height="42"/>
-                                    <string key="text">50
-COINS</string>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giP-0y-219">
+                                    <rect key="frame" x="8" y="98.5" width="119" height="28.5"/>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="18"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -153,6 +149,7 @@ COINS</string>
                                 <constraint firstItem="giP-0y-219" firstAttribute="top" secondItem="qIf-q6-zBE" secondAttribute="bottom" constant="4" id="ein-kj-b00"/>
                                 <constraint firstAttribute="trailing" secondItem="giP-0y-219" secondAttribute="trailing" constant="8" id="fNV-vJ-IY2"/>
                                 <constraint firstAttribute="bottom" secondItem="6mM-iZ-NaN" secondAttribute="bottom" id="gfY-6v-4GD"/>
+                                <constraint firstItem="qIf-q6-zBE" firstAttribute="top" secondItem="d9j-qF-OPh" secondAttribute="top" constant="57.5" id="qIX-MX-Jiu"/>
                                 <constraint firstAttribute="bottom" secondItem="giP-0y-219" secondAttribute="bottom" constant="8" id="rfd-fD-s8l"/>
                                 <constraint firstItem="giP-0y-219" firstAttribute="leading" secondItem="d9j-qF-OPh" secondAttribute="leading" constant="8" id="vsa-Hh-lf0"/>
                                 <constraint firstAttribute="trailing" secondItem="qIf-q6-zBE" secondAttribute="trailing" constant="8" id="x7b-TL-izM"/>

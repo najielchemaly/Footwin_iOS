@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SourceSansPro-Bold.ttf">
+            <string>SourceSansPro-Bold</string>
+        </array>
+        <array key="SourceSansPro-Regular.ttf">
+            <string>SourceSansPro-Regular</string>
+        </array>
+        <array key="SourceSansPro-SemiBold.ttf">
+            <string>SourceSansPro-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PurchaseCoinsViewCell" id="gTV-IL-0wX" customClass="PurchaseCoinsViewCell" customModule="footwin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="263" height="263"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="263" height="263"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="get_coin_card_background" translatesAutoresizingMaskIntoConstraints="NO" id="fVC-FF-g8y">
+                        <rect key="frame" x="0.0" y="0.0" width="262.5" height="262.5"/>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5DS-Gz-yYY">
+                        <rect key="frame" x="0.0" y="0.0" width="262.5" height="262.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MLY-a3-gBz">
+                                <rect key="frame" x="0.0" y="0.0" width="262.5" height="116.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="get_coin_card_top_background" translatesAutoresizingMaskIntoConstraints="NO" id="TEl-Z1-bdv">
+                                        <rect key="frame" x="0.0" y="0.0" width="262.5" height="116.5"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="three_coins" translatesAutoresizingMaskIntoConstraints="NO" id="p9z-G5-qq4">
+                                        <rect key="frame" x="90" y="10" width="82.5" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="p9z-G5-qq4" secondAttribute="height" multiplier="7:3" id="7Ij-wp-Ka7"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1Xp-UV-eAY">
+                                        <rect key="frame" x="8" y="53" width="246.5" height="55.5"/>
+                                        <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="p9z-G5-qq4" firstAttribute="leading" secondItem="MLY-a3-gBz" secondAttribute="leading" constant="90" id="4kD-MP-WNU"/>
+                                    <constraint firstAttribute="trailing" secondItem="TEl-Z1-bdv" secondAttribute="trailing" id="82N-UP-yNf"/>
+                                    <constraint firstAttribute="trailing" secondItem="p9z-G5-qq4" secondAttribute="trailing" constant="90" id="ILF-8O-vRI"/>
+                                    <constraint firstItem="1Xp-UV-eAY" firstAttribute="leading" secondItem="MLY-a3-gBz" secondAttribute="leading" constant="8" id="OaZ-Z3-eY6"/>
+                                    <constraint firstItem="1Xp-UV-eAY" firstAttribute="top" secondItem="p9z-G5-qq4" secondAttribute="bottom" constant="8" id="QP9-nq-7RO"/>
+                                    <constraint firstItem="TEl-Z1-bdv" firstAttribute="leading" secondItem="MLY-a3-gBz" secondAttribute="leading" id="T8t-x0-oWq"/>
+                                    <constraint firstAttribute="bottom" secondItem="1Xp-UV-eAY" secondAttribute="bottom" constant="8" id="Wex-AF-xVJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="TEl-Z1-bdv" secondAttribute="bottom" id="iY5-QC-25u"/>
+                                    <constraint firstItem="p9z-G5-qq4" firstAttribute="top" secondItem="MLY-a3-gBz" secondAttribute="top" constant="10" id="lbW-BS-wgs"/>
+                                    <constraint firstItem="TEl-Z1-bdv" firstAttribute="top" secondItem="MLY-a3-gBz" secondAttribute="top" id="tej-j4-YeC"/>
+                                    <constraint firstAttribute="trailing" secondItem="1Xp-UV-eAY" secondAttribute="trailing" constant="8" id="yIF-Eh-lla"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Krt-6w-gv4">
+                                <rect key="frame" x="0.0" y="146.5" width="262.5" height="116"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3P-Li-Moe">
+                                        <rect key="frame" x="8" y="-20" width="246.5" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="22"/>
+                                        <color key="textColor" red="0.054170526560000001" green="0.1853607297" blue="0.84208017589999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bAz-Qa-ke4">
+                                        <rect key="frame" x="8" y="-20" width="246.5" height="72.5"/>
+                                        <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3z-k2-Xc5">
+                                        <rect key="frame" x="40" y="56" width="182.5" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="afS-Ne-UCu"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="18"/>
+                                        <state key="normal" title="PURCHASE NOW">
+                                            <color key="titleColor" red="0.054170526560000001" green="0.1853607297" blue="0.84208017589999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="bAz-Qa-ke4" firstAttribute="leading" secondItem="Krt-6w-gv4" secondAttribute="leading" constant="8" id="6YM-4c-OeV"/>
+                                    <constraint firstAttribute="trailing" secondItem="A3z-k2-Xc5" secondAttribute="trailing" constant="40" id="MEn-lO-6Pu"/>
+                                    <constraint firstAttribute="trailing" secondItem="bAz-Qa-ke4" secondAttribute="trailing" constant="8" id="Nbd-6r-2dW"/>
+                                    <constraint firstAttribute="bottom" secondItem="A3z-k2-Xc5" secondAttribute="bottom" constant="20" id="PJH-kG-PC0"/>
+                                    <constraint firstItem="A3z-k2-Xc5" firstAttribute="leading" secondItem="Krt-6w-gv4" secondAttribute="leading" constant="40" id="VeB-G4-oVT"/>
+                                    <constraint firstItem="T3P-Li-Moe" firstAttribute="leading" secondItem="Krt-6w-gv4" secondAttribute="leading" constant="8" id="WdY-y0-jbB"/>
+                                    <constraint firstItem="T3P-Li-Moe" firstAttribute="top" secondItem="Krt-6w-gv4" secondAttribute="top" constant="-20" id="aT3-ZO-36i"/>
+                                    <constraint firstItem="A3z-k2-Xc5" firstAttribute="top" secondItem="bAz-Qa-ke4" secondAttribute="bottom" constant="4" id="hsJ-5Y-s06"/>
+                                    <constraint firstItem="bAz-Qa-ke4" firstAttribute="top" secondItem="T3P-Li-Moe" secondAttribute="bottom" id="ise-Th-ETS"/>
+                                    <constraint firstAttribute="trailing" secondItem="T3P-Li-Moe" secondAttribute="trailing" constant="8" id="oUL-8D-FD2"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="5DS-Gz-yYY" secondAttribute="trailing" id="2z2-q1-EMz"/>
+                <constraint firstAttribute="bottom" secondItem="fVC-FF-g8y" secondAttribute="bottom" id="3NA-z9-rwE"/>
+                <constraint firstItem="fVC-FF-g8y" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="FeU-ud-qgC"/>
+                <constraint firstItem="5DS-Gz-yYY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Xba-Ph-v13"/>
+                <constraint firstItem="5DS-Gz-yYY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Yqv-LR-epp"/>
+                <constraint firstAttribute="trailing" secondItem="fVC-FF-g8y" secondAttribute="trailing" id="eVi-t1-nfF"/>
+                <constraint firstItem="fVC-FF-g8y" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="qZQ-sf-lE2"/>
+                <constraint firstAttribute="bottom" secondItem="5DS-Gz-yYY" secondAttribute="bottom" id="yio-5i-W9S"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="275" height="302"/>
+            <connections>
+                <outlet property="buttonPurchase" destination="A3z-k2-Xc5" id="hbd-8M-VI2"/>
+                <outlet property="labelCoins" destination="T3P-Li-Moe" id="Iya-x4-qWl"/>
+                <outlet property="labelDescription" destination="bAz-Qa-ke4" id="5V1-fP-LTi"/>
+                <outlet property="labelTitle" destination="1Xp-UV-eAY" id="4Jb-nm-erY"/>
+            </connections>
+            <point key="canvasLocation" x="35.5" y="78"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="get_coin_card_background" width="800" height="800"/>
+        <image name="get_coin_card_top_background" width="800" height="320"/>
+        <image name="three_coins" width="266" height="94"/>
+    </resources>
+</document>
