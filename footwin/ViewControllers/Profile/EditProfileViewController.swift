@@ -143,11 +143,12 @@ class EditProfileViewController: BaseViewController, UIPickerViewDelegate, UIPic
     }
     
     @IBAction func buttonCountryTapped(_ sender: Any) {
-        let viewController = CountryPickerViewController()
-        viewController.delegate = self
-        
-        let navigationController = UINavigationController(rootViewController: viewController)
-        present(navigationController, animated: true, completion: nil)
+        if let countryViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardIds.CountryViewController) as? CountryViewController {
+            countryViewController.delegate = self
+            
+            let navigationController = UINavigationController(rootViewController: countryViewController)
+            present(navigationController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func buttonGenderTapped(_ sender: Any) {
@@ -208,13 +209,9 @@ class EditProfileViewController: BaseViewController, UIPickerViewDelegate, UIPic
 
 }
 
-extension EditProfileViewController: CountryPickerViewControllerDelegate {
-    func countryPickerViewControllerDidCancel(_ countryPickerViewController: CountryPickerViewController) {
-        self.dismissVC()
-    }
-    
-    func countryPickerViewController(_ countryPickerViewController: CountryPickerViewController, didSelectCountry country: Country) {
-        self.labelDialingCode.text = country.callingCode
+extension EditProfileViewController: CountryPickerDelegate {
+    func didSelecteCountry(country: Country) {
+        self.labelDialingCode.text = country.dialing_code
         self.buttonCountry.setTitle(country.name, for: .normal)
         
         self.dismissVC()

@@ -57,6 +57,7 @@ class NotificationsViewController: BaseViewController, UITableViewDelegate, UITa
                 if Objects.notifications.count == 0 {
                     self.addEmptyView(message: "YOU DO NOT HAVE NOTIFICATIONS YET!!", frame: self.tableView.frame)
                 } else {
+                    self.updateNotificationBadge()
                     self.tableView.reloadData()
                     self.removeEmptyView()
                 }
@@ -64,8 +65,14 @@ class NotificationsViewController: BaseViewController, UITableViewDelegate, UITa
         }
     }
     
+    func updateNotificationBadge() {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        UserDefaults.standard.removeObject(forKey: "notificationNumber")
+        UserDefaults.standard.synchronize()
+    }
+    
     func setupTableView() {
-        self.tableView.register(UINib.init(nibName: CellIds.NotificationTableViewCell, bundle: nil), forCellReuseIdentifier: CellIds.NotificationTableViewCell)
+        self.tableView.register(UINib.init(nibName: CellIds.NotificationsTableViewCell, bundle: nil), forCellReuseIdentifier: CellIds.NotificationsTableViewCell)
         self.tableView.tableFooterView = UIView()
         
         self.tableView.delegate = self
@@ -119,7 +126,8 @@ class NotificationsViewController: BaseViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.NotificationTableViewCell) as? NotificationsTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.NotificationsTableViewCell) as? NotificationsTableViewCell {
+            cell.selectionStyle = .none
             
             let notification = Objects.notifications[indexPath.row]
             
@@ -131,23 +139,31 @@ class NotificationsViewController: BaseViewController, UITableViewDelegate, UITa
             }
             notification.row_height = CGFloat(height)
             
-            if notification.is_read == nil || !notification.is_read! {
-                cell.imageNew.isHidden = false
-            } else {
+            if notification.is_read != nil && notification.is_read! {
                 cell.imageNew.isHidden = true
+            } else {
+                cell.imageNew.isHidden = false
+                
+                DispatchQueue.global(qos: .background).async {
+                    if let id = notification.id, notification.is_read_updated == nil {
+                        appDelegate.services.updateNotification(id: id)
+                        
+                        Objects.notifications[indexPath.row].is_read_updated = true
+                    }
+                }
             }
             
             if notification.type == "prediction_result" {
                 let match = Objects.matches.filter { $0.id == notification.match_id }.first
                 if match != nil {
-                    if let homeFlag = match?.home_flag {
-                        cell.imageHome.kf.setImage(with: URL(string: homeFlag))
+                    if let homeFlag = match?.home_flag, !homeFlag.isEmpty {
+                        cell.imageHome.kf.setImage(with: URL(string: Services.getMediaUrl() + homeFlag))
                     }
                     if let homeName = match?.home_name {
                         cell.labelHome.text = homeName
                     }
-                    if let awayFlag = match?.away_flag {
-                        cell.imageAway.kf.setImage(with: URL(string: awayFlag))
+                    if let awayFlag = match?.away_flag, !awayFlag.isEmpty {
+                        cell.imageAway.kf.setImage(with: URL(string: Services.getMediaUrl() + awayFlag))
                     }
                     if let awayName = match?.away_name {
                         cell.labelAway.text = awayName
@@ -157,11 +173,14 @@ class NotificationsViewController: BaseViewController, UITableViewDelegate, UITa
                     }
                 }
                 
-                cell.buttonGetCoins.isHidden = true
-                cell.viewMatchResult.isHidden = false
+                cell.buttonGetCoins.alpha = 0
+                cell.viewMatchResult.alpha = 1
             } else if notification.type == "get_coins" {           
-                cell.buttonGetCoins.isHidden = false
-                cell.viewMatchResult.isHidden = true
+                cell.buttonGetCoins.alpha = 1
+                cell.viewMatchResult.alpha = 0
+            } else {
+                cell.buttonGetCoins.alpha = 0
+                cell.viewMatchResult.alpha = 0
             }
             
             if let dateString = notification.date {

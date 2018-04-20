@@ -23,16 +23,10 @@ class MyPredictionTableViewCell: UITableViewCell {
     @IBOutlet weak var labelVS: UILabel!
     @IBOutlet weak var buttonDraw: UIButton!
     @IBOutlet weak var viewConfirm: UIView!
-    @IBOutlet weak var awayWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var awayShadowWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var homeWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var homeShadowWidthConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        buttonDraw.customizeBorder(color: Colors.white)
-        viewConfirm.layer.cornerRadius = viewConfirm.frame.size.width/2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

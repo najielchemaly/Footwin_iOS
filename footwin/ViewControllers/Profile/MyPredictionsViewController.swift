@@ -18,6 +18,8 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.setupTableView()
+        self.getPredictions()
     }
 
     override func didReceiveMemoryWarning() {
@@ -99,74 +101,61 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.MyPredictionTableViewCell) as? MyPredictionTableViewCell {
             cell.selectionStyle = .none
+            cell.isUserInteractionEnabled = false
             
             cell.viewConfirm.layer.cornerRadius = cell.viewConfirm.frame.size.width/2
             cell.buttonDraw.customizeBorder(color: Colors.white)
             
             let prediction = Objects.predictions[indexPath.row]
-            if let homeFlag = prediction.home_flag {
-                //                cell.homeImage.kf.setImage(with: URL(string: homeFlag))
+            if let homeFlag = prediction.home_flag, !homeFlag.isEmpty {
+                cell.homeImage.kf.setImage(with: URL(string: Services.getMediaUrl() + homeFlag))
             }
-            if let awayFlag = prediction.away_flag {
-                //                cell.awayImage.kf.setImage(with: URL(string: awayFlag))
+            if let awayFlag = prediction.away_flag, !awayFlag.isEmpty {
+                cell.awayImage.kf.setImage(with: URL(string: Services.getMediaUrl() + awayFlag))
             }
             cell.labelHome.text = prediction.home_name
             cell.labelAway.text = prediction.away_name
-            
-            cell.buttonDraw.backgroundColor = .clear
-            cell.buttonDraw.isEnabled = true
+            cell.labelHomeScore.text = prediction.home_score
+            cell.labelAwayScore.text = prediction.away_score
             
             if prediction.selected_team == "home" {
-                cell.homeWidthConstraint.constant = 100
-                cell.homeShadowWidthConstraint.constant = 120
+                cell.homeImage.alpha = 1
+                cell.homeImage.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                cell.homeShadow.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                 cell.homeShadow.alpha = 1
-                cell.awayWidthConstraint.constant = 80
-                cell.awayShadowWidthConstraint.constant = 110
+                cell.awayImage.alpha = 0.5
+                cell.awayImage.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
                 cell.awayShadow.alpha = 0
                 cell.viewConfirm.alpha = 1
                 cell.labelVS.alpha = 0
+                cell.buttonDraw.alpha = 0.5
             } else if prediction.selected_team == "away" {
-                cell.awayWidthConstraint.constant = 100
-                cell.awayShadowWidthConstraint.constant = 120
-                cell.awayShadow.alpha = 1
-                cell.homeWidthConstraint.constant = 80
-                cell.homeShadowWidthConstraint.constant = 110
+                cell.homeImage.alpha = 0.5
+                cell.homeImage.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
                 cell.homeShadow.alpha = 0
+                cell.awayImage.alpha = 1
+                cell.awayImage.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                cell.awayShadow.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+                cell.awayShadow.alpha = 1
                 cell.viewConfirm.alpha = 1
                 cell.labelVS.alpha = 0
+                cell.buttonDraw.alpha = 0.5
             } else if prediction.selected_team == "draw" {
-                cell.homeWidthConstraint.constant = 90
-                cell.homeShadowWidthConstraint.constant = 110
+                cell.homeImage.alpha = 1
+                cell.homeImage.transform = CGAffineTransform.identity
+                cell.homeShadow.transform = CGAffineTransform.identity
                 cell.homeShadow.alpha = 0
-                cell.awayWidthConstraint.constant = 90
-                cell.awayShadowWidthConstraint.constant = 110
+                cell.homeImage.alpha = 1
+                cell.awayImage.transform = CGAffineTransform.identity
+                cell.awayShadow.transform = CGAffineTransform.identity
                 cell.awayShadow.alpha = 0
                 cell.viewConfirm.alpha = 1
                 cell.labelVS.alpha = 0
-                
-                cell.buttonDraw.layer.borderColor = Colors.appBlue.cgColor
-                cell.buttonDraw.backgroundColor = Colors.appBlue
-                cell.buttonDraw.isEnabled = false
+                cell.buttonDraw.alpha = 1
             }
             
-            UIView.animate(withDuration: 0.3) {
-                self.view.layoutIfNeeded()
-            }
-            
-//            if match.confirmed != nil && match.confirmed! {
-//                cell.viewConfirm.backgroundColor = Colors.appGreen
-//                cell.viewConfirm.alpha = 1
-//                cell.labelVS.alpha = 0
-//                cell.isUserInteractionEnabled = false
-//                cell.contentView.isEnabled(enable: false)
-//            } else {
-//                cell.labelVS.text = "VS"
-//                cell.labelVS.font = Fonts.textFont_Bold_XLarge
-//                cell.buttonDraw.alpha = 1
-//                cell.viewConfirm.backgroundColor = Colors.white
-//                cell.isUserInteractionEnabled = true
-//                cell.contentView.isEnabled(enable: true)
-//            }
+            cell.labelTitle.text = prediction.title
+            cell.labelDescription.text = prediction.desc
             
             return cell
         }

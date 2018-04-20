@@ -1,5 +1,5 @@
 //
-//  _Country.swift
+//  Country.swift
 //  footwin
 //
 //  Created by MR.CHEMALY on 4/10/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class _Country: NSObject, NSCoding {
+public class Country: NSObject, NSCoding {
     public var id : String?
     public var name : String?
     public var code : String?
@@ -24,12 +24,12 @@ public class _Country: NSObject, NSCoding {
      
      - returns: Array of Notifications Instances.
      */
-    public class func modelsFromDictionaryArray(array:NSArray) -> [_Country]
+    public class func modelsFromDictionaryArray(array:NSArray) -> [Country]
     {
-        var models:[_Country] = []
+        var models:[Country] = []
         for item in array
         {
-            models.append(_Country(dictionary: item as! NSDictionary)!)
+            models.append(Country(dictionary: item as! NSDictionary)!)
         }
         return models
     }

@@ -36,8 +36,8 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     func initializeViews() {
-        if let avatar = currentUser.avatar {
-            self.imageProfile.kf.setImage(with: URL(string: avatar))
+        if let avatar = currentUser.avatar, !avatar.isEmpty {
+            self.imageProfile.kf.setImage(with: URL(string: Services.getMediaUrl() + avatar))
         } else {
             if let gender = currentUser.gender, gender.lowercased() == "male" {
                 self.imageProfile.image = #imageLiteral(resourceName: "avatar_male")
@@ -49,7 +49,7 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
         
         labelRank.text = currentUser.rank
         labelFullname.text = currentUser.fullname
-        labelCoins.text = currentUser.coins
+        labelCoins.text = currentUser.winning_coins
         
         let leaderboardUpTap = UITapGestureRecognizer(target: self, action: #selector(leaderboardUpTapped))
         leaderboardUp.addGestureRecognizer(leaderboardUpTap)
@@ -105,7 +105,7 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
                 self.refreshControl.endRefreshing()
                 
                 if Objects.leaderboards.count == 0 {
-                    self.addEmptyView(message: "IT SEEMS THERE ARE NO LEADERS YET! \nKEEP WINNING TO ACHIVE THE FIRST RANK IN THE LEADERBOARD", frame: self.tableView.frame, padding: 50)
+                    self.addEmptyView(message: "IT SEEMS THERE ARE NO LEADERS YET! \nKEEP WINNING TO ACHIEVE THE FIRST RANK IN THE LEADERBOARD", frame: self.tableView.frame)
                 } else {
                     self.tableView.reloadData()
                     self.removeEmptyView()
@@ -154,8 +154,8 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
         if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.LeaderboardTableViewCell) as? LeaderboardTableViewCell {
             
             let leaderboard = Objects.leaderboards[indexPath.row]
-            if let avatar = leaderboard.avatar {
-                cell.imageProfile.kf.setImage(with: URL(string: avatar))
+            if let avatar = leaderboard.avatar, !avatar.isEmpty {
+                cell.imageProfile.kf.setImage(with: URL(string: Services.getMediaUrl() + avatar))
             }
             
             cell.labelRank.text = leaderboard.rank

@@ -13,13 +13,13 @@
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <viewController storyboardIdentifier="LoadingViewController" id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_blue" translatesAutoresizingMaskIntoConstraints="NO" id="ujs-tm-keR">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_white" translatesAutoresizingMaskIntoConstraints="NO" id="S1o-Cr-oN2">
                                 <rect key="frame" x="67" y="279.5" width="240" height="128"/>
@@ -47,17 +47,17 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ujs-tm-keR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1BN-Q2-N5O"/>
+                            <constraint firstItem="ujs-tm-keR" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5kX-Ma-hny"/>
+                            <constraint firstItem="ujs-tm-keR" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="CDX-tk-fYp"/>
                             <constraint firstItem="Hzf-Wu-qmv" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="GzW-OG-neI"/>
-                            <constraint firstItem="ujs-tm-keR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="O6w-Bc-BUj"/>
                             <constraint firstItem="S1o-Cr-oN2" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="OR3-YD-v2r"/>
                             <constraint firstItem="pYf-7d-4M1" firstAttribute="top" secondItem="Hzf-Wu-qmv" secondAttribute="bottom" constant="8" id="W1c-Yb-3oI"/>
-                            <constraint firstItem="ujs-tm-keR" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="W8E-Qa-W35"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pYf-7d-4M1" secondAttribute="bottom" constant="20" id="aUd-G1-J8Y"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pYf-7d-4M1" secondAttribute="trailing" constant="16" id="jDe-dK-5Bx"/>
                             <constraint firstItem="pYf-7d-4M1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="kEF-SJ-LYi"/>
                             <constraint firstItem="S1o-Cr-oN2" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="nKT-kT-k4r"/>
-                            <constraint firstItem="ujs-tm-keR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="uph-Zg-C1Z"/>
-                            <constraint firstItem="ujs-tm-keR" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xlE-aE-9K0"/>
+                            <constraint firstItem="ujs-tm-keR" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="wUL-Nu-4xn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

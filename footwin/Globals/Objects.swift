@@ -10,7 +10,7 @@ import Foundation
 
 class Objects {
     
-    static var countries: [_Country] = [_Country]()
+    static var countries: [Country] = [Country]()
     static var teams: [Team] = [Team]()
     static var matches: [Match] = [Match]()
     static var activeRound: Round = Round()
@@ -19,7 +19,6 @@ class Objects {
     static var news: [News] = [News]()
     static var leaderboards: [Leaderboard] = [Leaderboard]()
     static var predictions: [Prediction] = [Prediction]()
-    static var myPredictions: [Prediction] = [Prediction]()
     
     static var gender: [String] = [
         "Male",

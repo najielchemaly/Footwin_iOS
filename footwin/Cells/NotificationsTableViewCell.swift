@@ -33,7 +33,11 @@ class NotificationsTableViewCell: UITableViewCell {
     }
     
     @IBAction func buttonGetCoinsTapped(_ sender: Any) {
-        
+        if let baseVC = currentVC as? BaseViewController {
+            if let purchaseCoins = baseVC.showView(name: Views.PurchaseCoins) as? PurchaseCoins {
+                purchaseCoins.setupPagerView()
+            }
+        }
     }
     
 }

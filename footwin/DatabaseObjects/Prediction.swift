@@ -10,15 +10,19 @@ import Foundation
 
 public class Prediction: NSObject, NSCoding {
     public var id : String?
+    public var user_id : String?
     public var match_id : String?
-    public var winning_score : String?
-    public var losing_score : String?
+    public var winning_team : String?
     public var status : String?
-    public var home_flag : String?
-    public var away_flag : String?
-    public var home_name : String?
-    public var away_name : String?
     public var selected_team : String?
+    public var home_flag : String?
+    public var home_name : String?
+    public var home_score : String?
+    public var away_flag : String?
+    public var away_name : String?
+    public var away_score : String?
+    public var title : String?
+    public var desc : String?
     
     /**
      Returns an array of models based on given dictionary.
@@ -56,26 +60,50 @@ public class Prediction: NSObject, NSCoding {
     required public init(coder decoder: NSCoder) {
         id = decoder.decodeObject(forKey:"id") as? String
         match_id = decoder.decodeObject(forKey:"match_id") as? String
-        winning_score = decoder.decodeObject(forKey:"winning_score") as? String
-        losing_score = decoder.decodeObject(forKey:"losing_score") as? String
+        home_score = decoder.decodeObject(forKey:"home_score") as? String
+        home_name = decoder.decodeObject(forKey:"home_name") as? String
+        home_flag = decoder.decodeObject(forKey:"home_flag") as? String
+        away_score = decoder.decodeObject(forKey:"away_score") as? String
+        away_name = decoder.decodeObject(forKey:"away_name") as? String
+        away_flag = decoder.decodeObject(forKey:"away_flag") as? String
         status = decoder.decodeObject(forKey:"status") as? String
+        winning_team = decoder.decodeObject(forKey:"winning_team") as? String
+        selected_team = decoder.decodeObject(forKey:"selected_team") as? String
+        title = decoder.decodeObject(forKey:"title") as? String
+        desc = decoder.decodeObject(forKey:"description") as? String
     }
     
     public func encode(with coder: NSCoder) {
         coder.encode(id, forKey: "id")
         coder.encode(match_id, forKey: "match_id")
-        coder.encode(winning_score, forKey: "winning_score")
-        coder.encode(losing_score, forKey: "losing_score")
+        coder.encode(home_score, forKey: "home_score")
+        coder.encode(home_name, forKey: "home_name")
+        coder.encode(home_flag, forKey: "home_flag")
+        coder.encode(away_score, forKey: "away_score")
+        coder.encode(away_name, forKey: "away_name")
+        coder.encode(away_flag, forKey: "away_flag")
         coder.encode(status, forKey: "status")
+        coder.encode(winning_team, forKey: "winning_team")
+        coder.encode(selected_team, forKey: "selected_team")
+        coder.encode(title, forKey: "title")
+        coder.encode(desc, forKey: "description")
     }
     
     required public init?(dictionary: NSDictionary) {
         
         id = dictionary["id"] as? String
         match_id = dictionary["match_id"] as? String
-        winning_score = dictionary["winning_score"] as? String
-        losing_score = dictionary["losing_score"] as? String
+        home_score = dictionary["home_score"] as? String
+        home_name = dictionary["home_name"] as? String
+        home_flag = dictionary["home_flag"] as? String
+        away_score = dictionary["away_score"] as? String
+        away_name = dictionary["away_name"] as? String
+        away_flag = dictionary["away_flag"] as? String
         status = dictionary["status"] as? String
+        winning_team = dictionary["winning_team"] as? String
+        selected_team = dictionary["selected_team"] as? String
+        title = dictionary["title"] as? String
+        desc = dictionary["description"] as? String
     }
     
     /**
@@ -89,9 +117,17 @@ public class Prediction: NSObject, NSCoding {
         
         dictionary.setValue(id, forKey: "id")
         dictionary.setValue(match_id, forKey: "match_id")
-        dictionary.setValue(winning_score, forKey: "winning_score")
-        dictionary.setValue(losing_score, forKey: "losing_score")
+        dictionary.setValue(home_score, forKey: "home_score")
+        dictionary.setValue(home_name, forKey: "home_name")
+        dictionary.setValue(home_flag, forKey: "home_flag")
+        dictionary.setValue(away_score, forKey: "away_score")
+        dictionary.setValue(away_name, forKey: "away_name")
+        dictionary.setValue(away_flag, forKey: "away_flag")
         dictionary.setValue(status, forKey: "status")
+        dictionary.setValue(winning_team, forKey: "winning_team")
+        dictionary.setValue(selected_team, forKey: "selected_team")
+        dictionary.setValue(title, forKey: "title")
+        dictionary.setValue(desc, forKey: "description")
         
         return dictionary
     }

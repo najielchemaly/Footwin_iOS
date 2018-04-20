@@ -31,7 +31,10 @@ struct ServiceName {
     static let login = "/login/"
     static let logout = "/logout/"
     static let registerUser = "/registerUser/"
+    static let sendPredictions = "/sendPredictions/"
     static let updateAvatar = "/updateAvatar/"
+    static let updateFirebaseToken = "/updateFirebaseToken/"
+    static let updateNotification = "/updateNotification/"
 }
 
 enum ResponseStatus: Int {
@@ -315,6 +318,25 @@ class Services {
         return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
+    func sendPredictions(prediction: Prediction) -> ResponseData? {
+        let parameters = [
+            "user_id": prediction.user_id ?? "",
+            "match_id": prediction.match_id ?? "",
+            "home_score": prediction.home_score ?? "",
+            "away_score": prediction.away_score ?? "",
+            "status": prediction.status ?? "",
+            "winning_team": prediction.winning_team ?? "",
+            "selected_team": prediction.selected_team ?? ""
+        ]
+        
+        let headers: HTTPHeaders = [
+            "User-Id": USER_ID
+        ]
+
+        let serviceName = ServiceName.sendPredictions
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
+    }
+    
     func updateAvatar(userId: String, image : UIImage, completion:@escaping(_:ResponseData)->Void) {
         self.uploadImageData(userId: userId, serviceName: ServiceName.updateAvatar, imageFile: image, completion: completion)
     }
@@ -355,6 +377,36 @@ class Services {
                 responseData.json = nil
                 completion(responseData)
             }
+        }
+    }
+    
+    func updateFirebaseToken() {
+        if firebaseToken != nil {
+            let parameters: Parameters = [
+                "firebase_token": firebaseToken
+            ]
+            
+            let headers: HTTPHeaders = [
+                "User-Id": USER_ID
+            ]
+            
+            let serviceName = ServiceName.updateFirebaseToken
+            _ = makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
+        }
+    }
+    
+    func updateNotification(id: String) {
+        if firebaseToken != nil {
+            let parameters: Parameters = [
+                "id": id
+            ]
+            
+            let headers: HTTPHeaders = [
+                "User-Id": USER_ID
+            ]
+            
+            let serviceName = ServiceName.updateNotification
+            _ = makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
         }
     }
     

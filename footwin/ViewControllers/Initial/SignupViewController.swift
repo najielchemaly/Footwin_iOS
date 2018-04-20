@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Planet
 
 class SignupViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIPickerViewDelegate, UIPickerViewDataSource, ImagePickerDelegate, UITextFieldDelegate {
    
@@ -72,6 +71,8 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
         }
         
         Objects.teams.forEach({ $0.is_selected = false })
+        
+        self.imagePickerDelegate = self
     }
     
     func setupCollectionView() {
@@ -141,7 +142,7 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
             cell.labelTeamName.text = team.name
             
             if let flag = team.flag, !flag.isEmpty {
-                cell.imageTeam.kf.setImage(with: URL(string: flag))
+                cell.imageTeam.kf.setImage(with: URL(string: Services.getMediaUrl() + flag))
             }
             
             if team.is_selected == nil || !(team.is_selected)! {
@@ -333,9 +334,8 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
                         let response = appDelegate.services.registerUser(user: self.tempUser)
                         
                         DispatchQueue.main.async {
-                            self.redirectToVC(storyboardId: StoryboardIds.MainNavigationController, type: .present)
-                            return
-                            
+//                            self.redirectToVC(storyboardId: StoryboardIds.MainNavigationController, type: .present)
+//                            return
                             if response?.status == ResponseStatus.SUCCESS.rawValue {
                                 if let json = response?.json?.first {
                                     if let jsonUser = json["user"] as? NSDictionary {
@@ -351,7 +351,7 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
                                                                 if let status = json["status"] as? Int, status == ResponseStatus.SUCCESS.rawValue {
                                                                     self.saveUserInUserDefaults()
                                                                     
-                                                                    self.redirectToVC(storyboardId: StoryboardIds.MainNavigationController, type: .push)
+                                                                    self.redirectToVC(storyboardId: StoryboardIds.MainNavigationController, type: .present)
                                                                 } else {
                                                                     self.showAlertView(message: ResponseMessage.SERVER_UNREACHABLE.rawValue)
                                                                 }
@@ -368,8 +368,6 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
                             } else if let message = response?.message {
                                 self.showAlertView(message: message)
                             }
-                            
-                            self.hideLoader()
                         }
                     }
                 } else {
@@ -413,11 +411,11 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
     }
     
     @IBAction func buttonCountryTapped(_ sender: Any) {
-        let viewController = CountryPickerViewController()
-        viewController.delegate = self
-        
-        let navigationController = UINavigationController(rootViewController: viewController)
-        present(navigationController, animated: true, completion: nil)
+        if let countryViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardIds.CountryViewController) as? CountryViewController {
+            countryViewController.delegate = self
+            
+            present(countryViewController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func buttonTakePictureTapped(_ sender: Any) {
@@ -436,15 +434,12 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
 
 }
 
-extension SignupViewController: CountryPickerViewControllerDelegate {
-    func countryPickerViewControllerDidCancel(_ countryPickerViewController: CountryPickerViewController) {
-        self.dismissVC()
-    }
-    
-    func countryPickerViewController(_ countryPickerViewController: CountryPickerViewController, didSelectCountry country: Country) {
-        self.labelDialingCode.text = country.callingCode
+extension SignupViewController: CountryPickerDelegate {
+    func didSelecteCountry(country: Country) {
+        self.labelDialingCode.text = "+" + country.dialing_code!
         self.buttonCountry.setTitle(country.name, for: .normal)
-        
+
         self.dismissVC()
     }
 }
+

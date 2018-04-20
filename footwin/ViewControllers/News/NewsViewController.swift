@@ -103,8 +103,8 @@ class NewsViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.NewsTableViewCell) as? NewsTableViewCell {
             
             let news = Objects.news[indexPath.row]
-            if let imgUrl = news.img_url {
-                cell.imageNews.kf.setImage(with: URL(string: imgUrl))
+            if let imgUrl = news.img_url, !imgUrl.isEmpty {
+                cell.imageNews.kf.setImage(with: URL(string: Services.getMediaUrl() + imgUrl))
             }
             cell.labelDate.text = news.date
             cell.labelTitle.text = news.title

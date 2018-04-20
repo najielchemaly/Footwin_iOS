@@ -13,6 +13,12 @@
 		420AE3E32069823400A24AD5 /* footwin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 420AE3E12069823400A24AD5 /* footwin.xcdatamodeld */; };
 		420AE3E52069823400A24AD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 420AE3E42069823400A24AD5 /* Assets.xcassets */; };
 		420AE3E82069823400A24AD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 420AE3E62069823400A24AD5 /* LaunchScreen.storyboard */; };
+		420E117820860F4800E4642D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420E117720860F4800E4642D /* LoadingViewController.swift */; };
+		420E117A20861FB000E4642D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 420E117920861FB000E4642D /* GoogleService-Info.plist */; };
+		420E117D20861FD600E4642D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420E117C20861FD600E4642D /* StoreKit.framework */; };
+		420E117F208628C800E4642D /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420E117E208628C800E4642D /* CountryViewController.swift */; };
+		420E11822086293300E4642D /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420E11802086293300E4642D /* CountryTableViewCell.swift */; };
+		420E11832086293300E4642D /* CountryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 420E11812086293300E4642D /* CountryTableViewCell.xib */; };
 		423EDE082084E02300865F6D /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423EDE062084E02300865F6D /* LeaderboardTableViewCell.swift */; };
 		423EDE092084E02300865F6D /* LeaderboardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423EDE072084E02300865F6D /* LeaderboardTableViewCell.xib */; };
 		423EDE0B2084E3DD00865F6D /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423EDE0A2084E3DD00865F6D /* Leaderboard.swift */; };
@@ -46,7 +52,7 @@
 		425B7833207CAC190083D084 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B7832207CAC190083D084 /* Localization.swift */; };
 		425B7836207CACCB0083D084 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B7835207CACCB0083D084 /* User.swift */; };
 		425B7838207CBAF30083D084 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B7837207CBAF30083D084 /* Package.swift */; };
-		425B783A207CBB000083D084 /* _Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B7839207CBB000083D084 /* _Country.swift */; };
+		425B783A207CBB000083D084 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B7839207CBB000083D084 /* Country.swift */; };
 		425B783C207CBB0B0083D084 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B783B207CBB0B0083D084 /* Match.swift */; };
 		425B783E207CBB1D0083D084 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B783D207CBB1D0083D084 /* News.swift */; };
 		425B7840207CBB300083D084 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B783F207CBB300083D084 /* Notification.swift */; };
@@ -61,14 +67,6 @@
 		42781711207F8C5400A5A528 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42781710207F8C5400A5A528 /* Objects.swift */; };
 		4285EA952083233C005BE6C2 /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4285EA942083233C005BE6C2 /* LoginNavigationController.swift */; };
 		4285EA9720832397005BE6C2 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4285EA9620832397005BE6C2 /* MainNavigationController.swift */; };
-		42B73F26207FE0D0003DCB05 /* CountryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B73F21207FE0D0003DCB05 /* CountryDataSource.swift */; };
-		42B73F27207FE0D0003DCB05 /* CountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B73F22207FE0D0003DCB05 /* CountryPickerViewController.swift */; };
-		42B73F28207FE0D0003DCB05 /* CountryPickerViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B73F23207FE0D0003DCB05 /* CountryPickerViewControllerDelegate.swift */; };
-		42B73F29207FE0D0003DCB05 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B73F24207FE0D0003DCB05 /* Country.swift */; };
-		42B73F2A207FE0D0003DCB05 /* NSBundle+Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B73F25207FE0D0003DCB05 /* NSBundle+Planet.swift */; };
-		42B73F2C207FE115003DCB05 /* Planet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B73F2B207FE115003DCB05 /* Planet.framework */; };
-		42B73F2D207FE311003DCB05 /* Planet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B73F2B207FE115003DCB05 /* Planet.framework */; };
-		42B73F2E207FE311003DCB05 /* Planet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 42B73F2B207FE115003DCB05 /* Planet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		42B73F31207FFA89003DCB05 /* HelperView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B73F30207FFA89003DCB05 /* HelperView.xib */; };
 		42B73F33207FFA9C003DCB05 /* HelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B73F32207FFA9C003DCB05 /* HelperView.swift */; };
 		42B73F35207FFFC2003DCB05 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B73F34207FFFC2003DCB05 /* TutorialView.swift */; };
@@ -96,7 +94,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				42B73F2E207FE311003DCB05 /* Planet.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +110,13 @@
 		420AE3E42069823400A24AD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		420AE3E72069823400A24AD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		420AE3E92069823400A24AD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		420E117720860F4800E4642D /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		420E117920861FB000E4642D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		420E117B20861FB500E4642D /* footwin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = footwin.entitlements; sourceTree = "<group>"; };
+		420E117C20861FD600E4642D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		420E117E208628C800E4642D /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
+		420E11802086293300E4642D /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
+		420E11812086293300E4642D /* CountryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryTableViewCell.xib; sourceTree = "<group>"; };
 		423EDE062084E02300865F6D /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
 		423EDE072084E02300865F6D /* LeaderboardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaderboardTableViewCell.xib; sourceTree = "<group>"; };
 		423EDE0A2084E3DD00865F6D /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
@@ -146,7 +150,7 @@
 		425B7832207CAC190083D084 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		425B7835207CACCB0083D084 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		425B7837207CBAF30083D084 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		425B7839207CBB000083D084 /* _Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _Country.swift; sourceTree = "<group>"; };
+		425B7839207CBB000083D084 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		425B783B207CBB0B0083D084 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		425B783D207CBB1D0083D084 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		425B783F207CBB300083D084 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
@@ -161,12 +165,6 @@
 		42781710207F8C5400A5A528 /* Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
 		4285EA942083233C005BE6C2 /* LoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
 		4285EA9620832397005BE6C2 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
-		42B73F21207FE0D0003DCB05 /* CountryDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryDataSource.swift; sourceTree = "<group>"; };
-		42B73F22207FE0D0003DCB05 /* CountryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerViewController.swift; sourceTree = "<group>"; };
-		42B73F23207FE0D0003DCB05 /* CountryPickerViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerViewControllerDelegate.swift; sourceTree = "<group>"; };
-		42B73F24207FE0D0003DCB05 /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
-		42B73F25207FE0D0003DCB05 /* NSBundle+Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBundle+Planet.swift"; sourceTree = "<group>"; };
-		42B73F2B207FE115003DCB05 /* Planet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Planet.framework; sourceTree = "<group>"; };
 		42B73F30207FFA89003DCB05 /* HelperView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelperView.xib; sourceTree = "<group>"; };
 		42B73F32207FFA9C003DCB05 /* HelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperView.swift; sourceTree = "<group>"; };
 		42B73F34207FFFC2003DCB05 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
@@ -193,9 +191,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42B73F2D207FE311003DCB05 /* Planet.framework in Frameworks */,
-				42B73F2C207FE115003DCB05 /* Planet.framework in Frameworks */,
 				C2569F0A044CAC9A839B17A6 /* Pods_footwin.framework in Frameworks */,
+				420E117D20861FD600E4642D /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +220,7 @@
 		420AE3D92069823400A24AD5 /* footwin */ = {
 			isa = PBXGroup;
 			children = (
-				42B73F20207FE0A6003DCB05 /* CountryPicker */,
+				420E117B20861FB500E4642D /* footwin.entitlements */,
 				425B7834207CACB20083D084 /* DatabaseObjects */,
 				425B7821207CAA8D0083D084 /* Fonts */,
 				425B7820207CA8DC0083D084 /* Globals */,
@@ -235,6 +232,7 @@
 				420AE3E42069823400A24AD5 /* Assets.xcassets */,
 				420AE3E62069823400A24AD5 /* LaunchScreen.storyboard */,
 				420AE3E92069823400A24AD5 /* Info.plist */,
+				420E117920861FB000E4642D /* GoogleService-Info.plist */,
 				420AE3E12069823400A24AD5 /* footwin.xcdatamodeld */,
 			);
 			path = footwin;
@@ -251,6 +249,7 @@
 				425B7809207CA7880083D084 /* LeaderboardViewController.swift */,
 				425B7813207CA7FC0083D084 /* CoinStashViewController.swift */,
 				4285EA9620832397005BE6C2 /* MainNavigationController.swift */,
+				420E117E208628C800E4642D /* CountryViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -262,6 +261,7 @@
 				425B77FD207CA6F60083D084 /* ForgotPasswordViewController.swift */,
 				425B77FF207CA7190083D084 /* SignupViewController.swift */,
 				4285EA942083233C005BE6C2 /* LoginNavigationController.swift */,
+				420E117720860F4800E4642D /* LoadingViewController.swift */,
 			);
 			path = Initial;
 			sourceTree = "<group>";
@@ -305,6 +305,8 @@
 				423EDE072084E02300865F6D /* LeaderboardTableViewCell.xib */,
 				423EDE0C2085499000865F6D /* MyPredictionTableViewCell.swift */,
 				423EDE0D2085499000865F6D /* MyPredictionTableViewCell.xib */,
+				420E11802086293300E4642D /* CountryTableViewCell.swift */,
+				420E11812086293300E4642D /* CountryTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -339,7 +341,7 @@
 			children = (
 				425B7835207CACCB0083D084 /* User.swift */,
 				425B7837207CBAF30083D084 /* Package.swift */,
-				425B7839207CBB000083D084 /* _Country.swift */,
+				425B7839207CBB000083D084 /* Country.swift */,
 				425B783B207CBB0B0083D084 /* Match.swift */,
 				425B783D207CBB1D0083D084 /* News.swift */,
 				425B783F207CBB300083D084 /* Notification.swift */,
@@ -372,18 +374,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		42B73F20207FE0A6003DCB05 /* CountryPicker */ = {
-			isa = PBXGroup;
-			children = (
-				42B73F24207FE0D0003DCB05 /* Country.swift */,
-				42B73F21207FE0D0003DCB05 /* CountryDataSource.swift */,
-				42B73F22207FE0D0003DCB05 /* CountryPickerViewController.swift */,
-				42B73F23207FE0D0003DCB05 /* CountryPickerViewControllerDelegate.swift */,
-				42B73F25207FE0D0003DCB05 /* NSBundle+Planet.swift */,
-			);
-			path = CountryPicker;
-			sourceTree = "<group>";
-		};
 		E71D11D966F74706D5BF2387 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,7 +386,7 @@
 		FBC08AE99A3782560D128BDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				42B73F2B207FE115003DCB05 /* Planet.framework */,
+				420E117C20861FD600E4642D /* StoreKit.framework */,
 				3DB19A8AA5D2245E1E2EDEEB /* Pods_footwin.framework */,
 			);
 			name = Frameworks;
@@ -438,6 +428,17 @@
 					420AE3D62069823400A24AD5 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -471,6 +472,7 @@
 				42700648207D69E20007793E /* TeamCollectionViewCell.xib in Resources */,
 				42B73F37207FFFCA003DCB05 /* TutorialView.xib in Resources */,
 				42F8DE612080D2C9006B3323 /* ExactScoreView.xib in Resources */,
+				420E11832086293300E4642D /* CountryTableViewCell.xib in Resources */,
 				425B7827207CAB520083D084 /* SourceSansPro-Light.ttf in Resources */,
 				42F8DE5B2080B7DF006B3323 /* RulesView.xib in Resources */,
 				4278170F207F73D500A5A528 /* EmptyView.xib in Resources */,
@@ -483,6 +485,7 @@
 				42F8DE652080F1C3006B3323 /* NotificationsTableViewCell.xib in Resources */,
 				420AE3E82069823400A24AD5 /* LaunchScreen.storyboard in Resources */,
 				420AE3E52069823400A24AD5 /* Assets.xcassets in Resources */,
+				420E117A20861FB000E4642D /* GoogleService-Info.plist in Resources */,
 				42419F642084C92700A6F19D /* NewsTableViewCell.xib in Resources */,
 				420AE3E02069823400A24AD5 /* Main.storyboard in Resources */,
 			);
@@ -573,13 +576,14 @@
 				42B73F35207FFFC2003DCB05 /* TutorialView.swift in Sources */,
 				42F946DA2083C22000643EFC /* PurchaseCoinsViewCell.swift in Sources */,
 				425B7812207CA7C40083D084 /* ChangePasswordViewController.swift in Sources */,
-				425B783A207CBB000083D084 /* _Country.swift in Sources */,
+				425B783A207CBB000083D084 /* Country.swift in Sources */,
 				425B780E207CA7A90083D084 /* NotificationsViewController.swift in Sources */,
 				425B7844207CBB590083D084 /* Team.swift in Sources */,
 				425B782D207CABE20083D084 /* Alamofire+Synchronous.swift in Sources */,
 				4278170E207F73D500A5A528 /* EmptyView.swift in Sources */,
 				42F8DE5D2080B7F0006B3323 /* RulesView.swift in Sources */,
 				423EDE0E2085499000865F6D /* MyPredictionTableViewCell.swift in Sources */,
+				420E117F208628C800E4642D /* CountryViewController.swift in Sources */,
 				42419F602084AE6600A6F19D /* CountingProcess.swift in Sources */,
 				425B7838207CBAF30083D084 /* Package.swift in Sources */,
 				425B7808207CA7750083D084 /* NewsViewController.swift in Sources */,
@@ -589,30 +593,27 @@
 				420AE3E32069823400A24AD5 /* footwin.xcdatamodeld in Sources */,
 				425B7810207CA7B90083D084 /* EditProfileViewController.swift in Sources */,
 				4285EA9720832397005BE6C2 /* MainNavigationController.swift in Sources */,
-				42B73F28207FE0D0003DCB05 /* CountryPickerViewControllerDelegate.swift in Sources */,
 				42F8DE642080F1C3006B3323 /* NotificationsTableViewCell.swift in Sources */,
 				42419F632084C92700A6F19D /* NewsTableViewCell.swift in Sources */,
 				425B7833207CAC190083D084 /* Localization.swift in Sources */,
+				420E117820860F4800E4642D /* LoadingViewController.swift in Sources */,
 				420AE3DD2069823400A24AD5 /* BaseViewController.swift in Sources */,
 				425B7842207CBB490083D084 /* Prediction.swift in Sources */,
 				425B780C207CA7950083D084 /* ProfileViewController.swift in Sources */,
 				425B7800207CA7190083D084 /* SignupViewController.swift in Sources */,
 				425B781A207CA84F0083D084 /* MyPredictionsViewController.swift in Sources */,
-				42B73F29207FE0D0003DCB05 /* Country.swift in Sources */,
 				425B782B207CABDA0083D084 /* Extensions.swift in Sources */,
 				42B73F3A20800DFD003DCB05 /* PredictionTableViewCell.swift in Sources */,
 				425B7806207CA7690083D084 /* PredictViewController.swift in Sources */,
+				420E11822086293300E4642D /* CountryTableViewCell.swift in Sources */,
 				425B780A207CA7880083D084 /* LeaderboardViewController.swift in Sources */,
 				425B7840207CBB300083D084 /* Notification.swift in Sources */,
 				425B783E207CBB1D0083D084 /* News.swift in Sources */,
 				42700647207D69E20007793E /* TeamCollectionViewCell.swift in Sources */,
 				4278170C207F73D500A5A528 /* AlertView.swift in Sources */,
-				42B73F2A207FE0D0003DCB05 /* NSBundle+Planet.swift in Sources */,
 				420AE3DB2069823400A24AD5 /* AppDelegate.swift in Sources */,
 				425B783C207CBB0B0083D084 /* Match.swift in Sources */,
-				42B73F26207FE0D0003DCB05 /* CountryDataSource.swift in Sources */,
 				42B73F33207FFA9C003DCB05 /* HelperView.swift in Sources */,
-				42B73F27207FE0D0003DCB05 /* CountryPickerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,6 +751,7 @@
 			baseConfigurationReference = 5C1796446543466432504A2F /* Pods-footwin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = footwin/footwin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3KBRZU6ZDH;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -771,6 +773,7 @@
 			baseConfigurationReference = CCFEDE0888A30A78659561D6 /* Pods-footwin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = footwin/footwin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3KBRZU6ZDH;
 				FRAMEWORK_SEARCH_PATHS = (

@@ -24,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="185"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9SC-hC-6eR" id="hdo-34-OCA">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="185"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="184.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ea-dU-fSZ">
@@ -71,14 +71,14 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ghp-z0-AUX">
                         <rect key="frame" x="10" y="40" width="110" height="110"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selected_team_background" translatesAutoresizingMaskIntoConstraints="NO" id="IlE-UZ-Wc4">
-                                <rect key="frame" x="55" y="-5" width="0.0" height="120"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selected_team_background" translatesAutoresizingMaskIntoConstraints="NO" id="IlE-UZ-Wc4">
+                                <rect key="frame" x="-5" y="-3" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="88z-lP-1FN"/>
-                                    <constraint firstAttribute="width" id="8Mh-VK-U9K"/>
+                                    <constraint firstAttribute="width" constant="120" id="8Mh-VK-U9K"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="germany" translatesAutoresizingMaskIntoConstraints="NO" id="4zU-zp-dPF">
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4zU-zp-dPF">
                                 <rect key="frame" x="10" y="5" width="90" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="vF1-jB-ryM"/>
@@ -91,12 +91,12 @@
                             <constraint firstItem="IlE-UZ-Wc4" firstAttribute="centerX" secondItem="Ghp-z0-AUX" secondAttribute="centerX" id="3EJ-60-DIB"/>
                             <constraint firstAttribute="width" constant="110" id="Nco-t9-aEj"/>
                             <constraint firstItem="4zU-zp-dPF" firstAttribute="centerX" secondItem="Ghp-z0-AUX" secondAttribute="centerX" id="fQy-07-hue"/>
-                            <constraint firstItem="IlE-UZ-Wc4" firstAttribute="centerY" secondItem="Ghp-z0-AUX" secondAttribute="centerY" id="mci-0y-syj"/>
+                            <constraint firstItem="IlE-UZ-Wc4" firstAttribute="centerY" secondItem="Ghp-z0-AUX" secondAttribute="centerY" constant="2" id="mci-0y-syj"/>
                             <constraint firstItem="4zU-zp-dPF" firstAttribute="centerY" secondItem="Ghp-z0-AUX" secondAttribute="centerY" id="rbX-ri-ddH"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GERMANY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUF-ST-TWK">
-                        <rect key="frame" x="10" y="150" width="110" height="15.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUF-ST-TWK">
+                        <rect key="frame" x="10" y="150" width="110" height="0.0"/>
                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="13"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -110,14 +110,14 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYS-jQ-quf">
                         <rect key="frame" x="255" y="40" width="110" height="110"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selected_team_background" translatesAutoresizingMaskIntoConstraints="NO" id="q0Y-nl-kWJ">
-                                <rect key="frame" x="55" y="-5" width="0.0" height="120"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selected_team_background" translatesAutoresizingMaskIntoConstraints="NO" id="q0Y-nl-kWJ">
+                                <rect key="frame" x="-5" y="-3" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="032-cg-fwn"/>
-                                    <constraint firstAttribute="width" id="lNq-jT-aKH"/>
+                                    <constraint firstAttribute="width" constant="120" id="lNq-jT-aKH"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brazil" translatesAutoresizingMaskIntoConstraints="NO" id="TGB-0S-UK9">
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TGB-0S-UK9">
                                 <rect key="frame" x="10" y="5" width="90" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="bG9-JM-aYu"/>
@@ -128,14 +128,14 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="110" id="JmX-1y-Boy"/>
                             <constraint firstItem="TGB-0S-UK9" firstAttribute="centerY" secondItem="dYS-jQ-quf" secondAttribute="centerY" id="RS9-PS-A21"/>
-                            <constraint firstItem="q0Y-nl-kWJ" firstAttribute="centerY" secondItem="dYS-jQ-quf" secondAttribute="centerY" id="TzQ-zX-UmU"/>
+                            <constraint firstItem="q0Y-nl-kWJ" firstAttribute="centerY" secondItem="dYS-jQ-quf" secondAttribute="centerY" constant="2" id="TzQ-zX-UmU"/>
                             <constraint firstAttribute="width" constant="110" id="gkE-Te-9tS"/>
                             <constraint firstItem="TGB-0S-UK9" firstAttribute="centerX" secondItem="dYS-jQ-quf" secondAttribute="centerX" id="mxH-dq-DIE"/>
                             <constraint firstItem="q0Y-nl-kWJ" firstAttribute="centerX" secondItem="dYS-jQ-quf" secondAttribute="centerX" id="myC-EX-2Id"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BRAZIL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nF8-Ej-EnS">
-                        <rect key="frame" x="255" y="150" width="110" height="15.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nF8-Ej-EnS">
+                        <rect key="frame" x="255" y="150" width="110" height="0.0"/>
                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="13"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -182,8 +182,9 @@
                             <constraint firstAttribute="height" constant="70" id="wLc-aS-2FZ"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38u-Ww-Md4">
+                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38u-Ww-Md4">
                         <rect key="frame" x="142.5" y="126" width="90" height="30"/>
+                        <color key="backgroundColor" red="0.054170526560000001" green="0.1853607297" blue="0.84208017589999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="90" id="0oY-NA-uf1"/>
                             <constraint firstAttribute="height" constant="30" id="PUJ-3N-EAl"/>
@@ -232,13 +233,9 @@
             <connections>
                 <outlet property="awayImage" destination="TGB-0S-UK9" id="lkW-5E-eLl"/>
                 <outlet property="awayShadow" destination="q0Y-nl-kWJ" id="4Lb-0r-hgf"/>
-                <outlet property="awayShadowWidthConstraint" destination="lNq-jT-aKH" id="T1D-Ea-non"/>
-                <outlet property="awayWidthConstraint" destination="dHu-3M-J5Y" id="eHv-vG-T6C"/>
                 <outlet property="buttonDraw" destination="38u-Ww-Md4" id="izg-b7-Ayg"/>
                 <outlet property="homeImage" destination="4zU-zp-dPF" id="5Op-X9-hel"/>
                 <outlet property="homeShadow" destination="IlE-UZ-Wc4" id="eL2-OP-T6l"/>
-                <outlet property="homeShadowWidthConstraint" destination="8Mh-VK-U9K" id="2OS-qO-wnD"/>
-                <outlet property="homeWidthConstraint" destination="vPy-Qx-Zwy" id="ZPg-zK-QWO"/>
                 <outlet property="labelAway" destination="nF8-Ej-EnS" id="mod-8k-g1D"/>
                 <outlet property="labelAwayScore" destination="Yex-aX-Yaw" id="4cK-ZN-JQ8"/>
                 <outlet property="labelDescription" destination="fSo-YX-RFo" id="wyq-8d-TEj"/>
@@ -252,10 +249,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="brazil" width="222" height="222"/>
         <image name="checked_white" width="71" height="54"/>
-        <image name="germany" width="222" height="222"/>
-        <image name="selected_team_background" width="350" height="350"/>
+        <image name="selected_team_background" width="512" height="512"/>
         <image name="time_remaining_background" width="897" height="120"/>
     </resources>
 </document>

@@ -49,6 +49,9 @@ class PurchaseCoins: UIView, FSPagerViewDataSource, FSPagerViewDelegate {
             if let desc = package.desc {
                 cell.labelDescription.text = desc
             }
+            if let price = package.price {
+                cell.labelPrice.text = price + "$"
+            }
             
             cell.buttonPurchase.layer.borderColor = Colors.appBlue.cgColor
             cell.buttonPurchase.layer.borderWidth = 1.0

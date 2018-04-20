@@ -40,8 +40,8 @@ class NewsDetailViewController: BaseViewController {
     
     func initializeViews() {
         news = NewsDetailViewController.selectedNews
-        if let imgUrl = news.img_url {
-            imageNews.kf.setImage(with: (URL(string: imgUrl)))
+        if let imgUrl = news.img_url, !imgUrl.isEmpty {
+            imageNews.kf.setImage(with: (URL(string: Services.getMediaUrl() + imgUrl)))
         }
         labelDate.text = news.date
         labelTitle.text = news.title

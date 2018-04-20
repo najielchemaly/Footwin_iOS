@@ -12,6 +12,8 @@ class HelperView: UIView {
 
     @IBOutlet weak var buttonStartTutorial: UIButton!
     
+    @IBOutlet weak var labelTitle: UILabel!
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

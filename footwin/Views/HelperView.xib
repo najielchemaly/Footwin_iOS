@@ -94,6 +94,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="buttonStartTutorial" destination="GFP-FK-oym" id="j7d-L6-2KH"/>
+                <outlet property="labelTitle" destination="02Q-4s-Bu6" id="ui4-UR-65s"/>
             </connections>
             <point key="canvasLocation" x="26.5" y="51.5"/>
         </view>

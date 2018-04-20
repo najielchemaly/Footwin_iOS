@@ -9,6 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 import Kingfisher
+import FirebaseMessaging
 
 protocol ImagePickerDelegate {
     func didFinishPickingMedia(data: UIImage?)
@@ -31,6 +32,8 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        
+        self.imagePickerController.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -125,6 +128,9 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 }
                 
                 self.hideLoader()
+                
+                Messaging.messaging().unsubscribe(fromTopic: "/topics/footwinnews")
+                appDelegate.unregisterFromRemoteNotifications()
             }
         }
     }
@@ -142,7 +148,7 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     private var emptyView: EmptyView!
-    func addEmptyView(message: String? = nil, frame: CGRect? = nil, padding: CGFloat = 0) {
+    func addEmptyView(message: String? = nil, frame: CGRect? = nil, padding: CGFloat = 8) {
         if self.emptyView == nil {
             let view = Bundle.main.loadNibNamed("EmptyView", owner: self.view, options: nil)
             if let emptyView = view?.first as? EmptyView {
@@ -154,10 +160,6 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.emptyView.frame = frame ?? self.view.frame
         self.emptyView.labelTitle.text = message
         self.emptyView.isUserInteractionEnabled = false
-        
-        if padding > 0 {
-            self.emptyView.imageCenterYConstraint.constant -= padding
-        }
     }
 
     func removeEmptyView() {
@@ -242,7 +244,7 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         } else if let tutorialView = view?.first as? TutorialView {
             customView = tutorialView
             customView.frame = self.view.bounds
-            customView.backgroundColor = Colors.black.withAlphaComponent(0.6)
+            customView.backgroundColor = Colors.black.withAlphaComponent(0.8)
         } else if let rulesView = view?.first as? RulesView {
             customView = rulesView
             customView.frame = self.view.bounds
@@ -265,6 +267,60 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         })
         
         return customView
+    }
+    
+    func getPackages() {
+//        self.showLoader()
+        DispatchQueue.global(qos: .background).async {
+            let response = appDelegate.services.getPackages()
+            
+            DispatchQueue.main.async {
+                if response?.status == ResponseStatus.SUCCESS.rawValue {
+                    if let json = response?.json?.first {
+                        if let jsonArray = json["packages"] as? [NSDictionary] {
+                            Objects.packages = [Package]()
+                            for json in jsonArray {
+                                let package = Package.init(dictionary: json)
+                                Objects.packages.append(package!)
+                            }
+                        }
+                    }
+                }
+//                self.hideLoader()
+            }
+        }
+    }
+    
+    func getTimeRemaining(dateString: String) -> String {
+        // here we set the current date
+        let date = NSDate()
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour, .minute, .month, .year, .day], from: date as Date)
+        let currentDate = calendar.date(from: components)
+        let userCalendar = Calendar.current
+        
+        // here we set the due date. When the timer is supposed to finish
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm"
+        let userDate = dateFormatter.date(from: dateString)
+        userCalendar.set
+        let competitionDate = NSDateComponents()
+        competitionDate.year = 2017
+        competitionDate.month = 4
+        competitionDate.day = 16
+        competitionDate.hour = 00
+        competitionDate.minute = 00
+        let competitionDay = userCalendar.date(from: competitionDate as DateComponents)!
+        
+        //here we change the seconds to hours,minutes and days
+        let CompetitionDayDifference = calendar.dateComponents([.day, .hour, .minute], from: currentDate!, to: competitionDay)
+        
+        //finally, here we set the variable to our remaining time
+        let daysLeft = CompetitionDayDifference.day
+        let hoursLeft = CompetitionDayDifference.hour
+        let minutesLeft = CompetitionDayDifference.minute
+        
+        return "\(daysLeft ?? 0) Days, \(hoursLeft ?? 0) Hours, \(minutesLeft ?? 0) Minutes"
     }
     
     /*

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,41 +19,40 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" restorationIdentifier="EmptyView" id="iN0-l3-epB" customClass="EmptyView" customModule="footwin" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+            <rect key="frame" x="0.0" y="0.0" width="213" height="240"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oops" translatesAutoresizingMaskIntoConstraints="NO" id="JD8-Zp-XzR">
-                    <rect key="frame" x="87" y="67.5" width="200" height="200"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_data_face" translatesAutoresizingMaskIntoConstraints="NO" id="JD8-Zp-XzR">
+                    <rect key="frame" x="50" y="50" width="113" height="80"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="200" id="Vz8-Yn-Why"/>
-                        <constraint firstAttribute="width" constant="200" id="pKC-UG-Bke"/>
+                        <constraint firstAttribute="width" secondItem="JD8-Zp-XzR" secondAttribute="height" multiplier="113:80" id="d9e-Mt-qNA"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOU DO NOT HAVE DATA YET!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9o-RN-dc9">
-                    <rect key="frame" x="8" y="247.5" width="359" height="28"/>
-                    <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="24"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOU DO NOT HAVE DATA YET!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="l9o-RN-dc9">
+                    <rect key="frame" x="8" y="146" width="197" height="51.5"/>
+                    <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="22"/>
                     <color key="textColor" red="0.51147848370000004" green="0.54474467039999996" blue="0.55831879380000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="l9o-RN-dc9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="Aag-Do-5cD"/>
-                <constraint firstItem="JD8-Zp-XzR" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="IxI-W4-hwE"/>
-                <constraint firstItem="JD8-Zp-XzR" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" constant="-20" id="NYV-XR-xd4"/>
-                <constraint firstItem="l9o-RN-dc9" firstAttribute="top" secondItem="JD8-Zp-XzR" secondAttribute="bottom" constant="-20" id="jFz-vu-g0j"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="l9o-RN-dc9" secondAttribute="trailing" constant="8" id="mEL-45-fxT"/>
+                <constraint firstItem="JD8-Zp-XzR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="0F7-7y-Ol5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="JD8-Zp-XzR" secondAttribute="trailing" constant="50" id="7w8-Hh-PXK"/>
+                <constraint firstItem="l9o-RN-dc9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="LZB-Ob-8dy"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="l9o-RN-dc9" secondAttribute="trailing" constant="8" id="opm-ro-OGj"/>
+                <constraint firstItem="JD8-Zp-XzR" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" constant="-30" id="seg-FX-Zsi"/>
+                <constraint firstItem="l9o-RN-dc9" firstAttribute="top" secondItem="JD8-Zp-XzR" secondAttribute="bottom" constant="16" id="zV3-yT-P2Q"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="imageCenterYConstraint" destination="NYV-XR-xd4" id="62n-SS-uLV"/>
                 <outlet property="labelTitle" destination="l9o-RN-dc9" id="P3v-Hm-0cI"/>
             </connections>
-            <point key="canvasLocation" x="32.5" y="96.5"/>
+            <point key="canvasLocation" x="-38.5" y="90"/>
         </view>
     </objects>
     <resources>
-        <image name="oops" width="256" height="256"/>
+        <image name="no_data_face" width="512" height="512"/>
     </resources>
 </document>

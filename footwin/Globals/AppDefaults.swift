@@ -17,6 +17,7 @@ var isUserLoggedIn: Bool = false
 var isReview: Bool = false
 var currentUser: User = User()
 var notificationBadge: Int = 0
+var firebaseToken: String!
 
 var appDelegate: AppDelegate {
     get {
@@ -131,16 +132,18 @@ struct StoryboardIds {
     static let CoinStashViewController: String = "CoinStashViewController"
     static let MainNavigationController: String = "MainNavigationController"
     static let LoadingViewController: String = "LoadingViewController"
+    static let CountryViewController: String = "CountryViewController"
 }
 
 struct CellIds {
-    static let NotificationTableViewCell: String = "NotificationTableViewCell"
+    static let NotificationsTableViewCell: String = "NotificationsTableViewCell"
     static let TeamCollectionViewCell: String = "TeamCollectionViewCell"
     static let PredictionTableViewCell: String = "PredictionTableViewCell"
     static let PurchaseCoinsViewCell: String = "PurchaseCoinsViewCell"
     static let NewsTableViewCell: String = "NewsTableViewCell"
     static let LeaderboardTableViewCell: String = "LeaderboardTableViewCell"
     static let MyPredictionTableViewCell: String = "MyPredictionTableViewCell"
+    static let CountryTableViewCell: String = "CountryTableViewCell"
 }
 
 struct Views {

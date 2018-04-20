@@ -180,7 +180,7 @@ extension UITextField {
             }
         case .Passwords:
             if self.text != password {
-                return "Password do not match"
+                return "Passwords do not match"
             }
         }
         

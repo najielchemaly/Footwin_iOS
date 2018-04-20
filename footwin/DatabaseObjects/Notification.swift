@@ -18,6 +18,7 @@ public class Notification: NSObject, NSCoding {
     public var match_id : String?
     public var row_height: CGFloat?
     public var is_read: Bool?
+    public var is_read_updated: Bool?
     
     /**
      Returns an array of models based on given dictionary.
@@ -59,6 +60,7 @@ public class Notification: NSObject, NSCoding {
         date = decoder.decodeObject(forKey:"date") as? String
         type = decoder.decodeObject(forKey:"type") as? String
         match_id = decoder.decodeObject(forKey:"match_id") as? String
+        is_read = decoder.decodeObject(forKey:"is_read") as? Bool
     }
     
     public func encode(with coder: NSCoder) {
@@ -68,6 +70,7 @@ public class Notification: NSObject, NSCoding {
         coder.encode(date, forKey: "date")
         coder.encode(type, forKey: "type")
         coder.encode(match_id, forKey: "match_id")
+        coder.encode(is_read, forKey: "is_read")
     }
     
     required public init?(dictionary: NSDictionary) {
@@ -78,6 +81,13 @@ public class Notification: NSObject, NSCoding {
         date = dictionary["date"] as? String
         type = dictionary["type"] as? String
         match_id = dictionary["match_id"] as? String
+        if let isRead = dictionary["is_read"] as? String {
+            if isRead == "1" {
+                is_read = true
+            } else {
+                is_read = false
+            }
+        }
     }
     
     /**
@@ -95,6 +105,7 @@ public class Notification: NSObject, NSCoding {
         dictionary.setValue(date, forKey: "date")
         dictionary.setValue("type", forKey: "type")
         dictionary.setValue(match_id, forKey: "match_id")
+        dictionary.setValue(is_read, forKey: "is_read")
         
         return dictionary
     }

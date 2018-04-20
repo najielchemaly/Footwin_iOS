@@ -23,7 +23,7 @@ public class Match: NSObject, NSCoding {
     public var prediction_coins : String?
     public var winning_coins : String?
     public var exact_score_coins : String?
-    public var selected_team: String?
+    public var winning_team: String?
     public var confirmed: Bool?
     
     /**

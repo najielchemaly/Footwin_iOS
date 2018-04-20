@@ -107,9 +107,6 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         self.loginButton.readPermissions = ["public_profile", "email"]
         
         self.loginManager = FBSDKLoginManager()
-        
-        Messaging.messaging().unsubscribe(fromTopic: "/topics/footwinnews")
-        appDelegate.unregisterFromRemoteNotifications()
     }
     
     func getFacebookParameters(){
@@ -208,7 +205,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @objc func navigateToHome() {
-        self.redirectToVC(storyboardId: StoryboardIds.MainNavigationController, type: .push)
+        self.redirectToVC(storyboardId: StoryboardIds.MainNavigationController, type: .present)
     }
     
     /*

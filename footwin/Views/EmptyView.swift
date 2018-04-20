@@ -11,7 +11,6 @@ import UIKit
 class EmptyView: UIView {
 
     @IBOutlet weak var labelTitle: UILabel!
-    @IBOutlet weak var imageCenterYConstraint: NSLayoutConstraint!
     
     /*
     // Only override draw() if you perform custom drawing.

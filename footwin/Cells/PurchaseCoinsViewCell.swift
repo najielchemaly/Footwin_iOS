@@ -15,6 +15,7 @@ class PurchaseCoinsViewCell: FSPagerViewCell {
     @IBOutlet weak var labelCoins: UILabel!
     @IBOutlet weak var labelDescription: UILabel!
     @IBOutlet weak var buttonPurchase: UIButton!
+    @IBOutlet weak var labelPrice: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

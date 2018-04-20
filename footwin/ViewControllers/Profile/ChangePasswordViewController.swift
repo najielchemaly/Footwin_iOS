@@ -92,6 +92,8 @@ class ChangePasswordViewController: BaseViewController, UITextFieldDelegate {
                             self.showAlertView(message: message)
                         }
                     }
+                    
+                    self.hideLoader()
                 }
             }
         } else {

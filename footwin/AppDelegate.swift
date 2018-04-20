@@ -33,74 +33,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         if let window = window {
-            let loadingViewController = launchStoryboard.instantiateViewController(withIdentifier: StoryboardIds.LoadingViewController)
+            let loadingViewController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.LoadingViewController)
             window.rootViewController = loadingViewController
         }
         
-        getConfig() { data in
-            if let jsonData = data as Data? {
-                if let json = String(data: jsonData, encoding: .utf8) {
-                    if let dict = JSON.init(parseJSON: json).dictionary {
-                        if let base_url = dict["base_url"] {
-                            Services.setBaseUrl(url: base_url.stringValue)
-                        }
-                        if let media_url = dict["media_url"] {
-                            Services.setMediaUrl(url: media_url.stringValue)
-                        }
-                        if let is_review = dict["is_review"] {
-                            isReview = is_review.boolValue
-                        }
-                        if let countries = dict["countries"] {
-                            if let jsonArray = countries.arrayObject as? [NSDictionary] {
-                                for json in jsonArray {
-                                    let country = _Country.init(dictionary: json)
-                                    Objects.countries.append(country!)
-                                }
-                            }
-                        }
-                        if let teams = dict["teams"] {
-                            if let jsonArray = teams.arrayObject as? [NSDictionary] {
-                                for json in jsonArray {
-                                    let team = Team.init(dictionary: json)
-                                    Objects.teams.append(team!)
-                                }
-                            }
-                        }
-                        if let active_round = dict["active_round"] {
-                            if let json = active_round.dictionaryObject as NSDictionary? {
-                                Objects.activeRound = Round.init(dictionary: json)!
-                            }
-                        }
-                        
-                        DispatchQueue.main.async {
-                            // TODO
-                            if let window = self.window, let mainNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.MainNavigationController) as? MainNavigationController {
-//                                currentUser = user
-                                window.rootViewController = mainNavigationController
-                            }
-//                            if let data = UserDefaults.standard.data(forKey: "user"),
-//                                let user = NSKeyedUnarchiver.unarchiveObject(with: data) as? User {
-//                                if let window = self.window, let mainNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.MainNavigationController) as? MainNavigationController {
-//                                    currentUser = user
-//                                    window.rootViewController = mainNavigationController
-//                                }
-//                            } else {
-//                                if let window = self.window, let loginNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.LoginNavigationController) as? LoginNavigationController {
-//                                    window.rootViewController = loginNavigationController
-//                                }
-//                            }
-                        }
-                    }
-                }
-            }
-        }
+        self.setupConfiguration()
         
         //        Localization.doTheExchange()
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         let isNotificationOn = UserDefaults.standard.value(forKey: "isNotificationOn")
-        if let isOn = isNotificationOn as? Bool, isOn || isNotificationOn == nil {
+        if isNotificationOn == nil || (isNotificationOn as? Bool)! {
             FirebaseApp.configure()
             
             if #available(iOS 10.0, *) {
@@ -125,9 +69,75 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         return true
     }
     
-    func getConfig(completion:@escaping (NSData?) -> ()) {
+    func setupConfiguration() {
+        getConfig() { data in
+            if let jsonData = data as Data? {
+                if let json = String(data: jsonData, encoding: .utf8) {
+                    if let dict = JSON.init(parseJSON: json).dictionary {
+                        if let base_url = dict["base_url"] {
+                            Services.setBaseUrl(url: base_url.stringValue)
+                        }
+                        if let media_url = dict["media_url"] {
+                            Services.setMediaUrl(url: media_url.stringValue)
+                        }
+                        if let is_review = dict["is_review"] {
+                            isReview = is_review.boolValue
+                        }
+                        if let countries = dict["countries"] {
+                            if let jsonArray = countries.arrayObject as? [NSDictionary] {
+                                for json in jsonArray {
+                                    let country = Country.init(dictionary: json)
+                                    Objects.countries.append(country!)
+                                }
+                            }
+                        }
+                        if let teams = dict["teams"] {
+                            if let jsonArray = teams.arrayObject as? [NSDictionary] {
+                                for json in jsonArray {
+                                    let team = Team.init(dictionary: json)
+                                    Objects.teams.append(team!)
+                                }
+                            }
+                        }
+                        if let active_round = dict["active_round"] {
+                            if let json = active_round.dictionaryObject as NSDictionary? {
+                                Objects.activeRound = Round.init(dictionary: json)!
+                            }
+                        }
+                        
+                        DispatchQueue.main.async {
+                            if let data = UserDefaults.standard.data(forKey: "user"),
+                                let user = NSKeyedUnarchiver.unarchiveObject(with: data) as? User {
+                                if let window = self.window, let mainNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.MainNavigationController) as? MainNavigationController {
+                                    currentUser = user
+                                    window.rootViewController = mainNavigationController
+                                }
+                            } else {
+                                if let window = self.window, let loginNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.LoginNavigationController) as? LoginNavigationController {
+                                    window.rootViewController = loginNavigationController
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    if let rootVC = self.window?.rootViewController {
+                        let alert = UIAlertController(title: "Connection Timeout", message: "Check your internet connection", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { action in
+                            self.setupConfiguration()
+                        }))
+                        rootVC.present(alert, animated: true, completion: nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    @objc func getConfig(completion:@escaping (NSData?) -> ()) {
         var request = URLRequest(url: URL(string: Services.ConfigUrl)!)
         request.httpMethod = "POST"
+        request.timeoutInterval = 5
         let session = URLSession.shared
         
         session.dataTask(with: request) { data, response, error in
@@ -175,7 +185,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         Messaging.messaging().apnsToken = deviceToken
         
         if let fcmToken = Messaging.messaging().fcmToken {
-            
+            firebaseToken = fcmToken
         }
     }
     
@@ -193,6 +203,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
+            
+            DispatchQueue.main.async {
+                updateNotificationBadge()
+                
+                if let baseVC = currentVC as? BaseViewController {
+                    baseVC.redirectToVC(storyboard: mainStoryboard, storyboardId: StoryboardIds.NotificationsViewController, type: .present)
+                }
+            }
         }
     }
     
@@ -207,6 +225,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
+            
+            DispatchQueue.main.async {
+                updateNotificationBadge()
+                
+                if let predictVC = currentVC as? PredictViewController {
+                    predictVC.setNotificationBadgeNumber(label: predictVC.labelBadge)
+                } else if let notificationsVC = currentVC as? NotificationsViewController {
+                    notificationsVC.handleRefresh()
+                }
+            }
         }
         
         completionHandler(UIBackgroundFetchResult.newData)
