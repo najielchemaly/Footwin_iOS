@@ -15,4 +15,5 @@ pod 'FSPagerView'
 pod 'NVActivityIndicatorView'
 pod 'FBSDKLoginKit'
 pod 'CircleProgressView', '~> 1.0'
+pod 'CountdownLabel'
 end

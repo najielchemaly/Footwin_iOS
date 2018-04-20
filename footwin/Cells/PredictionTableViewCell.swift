@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import CountdownLabel
 
 class PredictionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var labelTimeTitle: UILabel!
-    @IBOutlet weak var labelTime: UILabel!
+    @IBOutlet weak var labelTime: CountdownLabel!
     @IBOutlet weak var homeImage: UIImageView!
     @IBOutlet weak var homeShadow: UIImageView!
     @IBOutlet weak var labelHome: UILabel!
@@ -28,6 +29,7 @@ class PredictionTableViewCell: UITableViewCell {
     @IBOutlet weak var homeShadowWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var labelConfirm: UILabel!
     @IBOutlet weak var imageCheck: UIImageView!
+    @IBOutlet weak var stackViewTime: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

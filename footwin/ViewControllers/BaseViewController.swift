@@ -46,7 +46,7 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         currentVC = self
     }
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -291,36 +291,70 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
+    enum Week: Int {
+        case one = 7, two = 14, three = 21
+    }
+    
+    struct CountDown {
+        // Customize this if you want to change timeRemaining's format
+        // It automatically take care of singular vs. plural, i.e. 1 hr and 2 hrs
+        private static let dateComponentFormatter: DateComponentsFormatter = {
+            var formatter = DateComponentsFormatter()
+            formatter.allowedUnits = [.day, .hour, .minute, .second]
+            formatter.unitsStyle = .short
+            return formatter
+        }()
+        
+        var listingDate: Date
+        var duration: Week
+        var expirationDate: Date {
+            return Calendar.current.date(byAdding: .day, value: duration.rawValue, to: listingDate)!
+        }
+        
+        var timeRemaining: String {
+            let now = Date()
+            
+            if expirationDate <= now {
+                return String()
+            } else {
+                let timeRemaining = CountDown.dateComponentFormatter.string(from: now, to: expirationDate)!
+                return timeRemaining
+            }
+        }
+    }
+    
     func getTimeRemaining(dateString: String) -> String {
-        // here we set the current date
-        let date = NSDate()
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.hour, .minute, .month, .year, .day], from: date as Date)
-        let currentDate = calendar.date(from: components)
-        let userCalendar = Calendar.current
-        
-        // here we set the due date. When the timer is supposed to finish
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm"
-        let userDate = dateFormatter.date(from: dateString)
-        userCalendar.set
-        let competitionDate = NSDateComponents()
-        competitionDate.year = 2017
-        competitionDate.month = 4
-        competitionDate.day = 16
-        competitionDate.hour = 00
-        competitionDate.minute = 00
-        let competitionDay = userCalendar.date(from: competitionDate as DateComponents)!
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        if let date = dateFormatter.date(from: dateString) {
+            let listing = CountDown(listingDate: date, duration: .one)
+            
+            return String (describing: listing.timeRemaining)
+        }
         
-        //here we change the seconds to hours,minutes and days
-        let CompetitionDayDifference = calendar.dateComponents([.day, .hour, .minute], from: currentDate!, to: competitionDay)
-        
-        //finally, here we set the variable to our remaining time
-        let daysLeft = CompetitionDayDifference.day
-        let hoursLeft = CompetitionDayDifference.hour
-        let minutesLeft = CompetitionDayDifference.minute
-        
-        return "\(daysLeft ?? 0) Days, \(hoursLeft ?? 0) Hours, \(minutesLeft ?? 0) Minutes"
+        return String()
+    }
+    
+    func setupTimer(object: AnyObject, cell: UITableViewCell) {
+        if let match = object as? Match {
+            match.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { timer in
+                if let cell = cell as? PredictionTableViewCell {
+                    let timeRemaining = self.getTimeRemaining(dateString: match.date!)
+                    if !timeRemaining.isEmpty {
+                        cell.labelTime.text = timeRemaining
+                    }
+                }
+            })
+        } else if let prediction = object as? Prediction {
+            prediction.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { timer in
+                if let cell = cell as? MyPredictionTableViewCell {
+                    let timeRemaining = self.getTimeRemaining(dateString: prediction.date!)
+                    if !timeRemaining.isEmpty {
+                        cell.labelDescription.text = timeRemaining
+                    }
+                }
+            })
+        }
     }
     
     /*
@@ -334,5 +368,4 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
      */
     
 }
-
 

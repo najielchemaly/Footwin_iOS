@@ -23,6 +23,8 @@ public class Prediction: NSObject, NSCoding {
     public var away_score : String?
     public var title : String?
     public var desc : String?
+    public var date : String?
+    public var timer: Timer!
     
     /**
      Returns an array of models based on given dictionary.
@@ -71,6 +73,7 @@ public class Prediction: NSObject, NSCoding {
         selected_team = decoder.decodeObject(forKey:"selected_team") as? String
         title = decoder.decodeObject(forKey:"title") as? String
         desc = decoder.decodeObject(forKey:"description") as? String
+        date = decoder.decodeObject(forKey:"date") as? String
     }
     
     public func encode(with coder: NSCoder) {
@@ -87,6 +90,7 @@ public class Prediction: NSObject, NSCoding {
         coder.encode(selected_team, forKey: "selected_team")
         coder.encode(title, forKey: "title")
         coder.encode(desc, forKey: "description")
+        coder.encode(date, forKey: "date")
     }
     
     required public init?(dictionary: NSDictionary) {
@@ -104,6 +108,7 @@ public class Prediction: NSObject, NSCoding {
         selected_team = dictionary["selected_team"] as? String
         title = dictionary["title"] as? String
         desc = dictionary["description"] as? String
+        date = dictionary["date"] as? String
     }
     
     /**
@@ -128,6 +133,7 @@ public class Prediction: NSObject, NSCoding {
         dictionary.setValue(selected_team, forKey: "selected_team")
         dictionary.setValue(title, forKey: "title")
         dictionary.setValue(desc, forKey: "description")
+        dictionary.setValue(date, forKey: "date")
         
         return dictionary
     }

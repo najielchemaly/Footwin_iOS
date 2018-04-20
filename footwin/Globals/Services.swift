@@ -319,15 +319,17 @@ class Services {
     }
     
     func sendPredictions(prediction: Prediction) -> ResponseData? {
-        let parameters = [
+        var parameters = [
             "user_id": prediction.user_id ?? "",
             "match_id": prediction.match_id ?? "",
             "home_score": prediction.home_score ?? "",
             "away_score": prediction.away_score ?? "",
             "status": prediction.status ?? "",
-            "winning_team": prediction.winning_team ?? "",
-            "selected_team": prediction.selected_team ?? ""
         ]
+        
+        parameters["winning_team"] = prediction.winning_team ?? ""
+        parameters["selected_team"] = prediction.selected_team ?? ""
+        parameters["date"] = prediction.date ?? ""
         
         let headers: HTTPHeaders = [
             "User-Id": USER_ID

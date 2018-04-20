@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import CountdownLabel
 
 class MyPredictionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var labelTitle: UILabel!
-    @IBOutlet weak var labelDescription: UILabel!
+    @IBOutlet weak var labelDescription: CountdownLabel!
     @IBOutlet weak var homeImage: UIImageView!
     @IBOutlet weak var homeShadow: UIImageView!
     @IBOutlet weak var labelHome: UILabel!

@@ -25,6 +25,7 @@ public class Match: NSObject, NSCoding {
     public var exact_score_coins : String?
     public var winning_team: String?
     public var confirmed: Bool?
+    public var timer: Timer!
     
     /**
      Returns an array of models based on given dictionary.

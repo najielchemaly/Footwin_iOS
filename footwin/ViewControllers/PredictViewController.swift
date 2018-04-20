@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import FirebaseMessaging
+import CountdownLabel
 
 class PredictViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -41,6 +42,10 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         super.viewWillAppear(animated)
         
         setNotificationBadgeNumber(label: labelBadge)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -202,12 +207,13 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 220
+        return 225
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.PredictionTableViewCell) as? PredictionTableViewCell {
             cell.selectionStyle = .none
+            cell.tag = indexPath.row
             
             let exactScoreTap = UITapGestureRecognizer(target: self, action: #selector(exactScoreTapped(sender:)))
             cell.viewExactScore.addGestureRecognizer(exactScoreTap)
@@ -313,6 +319,18 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 cell.buttonDraw.backgroundColor = .clear
                 cell.buttonDraw.isEnabled = true
                 cell.isUserInteractionEnabled = true
+            }
+
+            cell.labelTimeTitle.text = "TIME REMAINING"
+            if let dateString = match.date {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+                if let date = dateFormatter.date(from: dateString) {
+                    cell.labelTime.setCountDownDate(targetDate: date as NSDate)
+                    if !cell.labelTime.isCounting {
+                        cell.labelTime.start()
+                    }
+                }
             }
             
             return cell
@@ -456,6 +474,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         prediction.away_name = match.away_name
         prediction.away_flag = match.away_flag
         prediction.away_score = match.away_score
+        prediction.date = match.date
         prediction.selected_team = match.winning_team
         if prediction.selected_team == "home" {
             prediction.winning_team = match.home_id

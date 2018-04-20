@@ -27,6 +27,10 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
     func getPredictions() {
         self.showLoader()
         DispatchQueue.global(qos: .background).async {
@@ -95,7 +99,7 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 185
+        return 190
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -128,6 +132,8 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
                 cell.awayShadow.alpha = 0
                 cell.viewConfirm.alpha = 1
                 cell.labelVS.alpha = 0
+                cell.buttonDraw.layer.borderColor = Colors.white.cgColor
+                cell.buttonDraw.backgroundColor = .clear
                 cell.buttonDraw.alpha = 0.5
             } else if prediction.selected_team == "away" {
                 cell.homeImage.alpha = 0.5
@@ -139,6 +145,8 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
                 cell.awayShadow.alpha = 1
                 cell.viewConfirm.alpha = 1
                 cell.labelVS.alpha = 0
+                cell.buttonDraw.layer.borderColor = Colors.white.cgColor
+                cell.buttonDraw.backgroundColor = .clear
                 cell.buttonDraw.alpha = 0.5
             } else if prediction.selected_team == "draw" {
                 cell.homeImage.alpha = 1
@@ -151,11 +159,26 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
                 cell.awayShadow.alpha = 0
                 cell.viewConfirm.alpha = 1
                 cell.labelVS.alpha = 0
+                cell.buttonDraw.layer.borderColor = Colors.appBlue.cgColor
+                cell.buttonDraw.backgroundColor = Colors.appBlue
                 cell.buttonDraw.alpha = 1
             }
             
             cell.labelTitle.text = prediction.title
-            cell.labelDescription.text = prediction.desc
+            if let desc = prediction.desc, !desc.isEmpty {
+                cell.labelDescription.text = desc
+            } else {
+                if let dateString = prediction.date {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+                    if let date = dateFormatter.date(from: dateString) {
+                        cell.labelDescription.setCountDownDate(targetDate: date as NSDate)
+                        if !cell.labelDescription.isCounting {
+                            cell.labelDescription.start()
+                        }
+                    }
+                }
+            }
             
             return cell
         }
