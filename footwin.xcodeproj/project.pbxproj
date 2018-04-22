@@ -19,6 +19,8 @@
 		420E117F208628C800E4642D /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420E117E208628C800E4642D /* CountryViewController.swift */; };
 		420E11822086293300E4642D /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420E11802086293300E4642D /* CountryTableViewCell.swift */; };
 		420E11832086293300E4642D /* CountryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 420E11812086293300E4642D /* CountryTableViewCell.xib */; };
+		423CCFC3208A87FC002E8115 /* ArticleSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423CCFC2208A87FC002E8115 /* ArticleSource.swift */; };
+		423CCFC5208A8852002E8115 /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423CCFC4208A8852002E8115 /* Articles.swift */; };
 		423EDE082084E02300865F6D /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423EDE062084E02300865F6D /* LeaderboardTableViewCell.swift */; };
 		423EDE092084E02300865F6D /* LeaderboardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423EDE072084E02300865F6D /* LeaderboardTableViewCell.xib */; };
 		423EDE0B2084E3DD00865F6D /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423EDE0A2084E3DD00865F6D /* Leaderboard.swift */; };
@@ -67,12 +69,23 @@
 		42781711207F8C5400A5A528 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42781710207F8C5400A5A528 /* Objects.swift */; };
 		4285EA952083233C005BE6C2 /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4285EA942083233C005BE6C2 /* LoginNavigationController.swift */; };
 		4285EA9720832397005BE6C2 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4285EA9620832397005BE6C2 /* MainNavigationController.swift */; };
+		429AF9D3208B3B8E001A3217 /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429AF9D1208B3B8E001A3217 /* AdminViewController.swift */; };
+		429AF9D6208B3DEF001A3217 /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 429AF9D5208B3DEF001A3217 /* Admin.storyboard */; };
+		429AF9DA208B3F64001A3217 /* AdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429AF9D8208B3F64001A3217 /* AdminTableViewCell.swift */; };
+		429AF9DB208B3F64001A3217 /* AdminTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 429AF9D9208B3F64001A3217 /* AdminTableViewCell.xib */; };
+		429AF9DE208B59F3001A3217 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429AF9DD208B59F3001A3217 /* OptionViewController.swift */; };
+		429AF9E1208B5CFC001A3217 /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429AF9DF208B5CFC001A3217 /* MatchTableViewCell.swift */; };
+		429AF9E2208B5CFC001A3217 /* MatchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 429AF9E0208B5CFC001A3217 /* MatchTableViewCell.xib */; };
+		429AF9E4208B7379001A3217 /* AdminUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429AF9E3208B7379001A3217 /* AdminUser.swift */; };
+		429AF9E6208BE14B001A3217 /* YoutubePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429AF9E5208BE14B001A3217 /* YoutubePlayerViewController.swift */; };
 		42B73F31207FFA89003DCB05 /* HelperView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B73F30207FFA89003DCB05 /* HelperView.xib */; };
 		42B73F33207FFA9C003DCB05 /* HelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B73F32207FFA9C003DCB05 /* HelperView.swift */; };
 		42B73F35207FFFC2003DCB05 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B73F34207FFFC2003DCB05 /* TutorialView.swift */; };
 		42B73F37207FFFCA003DCB05 /* TutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B73F36207FFFCA003DCB05 /* TutorialView.xib */; };
 		42B73F3A20800DFD003DCB05 /* PredictionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B73F3820800DFD003DCB05 /* PredictionTableViewCell.swift */; };
 		42B73F3B20800DFD003DCB05 /* PredictionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B73F3920800DFD003DCB05 /* PredictionTableViewCell.xib */; };
+		42C86DEB208C79810096A3E6 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86DEA208C79810096A3E6 /* IAPHelper.swift */; };
+		42C86DEE208CB4DD0096A3E6 /* CoinProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86DED208CB4DD0096A3E6 /* CoinProducts.swift */; };
 		42F8DE592080B50D006B3323 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F8DE582080B50D006B3323 /* Round.swift */; };
 		42F8DE5B2080B7DF006B3323 /* RulesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42F8DE5A2080B7DF006B3323 /* RulesView.xib */; };
 		42F8DE5D2080B7F0006B3323 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F8DE5C2080B7F0006B3323 /* RulesView.swift */; };
@@ -117,6 +130,8 @@
 		420E117E208628C800E4642D /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 		420E11802086293300E4642D /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		420E11812086293300E4642D /* CountryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryTableViewCell.xib; sourceTree = "<group>"; };
+		423CCFC2208A87FC002E8115 /* ArticleSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleSource.swift; sourceTree = "<group>"; };
+		423CCFC4208A8852002E8115 /* Articles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
 		423EDE062084E02300865F6D /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
 		423EDE072084E02300865F6D /* LeaderboardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaderboardTableViewCell.xib; sourceTree = "<group>"; };
 		423EDE0A2084E3DD00865F6D /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
@@ -165,12 +180,23 @@
 		42781710207F8C5400A5A528 /* Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
 		4285EA942083233C005BE6C2 /* LoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
 		4285EA9620832397005BE6C2 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		429AF9D1208B3B8E001A3217 /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
+		429AF9D5208B3DEF001A3217 /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
+		429AF9D8208B3F64001A3217 /* AdminTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTableViewCell.swift; sourceTree = "<group>"; };
+		429AF9D9208B3F64001A3217 /* AdminTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminTableViewCell.xib; sourceTree = "<group>"; };
+		429AF9DD208B59F3001A3217 /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
+		429AF9DF208B5CFC001A3217 /* MatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTableViewCell.swift; sourceTree = "<group>"; };
+		429AF9E0208B5CFC001A3217 /* MatchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchTableViewCell.xib; sourceTree = "<group>"; };
+		429AF9E3208B7379001A3217 /* AdminUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUser.swift; sourceTree = "<group>"; };
+		429AF9E5208BE14B001A3217 /* YoutubePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubePlayerViewController.swift; sourceTree = "<group>"; };
 		42B73F30207FFA89003DCB05 /* HelperView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelperView.xib; sourceTree = "<group>"; };
 		42B73F32207FFA9C003DCB05 /* HelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperView.swift; sourceTree = "<group>"; };
 		42B73F34207FFFC2003DCB05 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		42B73F36207FFFCA003DCB05 /* TutorialView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialView.xib; sourceTree = "<group>"; };
 		42B73F3820800DFD003DCB05 /* PredictionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionTableViewCell.swift; sourceTree = "<group>"; };
 		42B73F3920800DFD003DCB05 /* PredictionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PredictionTableViewCell.xib; sourceTree = "<group>"; };
+		42C86DEA208C79810096A3E6 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		42C86DED208CB4DD0096A3E6 /* CoinProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinProducts.swift; sourceTree = "<group>"; };
 		42F8DE582080B50D006B3323 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		42F8DE5A2080B7DF006B3323 /* RulesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RulesView.xib; sourceTree = "<group>"; };
 		42F8DE5C2080B7F0006B3323 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
@@ -241,6 +267,7 @@
 		425B77FA207CA6920083D084 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				429AF9D0208B3B5D001A3217 /* Admin */,
 				425B781D207CA8B70083D084 /* News */,
 				425B781C207CA89F0083D084 /* Profile */,
 				425B781B207CA8850083D084 /* Initial */,
@@ -250,6 +277,7 @@
 				425B7813207CA7FC0083D084 /* CoinStashViewController.swift */,
 				4285EA9620832397005BE6C2 /* MainNavigationController.swift */,
 				420E117E208628C800E4642D /* CountryViewController.swift */,
+				429AF9E5208BE14B001A3217 /* YoutubePlayerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -314,6 +342,7 @@
 		425B7820207CA8DC0083D084 /* Globals */ = {
 			isa = PBXGroup;
 			children = (
+				42C86DEC208CB4A70096A3E6 /* Purchase */,
 				425B782A207CABDA0083D084 /* Extensions.swift */,
 				425B782C207CABE20083D084 /* Alamofire+Synchronous.swift */,
 				425B782E207CABEC0083D084 /* Services.swift */,
@@ -339,6 +368,8 @@
 		425B7834207CACB20083D084 /* DatabaseObjects */ = {
 			isa = PBXGroup;
 			children = (
+				423CCFC4208A8852002E8115 /* Articles.swift */,
+				423CCFC2208A87FC002E8115 /* ArticleSource.swift */,
 				425B7835207CACCB0083D084 /* User.swift */,
 				425B7837207CBAF30083D084 /* Package.swift */,
 				425B7839207CBB000083D084 /* Country.swift */,
@@ -349,6 +380,7 @@
 				425B7843207CBB590083D084 /* Team.swift */,
 				42F8DE582080B50D006B3323 /* Round.swift */,
 				423EDE0A2084E3DD00865F6D /* Leaderboard.swift */,
+				429AF9E3208B7379001A3217 /* AdminUser.swift */,
 			);
 			path = DatabaseObjects;
 			sourceTree = "<group>";
@@ -372,6 +404,45 @@
 				42F946D42083BB9300643EFC /* PurchaseCoins.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		429AF9D0208B3B5D001A3217 /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				429AF9DC208B59B8001A3217 /* ViewControllers */,
+				429AF9D7208B3F4D001A3217 /* Cells */,
+				429AF9D5208B3DEF001A3217 /* Admin.storyboard */,
+			);
+			path = Admin;
+			sourceTree = "<group>";
+		};
+		429AF9D7208B3F4D001A3217 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				429AF9D8208B3F64001A3217 /* AdminTableViewCell.swift */,
+				429AF9D9208B3F64001A3217 /* AdminTableViewCell.xib */,
+				429AF9DF208B5CFC001A3217 /* MatchTableViewCell.swift */,
+				429AF9E0208B5CFC001A3217 /* MatchTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		429AF9DC208B59B8001A3217 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				429AF9D1208B3B8E001A3217 /* AdminViewController.swift */,
+				429AF9DD208B59F3001A3217 /* OptionViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		42C86DEC208CB4A70096A3E6 /* Purchase */ = {
+			isa = PBXGroup;
+			children = (
+				42C86DEA208C79810096A3E6 /* IAPHelper.swift */,
+				42C86DED208CB4DD0096A3E6 /* CoinProducts.swift */,
+			);
+			path = Purchase;
 			sourceTree = "<group>";
 		};
 		E71D11D966F74706D5BF2387 /* Pods */ = {
@@ -480,12 +551,15 @@
 				425B7829207CAB520083D084 /* SourceSansPro-SemiBold.ttf in Resources */,
 				423EDE0F2085499000865F6D /* MyPredictionTableViewCell.xib in Resources */,
 				42F946DB2083C22000643EFC /* PurchaseCoinsViewCell.xib in Resources */,
+				429AF9DB208B3F64001A3217 /* AdminTableViewCell.xib in Resources */,
 				423EDE092084E02300865F6D /* LeaderboardTableViewCell.xib in Resources */,
+				429AF9D6208B3DEF001A3217 /* Admin.storyboard in Resources */,
 				42B73F3B20800DFD003DCB05 /* PredictionTableViewCell.xib in Resources */,
 				42F8DE652080F1C3006B3323 /* NotificationsTableViewCell.xib in Resources */,
 				420AE3E82069823400A24AD5 /* LaunchScreen.storyboard in Resources */,
 				420AE3E52069823400A24AD5 /* Assets.xcassets in Resources */,
 				420E117A20861FB000E4642D /* GoogleService-Info.plist in Resources */,
+				429AF9E2208B5CFC001A3217 /* MatchTableViewCell.xib in Resources */,
 				42419F642084C92700A6F19D /* NewsTableViewCell.xib in Resources */,
 				420AE3E02069823400A24AD5 /* Main.storyboard in Resources */,
 			);
@@ -515,6 +589,7 @@
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -532,6 +607,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -565,8 +641,10 @@
 			files = (
 				425B77FC207CA6E90083D084 /* LoginViewController.swift in Sources */,
 				425B7818207CA83E0083D084 /* WebViewController.swift in Sources */,
+				429AF9E4208B7379001A3217 /* AdminUser.swift in Sources */,
 				425B7816207CA81E0083D084 /* NewsDetailViewController.swift in Sources */,
 				425B7836207CACCB0083D084 /* User.swift in Sources */,
+				429AF9D3208B3B8E001A3217 /* AdminViewController.swift in Sources */,
 				42781711207F8C5400A5A528 /* Objects.swift in Sources */,
 				425B782F207CABEC0083D084 /* Services.swift in Sources */,
 				425B77FE207CA6F60083D084 /* ForgotPasswordViewController.swift in Sources */,
@@ -577,13 +655,16 @@
 				423EDE082084E02300865F6D /* LeaderboardTableViewCell.swift in Sources */,
 				42B73F35207FFFC2003DCB05 /* TutorialView.swift in Sources */,
 				42F946DA2083C22000643EFC /* PurchaseCoinsViewCell.swift in Sources */,
+				42C86DEB208C79810096A3E6 /* IAPHelper.swift in Sources */,
 				425B7812207CA7C40083D084 /* ChangePasswordViewController.swift in Sources */,
+				429AF9DA208B3F64001A3217 /* AdminTableViewCell.swift in Sources */,
 				425B783A207CBB000083D084 /* Country.swift in Sources */,
 				425B780E207CA7A90083D084 /* NotificationsViewController.swift in Sources */,
 				425B7844207CBB590083D084 /* Team.swift in Sources */,
 				425B782D207CABE20083D084 /* Alamofire+Synchronous.swift in Sources */,
 				4278170E207F73D500A5A528 /* EmptyView.swift in Sources */,
 				42F8DE5D2080B7F0006B3323 /* RulesView.swift in Sources */,
+				429AF9E6208BE14B001A3217 /* YoutubePlayerViewController.swift in Sources */,
 				423EDE0E2085499000865F6D /* MyPredictionTableViewCell.swift in Sources */,
 				420E117F208628C800E4642D /* CountryViewController.swift in Sources */,
 				42419F602084AE6600A6F19D /* CountingProcess.swift in Sources */,
@@ -594,10 +675,13 @@
 				42F946D72083BB9D00643EFC /* PurchaseCoins.swift in Sources */,
 				420AE3E32069823400A24AD5 /* footwin.xcdatamodeld in Sources */,
 				425B7810207CA7B90083D084 /* EditProfileViewController.swift in Sources */,
+				423CCFC5208A8852002E8115 /* Articles.swift in Sources */,
 				4285EA9720832397005BE6C2 /* MainNavigationController.swift in Sources */,
+				429AF9DE208B59F3001A3217 /* OptionViewController.swift in Sources */,
 				42F8DE642080F1C3006B3323 /* NotificationsTableViewCell.swift in Sources */,
 				42419F632084C92700A6F19D /* NewsTableViewCell.swift in Sources */,
 				425B7833207CAC190083D084 /* Localization.swift in Sources */,
+				423CCFC3208A87FC002E8115 /* ArticleSource.swift in Sources */,
 				420E117820860F4800E4642D /* LoadingViewController.swift in Sources */,
 				420AE3DD2069823400A24AD5 /* BaseViewController.swift in Sources */,
 				425B7842207CBB490083D084 /* Prediction.swift in Sources */,
@@ -611,9 +695,11 @@
 				425B780A207CA7880083D084 /* LeaderboardViewController.swift in Sources */,
 				425B7840207CBB300083D084 /* Notification.swift in Sources */,
 				425B783E207CBB1D0083D084 /* News.swift in Sources */,
+				42C86DEE208CB4DD0096A3E6 /* CoinProducts.swift in Sources */,
 				42700647207D69E20007793E /* TeamCollectionViewCell.swift in Sources */,
 				4278170C207F73D500A5A528 /* AlertView.swift in Sources */,
 				420AE3DB2069823400A24AD5 /* AppDelegate.swift in Sources */,
+				429AF9E1208B5CFC001A3217 /* MatchTableViewCell.swift in Sources */,
 				425B783C207CBB0B0083D084 /* Match.swift in Sources */,
 				42B73F33207FFA9C003DCB05 /* HelperView.swift in Sources */,
 			);

@@ -73,6 +73,12 @@ class ChangePasswordViewController: BaseViewController, UITextFieldDelegate {
         return true
     }
     
+    func resetFields() {
+        textFieldOldPassword.text = nil
+        textFieldNewPassword.text = nil
+        textFieldConfirmPassword.text = nil
+    }
+    
     @IBAction func buttonSaveTapped(_ sender: Any) {
         if isValidData() {
             self.showLoader()
@@ -87,12 +93,14 @@ class ChangePasswordViewController: BaseViewController, UITextFieldDelegate {
                 DispatchQueue.main.async {
                     if response?.status == ResponseStatus.SUCCESS.rawValue {
                         self.showAlertView(message: "YOUR PASSWORD HAS BEEN CHANGED SUCESSFULLY")
+                        self.alertView.buttonDone.addTarget(self, action: #selector(self.dismissVC), for: .touchUpInside)
                     } else {
                         if let message = response?.message {
                             self.showAlertView(message: message)
                         }
                     }
                     
+                    self.resetFields()
                     self.hideLoader()
                 }
             }

@@ -45,8 +45,13 @@ class ExactScoreView: UIView {
     
     @objc func buttonConfirmTapped(sender: UIButton) {
         if !textFieldHome.isEmpty() && !textFieldAway.isEmpty() {
-            Objects.matches[sender.tag].home_score = textFieldHome.text
-            Objects.matches[sender.tag].away_score = textFieldAway.text
+            if let optionViewController = currentVC as? OptionViewController {
+                optionViewController.matches[sender.tag].home_score = textFieldHome.text
+                optionViewController.matches[sender.tag].away_score = textFieldAway.text
+            } else {
+                Objects.matches[sender.tag].home_score = textFieldHome.text
+                Objects.matches[sender.tag].away_score = textFieldAway.text
+            }
             
             buttonCancelTapped(buttonCancel)
         } else {
@@ -60,8 +65,13 @@ class ExactScoreView: UIView {
     }
     
     @objc func leaveWithoutSettingExactScores(sender: UIButton) {
-        Objects.matches[sender.tag].home_score = nil
-        Objects.matches[sender.tag].away_score = nil
+        if let optionViewController = currentVC as? OptionViewController {
+            optionViewController.matches[sender.tag].home_score = nil
+            optionViewController.matches[sender.tag].away_score = nil
+        } else {
+            Objects.matches[sender.tag].home_score = nil
+            Objects.matches[sender.tag].away_score = nil
+        }
         
         buttonCancelTapped(buttonCancel)
     }

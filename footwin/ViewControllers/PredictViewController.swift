@@ -79,6 +79,10 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                     tutorialView.showFirstTutorial()
                 }
             })
+            
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(true, forKey: "didShowHelper")
+            userDefaults.synchronize()
         }
     }
     
@@ -115,18 +119,13 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                     self.tableView.reloadData()
                     self.removeEmptyView()
                     
-                    let userDefaults = UserDefaults.standard
-                    if !userDefaults.bool(forKey: "didShowHelper") {
+                    if !UserDefaults.standard.bool(forKey: "didShowHelper") {
                         if let helperView = self.showView(name: Views.HelperView) as? HelperView {
                             if let username = currentUser.username {
                                 helperView.labelTitle.text = "HELLO " + username + ", WELCOME TO FOOTWIN, ENJOY FOOTING AND WINNING :D"
                             }
                             
                             helperView.buttonStartTutorial.addTarget(self, action: #selector(self.startTutorial(sender:)), for: .touchUpInside)
-
-                            // TODO
-//                            userDefaults.set(true, forKey: "didShowHelper")
-//                            userDefaults.synchronize()
                         }
                     }
                 }
@@ -490,9 +489,32 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
             
             DispatchQueue.main.async {
                 if response?.status == ResponseStatus.SUCCESS.rawValue {
-//                    self.tableView.deleteRows(at: [IndexPath.init(row: index, section: 0)], with: .left)
                     Objects.matches.remove(at: index)
-                    self.tableView.reloadData()
+                    self.tableView.deleteRows(at: [IndexPath.init(row: index, section: 0)], with: .left)
+                    
+                    _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { timer in
+                        let contentOffset = self.tableView.contentOffset
+                        self.tableView.reloadData()
+                        self.tableView.setContentOffset(contentOffset, animated: false)
+                    })
+                    
+                    self.updateUserCoins()
+                    self.labelCoins.text = currentUser.coins
+                } else {
+                    Objects.matches[index].confirmed = true
+                    if let cell = self.tableView.cellForRow(at: IndexPath.init(row: index, section: 0)) as? PredictionTableViewCell {
+                        cell.imageCheck.image = #imageLiteral(resourceName: "checked_blue")
+                        cell.labelConfirm.textColor = Colors.appBlue
+                        cell.labelConfirm.text = "CONFIRM?"
+                        cell.viewConfirm.backgroundColor = Colors.white
+                        cell.viewConfirm.alpha = 1
+                        cell.labelVS.alpha = 0
+                        cell.isUserInteractionEnabled = true
+                    }
+                    
+                    if let message = response?.message {
+                        self.showAlertView(message: message)
+                    }
                 }
             }
         }

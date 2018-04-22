@@ -10,8 +10,8 @@ import UIKit
 
 class NewsDetailViewController: BaseViewController {
 
-    static var selectedNews: News = News()
-    var news: News!
+    static var selectedArticle: Article = Article()
+    var article: Article!
     
     @IBOutlet weak var imageNews: UIImageView!
     @IBOutlet weak var labelDate: UILabel!
@@ -39,20 +39,32 @@ class NewsDetailViewController: BaseViewController {
     }
     
     func initializeViews() {
-        news = NewsDetailViewController.selectedNews
-        if let imgUrl = news.img_url, !imgUrl.isEmpty {
-            imageNews.kf.setImage(with: (URL(string: Services.getMediaUrl() + imgUrl)))
+        article = NewsDetailViewController.selectedArticle
+        if let imgUrl = article.url_to_image, !imgUrl.isEmpty {
+            imageNews.kf.setImage(with: (URL(string: imgUrl)))
         }
-        labelDate.text = news.date
-        labelTitle.text = news.title
-        textViewDescription.text = news.desc
+        labelTitle.text = article.title
+        textViewDescription.text = article.desc
+        
+        if let publishedAt = article.published_at {
+            let dateArray = publishedAt.split(separator: "-")
+            let timeArray = dateArray[2].split(separator: "T")
+            let dateString = dateArray[0]+"-"+dateArray[1]+"-"+timeArray[0]
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = .current
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            if let date = dateFormatter.date(from: dateString) {
+                dateFormatter.dateFormat = "dd MMM yyyy"
+                labelDate.text = dateFormatter.string(from: date)
+            }
+        }
     }
     
     func updateScrollViewContentSize() {
-        if let descriptionHeight = NewsDetailViewController.selectedNews.desc?.height(width: textViewDescription.frame.size.width, font: textViewDescription.font!) {
-            textViewHeightConstraint.constant = descriptionHeight
+        if let descriptionHeight = NewsDetailViewController.selectedArticle.desc?.height(width: textViewDescription.frame.size.width, font: textViewDescription.font!) {
+            textViewHeightConstraint.constant = descriptionHeight+20
             let scrollViewHeight = (scrollView.frame.size.height-textViewDescription.frame.size.height) + descriptionHeight
-            scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: scrollViewHeight)
+            scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: scrollViewHeight+20)
         }
     }
 

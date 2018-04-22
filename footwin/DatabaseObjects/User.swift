@@ -33,6 +33,7 @@ public class User: NSObject, NSCoding {
     public var expected_winning_team: String?
     public var is_loggedIn: Bool?
     public var image: UIImage?
+    public var role: String?
     
     /**
      Returns an array of models based on given dictionary.
@@ -89,6 +90,7 @@ public class User: NSObject, NSCoding {
         rank = decoder.decodeObject(forKey:"rank") as? String
         expected_winning_team = decoder.decodeObject(forKey:"expected_winning_team") as? String
         is_loggedIn = decoder.decodeObject(forKey:"is_loggedIn") as? Bool
+        role = decoder.decodeObject(forKey:"role") as? String
     }
     
     public func encode(with coder: NSCoder) {
@@ -113,6 +115,7 @@ public class User: NSObject, NSCoding {
         coder.encode(rank, forKey: "rank")
         coder.encode(expected_winning_team, forKey: "expected_winning_team")
         coder.encode(is_loggedIn, forKey: "is_loggedIn")
+        coder.encode(role, forKey: "role")
     }
     
     required public init?(dictionary: NSDictionary) {
@@ -138,6 +141,7 @@ public class User: NSObject, NSCoding {
         rank = dictionary["rank"] as? String
         expected_winning_team = dictionary["expected_winning_team"] as? String
         is_loggedIn = dictionary["is_loggedIn"] as? Bool
+        role = dictionary["role"] as? String
     }
     
     /**
@@ -170,6 +174,7 @@ public class User: NSObject, NSCoding {
         dictionary.setValue(rank, forKey: "rank")
         dictionary.setValue(expected_winning_team, forKey: "expected_winning_team")
         dictionary.setValue(is_loggedIn, forKey: "is_loggedIn")
+        dictionary.setValue(role, forKey: "role")
         
         return dictionary
     }

@@ -166,12 +166,13 @@ class EditProfileViewController: BaseViewController, UIPickerViewDelegate, UIPic
             let userId = currentUser.id
             let fullname = textFieldFullname.text
             let country = buttonCountry.titleLabel?.text
-            let phone = labelDialingCode.text! + textFieldPhone.text!
+            let phone_code = labelDialingCode.text
+            let phone = textFieldPhone.text
             let email = textFieldEmail.text
             let gender = buttonGender.titleLabel?.text
             
             DispatchQueue.global(qos: .background).async {
-                let response = appDelegate.services.editUser(id: userId!, fullname: fullname!, email: email!, country: country!, phone: phone, gender: gender!)
+                let response = appDelegate.services.editUser(id: userId!, fullname: fullname!, email: email!, country: country!, phone_code: phone_code!, phone: phone!, gender: gender!)
                 
                 DispatchQueue.main.async {
                     if response?.status == ResponseStatus.SUCCESS.rawValue {
@@ -190,6 +191,8 @@ class EditProfileViewController: BaseViewController, UIPickerViewDelegate, UIPic
                     } else if let message = response?.message {
                         self.showAlertView(message: message)
                     }
+                    
+                    self.hideLoader()
                 }
             }
         } else {

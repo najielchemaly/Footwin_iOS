@@ -16,4 +16,5 @@ pod 'NVActivityIndicatorView'
 pod 'FBSDKLoginKit'
 pod 'CircleProgressView', '~> 1.0'
 pod 'CountdownLabel'
+pod "youtube-ios-player-helper", "~> 0.1.4"
 end

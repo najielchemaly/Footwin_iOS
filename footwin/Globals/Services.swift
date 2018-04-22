@@ -20,7 +20,8 @@ struct ServiceName {
     static let forgotPassword = "/forgotPassword/"
     static let getAboutUs = "/getAboutUs/"
     static let getCountries = "/getCountries/"
-    static let getLeaderboards = "/getLeaderboards/"
+    static let getGlobalData = "/getGlobalData/"
+    static let getLeaderboard = "/getLeaderboard/"
     static let getMatches = "/getMatches/"
     static let getNews = "/getNews/"
     static let getNotifications = "/getNotifications/"
@@ -31,9 +32,12 @@ struct ServiceName {
     static let login = "/login/"
     static let logout = "/logout/"
     static let registerUser = "/registerUser/"
+    static let sendNotification = "/sendNotification/"
     static let sendPredictions = "/sendPredictions/"
+    static let updateActiveMatches = "/updateActiveMatches/"
     static let updateAvatar = "/updateAvatar/"
     static let updateFirebaseToken = "/updateFirebaseToken/"
+    static let updateMatchResult = "/updateMatchResult/"
     static let updateNotification = "/updateNotification/"
 }
 
@@ -67,11 +71,11 @@ class Services {
     private static var _UserId: String = ""
     var USER_ID: String {
         get {
-            if let token = UserDefaults.standard.string(forKey: Keys.UserId.rawValue) {
-                Services._UserId = token
+            if let userId = UserDefaults.standard.string(forKey: Keys.UserId.rawValue) {
+                Services._UserId = userId
             }
             
-            return Services._UserId.isEmpty ? "1" : Services._UserId
+            return Services._UserId.isEmpty ? "0" : Services._UserId
         }
     }
     
@@ -95,6 +99,26 @@ class Services {
         }
         set {
             Services._MediaUrl = newValue
+        }
+    }
+    
+    private static var _NewsUrl: String = ""
+    var NewsUrl: String {
+        get {
+            return Services._NewsUrl
+        }
+        set {
+            Services._NewsUrl = newValue
+        }
+    }
+    
+    private static var _AdminUrl: String = ""
+    var AdminUrl: String {
+        get {
+            return Services._AdminUrl
+        }
+        set {
+            Services._AdminUrl = newValue
         }
     }
     
@@ -131,13 +155,14 @@ class Services {
         return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
     }
     
-    func editUser(id: String, fullname: String, email: String, country: String, phone: String, gender: String) -> ResponseData? {
+    func editUser(id: String, fullname: String, email: String, country: String, phone_code: String, phone: String, gender: String) -> ResponseData? {
         
         let parameters: Parameters = [
             "id": id,
             "fullname": fullname,
             "email": email,
             "country": country,
+            "phone_code": phone_code,
             "phone": phone,
             "gender": gender
         ]
@@ -190,13 +215,23 @@ class Services {
         return makeHttpRequest(method: .post, serviceName: serviceName, headers: headers)
     }
     
-    func getLeaderboards() -> ResponseData? {
+    func getGlobalData() -> ResponseData? {
         
         let headers: HTTPHeaders = [
             "User-Id": USER_ID
         ]
         
-        let serviceName = ServiceName.getLeaderboards
+        let serviceName = ServiceName.getGlobalData
+        return makeHttpRequest(method: .post, serviceName: serviceName, headers: headers, isAdmin: true)
+    }
+    
+    func getLeaderboard() -> ResponseData? {
+        
+        let headers: HTTPHeaders = [
+            "User-Id": USER_ID
+        ]
+        
+        let serviceName = ServiceName.getLeaderboard
         return makeHttpRequest(method: .post, serviceName: serviceName, headers: headers)
     }
     
@@ -211,13 +246,12 @@ class Services {
     }
     
     func getNews() -> ResponseData? {
-     
-        let headers: HTTPHeaders = [
-            "User-Id": USER_ID
-        ]
         
-        let serviceName = ServiceName.getNews
-        return makeHttpRequest(method: .post, serviceName: serviceName, headers: headers)
+        var serviceName = ""
+        if let favoriteTeam = currentUser.favorite_team {
+            serviceName.append(favoriteTeam.lowercased())
+        }
+        return makeHttpRequest(method: .get, serviceName: serviceName, isNews: true)
     }
     
     func getNotifications() -> ResponseData? {
@@ -318,6 +352,23 @@ class Services {
         return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
+    func sendNotification(user_id: String, title: String, message: String, type: String, match_id: String) -> ResponseData? {
+        let parameters = [
+            "user_id": user_id,
+            "title": title,
+            "message": message,
+            "type": type,
+            "match_id": match_id
+        ]
+        
+        let headers: HTTPHeaders = [
+            "User-Id": USER_ID
+        ]
+        
+        let serviceName = ServiceName.sendNotification
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers, isAdmin: true)
+    }
+    
     func sendPredictions(prediction: Prediction) -> ResponseData? {
         var parameters = [
             "user_id": prediction.user_id ?? "",
@@ -337,6 +388,19 @@ class Services {
 
         let serviceName = ServiceName.sendPredictions
         return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
+    }
+    
+    func updateActiveMatches(round: String) -> ResponseData? {
+        let parameters = [
+            "round": round
+        ]
+        
+        let headers: HTTPHeaders = [
+            "User-Id": USER_ID
+        ]
+        
+        let serviceName = ServiceName.updateActiveMatches
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers, isAdmin: true)
     }
     
     func updateAvatar(userId: String, image : UIImage, completion:@escaping(_:ResponseData)->Void) {
@@ -397,28 +461,46 @@ class Services {
         }
     }
     
+    func updateMatchResult(match_id: String, winning_team: String, home_score: String, away_score: String) -> ResponseData? {
+        let parameters: Parameters = [
+            "match_id": match_id,
+            "winning_team": winning_team,
+            "home_score": home_score,
+            "away_score": away_score
+        ]
+        
+        let headers: HTTPHeaders = [
+            "User-Id": USER_ID
+        ]
+        
+        let serviceName = ServiceName.updateMatchResult
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers, isAdmin: true)
+    }
+    
     func updateNotification(id: String) {
-        if firebaseToken != nil {
-            let parameters: Parameters = [
-                "id": id
-            ]
-            
-            let headers: HTTPHeaders = [
-                "User-Id": USER_ID
-            ]
-            
-            let serviceName = ServiceName.updateNotification
-            _ = makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
-        }
+        let parameters: Parameters = [
+            "id": id
+        ]
+        
+        let headers: HTTPHeaders = [
+            "User-Id": USER_ID
+        ]
+        
+        let serviceName = ServiceName.updateNotification
+        _ = makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
     }
     
     /************* SERVER REQUEST *************/
     
-    private func makeHttpRequest(method: HTTPMethod, serviceName: String = "", parameters: Parameters? = nil, encoding: ParameterEncoding = URLEncoding.default, headers: HTTPHeaders? = nil, isConfig: Bool = false) -> ResponseData {
+    private func makeHttpRequest(method: HTTPMethod, serviceName: String = "", parameters: Parameters? = nil, encoding: ParameterEncoding = URLEncoding.default, headers: HTTPHeaders? = nil, isConfig: Bool = false, isNews: Bool = false, isAdmin: Bool = false) -> ResponseData {
         
         var requestUrl = BaseUrl
         if isConfig {
             requestUrl = Services.ConfigUrl
+        } else if isNews {
+            requestUrl = Services._NewsUrl
+        } else if isAdmin {
+            requestUrl = Services._AdminUrl
         }
         
         let response = manager.request(requestUrl + serviceName, method: method, parameters: parameters, encoding: encoding, headers: headers).responseJSON(options: .allowFragments)
@@ -499,7 +581,6 @@ class Services {
         }
         
         return responseData
-        
     }
     
     let manager: SessionManager = {
@@ -525,6 +606,14 @@ class Services {
     
     static func setMediaUrl(url: String) {
         _MediaUrl = url
+    }
+    
+    static func setNewsUrl(url: String) {
+        _NewsUrl = url
+    }
+    
+    static func setAdminUrl(url: String) {
+        _AdminUrl = url
     }
 }
 

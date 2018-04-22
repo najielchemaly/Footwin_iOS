@@ -17,7 +17,8 @@ class Objects {
     static var notifications: [Notification] = [Notification]()
     static var packages: [Package] = [Package]()
     static var news: [News] = [News]()
-    static var leaderboards: [Leaderboard] = [Leaderboard]()
+    static var articles: [Article] = [Article]()
+    static var leaderboard: [Leaderboard] = [Leaderboard]()
     static var predictions: [Prediction] = [Prediction]()
     
     static var gender: [String] = [

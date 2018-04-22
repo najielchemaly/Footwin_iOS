@@ -149,11 +149,11 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
                 cell.buttonDraw.backgroundColor = .clear
                 cell.buttonDraw.alpha = 0.5
             } else if prediction.selected_team == "draw" {
-                cell.homeImage.alpha = 1
+                cell.homeImage.alpha = 0.5
                 cell.homeImage.transform = CGAffineTransform.identity
                 cell.homeShadow.transform = CGAffineTransform.identity
                 cell.homeShadow.alpha = 0
-                cell.homeImage.alpha = 1
+                cell.awayImage.alpha = 0.5
                 cell.awayImage.transform = CGAffineTransform.identity
                 cell.awayShadow.transform = CGAffineTransform.identity
                 cell.awayShadow.alpha = 0

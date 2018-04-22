@@ -94,6 +94,8 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func saveUserInUserDefaults() {
         let encodedData = NSKeyedArchiver.archivedData(withRootObject: currentUser)
         let userDefaults = UserDefaults.standard
+        let userId = currentUser.id ?? "0"
+        userDefaults.set(userId, forKey: Keys.UserId.rawValue)
         userDefaults.set(encodedData, forKey: "user")
         userDefaults.set(true, forKey: "isUserLoggedIn")
         userDefaults.synchronize()
@@ -270,7 +272,6 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     func getPackages() {
-//        self.showLoader()
         DispatchQueue.global(qos: .background).async {
             let response = appDelegate.services.getPackages()
             
@@ -286,7 +287,6 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                         }
                     }
                 }
-//                self.hideLoader()
             }
         }
     }
@@ -354,6 +354,17 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     }
                 }
             })
+        }
+    }
+    
+    func updateUserCoins() {
+        if let strCoins = currentUser.coins, let strPredictionCoins = Objects.activeRound.prediction_coins {
+            if let coins = Int(strCoins), let predictionCoins = Int(strPredictionCoins) {
+                let remainingCoins = coins - predictionCoins
+                currentUser.coins = String(remainingCoins)
+                
+                self.saveUserInUserDefaults()
+            }
         }
     }
     

@@ -80,6 +80,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                         if let media_url = dict["media_url"] {
                             Services.setMediaUrl(url: media_url.stringValue)
                         }
+                        if let news_url = dict["news_url"] {
+                            Services.setNewsUrl(url: news_url.stringValue)
+                        }
+                        if let admin_url = dict["admin_url"] {
+                            Services.setAdminUrl(url: admin_url.stringValue)
+                        }
                         if let is_review = dict["is_review"] {
                             isReview = is_review.boolValue
                         }
@@ -104,17 +110,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                                 Objects.activeRound = Round.init(dictionary: json)!
                             }
                         }
-                        
-                        DispatchQueue.main.async {
-                            if let data = UserDefaults.standard.data(forKey: "user"),
-                                let user = NSKeyedUnarchiver.unarchiveObject(with: data) as? User {
-                                if let window = self.window, let mainNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.MainNavigationController) as? MainNavigationController {
-                                    currentUser = user
-                                    window.rootViewController = mainNavigationController
+                        if let is_app_active = dict["is_app_active"] {
+                            isAppActive = is_app_active.boolValue
+                            if isAppActive {
+                                DispatchQueue.main.async {
+                                    if UserDefaults.standard.bool(forKey: "didLaunchFirstTime") {
+                                        if let data = UserDefaults.standard.data(forKey: "user"),
+                                            let user = NSKeyedUnarchiver.unarchiveObject(with: data) as? User {
+                                            currentUser = user
+                                            if currentUser.role == "3" {
+                                                if let window = self.window, let mainNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.MainNavigationController) as? MainNavigationController {
+                                                    window.rootViewController = mainNavigationController
+                                                }
+                                            } else {
+                                                if let window = self.window, let adminNavigationController = adminStoryboard.instantiateViewController(withIdentifier: StoryboardIds.AdminNavigationController) as? UINavigationController {
+                                                    window.rootViewController = adminNavigationController
+                                                }
+                                            }
+                                        } else {
+                                            if let window = self.window, let loginNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.LoginNavigationController) as? LoginNavigationController {
+                                                window.rootViewController = loginNavigationController
+                                            }
+                                        }
+                                    } else {
+                                        if let window = self.window, let youtubePlayerViewController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.YoutubePlayerViewController) as? YoutubePlayerViewController {
+                                            window.rootViewController = youtubePlayerViewController
+                                        }
+                                    }
                                 }
                             } else {
-                                if let window = self.window, let loginNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.LoginNavigationController) as? LoginNavigationController {
-                                    window.rootViewController = loginNavigationController
+                                DispatchQueue.main.async {
+                                    if let window = self.window, let youtubePlayerViewController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.YoutubePlayerViewController) as? YoutubePlayerViewController {
+                                        window.rootViewController = youtubePlayerViewController
+                                    }
                                 }
                             }
                         }
@@ -263,6 +291,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        application.applicationIconBadgeNumber = 0
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

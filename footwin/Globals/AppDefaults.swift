@@ -18,6 +18,7 @@ var isReview: Bool = false
 var currentUser: User = User()
 var notificationBadge: Int = 0
 var firebaseToken: String!
+var isAppActive: Bool = false
 
 var appDelegate: AppDelegate {
     get {
@@ -34,6 +35,7 @@ var privacyUrlString = Services.getBaseUrl() + "/privacy"
 
 enum Storyboards : String {
     case Main
+    case Admin
     case LaunchScreen
     
     var instance : UIStoryboard {
@@ -42,6 +44,7 @@ enum Storyboards : String {
 }
 
 let mainStoryboard = Storyboards.Main.instance
+let adminStoryboard = Storyboards.Admin.instance
 let launchStoryboard = Storyboards.LaunchScreen.instance
 
 struct Colors {
@@ -54,6 +57,7 @@ struct Colors {
     static let lightText: UIColor = UIColor(hexString: "#adb3d3")!
     static let xDarkBlue: UIColor = UIColor(hexString: "#102152")!
     static let black: UIColor = UIColor(hexString: "#000000")!
+    static let lightGray: UIColor = UIColor(hexString: "#9297B0")!
 }
 
 struct Fonts {
@@ -133,6 +137,10 @@ struct StoryboardIds {
     static let MainNavigationController: String = "MainNavigationController"
     static let LoadingViewController: String = "LoadingViewController"
     static let CountryViewController: String = "CountryViewController"
+    static let AdminViewController: String = "AdminViewController"
+    static let AdminNavigationController: String = "AdminNavigationController"
+    static let OptionViewController: String = "OptionViewController"
+    static let YoutubePlayerViewController: String = "YoutubePlayerViewController"
 }
 
 struct CellIds {
@@ -144,6 +152,8 @@ struct CellIds {
     static let LeaderboardTableViewCell: String = "LeaderboardTableViewCell"
     static let MyPredictionTableViewCell: String = "MyPredictionTableViewCell"
     static let CountryTableViewCell: String = "CountryTableViewCell"
+    static let AdminTableViewCell: String = "AdminTableViewCell"
+    static let MatchTableViewCell: String = "MatchTableViewCell"
 }
 
 struct Views {

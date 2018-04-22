@@ -34,28 +34,34 @@ class NewsViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             let response = appDelegate.services.getNews()
             
             DispatchQueue.main.async {
-                if response?.status == ResponseStatus.SUCCESS.rawValue {
-                    if let json = response?.json?.first {
-                        if let jsonArray = json["news"] as? [NSDictionary] {
-                            Objects.news = [News]()
+                if let json = response?.json?.first {
+                    if let status = json["status"] as? String, status == "ok" {
+                        if let jsonArray = json["articles"] as? [NSDictionary] {
+                            Objects.articles = [Article]()
                             for json in jsonArray {
-                                let news = News.init(dictionary: json)
-                                Objects.news.append(news!)
+                                let article = Article.init(dictionary: json)
+                                Objects.articles.append(article!)
+                                
+                                if Objects.articles.count == 20 {
+                                    break
+                                }
                             }
                         }
-                    }
-                } else {
-                    if let message = response?.message {
-                        self.showAlertView(message: message)
+                    } else {
+                        if let message = response?.message {
+                            self.showAlertView(message: message)
+                        }
                     }
                 }
                 
                 self.hideLoader()
                 self.refreshControl.endRefreshing()
                 
-                if Objects.news.count == 0 {
+                if Objects.articles.count == 0 {
                     self.addEmptyView(message: "IT SEEMS THERE ARE NO NEWS YET!!", frame: self.tableView.frame)
                 } else {
+                    Objects.articles = Objects.articles.sorted(by: { $0.date?.compare($1.date!) == .orderedDescending })
+                    
                     self.tableView.reloadData()
                     self.removeEmptyView()
                 }
@@ -80,7 +86,7 @@ class NewsViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func handleRefresh(fromNotification: Bool = false) {
-        if Objects.notifications.count == 0 {
+        if Objects.articles.count == 0 {
             self.showLoader()
         }
         
@@ -92,7 +98,7 @@ class NewsViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Objects.news.count
+        return Objects.articles.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -101,13 +107,28 @@ class NewsViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.NewsTableViewCell) as? NewsTableViewCell {
+            cell.selectionStyle = .none
             
-            let news = Objects.news[indexPath.row]
-            if let imgUrl = news.img_url, !imgUrl.isEmpty {
-                cell.imageNews.kf.setImage(with: URL(string: Services.getMediaUrl() + imgUrl))
+            let article = Objects.articles[indexPath.row]
+            if let imgUrl = article.url_to_image, !imgUrl.isEmpty {
+                cell.imageNews.kf.setImage(with: URL(string: imgUrl))
             }
-            cell.labelDate.text = news.date
-            cell.labelTitle.text = news.title
+            cell.labelTitle.text = article.title
+            
+            if let date = article.date {
+                let dateFormatter = DateFormatter()
+                dateFormatter.timeZone = .current
+                dateFormatter.dateFormat = "dd MMM yyyy"
+                cell.labelDate.text = dateFormatter.string(from: date)
+            }
+            
+            cell.viewDate.clipsToBounds = true
+            cell.viewDate.layer.cornerRadius = 15
+            if #available(iOS 11.0, *) {
+                cell.viewDate.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+            } else {
+                cell.viewDate.roundCorners([.topRight, .bottomRight], radius: 15)
+            }
             
             return cell
         }
@@ -116,7 +137,9 @@ class NewsViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        NewsDetailViewController.selectedNews = Objects.news[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        NewsDetailViewController.selectedArticle = Objects.articles[indexPath.row]
         self.redirectToVC(storyboardId: StoryboardIds.NewsDetailViewController, type: .present)
     }
 

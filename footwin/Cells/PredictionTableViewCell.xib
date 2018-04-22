@@ -34,7 +34,7 @@
                                 <rect key="frame" x="0.0" y="158" width="375" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREDICT THE EXACT SCORE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkq-aT-vCt">
-                                        <rect key="frame" x="8" y="4" width="359" height="15.5"/>
+                                        <rect key="frame" x="8" y="4" width="359" height="16.5"/>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="13"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -112,7 +112,7 @@
                                     <constraint firstAttribute="height" constant="120" id="hEF-mH-p1W"/>
                                 </constraints>
                             </imageView>
-                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="germany" translatesAutoresizingMaskIntoConstraints="NO" id="gt1-r5-Qtw">
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gt1-r5-Qtw">
                                 <rect key="frame" x="10" y="5" width="90" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="K84-qa-ev1"/>
@@ -129,8 +129,8 @@
                             <constraint firstItem="e5j-bS-Uo6" firstAttribute="centerX" secondItem="hlB-KC-9Ab" secondAttribute="centerX" id="nCi-Sh-8ZY"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GERMANY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vtW-zK-XVf">
-                        <rect key="frame" x="14" y="155" width="110" height="15.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vtW-zK-XVf">
+                        <rect key="frame" x="14" y="155" width="110" height="16.5"/>
                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="13"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -145,7 +145,7 @@
                                     <constraint firstAttribute="height" constant="120" id="xpw-BM-oda"/>
                                 </constraints>
                             </imageView>
-                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brazil" translatesAutoresizingMaskIntoConstraints="NO" id="2Vi-UC-9Gj">
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Vi-UC-9Gj">
                                 <rect key="frame" x="10" y="5" width="90" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="HxX-Ym-kzP"/>
@@ -162,14 +162,14 @@
                             <constraint firstItem="2Vi-UC-9Gj" firstAttribute="centerY" secondItem="nko-Nd-EHE" secondAttribute="centerY" id="s7z-pw-hkE"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BRAZIL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKh-M9-fH1">
-                        <rect key="frame" x="251" y="155" width="110" height="15.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKh-M9-fH1">
+                        <rect key="frame" x="251" y="155" width="110" height="16.5"/>
                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="13"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Wn-JN-fak">
-                        <rect key="frame" x="167.5" y="75" width="40.5" height="37.5"/>
+                        <rect key="frame" x="170" y="75" width="35.5" height="40.5"/>
                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="32"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -271,9 +271,7 @@
     </objects>
     <resources>
         <image name="arrow_down" width="36" height="22"/>
-        <image name="brazil" width="222" height="222"/>
         <image name="checked_blue" width="71" height="54"/>
-        <image name="germany" width="222" height="222"/>
         <image name="selected_team_background" width="512" height="512"/>
         <image name="time_remaining_background" width="897" height="120"/>
     </resources>

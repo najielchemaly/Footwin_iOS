@@ -29,7 +29,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="657"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ROUND RULES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4B-Nq-sAe">
-                            <rect key="frame" x="103" y="30" width="170.5" height="28"/>
+                            <rect key="frame" x="102.5" y="30" width="170.5" height="28"/>
                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="24"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -121,7 +121,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9j-qF-OPh">
                             <rect key="frame" x="120" y="397" width="135" height="135"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blue_coin_large" translatesAutoresizingMaskIntoConstraints="NO" id="6mM-iZ-NaN">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellow_coin_large" translatesAutoresizingMaskIntoConstraints="NO" id="6mM-iZ-NaN">
                                     <rect key="frame" x="0.0" y="0.0" width="135" height="135"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* EXACT SCORE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIf-q6-zBE">
@@ -161,7 +161,7 @@
                             </variation>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hid-iM-Xje">
-                            <rect key="frame" x="45.5" y="540" width="284.5" height="42"/>
+                            <rect key="frame" x="46" y="540" width="284.5" height="42"/>
                             <string key="text">*IF YOU LOSE THE EXACT SCORE
 YOU LOSE THE PREDICTION</string>
                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="18"/>

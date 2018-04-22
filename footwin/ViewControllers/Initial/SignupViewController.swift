@@ -65,6 +65,8 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
         self.viewGender.customizeBorder(color: Colors.white)
         self.viewCountry.customizeBorder(color: Colors.white)
         
+        self.imageProfile.layer.cornerRadius = self.imageProfile.frame.size.width/2
+        
         if isReview {            
             self.textFieldPhone.placeholder = "(Optional)"
             self.buttonGender.setTitle("(Optional)", for: .normal)
@@ -73,6 +75,34 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
         Objects.teams.forEach({ $0.is_selected = false })
         
         self.imagePickerDelegate = self
+        
+         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeKeyboard))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    @objc func closeKeyboard() {
+        self.view.endEditing(true)
+        
+//        self.stackHeightConstraint.constant = self.stackViewOriginalY
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        if textFieldPhone.isFirstResponder {
+            if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+                let keyboardRectangle = keyboardFrame.cgRectValue
+                
+//                self.stackHeightConstraint.constant -= (keyboardRectangle.height/2)+20
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.view.layoutIfNeeded()
+                })
+            }
+        }
     }
     
     func setupCollectionView() {
@@ -254,7 +284,7 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
         if let image = data {
             tempUser.image = image
             
-            self.viewTakePicture.alpha = 0
+            self.buttonTakePicture.alpha = 0
             self.imageProfile.image = image
         }
     }
@@ -269,7 +299,8 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
         tempUser.email = textFieldEmail.text
         tempUser.password = textFieldPassword.text
         tempUser.country = buttonCountry.titleLabel?.text
-        tempUser.phone = labelDialingCode.text! + textFieldPhone.text!
+        tempUser.phone_code = labelDialingCode.text
+        tempUser.phone = textFieldPhone.text
         tempUser.gender = buttonGender.titleLabel?.text
     }
     

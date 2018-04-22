@@ -26,7 +26,7 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
 
         // Do any additional setup after loading the view.
         self.initializeViews()
-        self.getLeaderboards()
+        self.getLeaderboard()
         self.setupTableView()
     }
 
@@ -62,36 +62,76 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     @objc func leaderboardUpTapped() {
-        tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .none, animated: true)
+        tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .middle, animated: true)
     }
     
     @objc func leaderboardMeTapped() {
-        let leaderboard = Objects.leaderboards.filter { $0.user_id == currentUser.id }.first
+        let leaderboard = Objects.leaderboard.filter { $0.user_id == currentUser.id }.first
         if let me = leaderboard {
-            if let myPostition = Objects.leaderboards.index(of: me) {
-                tableView.scrollToRow(at: IndexPath.init(row: myPostition, section: 0), at: .none, animated: true)
+            if let myPostition = Objects.leaderboard.index(of: me) {
+                tableView.scrollToRow(at: IndexPath.init(row: myPostition, section: 0), at: .middle, animated: true)
             }
         }
     }
     
     @objc func leaderboardDownTapped() {
-        tableView.scrollToRow(at: IndexPath.init(row: Objects.leaderboards.count-1, section: 0), at: .none, animated: true)
+        tableView.scrollToRow(at: IndexPath.init(row: Objects.leaderboard.count-1, section: 0), at: .middle, animated: true)
     }
     
-    func getLeaderboards() {
+    func getLeaderboard() {
         self.showLoader()
         
         DispatchQueue.global(qos: .background).async {
-            let response = appDelegate.services.getLeaderboards()
+            let response = appDelegate.services.getLeaderboard()
             
             DispatchQueue.main.async {
                 if response?.status == ResponseStatus.SUCCESS.rawValue {
                     if let json = response?.json?.first {
-                        if let jsonArray = json["leaderboards"] as? [NSDictionary] {
-                            Objects.leaderboards = [Leaderboard]()
+                        if let jsonArray = json["leaderboard"] as? [NSDictionary] {
+                            Objects.leaderboard = [Leaderboard]()
                             for json in jsonArray {
-                                let leaderboard = Leaderboard.init(dictionary: json)
-                                Objects.leaderboards.append(leaderboard!)
+                                // TODO
+                                var leaderboard = Leaderboard.init(dictionary: json)
+                                leaderboard?.coins = "35000"
+                                leaderboard?.user_id = "0"
+                                Objects.leaderboard.append(leaderboard!)
+                                leaderboard = Leaderboard.init(dictionary: json)
+                                leaderboard?.coins = "34300"
+                                leaderboard?.user_id = "0"
+                                Objects.leaderboard.append(leaderboard!)
+                                leaderboard = Leaderboard.init(dictionary: json)
+                                leaderboard?.coins = "33600"
+                                leaderboard?.user_id = "0"
+                                Objects.leaderboard.append(leaderboard!)
+                                leaderboard = Leaderboard.init(dictionary: json)
+                                leaderboard?.coins = "32000"
+                                leaderboard?.user_id = "0"
+                                Objects.leaderboard.append(leaderboard!)
+                                leaderboard = Leaderboard.init(dictionary: json)
+                                leaderboard?.coins = "31900"
+                                leaderboard?.user_id = currentUser.id
+                                Objects.leaderboard.append(leaderboard!)
+                                leaderboard = Leaderboard.init(dictionary: json)
+                                leaderboard?.coins = "30700"
+                                leaderboard?.user_id = "0"
+                                Objects.leaderboard.append(leaderboard!)
+                                leaderboard = Leaderboard.init(dictionary: json)
+                                leaderboard?.coins = "26400"
+                                leaderboard?.user_id = "0"
+                                Objects.leaderboard.append(leaderboard!)
+                                leaderboard = Leaderboard.init(dictionary: json)
+                                leaderboard?.coins = "25650"
+                                leaderboard?.user_id = "0"
+                                Objects.leaderboard.append(leaderboard!)
+                                leaderboard = Leaderboard.init(dictionary: json)
+                                leaderboard?.coins = "22800"
+                                leaderboard?.user_id = "0"
+                                Objects.leaderboard.append(leaderboard!)
+                                leaderboard = Leaderboard.init(dictionary: json)
+                                leaderboard?.coins = "20200"
+                                leaderboard?.user_id = "0"
+                                Objects.leaderboard.append(leaderboard!)
+                                break
                             }
                         }
                     }
@@ -104,9 +144,14 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
                 self.hideLoader()
                 self.refreshControl.endRefreshing()
                 
-                if Objects.leaderboards.count == 0 {
+                if Objects.leaderboard.count == 0 {
                     self.addEmptyView(message: "IT SEEMS THERE ARE NO LEADERS YET! \nKEEP WINNING TO ACHIEVE THE FIRST RANK IN THE LEADERBOARD", frame: self.tableView.frame)
                 } else {
+                    if let index = Objects.leaderboard.index(where: { $0.user_id == currentUser.id }) {
+                        self.labelRank.text = String(index.advanced(by: 1))
+                        self.labelCoins.text = Objects.leaderboard[index].coins
+                    }
+                    
                     self.tableView.reloadData()
                     self.removeEmptyView()
                 }
@@ -131,11 +176,11 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     @objc func handleRefresh(fromNotification: Bool = false) {
-        if Objects.notifications.count == 0 {
+        if Objects.leaderboard.count == 0 {
             self.showLoader()
         }
         
-        self.getLeaderboards()
+        self.getLeaderboard()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -143,21 +188,25 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Objects.leaderboards.count
+        return Objects.leaderboard.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 85
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.LeaderboardTableViewCell) as? LeaderboardTableViewCell {
             
-            let leaderboard = Objects.leaderboards[indexPath.row]
+            let leaderboard = Objects.leaderboard[indexPath.row]
             if let avatar = leaderboard.avatar, !avatar.isEmpty {
                 cell.imageProfile.kf.setImage(with: URL(string: Services.getMediaUrl() + avatar))
             }
+            cell.imageProfile.layer.cornerRadius = cell.imageProfile.frame.size.width/2
+            cell.imageProfile.layer.borderColor = Colors.lightGray.cgColor
+            cell.imageProfile.layer.borderWidth = 1
             
+            leaderboard.rank = String(indexPath.row+1)
             cell.labelRank.text = leaderboard.rank
             cell.labelName.text = leaderboard.fullname
             cell.labelCoins.text = leaderboard.coins

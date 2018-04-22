@@ -39,6 +39,13 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UserDefaults.standard.set(true, forKey: "didLaunchFirstTime")
+        UserDefaults.standard.synchronize()
+    }
+    
     @IBAction func buttonLoginTapped(_ sender: Any) {
         if isValidData() {
             self.showLoader()
@@ -57,7 +64,11 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                                     
                                     self.saveUserInUserDefaults()
                                     
-                                    self.navigateToHome()
+                                    if currentUser.role == "3" {
+                                        self.navigateToHome()
+                                    } else {
+                                        self.navigateToAdmin()
+                                    }
                                 }
                             }
                         }
@@ -206,6 +217,10 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     
     @objc func navigateToHome() {
         self.redirectToVC(storyboardId: StoryboardIds.MainNavigationController, type: .present)
+    }
+    
+    @objc func navigateToAdmin() {
+        self.redirectToVC(storyboard: adminStoryboard, storyboardId: StoryboardIds.AdminNavigationController, type: .present)
     }
     
     /*

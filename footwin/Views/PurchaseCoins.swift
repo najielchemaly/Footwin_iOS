@@ -8,12 +8,15 @@
 
 import UIKit
 import FSPagerView
+import StoreKit
 
 class PurchaseCoins: UIView, FSPagerViewDataSource, FSPagerViewDelegate {
 
     @IBOutlet weak var pagerView: FSPagerView!
     @IBOutlet weak var buttonClose: UIButton!
     @IBOutlet weak var pagerHeightConstraint: NSLayoutConstraint!
+    
+    var products = [SKProduct]()
     
     /*
     // Only override draw() if you perform custom drawing.
@@ -33,6 +36,12 @@ class PurchaseCoins: UIView, FSPagerViewDataSource, FSPagerViewDelegate {
         
         self.pagerView.dataSource = self
         self.pagerView.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(PurchaseCoins.handlePurchaseNotification(_:)),
+                                               name: NSNotification.Name(rawValue: IAPHelper.IAPHelperPurchaseNotification),
+                                               object: nil)
+        
+        self.reloadProducts()
     }
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
@@ -72,6 +81,36 @@ class PurchaseCoins: UIView, FSPagerViewDataSource, FSPagerViewDelegate {
     
     func numberOfItems(in pagerView: FSPagerView) -> Int {
         return Objects.packages.count
+    }
+    
+    func reloadProducts() {
+        products = []
+        
+//        tableView.reloadData()
+        
+        CoinProducts.store.requestProducts{success, products in
+            if success {
+                self.products = products!
+                
+//                self.tableView.reloadData()
+            }
+            
+//            self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    func restoreTapped(_ sender: AnyObject) {
+        CoinProducts.store.restorePurchases()
+    }
+    
+    @objc func handlePurchaseNotification(_ notification: NSNotification) {
+        guard let productID = notification.object as? String else { return }
+        
+        for (index, product) in products.enumerated() {
+            guard product.productIdentifier == productID else { continue }
+            
+//            tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+        }
     }
 
     @IBAction func buttonCloseTapped(_ sender: Any) {

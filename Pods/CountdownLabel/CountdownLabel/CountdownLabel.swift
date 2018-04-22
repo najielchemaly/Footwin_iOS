@@ -207,7 +207,7 @@ public class CountdownLabel: LTMorphingLabel {
         var listingDate: Date
         var duration: Week
         var expirationDate: Date {
-            return Calendar.current.date(byAdding: .day, value: duration.rawValue, to: listingDate)!
+            return listingDate //Calendar.current.date(byAdding: .day, value: duration.rawValue, to: listingDate)!
         }
         
         var timeRemaining: String {
