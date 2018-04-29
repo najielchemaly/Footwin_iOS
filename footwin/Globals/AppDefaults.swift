@@ -19,6 +19,7 @@ var currentUser: User = User()
 var notificationBadge: Int = 0
 var firebaseToken: String!
 var isAppActive: Bool = false
+var tutorialText: String!
 
 var appDelegate: AppDelegate {
     get {

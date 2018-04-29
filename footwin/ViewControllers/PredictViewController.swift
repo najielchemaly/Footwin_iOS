@@ -119,10 +119,13 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                     self.tableView.reloadData()
                     self.removeEmptyView()
                     
+                    // TODO
                     if !UserDefaults.standard.bool(forKey: "didShowHelper") {
                         if let helperView = self.showView(name: Views.HelperView) as? HelperView {
                             if let username = currentUser.username {
-                                helperView.labelTitle.text = "HELLO " + username + ", WELCOME TO FOOTWIN, ENJOY FOOTING AND WINNING :D"
+                                if let text = tutorialText {
+                                    helperView.labelTitle.text = "HELLO " + username + ", " + text
+                                }
                             }
                             
                             helperView.buttonStartTutorial.addTarget(self, action: #selector(self.startTutorial(sender:)), for: .touchUpInside)
@@ -443,17 +446,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     @objc func confirmPrediction(sender: AnyObject) {
         Objects.matches[sender.tag].confirmed = true
         if let cell = tableView.cellForRow(at: IndexPath.init(row: sender.tag, section: 0)) as? PredictionTableViewCell {
-            UIView.animate(withDuration: 0.3, animations: {
-                cell.imageCheck.image = #imageLiteral(resourceName: "checked_white")
-                cell.labelConfirm.textColor = Colors.white
-                cell.labelConfirm.text = "CONFIRMED"
-                cell.viewConfirm.backgroundColor = Colors.appGreen
-                cell.viewConfirm.alpha = 1
-                cell.labelVS.alpha = 0
-                cell.isUserInteractionEnabled = false
-            }, completion: { _ in
-                self.sendPrediction(index: sender.tag)
-            })
+            self.sendPrediction(index: sender.tag, cell: cell)
 
             // TODO
 //            UserDefaults.standard.set(true, forKey: "didShowConfirmAlert")
@@ -461,7 +454,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    func sendPrediction(index: Int) {
+    func sendPrediction(index: Int, cell: PredictionTableViewCell) {
         let match = Objects.matches[index]
         let prediction = Prediction()
         prediction.user_id = currentUser.id
@@ -489,8 +482,18 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
             
             DispatchQueue.main.async {
                 if response?.status == ResponseStatus.SUCCESS.rawValue {
-                    Objects.matches.remove(at: index)
-                    self.tableView.deleteRows(at: [IndexPath.init(row: index, section: 0)], with: .left)
+                    UIView.animate(withDuration: 0.3, animations: {
+                        cell.imageCheck.image = #imageLiteral(resourceName: "checked_white")
+                        cell.labelConfirm.textColor = Colors.white
+                        cell.labelConfirm.text = "CONFIRMED"
+                        cell.viewConfirm.backgroundColor = Colors.appGreen
+                        cell.viewConfirm.alpha = 1
+                        cell.labelVS.alpha = 0
+                        cell.isUserInteractionEnabled = false
+                    }, completion: { _ in })
+                    
+//                    Objects.matches.remove(at: index)
+//                    self.tableView.deleteRows(at: [IndexPath.init(row: index, section: 0)], with: .left)
                     
                     _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { timer in
                         let contentOffset = self.tableView.contentOffset

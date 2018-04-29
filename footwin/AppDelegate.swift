@@ -89,6 +89,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                         if let is_review = dict["is_review"] {
                             isReview = is_review.boolValue
                         }
+                        if let tutorial_text = dict["tutorial_text"] {
+                            tutorialText = tutorial_text.stringValue
+                        }
                         if let countries = dict["countries"] {
                             if let jsonArray = countries.arrayObject as? [NSDictionary] {
                                 for json in jsonArray {
@@ -118,13 +121,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                                         if let data = UserDefaults.standard.data(forKey: "user"),
                                             let user = NSKeyedUnarchiver.unarchiveObject(with: data) as? User {
                                             currentUser = user
-                                            if currentUser.role == "3" {
-                                                if let window = self.window, let mainNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.MainNavigationController) as? MainNavigationController {
-                                                    window.rootViewController = mainNavigationController
-                                                }
-                                            } else {
+                                            if currentUser.role == "2" {
                                                 if let window = self.window, let adminNavigationController = adminStoryboard.instantiateViewController(withIdentifier: StoryboardIds.AdminNavigationController) as? UINavigationController {
                                                     window.rootViewController = adminNavigationController
+                                                }
+                                            } else {
+                                                if let window = self.window, let mainNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.MainNavigationController) as? MainNavigationController {
+                                                    window.rootViewController = mainNavigationController
                                                 }
                                             }
                                         } else {

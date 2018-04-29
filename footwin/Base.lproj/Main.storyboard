@@ -1709,9 +1709,10 @@ WE CAN HELP YOU WITH THAT</string>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Cvm-TL-xuM" customClass="CountdownLabel" customModule="CountdownLabel">
                                         <rect key="frame" x="20" y="0.0" width="335" height="200"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="QRH-7f-9uq"/>
                                             <constraint firstAttribute="height" constant="200" id="njz-RO-vWd"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="36"/>
+                                        <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="32"/>
                                         <color key="textColor" red="0.054170526560000001" green="0.1853607297" blue="0.84208017589999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1732,16 +1733,23 @@ WE CAN HELP YOU WITH THAT</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="PIm-UM-Did" secondAttribute="bottom" id="7WA-2f-exo"/>
-                                    <constraint firstItem="Cvm-TL-xuM" firstAttribute="leading" secondItem="cOL-Je-6y5" secondAttribute="leading" constant="20" id="BWF-SB-nnc"/>
+                                    <constraint firstItem="Cvm-TL-xuM" firstAttribute="leading" secondItem="cOL-Je-6y5" secondAttribute="leading" constant="32" id="BWF-SB-nnc"/>
                                     <constraint firstItem="PIm-UM-Did" firstAttribute="leading" secondItem="cOL-Je-6y5" secondAttribute="leading" id="GRH-xY-86m"/>
                                     <constraint firstItem="Cvm-TL-xuM" firstAttribute="top" secondItem="cOL-Je-6y5" secondAttribute="top" id="HkP-KE-vtZ"/>
+                                    <constraint firstItem="Cvm-TL-xuM" firstAttribute="centerX" secondItem="cOL-Je-6y5" secondAttribute="centerX" id="J5N-F1-dJe"/>
                                     <constraint firstAttribute="bottom" secondItem="y5c-Qi-b0R" secondAttribute="bottom" constant="16" id="Oza-86-ovs"/>
                                     <constraint firstAttribute="trailing" secondItem="PIm-UM-Did" secondAttribute="trailing" id="QaA-AO-HPs"/>
                                     <constraint firstItem="y5c-Qi-b0R" firstAttribute="leading" secondItem="cOL-Je-6y5" secondAttribute="leading" constant="16" id="TKD-XW-UEa"/>
                                     <constraint firstAttribute="trailing" secondItem="y5c-Qi-b0R" secondAttribute="trailing" constant="16" id="gQC-wO-QgS"/>
                                     <constraint firstItem="PIm-UM-Did" firstAttribute="top" secondItem="cOL-Je-6y5" secondAttribute="top" id="kkn-fC-mFN"/>
-                                    <constraint firstAttribute="trailing" secondItem="Cvm-TL-xuM" secondAttribute="trailing" constant="20" id="oEJ-II-82C"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cvm-TL-xuM" secondAttribute="trailing" constant="32" id="oEJ-II-82C"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="BWF-SB-nnc"/>
+                                        <exclude reference="oEJ-II-82C"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2135,7 +2143,7 @@ WE CAN HELP YOU WITH THAT</string>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Mm-Zm-oyy">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Mm-Zm-oyy">
                                 <rect key="frame" x="16" y="203" width="343" height="350"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aE9-uS-jkk">
@@ -2353,13 +2361,13 @@ WE CAN HELP YOU WITH THAT</string>
                                 </constraints>
                             </scrollView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZ1-zq-2c2">
-                                <rect key="frame" x="97.5" y="253.5" width="180" height="180"/>
+                                <rect key="frame" x="87.5" y="243.5" width="200" height="200"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yPD-Be-s6a">
-                                        <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xw7-Vq-gYg">
-                                        <rect key="frame" x="75" y="135" width="30" height="25"/>
+                                        <rect key="frame" x="85" y="155" width="30" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="1Ma-M8-7GE"/>
                                             <constraint firstAttribute="height" constant="25" id="B11-4r-Nnh"/>
@@ -2370,7 +2378,7 @@ WE CAN HELP YOU WITH THAT</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NyA-X9-KsO">
-                                        <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         <state key="normal" image="add_image"/>
                                         <connections>
                                             <action selector="buttonTakePictureTapped:" destination="uu8-2J-5bH" eventType="touchUpInside" id="038-CC-ELy"/>
@@ -2384,12 +2392,12 @@ WE CAN HELP YOU WITH THAT</string>
                                     <constraint firstAttribute="trailing" secondItem="yPD-Be-s6a" secondAttribute="trailing" id="IeY-GR-aBF"/>
                                     <constraint firstItem="xw7-Vq-gYg" firstAttribute="centerX" secondItem="VZ1-zq-2c2" secondAttribute="centerX" id="Qj8-5m-6On"/>
                                     <constraint firstAttribute="bottom" secondItem="xw7-Vq-gYg" secondAttribute="bottom" constant="20" id="UKs-M5-8Pz"/>
-                                    <constraint firstAttribute="height" constant="180" id="ZSI-QR-vZh"/>
+                                    <constraint firstAttribute="height" constant="200" id="ZSI-QR-vZh"/>
                                     <constraint firstAttribute="bottom" secondItem="yPD-Be-s6a" secondAttribute="bottom" id="dvv-pp-q7n"/>
                                     <constraint firstItem="NyA-X9-KsO" firstAttribute="top" secondItem="VZ1-zq-2c2" secondAttribute="top" id="gFD-HW-Ekf"/>
                                     <constraint firstAttribute="trailing" secondItem="NyA-X9-KsO" secondAttribute="trailing" id="nuw-iR-3Ki"/>
                                     <constraint firstItem="yPD-Be-s6a" firstAttribute="leading" secondItem="VZ1-zq-2c2" secondAttribute="leading" id="ttR-ep-EWc"/>
-                                    <constraint firstAttribute="width" constant="180" id="yod-dg-CO2"/>
+                                    <constraint firstAttribute="width" constant="200" id="yod-dg-CO2"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kWP-L2-L3W">

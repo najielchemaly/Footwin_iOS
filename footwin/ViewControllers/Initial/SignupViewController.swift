@@ -380,6 +380,10 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
                                                         DispatchQueue.main.async {
                                                             if let json = data.json?.first {
                                                                 if let status = json["status"] as? Int, status == ResponseStatus.SUCCESS.rawValue {
+                                                                    if let avatar = json["avatar"] as? String {
+                                                                        currentUser.avatar = avatar
+                                                                    }
+                                                                    
                                                                     self.saveUserInUserDefaults()
                                                                     
                                                                     self.redirectToVC(storyboardId: StoryboardIds.MainNavigationController, type: .present)

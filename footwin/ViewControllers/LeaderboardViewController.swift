@@ -36,20 +36,20 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     func initializeViews() {
-        if let avatar = currentUser.avatar, !avatar.isEmpty {
-            self.imageProfile.kf.setImage(with: URL(string: Services.getMediaUrl() + avatar))
-        } else {
-            if let gender = currentUser.gender, gender.lowercased() == "male" {
-                self.imageProfile.image = #imageLiteral(resourceName: "avatar_male")
-            } else if let gender = currentUser.gender, gender.lowercased() == "female" {
-                self.imageProfile.image = #imageLiteral(resourceName: "avatar_female")
-            }
-        }
+//        if let avatar = currentUser.avatar, !avatar.isEmpty {
+//            self.imageProfile.kf.setImage(with: URL(string: Services.getMediaUrl() + avatar))
+//        } else {
+//            if let gender = currentUser.gender, gender.lowercased() == "male" {
+//                self.imageProfile.image = #imageLiteral(resourceName: "avatar_male")
+//            } else if let gender = currentUser.gender, gender.lowercased() == "female" {
+//                self.imageProfile.image = #imageLiteral(resourceName: "avatar_female")
+//            }
+//        }
         imageProfile.layer.cornerRadius = imageProfile.frame.size.width/2
         
-        labelRank.text = currentUser.rank
-        labelFullname.text = currentUser.fullname
-        labelCoins.text = currentUser.winning_coins
+//        labelRank.text = currentUser.rank
+//        labelFullname.text = currentUser.fullname
+//        labelCoins.text = currentUser.winning_coins
         
         let leaderboardUpTap = UITapGestureRecognizer(target: self, action: #selector(leaderboardUpTapped))
         leaderboardUp.addGestureRecognizer(leaderboardUpTap)
@@ -90,48 +90,49 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
                         if let jsonArray = json["leaderboard"] as? [NSDictionary] {
                             Objects.leaderboard = [Leaderboard]()
                             for json in jsonArray {
-                                // TODO
-                                var leaderboard = Leaderboard.init(dictionary: json)
-                                leaderboard?.coins = "35000"
-                                leaderboard?.user_id = "0"
+                                let leaderboard = Leaderboard.init(dictionary: json)
                                 Objects.leaderboard.append(leaderboard!)
-                                leaderboard = Leaderboard.init(dictionary: json)
-                                leaderboard?.coins = "34300"
-                                leaderboard?.user_id = "0"
-                                Objects.leaderboard.append(leaderboard!)
-                                leaderboard = Leaderboard.init(dictionary: json)
-                                leaderboard?.coins = "33600"
-                                leaderboard?.user_id = "0"
-                                Objects.leaderboard.append(leaderboard!)
-                                leaderboard = Leaderboard.init(dictionary: json)
-                                leaderboard?.coins = "32000"
-                                leaderboard?.user_id = "0"
-                                Objects.leaderboard.append(leaderboard!)
-                                leaderboard = Leaderboard.init(dictionary: json)
-                                leaderboard?.coins = "31900"
-                                leaderboard?.user_id = currentUser.id
-                                Objects.leaderboard.append(leaderboard!)
-                                leaderboard = Leaderboard.init(dictionary: json)
-                                leaderboard?.coins = "30700"
-                                leaderboard?.user_id = "0"
-                                Objects.leaderboard.append(leaderboard!)
-                                leaderboard = Leaderboard.init(dictionary: json)
-                                leaderboard?.coins = "26400"
-                                leaderboard?.user_id = "0"
-                                Objects.leaderboard.append(leaderboard!)
-                                leaderboard = Leaderboard.init(dictionary: json)
-                                leaderboard?.coins = "25650"
-                                leaderboard?.user_id = "0"
-                                Objects.leaderboard.append(leaderboard!)
-                                leaderboard = Leaderboard.init(dictionary: json)
-                                leaderboard?.coins = "22800"
-                                leaderboard?.user_id = "0"
-                                Objects.leaderboard.append(leaderboard!)
-                                leaderboard = Leaderboard.init(dictionary: json)
-                                leaderboard?.coins = "20200"
-                                leaderboard?.user_id = "0"
-                                Objects.leaderboard.append(leaderboard!)
-                                break
+//                                var leaderboard = Leaderboard.init(dictionary: json)
+//                                leaderboard?.coins = "35000"
+//                                leaderboard?.user_id = "0"
+//                                Objects.leaderboard.append(leaderboard!)
+//                                leaderboard = Leaderboard.init(dictionary: json)
+//                                leaderboard?.coins = "34300"
+//                                leaderboard?.user_id = "0"
+//                                Objects.leaderboard.append(leaderboard!)
+//                                leaderboard = Leaderboard.init(dictionary: json)
+//                                leaderboard?.coins = "33600"
+//                                leaderboard?.user_id = "0"
+//                                Objects.leaderboard.append(leaderboard!)
+//                                leaderboard = Leaderboard.init(dictionary: json)
+//                                leaderboard?.coins = "32000"
+//                                leaderboard?.user_id = "0"
+//                                Objects.leaderboard.append(leaderboard!)
+//                                leaderboard = Leaderboard.init(dictionary: json)
+//                                leaderboard?.coins = "31900"
+//                                leaderboard?.user_id = currentUser.id
+//                                Objects.leaderboard.append(leaderboard!)
+//                                leaderboard = Leaderboard.init(dictionary: json)
+//                                leaderboard?.coins = "30700"
+//                                leaderboard?.user_id = "0"
+//                                Objects.leaderboard.append(leaderboard!)
+//                                leaderboard = Leaderboard.init(dictionary: json)
+//                                leaderboard?.coins = "26400"
+//                                leaderboard?.user_id = "0"
+//                                Objects.leaderboard.append(leaderboard!)
+//                                leaderboard = Leaderboard.init(dictionary: json)
+//                                leaderboard?.coins = "25650"
+//                                leaderboard?.user_id = "0"
+//                                Objects.leaderboard.append(leaderboard!)
+//                                leaderboard = Leaderboard.init(dictionary: json)
+//                                leaderboard?.coins = "22800"
+//                                leaderboard?.user_id = "0"
+//                                Objects.leaderboard.append(leaderboard!)
+//                                leaderboard = Leaderboard.init(dictionary: json)
+//                                leaderboard?.coins = "20200"
+//                                leaderboard?.user_id = "0"
+//                                Objects.leaderboard.append(leaderboard!)
+//                                break
                             }
                         }
                     }
@@ -147,10 +148,16 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
                 if Objects.leaderboard.count == 0 {
                     self.addEmptyView(message: "IT SEEMS THERE ARE NO LEADERS YET! \nKEEP WINNING TO ACHIEVE THE FIRST RANK IN THE LEADERBOARD", frame: self.tableView.frame)
                 } else {
-                    if let index = Objects.leaderboard.index(where: { $0.user_id == currentUser.id }) {
-                        self.labelRank.text = String(index.advanced(by: 1))
-                        self.labelCoins.text = Objects.leaderboard[index].coins
+                    self.labelRank.text = "1"
+                    self.labelCoins.text = Objects.leaderboard[0].coins
+                    self.labelFullname.text = Objects.leaderboard[0].fullname
+                    if let avatar = Objects.leaderboard[0].avatar, !avatar.isEmpty {
+                        self.imageProfile.kf.setImage(with: URL(string: Services.getMediaUrl() + avatar))
                     }
+//                    if let index = Objects.leaderboard.index(where: { $0.user_id == currentUser.id }) {
+//                        self.labelRank.text = String(index.advanced(by: 1))
+//                        self.labelCoins.text = Objects.leaderboard[index].coins
+//                    }
                     
                     self.tableView.reloadData()
                     self.removeEmptyView()
