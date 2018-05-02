@@ -49,6 +49,7 @@ class ForgotPasswordViewController: BaseViewController, UITextFieldDelegate {
                     }
                     
                     self.hideLoader()
+                    self.textFieldEmail.text = nil
                 }
             }
         } else {

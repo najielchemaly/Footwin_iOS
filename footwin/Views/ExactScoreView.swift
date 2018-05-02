@@ -51,6 +51,18 @@ class ExactScoreView: UIView {
             } else {
                 Objects.matches[sender.tag].home_score = textFieldHome.text
                 Objects.matches[sender.tag].away_score = textFieldAway.text
+                
+                if let predictViewController = currentVC as? PredictViewController {
+                    if let home_score = Double(textFieldHome.text!), let away_score = Double(textFieldAway.text!) {
+                        if home_score > away_score && Objects.matches[sender.tag].winning_team != "home" {
+                            predictViewController.homeTeamSelected(row: sender.tag)
+                        } else if home_score < away_score && Objects.matches[sender.tag].winning_team != "away" {
+                            predictViewController.awayTeamSelected(row: sender.tag)
+                        } else if home_score == away_score && Objects.matches[sender.tag].winning_team != "draw" {
+                            predictViewController.drawSelected(row: sender.tag)
+                        }
+                    }
+                }
             }
             
             buttonCancelTapped(buttonCancel)

@@ -19,6 +19,12 @@ public class Notification: NSObject, NSCoding {
     public var row_height: CGFloat?
     public var is_read: Bool?
     public var is_read_updated: Bool?
+    public var home_name : String?
+    public var home_flag : String?
+    public var home_score : String?
+    public var away_name : String?
+    public var away_flag : String?
+    public var away_score : String?
     
     /**
      Returns an array of models based on given dictionary.
@@ -61,6 +67,12 @@ public class Notification: NSObject, NSCoding {
         type = decoder.decodeObject(forKey:"type") as? String
         match_id = decoder.decodeObject(forKey:"match_id") as? String
         is_read = decoder.decodeObject(forKey:"is_read") as? Bool
+        home_name = decoder.decodeObject(forKey:"home_name") as? String
+        home_flag = decoder.decodeObject(forKey:"home_flag") as? String
+        home_score = decoder.decodeObject(forKey:"home_score") as? String
+        away_name = decoder.decodeObject(forKey:"away_name") as? String
+        away_flag = decoder.decodeObject(forKey:"away_flag") as? String
+        away_score = decoder.decodeObject(forKey:"away_score") as? String
     }
     
     public func encode(with coder: NSCoder) {
@@ -71,6 +83,12 @@ public class Notification: NSObject, NSCoding {
         coder.encode(type, forKey: "type")
         coder.encode(match_id, forKey: "match_id")
         coder.encode(is_read, forKey: "is_read")
+        coder.encode(home_name, forKey: "home_name")
+        coder.encode(home_flag, forKey: "home_flag")
+        coder.encode(home_score, forKey: "home_score")
+        coder.encode(away_name, forKey: "away_name")
+        coder.encode(away_flag, forKey: "away_flag")
+        coder.encode(away_score, forKey: "away_score")
     }
     
     required public init?(dictionary: NSDictionary) {
@@ -88,6 +106,12 @@ public class Notification: NSObject, NSCoding {
                 is_read = false
             }
         }
+        home_name = dictionary["home_name"] as? String
+        home_flag = dictionary["home_flag"] as? String
+        home_score = dictionary["home_score"] as? String
+        away_name = dictionary["away_name"] as? String
+        away_flag = dictionary["away_flag"] as? String
+        away_score = dictionary["away_score"] as? String
     }
     
     /**
@@ -106,6 +130,12 @@ public class Notification: NSObject, NSCoding {
         dictionary.setValue("type", forKey: "type")
         dictionary.setValue(match_id, forKey: "match_id")
         dictionary.setValue(is_read, forKey: "is_read")
+        dictionary.setValue(home_name, forKey: "home_name")
+        dictionary.setValue(home_flag, forKey: "home_flag")
+        dictionary.setValue(home_score, forKey: "home_score")
+        dictionary.setValue(away_name, forKey: "away_name")
+        dictionary.setValue(away_flag, forKey: "away_flag")
+        dictionary.setValue(away_score, forKey: "away_score")
         
         return dictionary
     }

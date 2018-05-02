@@ -50,6 +50,8 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
                 } else {
                     if let message = response?.message {
                         self.showAlertView(message: message)
+                    } else {
+                        self.addEmptyView(message: "SOMETHING WENT WRONG, TRY TO REFRESH THE PAGE!", frame: self.tableView.frame)
                     }
                 }
                 
@@ -57,7 +59,7 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
                 self.refreshControl.endRefreshing()
                 
                 if Objects.predictions.count == 0 {
-                    self.addEmptyView(message: "Something went wrong, try to refresh the page", frame: self.tableView.frame)
+                    self.addEmptyView(message: "YOU STILL DON'T HAVE PREDICTIONS?\nSTART PREDICTING THE WINNING TEAMS, HIT THE FIRST PLACE IN THE LEADERBOARD AND WIN A SPECIAL TRIP TO YOUR FAVORITE TEAM'S COUNTRY!", frame: self.tableView.frame)
                 } else {
                     self.tableView.reloadData()
                     self.removeEmptyView()

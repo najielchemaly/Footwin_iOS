@@ -36,20 +36,7 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     func initializeViews() {
-//        if let avatar = currentUser.avatar, !avatar.isEmpty {
-//            self.imageProfile.kf.setImage(with: URL(string: Services.getMediaUrl() + avatar))
-//        } else {
-//            if let gender = currentUser.gender, gender.lowercased() == "male" {
-//                self.imageProfile.image = #imageLiteral(resourceName: "avatar_male")
-//            } else if let gender = currentUser.gender, gender.lowercased() == "female" {
-//                self.imageProfile.image = #imageLiteral(resourceName: "avatar_female")
-//            }
-//        }
         imageProfile.layer.cornerRadius = imageProfile.frame.size.width/2
-        
-//        labelRank.text = currentUser.rank
-//        labelFullname.text = currentUser.fullname
-//        labelCoins.text = currentUser.winning_coins
         
         let leaderboardUpTap = UITapGestureRecognizer(target: self, action: #selector(leaderboardUpTapped))
         leaderboardUp.addGestureRecognizer(leaderboardUpTap)
@@ -92,47 +79,6 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
                             for json in jsonArray {
                                 let leaderboard = Leaderboard.init(dictionary: json)
                                 Objects.leaderboard.append(leaderboard!)
-//                                var leaderboard = Leaderboard.init(dictionary: json)
-//                                leaderboard?.coins = "35000"
-//                                leaderboard?.user_id = "0"
-//                                Objects.leaderboard.append(leaderboard!)
-//                                leaderboard = Leaderboard.init(dictionary: json)
-//                                leaderboard?.coins = "34300"
-//                                leaderboard?.user_id = "0"
-//                                Objects.leaderboard.append(leaderboard!)
-//                                leaderboard = Leaderboard.init(dictionary: json)
-//                                leaderboard?.coins = "33600"
-//                                leaderboard?.user_id = "0"
-//                                Objects.leaderboard.append(leaderboard!)
-//                                leaderboard = Leaderboard.init(dictionary: json)
-//                                leaderboard?.coins = "32000"
-//                                leaderboard?.user_id = "0"
-//                                Objects.leaderboard.append(leaderboard!)
-//                                leaderboard = Leaderboard.init(dictionary: json)
-//                                leaderboard?.coins = "31900"
-//                                leaderboard?.user_id = currentUser.id
-//                                Objects.leaderboard.append(leaderboard!)
-//                                leaderboard = Leaderboard.init(dictionary: json)
-//                                leaderboard?.coins = "30700"
-//                                leaderboard?.user_id = "0"
-//                                Objects.leaderboard.append(leaderboard!)
-//                                leaderboard = Leaderboard.init(dictionary: json)
-//                                leaderboard?.coins = "26400"
-//                                leaderboard?.user_id = "0"
-//                                Objects.leaderboard.append(leaderboard!)
-//                                leaderboard = Leaderboard.init(dictionary: json)
-//                                leaderboard?.coins = "25650"
-//                                leaderboard?.user_id = "0"
-//                                Objects.leaderboard.append(leaderboard!)
-//                                leaderboard = Leaderboard.init(dictionary: json)
-//                                leaderboard?.coins = "22800"
-//                                leaderboard?.user_id = "0"
-//                                Objects.leaderboard.append(leaderboard!)
-//                                leaderboard = Leaderboard.init(dictionary: json)
-//                                leaderboard?.coins = "20200"
-//                                leaderboard?.user_id = "0"
-//                                Objects.leaderboard.append(leaderboard!)
-//                                break
                             }
                         }
                     }
@@ -154,10 +100,8 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
                     if let avatar = Objects.leaderboard[0].avatar, !avatar.isEmpty {
                         self.imageProfile.kf.setImage(with: URL(string: Services.getMediaUrl() + avatar))
                     }
-//                    if let index = Objects.leaderboard.index(where: { $0.user_id == currentUser.id }) {
-//                        self.labelRank.text = String(index.advanced(by: 1))
-//                        self.labelCoins.text = Objects.leaderboard[index].coins
-//                    }
+                    
+                    Objects.leaderboard.remove(at: 0)
                     
                     self.tableView.reloadData()
                     self.removeEmptyView()
@@ -204,6 +148,7 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.LeaderboardTableViewCell) as? LeaderboardTableViewCell {
+            cell.selectionStyle = .none
             
             let leaderboard = Objects.leaderboard[indexPath.row]
             if let avatar = leaderboard.avatar, !avatar.isEmpty {
@@ -213,7 +158,7 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
             cell.imageProfile.layer.borderColor = Colors.lightGray.cgColor
             cell.imageProfile.layer.borderWidth = 1
             
-            leaderboard.rank = String(indexPath.row+1)
+            leaderboard.rank = String(indexPath.row+2)
             cell.labelRank.text = leaderboard.rank
             cell.labelName.text = leaderboard.fullname
             cell.labelCoins.text = leaderboard.coins

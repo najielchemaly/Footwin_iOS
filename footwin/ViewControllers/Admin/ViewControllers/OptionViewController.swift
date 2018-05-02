@@ -299,7 +299,7 @@ class OptionViewController: BaseViewController, UITableViewDelegate, UITableView
                     cell.buttonDraw.isEnabled = true
                 }
                 
-                if match.confirmed != nil && match.confirmed! {
+                if match.is_confirmed != nil && match.is_confirmed! {
                     cell.imageCheck.image = #imageLiteral(resourceName: "checked_white")
                     cell.labelSubmit.textColor = Colors.white
                     cell.labelSubmit.text = "CONFIRMED"

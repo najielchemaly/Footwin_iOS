@@ -321,7 +321,7 @@ func updateNotificationBadge() {
             userDefaults.set(String(describing: notificationBadge + 1), forKey: "notificationNumber")
         }
     } else {
-        userDefaults.set(String(describing: "1"), forKey: "notificationNumber")
+        userDefaults.set("1", forKey: "notificationNumber")
     }
     userDefaults.synchronize()
 }

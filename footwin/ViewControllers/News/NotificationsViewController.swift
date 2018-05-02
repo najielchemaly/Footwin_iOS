@@ -154,23 +154,20 @@ class NotificationsViewController: BaseViewController, UITableViewDelegate, UITa
             }
             
             if notification.type == "prediction_result" {
-                let match = Objects.matches.filter { $0.id == notification.match_id }.first
-                if match != nil {
-                    if let homeFlag = match?.home_flag, !homeFlag.isEmpty {
-                        cell.imageHome.kf.setImage(with: URL(string: Services.getMediaUrl() + homeFlag))
-                    }
-                    if let homeName = match?.home_name {
-                        cell.labelHome.text = homeName
-                    }
-                    if let awayFlag = match?.away_flag, !awayFlag.isEmpty {
-                        cell.imageAway.kf.setImage(with: URL(string: Services.getMediaUrl() + awayFlag))
-                    }
-                    if let awayName = match?.away_name {
-                        cell.labelAway.text = awayName
-                    }
-                    if let homeScore = match?.home_score, let awayScore = match?.away_score {
-                        cell.labelResult.text = homeScore + " - " + awayScore
-                    }
+                if let homeFlag = notification.home_flag, !homeFlag.isEmpty {
+                    cell.imageHome.kf.setImage(with: URL(string: Services.getMediaUrl() + homeFlag))
+                }
+                if let homeName = notification.home_name {
+                    cell.labelHome.text = homeName
+                }
+                if let awayFlag = notification.away_flag, !awayFlag.isEmpty {
+                    cell.imageAway.kf.setImage(with: URL(string: Services.getMediaUrl() + awayFlag))
+                }
+                if let awayName = notification.away_name {
+                    cell.labelAway.text = awayName
+                }
+                if let homeScore = notification.home_score, let awayScore = notification.away_score {
+                    cell.labelResult.text = homeScore + " - " + awayScore
                 }
                 
                 cell.buttonGetCoins.alpha = 0

@@ -24,7 +24,7 @@ public class Match: NSObject, NSCoding {
     public var winning_coins : String?
     public var exact_score_coins : String?
     public var winning_team: String?
-    public var confirmed: Bool?
+    public var is_confirmed: Bool?
     public var timer: Timer!
     
     /**
@@ -75,23 +75,25 @@ public class Match: NSObject, NSCoding {
         prediction_coins = decoder.decodeObject(forKey:"prediction_coins") as? String
         winning_coins = decoder.decodeObject(forKey:"winning_coins") as? String
         exact_score_coins = decoder.decodeObject(forKey:"exact_score_coins") as? String
+        is_confirmed = decoder.decodeObject(forKey:"is_confirmed") as? Bool
     }
     
     public func encode(with coder: NSCoder) {
         coder.encode(id, forKey: "id")
-        coder.encode(id, forKey:"home_id")
-        coder.encode(id, forKey:"away_id")
-        coder.encode(id, forKey:"date")
-        coder.encode(id, forKey:"home_score")
-        coder.encode(id, forKey:"away_score")
-        coder.encode(id, forKey:"round")
-        coder.encode(id, forKey:"home_name")
-        coder.encode(id, forKey:"home_flag")
-        coder.encode(id, forKey:"away_name")
-        coder.encode(id, forKey:"away_flag")
-        coder.encode(id, forKey:"prediction_coins")
-        coder.encode(id, forKey:"winning_coins")
-        coder.encode(id, forKey:"exact_score_coins")
+        coder.encode(home_id, forKey:"home_id")
+        coder.encode(away_id, forKey:"away_id")
+        coder.encode(date, forKey:"date")
+        coder.encode(home_score, forKey:"home_score")
+        coder.encode(away_score, forKey:"away_score")
+        coder.encode(round, forKey:"round")
+        coder.encode(home_name, forKey:"home_name")
+        coder.encode(home_flag, forKey:"home_flag")
+        coder.encode(away_name, forKey:"away_name")
+        coder.encode(away_flag, forKey:"away_flag")
+        coder.encode(prediction_coins, forKey:"prediction_coins")
+        coder.encode(winning_coins, forKey:"winning_coins")
+        coder.encode(exact_score_coins, forKey:"exact_score_coins")
+        coder.encode(is_confirmed, forKey:"is_confirmed")
     }
     
     required public init?(dictionary: NSDictionary) {
@@ -122,19 +124,19 @@ public class Match: NSObject, NSCoding {
         let dictionary = NSMutableDictionary()
         
         dictionary.setValue(id, forKey: "id")
-        dictionary.setValue(id, forKey:"home_id")
-        dictionary.setValue(id, forKey:"away_id")
-        dictionary.setValue(id, forKey:"date")
-        dictionary.setValue(id, forKey:"home_score")
-        dictionary.setValue(id, forKey:"away_score")
-        dictionary.setValue(id, forKey:"round")
-        dictionary.setValue(id, forKey:"home_name")
-        dictionary.setValue(id, forKey:"home_flag")
-        dictionary.setValue(id, forKey:"away_name")
-        dictionary.setValue(id, forKey:"away_flag")
+        dictionary.setValue(home_id, forKey:"home_id")
+        dictionary.setValue(away_id, forKey:"away_id")
+        dictionary.setValue(date, forKey:"date")
+        dictionary.setValue(home_score, forKey:"home_score")
+        dictionary.setValue(away_score, forKey:"away_score")
+        dictionary.setValue(round, forKey:"round")
+        dictionary.setValue(home_name, forKey:"home_name")
+        dictionary.setValue(home_flag, forKey:"home_flag")
+        dictionary.setValue(away_name, forKey:"away_name")
+        dictionary.setValue(away_flag, forKey:"away_flag")
         dictionary.setValue(id, forKey:"prediction_coins")
-        dictionary.setValue(id, forKey:"winning_coins")
-        dictionary.setValue(id, forKey:"exact_score_coins")
+        dictionary.setValue(winning_coins, forKey:"winning_coins")
+        dictionary.setValue(exact_score_coins, forKey:"exact_score_coins")
         
         return dictionary
     }

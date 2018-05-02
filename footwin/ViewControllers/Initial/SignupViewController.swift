@@ -37,8 +37,10 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var buttonTakePicture: UIButton!
     @IBOutlet weak var buttonCamera: UIButton!
+    @IBOutlet weak var viewTopConstraint: NSLayoutConstraint!
     
     var pickerView: UIPickerView!
+    var viewOriginalY: CGFloat!
     var tempUser: User = User()
     
     override func viewDidLoad() {
@@ -76,17 +78,14 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
         
         self.imagePickerDelegate = self
         
-         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeKeyboard))
-        tap.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tap)
+        self.viewOriginalY = self.viewTopConstraint.constant
     }
     
-    @objc func closeKeyboard() {
-        self.view.endEditing(true)
-        
-//        self.stackHeightConstraint.constant = self.stackViewOriginalY
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        self.viewTopConstraint.constant = self.viewOriginalY
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
         })
@@ -97,7 +96,7 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
             if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
                 let keyboardRectangle = keyboardFrame.cgRectValue
                 
-//                self.stackHeightConstraint.constant -= (keyboardRectangle.height/2)+20
+                self.viewTopConstraint.constant = 0
                 UIView.animate(withDuration: 0.3, animations: {
                     self.view.layoutIfNeeded()
                 })
@@ -365,8 +364,6 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
                         let response = appDelegate.services.registerUser(user: self.tempUser)
                         
                         DispatchQueue.main.async {
-//                            self.redirectToVC(storyboardId: StoryboardIds.MainNavigationController, type: .present)
-//                            return
                             if response?.status == ResponseStatus.SUCCESS.rawValue {
                                 if let json = response?.json?.first {
                                     if let jsonUser = json["user"] as? NSDictionary {
