@@ -16,6 +16,7 @@ class CountryViewController: BaseViewController, UITableViewDelegate, UITableVie
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
     
     var delegate: CountryPickerDelegate!
     var filteredCountries: [Country] = [Country]()
@@ -36,6 +37,7 @@ class CountryViewController: BaseViewController, UITableViewDelegate, UITableVie
     func initializeViews() {
         self.filteredCountries = Objects.countries
         
+        self.buttonWidthConstraint.constant = 70
         self.searchBar.delegate = self
     }
     
@@ -87,6 +89,10 @@ class CountryViewController: BaseViewController, UITableViewDelegate, UITableVie
         return UITableViewCell()
     }
 
+    @IBAction func buttonCancelTapped(_ sender: Any) {
+        self.dismissVC()
+    }
+    
     /*
     // MARK: - Navigation
 

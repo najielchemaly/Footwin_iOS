@@ -24,6 +24,10 @@ class MyPredictionTableViewCell: UITableViewCell {
     @IBOutlet weak var labelVS: UILabel!
     @IBOutlet weak var buttonDraw: UIButton!
     @IBOutlet weak var viewConfirm: UIView!
+    @IBOutlet weak var topBarImageView: UIImageView!
+    @IBOutlet weak var viewConfirmWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var viewWinningCoins: UIStackView!
+    @IBOutlet weak var labelWinningCoins: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -28,7 +28,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>1.1</string>
 	<key>FacebookAppID</key>
 	<string>1461553117306764</string>
 	<key>FacebookDisplayName</key>
@@ -83,5 +83,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
 </dict>
 </plist>

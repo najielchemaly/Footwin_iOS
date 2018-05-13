@@ -32,6 +32,10 @@ class CoinStashViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
     func initializeViews() {
         labelTotalCoins.text = currentUser.coins
         labelWinningCoins.text = currentUser.winning_coins

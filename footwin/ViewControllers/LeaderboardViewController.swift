@@ -96,7 +96,7 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
                 } else {
                     self.labelRank.text = "1"
                     self.labelCoins.text = Objects.leaderboard[0].coins
-                    self.labelFullname.text = Objects.leaderboard[0].fullname
+                    self.labelFullname.text = Objects.leaderboard[0].fullname?.uppercased()
                     if let avatar = Objects.leaderboard[0].avatar, !avatar.isEmpty {
                         self.imageProfile.kf.setImage(with: URL(string: Services.getMediaUrl() + avatar))
                     }
@@ -160,7 +160,7 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
             
             leaderboard.rank = String(indexPath.row+2)
             cell.labelRank.text = leaderboard.rank
-            cell.labelName.text = leaderboard.fullname
+            cell.labelName.text = leaderboard.fullname?.uppercased()
             cell.labelCoins.text = leaderboard.coins
             
             return cell

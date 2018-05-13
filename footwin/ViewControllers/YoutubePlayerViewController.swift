@@ -23,7 +23,24 @@ class YoutubePlayerViewController: BaseViewController, YTPlayerViewDelegate {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.setupYoutubePlayer()
+        
+        // TODO When the trailer is ready
+        self.youtubePlayer.alpha = 0
+        self.viewCountdown.alpha = 1
+        
+        var worldCupDateString = "2018-06-16"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        if let date = dateFormatter.date(from: worldCupDateString) {
+            dateFormatter.dateFormat = "EEEE, MMM dd, yyyy"
+            worldCupDateString = dateFormatter.string(from: date)
+            if let finalDate = dateFormatter.date(from: worldCupDateString) {
+                labelCountdown.setCountDownDate(targetDate: finalDate as NSDate)
+                labelCountdown.start()
+            }
+        }
+        
+//        self.setupYoutubePlayer()
         
         if isAppActive {
             buttonSkip.alpha = 1
@@ -104,7 +121,9 @@ class YoutubePlayerViewController: BaseViewController, YTPlayerViewDelegate {
     }
     
     @IBAction func buttonWatchFullTapped(_ sender: Any) {
-        if let url = URL(string: "https://www.youtube.com/watch?v=ir0G79oHXMc") {
+//        "WATCH THE FULL COCA-COLA® ANTHEM FOR THE 2018 FIFA WORLD CUP TM HERE"
+//        "https://www.youtube.com/watch?v=ir0G79oHXMc"
+        if let url = URL(string: "http://foot-win.com") {
             self.openURL(url: url)
         }
     }

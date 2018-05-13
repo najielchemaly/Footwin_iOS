@@ -46,20 +46,21 @@ class ExactScoreView: UIView {
     @objc func buttonConfirmTapped(sender: UIButton) {
         if !textFieldHome.isEmpty() && !textFieldAway.isEmpty() {
             if let optionViewController = currentVC as? OptionViewController {
-                optionViewController.matches[sender.tag].home_score = textFieldHome.text
-                optionViewController.matches[sender.tag].away_score = textFieldAway.text
+                optionViewController.matches[sender.tag].prediction_home_score = textFieldHome.text
+                optionViewController.matches[sender.tag].prediction_away_score = textFieldAway.text
             } else {
-                Objects.matches[sender.tag].home_score = textFieldHome.text
-                Objects.matches[sender.tag].away_score = textFieldAway.text
+                Objects.matches[sender.tag].prediction_home_score = textFieldHome.text
+                Objects.matches[sender.tag].prediction_away_score = textFieldAway.text
                 
                 if let predictViewController = currentVC as? PredictViewController {
-                    if let home_score = Double(textFieldHome.text!), let away_score = Double(textFieldAway.text!) {
-                        if home_score > away_score && Objects.matches[sender.tag].winning_team != "home" {
-                            predictViewController.homeTeamSelected(row: sender.tag)
-                        } else if home_score < away_score && Objects.matches[sender.tag].winning_team != "away" {
-                            predictViewController.awayTeamSelected(row: sender.tag)
-                        } else if home_score == away_score && Objects.matches[sender.tag].winning_team != "draw" {
-                            predictViewController.drawSelected(row: sender.tag)
+                    if let prediction_home_score = Double(textFieldHome.text!), let prediction_away_score = Double(textFieldAway.text!) {
+                        let match = Objects.matches[sender.tag]
+                        if prediction_home_score > prediction_away_score && match.prediction_winning_team != match.home_id {
+                            predictViewController.homeTeamSelected(row: sender.tag, resetScores: false)
+                        } else if prediction_home_score < prediction_away_score && match.prediction_winning_team != match.away_id {
+                            predictViewController.awayTeamSelected(row: sender.tag, resetScores: false)
+                        } else if prediction_home_score == prediction_away_score && match.prediction_winning_team != "0" {
+                            predictViewController.drawSelected(row: sender.tag, resetScores: false)
                         }
                     }
                 }
@@ -78,11 +79,11 @@ class ExactScoreView: UIView {
     
     @objc func leaveWithoutSettingExactScores(sender: UIButton) {
         if let optionViewController = currentVC as? OptionViewController {
-            optionViewController.matches[sender.tag].home_score = nil
-            optionViewController.matches[sender.tag].away_score = nil
+            optionViewController.matches[sender.tag].prediction_home_score = "-1"
+            optionViewController.matches[sender.tag].prediction_away_score = "-1"
         } else {
-            Objects.matches[sender.tag].home_score = nil
-            Objects.matches[sender.tag].away_score = nil
+            Objects.matches[sender.tag].prediction_home_score = "-1"
+            Objects.matches[sender.tag].prediction_away_score = "-1"
         }
         
         buttonCancelTapped(buttonCancel)

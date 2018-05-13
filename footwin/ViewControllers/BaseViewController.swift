@@ -357,8 +357,12 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
-    func updateUserCoins() {
-        if let strCoins = currentUser.coins, let strPredictionCoins = Objects.activeRound.prediction_coins {
+    func updateUserCoins(coins: String? = nil) {
+        if let remainingCoins = coins {
+            currentUser.coins = remainingCoins
+            
+            self.saveUserInUserDefaults()
+        } else if let strCoins = currentUser.coins, let strPredictionCoins = Objects.activeRound.prediction_coins {
             if let coins = Int(strCoins), let predictionCoins = Int(strPredictionCoins) {
                 let remainingCoins = coins - predictionCoins
                 currentUser.coins = String(remainingCoins)

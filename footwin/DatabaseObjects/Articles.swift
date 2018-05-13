@@ -85,7 +85,9 @@ public class Article: NSObject, NSCoding {
             let timeArray = dateArray[2].split(separator: "T")
             let dateString = dateArray[0]+"-"+dateArray[1]+"-"+timeArray[0]
             let dateFormatter = DateFormatter()
-            dateFormatter.timeZone = .current
+            if let timeZone = NSTimeZone(name: "GMT") as TimeZone? {
+                dateFormatter.timeZone = timeZone
+            }
             dateFormatter.dateFormat = "yyyy-MM-dd"
             if let date = dateFormatter.date(from: dateString) {
                 self.date = date

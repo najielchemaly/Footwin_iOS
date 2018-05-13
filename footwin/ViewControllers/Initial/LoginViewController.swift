@@ -156,11 +156,14 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                                         if let user = User.init(dictionary: jsonUser) {
                                             currentUser = user
                                             
-                                            if currentUser.avatar == nil {
-                                                self.redirectToVC(storyboardId: StoryboardIds.SignupViewController, type: .push)
-                                            } else {
-                                                self.navigateToHome()
-                                            }
+                                            self.saveUserInUserDefaults()
+                                            self.navigateToHome()
+                                            
+//                                            if currentUser.avatar == nil {
+//                                                self.redirectToVC(storyboardId: StoryboardIds.SignupViewController, type: .push)
+//                                            } else {
+//                                                self.navigateToHome()
+//                                            }
                                         }
                                     }
                                 }

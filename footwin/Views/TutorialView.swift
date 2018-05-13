@@ -51,7 +51,7 @@ class TutorialView: UIView {
             buttonNext.tag += 1
         } else if buttonNext.tag == 3 {
             labelTitle.text = "PREDICTION"
-            labelDescription.text = "TAP ON THE TEAM ICON TO PREDICT THE WINNER TEAM"
+            labelDescription.text = "TAP ON THE TEAM ICON TO PREDICT THE WINNING TEAM"
             
             UIView.animate(withDuration: 0.1, animations: {
                 self.viewRules.alpha = 0

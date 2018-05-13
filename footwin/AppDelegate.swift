@@ -126,26 +126,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                                                     window.rootViewController = adminNavigationController
                                                 }
                                             } else {
-                                                if let window = self.window, let mainNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.MainNavigationController) as? MainNavigationController {
-                                                    window.rootViewController = mainNavigationController
+                                                DispatchQueue.global(qos: .background).async {
+                                                    let access_token = currentUser.access_token ?? ""
+                                                    let response = self.services.login(access_token: access_token)
+                                                    
+                                                    DispatchQueue.main.async {
+                                                        if response?.status == ResponseStatus.SUCCESS.rawValue {
+                                                            if let json = response?.json?.first {
+                                                                if let jsonUser = json["user"] as? NSDictionary {
+                                                                    if let user = User.init(dictionary: jsonUser) {
+                                                                        currentUser = user
+                                                                        
+                                                                        if let baseVC = currentVC as? BaseViewController {
+                                                                            baseVC.saveUserInUserDefaults()
+                                                                        }
+                                                                        
+                                                                        self.goToMainNavigation()
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else {
+                                                            self.goToLoginNavigation()
+                                                        }
+                                                    }
                                                 }
                                             }
                                         } else {
-                                            if let window = self.window, let loginNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.LoginNavigationController) as? LoginNavigationController {
-                                                window.rootViewController = loginNavigationController
-                                            }
+                                            self.goToLoginNavigation()
                                         }
                                     } else {
-                                        if let window = self.window, let youtubePlayerViewController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.YoutubePlayerViewController) as? YoutubePlayerViewController {
-                                            window.rootViewController = youtubePlayerViewController
-                                        }
+                                        self.goToLoginNavigation()
+                                        // TODO Change when the trailer is ready
+//                                        self.goToYoutubeNavigation()
                                     }
                                 }
                             } else {
                                 DispatchQueue.main.async {
-                                    if let window = self.window, let youtubePlayerViewController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.YoutubePlayerViewController) as? YoutubePlayerViewController {
-                                        window.rootViewController = youtubePlayerViewController
-                                    }
+                                    self.goToYoutubeNavigation()
                                 }
                             }
                         }
@@ -162,6 +179,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                     }
                 }
             }
+        }
+    }
+    
+    func goToLoginNavigation() {
+        if let window = self.window, let loginNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.LoginNavigationController) as? LoginNavigationController {
+            window.rootViewController = loginNavigationController
+        }
+    }
+    
+    func goToMainNavigation() {
+        if let window = self.window, let mainNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.MainNavigationController) as? MainNavigationController {
+            window.rootViewController = mainNavigationController
+        }
+    }
+    
+    func goToYoutubeNavigation() {
+        if let window = self.window, let youtubePlayerViewController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.YoutubePlayerViewController) as? YoutubePlayerViewController {
+            window.rootViewController = youtubePlayerViewController
         }
     }
     

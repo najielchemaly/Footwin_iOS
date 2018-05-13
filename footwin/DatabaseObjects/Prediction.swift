@@ -15,9 +15,11 @@ public class Prediction: NSObject, NSCoding {
     public var winning_team : String?
     public var status : String?
     public var selected_team : String?
+    public var home_id : String?
     public var home_flag : String?
     public var home_name : String?
     public var home_score : String?
+    public var away_id : String?
     public var away_flag : String?
     public var away_name : String?
     public var away_score : String?
@@ -25,6 +27,7 @@ public class Prediction: NSObject, NSCoding {
     public var desc : String?
     public var date : String?
     public var timer: Timer!
+    public var winning_coins : String?
     
     /**
      Returns an array of models based on given dictionary.
@@ -62,11 +65,13 @@ public class Prediction: NSObject, NSCoding {
     required public init(coder decoder: NSCoder) {
         id = decoder.decodeObject(forKey:"id") as? String
         match_id = decoder.decodeObject(forKey:"match_id") as? String
+        home_id = decoder.decodeObject(forKey:"home_id") as? String
         home_score = decoder.decodeObject(forKey:"home_score") as? String
         home_name = decoder.decodeObject(forKey:"home_name") as? String
         home_flag = decoder.decodeObject(forKey:"home_flag") as? String
         away_score = decoder.decodeObject(forKey:"away_score") as? String
         away_name = decoder.decodeObject(forKey:"away_name") as? String
+        away_id = decoder.decodeObject(forKey:"away_id") as? String
         away_flag = decoder.decodeObject(forKey:"away_flag") as? String
         status = decoder.decodeObject(forKey:"status") as? String
         winning_team = decoder.decodeObject(forKey:"winning_team") as? String
@@ -74,14 +79,17 @@ public class Prediction: NSObject, NSCoding {
         title = decoder.decodeObject(forKey:"title") as? String
         desc = decoder.decodeObject(forKey:"description") as? String
         date = decoder.decodeObject(forKey:"date") as? String
+        winning_coins = decoder.decodeObject(forKey:"winning_coins") as? String
     }
     
     public func encode(with coder: NSCoder) {
         coder.encode(id, forKey: "id")
         coder.encode(match_id, forKey: "match_id")
+        coder.encode(home_id, forKey: "home_id")
         coder.encode(home_score, forKey: "home_score")
         coder.encode(home_name, forKey: "home_name")
         coder.encode(home_flag, forKey: "home_flag")
+        coder.encode(away_id, forKey: "away_id")
         coder.encode(away_score, forKey: "away_score")
         coder.encode(away_name, forKey: "away_name")
         coder.encode(away_flag, forKey: "away_flag")
@@ -91,15 +99,18 @@ public class Prediction: NSObject, NSCoding {
         coder.encode(title, forKey: "title")
         coder.encode(desc, forKey: "description")
         coder.encode(date, forKey: "date")
+        coder.encode(winning_coins, forKey: "winning_coins")
     }
     
     required public init?(dictionary: NSDictionary) {
         
         id = dictionary["id"] as? String
         match_id = dictionary["match_id"] as? String
+        home_id = dictionary["home_id"] as? String
         home_score = dictionary["home_score"] as? String
         home_name = dictionary["home_name"] as? String
         home_flag = dictionary["home_flag"] as? String
+        away_id = dictionary["away_id"] as? String
         away_score = dictionary["away_score"] as? String
         away_name = dictionary["away_name"] as? String
         away_flag = dictionary["away_flag"] as? String
@@ -109,6 +120,7 @@ public class Prediction: NSObject, NSCoding {
         title = dictionary["title"] as? String
         desc = dictionary["description"] as? String
         date = dictionary["date"] as? String
+        winning_coins = dictionary["winning_coins"] as? String
     }
     
     /**
@@ -122,9 +134,11 @@ public class Prediction: NSObject, NSCoding {
         
         dictionary.setValue(id, forKey: "id")
         dictionary.setValue(match_id, forKey: "match_id")
+        dictionary.setValue(home_id, forKey: "home_id")
         dictionary.setValue(home_score, forKey: "home_score")
         dictionary.setValue(home_name, forKey: "home_name")
         dictionary.setValue(home_flag, forKey: "home_flag")
+        dictionary.setValue(away_id, forKey: "away_id")
         dictionary.setValue(away_score, forKey: "away_score")
         dictionary.setValue(away_name, forKey: "away_name")
         dictionary.setValue(away_flag, forKey: "away_flag")
@@ -134,6 +148,7 @@ public class Prediction: NSObject, NSCoding {
         dictionary.setValue(title, forKey: "title")
         dictionary.setValue(desc, forKey: "description")
         dictionary.setValue(date, forKey: "date")
+        dictionary.setValue(winning_coins, forKey: "winning_coins")
         
         return dictionary
     }

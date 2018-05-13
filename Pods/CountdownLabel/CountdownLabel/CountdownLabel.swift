@@ -217,7 +217,7 @@ public class CountdownLabel: LTMorphingLabel {
                 return String()
             } else {
                 let timeRemaining = CountDown.dateComponentFormatter.string(from: now, to: expirationDate)!
-                return timeRemaining.replacingOccurrences(of: ",", with: " -")
+                return timeRemaining.replacingOccurrences(of: ",", with: " ")
             }
         }
     }

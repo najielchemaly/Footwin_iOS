@@ -60,7 +60,7 @@ class NewsViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 if Objects.articles.count == 0 {
                     self.addEmptyView(message: "IT SEEMS THERE ARE NO NEWS YET!!", frame: self.tableView.frame)
                 } else {
-                    Objects.articles = Objects.articles.sorted(by: { $0.date?.compare($1.date!) == .orderedDescending })
+                    Objects.articles = Objects.articles.filter{ $0.date != nil }.sorted(by: { $0.date?.compare($1.date!) == .orderedDescending })
                     
                     self.tableView.reloadData()
                     self.removeEmptyView()

@@ -109,7 +109,7 @@ class NotificationsViewController: BaseViewController, UITableViewDelegate, UITa
         if notification.type?.lowercased() == "get_coins" {
             tableRowHeight = 75
         } else if notification.type?.lowercased() == "prediction_result" {
-            tableRowHeight = 150
+            tableRowHeight = 125
         } else {
             tableRowHeight = 45
         }
@@ -131,7 +131,9 @@ class NotificationsViewController: BaseViewController, UITableViewDelegate, UITa
             
             let notification = Objects.notifications[indexPath.row]
             
-            cell.labelDescription.text = notification.desc
+            if let title = notification.title, let desc = notification.desc {
+                cell.labelDescription.text = title + "\n" + desc
+            }
             
             var height: Int = 0
             if let descriptionHeight = notification.desc?.height(width: cell.labelDescription.frame.size.width, font: cell.labelDescription.font!) {
@@ -158,13 +160,13 @@ class NotificationsViewController: BaseViewController, UITableViewDelegate, UITa
                     cell.imageHome.kf.setImage(with: URL(string: Services.getMediaUrl() + homeFlag))
                 }
                 if let homeName = notification.home_name {
-                    cell.labelHome.text = homeName
+                    cell.labelHome.text = homeName.uppercased()
                 }
                 if let awayFlag = notification.away_flag, !awayFlag.isEmpty {
                     cell.imageAway.kf.setImage(with: URL(string: Services.getMediaUrl() + awayFlag))
                 }
                 if let awayName = notification.away_name {
-                    cell.labelAway.text = awayName
+                    cell.labelAway.text = awayName.uppercased()
                 }
                 if let homeScore = notification.home_score, let awayScore = notification.away_score {
                     cell.labelResult.text = homeScore + " - " + awayScore
@@ -172,6 +174,8 @@ class NotificationsViewController: BaseViewController, UITableViewDelegate, UITa
                 
                 cell.buttonGetCoins.alpha = 0
                 cell.viewMatchResult.alpha = 1
+                cell.viewMatchResult.layer.borderColor = Colors.appBlue.cgColor
+                cell.viewMatchResult.layer.borderWidth = 1
             } else if notification.type == "get_coins" {           
                 cell.buttonGetCoins.alpha = 1
                 cell.viewMatchResult.alpha = 0

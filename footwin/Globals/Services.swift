@@ -129,13 +129,16 @@ class Services {
     func changePassword(id: String, oldPassword: String, newPassword: String) -> ResponseData? {
         
         let parameters: Parameters = [
-            "id": id,
             "oldPassword": oldPassword,
             "newPassword": newPassword
         ]
         
+        let headers: HTTPHeaders = [
+            "User-Id": USER_ID
+        ]
+        
         let serviceName = ServiceName.changePassword
-        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
     }
     
     func contactUs(name: String, email: String, phone: String, message: String) -> ResponseData? {
@@ -158,7 +161,6 @@ class Services {
     func editUser(id: String, fullname: String, email: String, country: String, phone_code: String, phone: String, gender: String) -> ResponseData? {
         
         let parameters: Parameters = [
-            "id": id,
             "fullname": fullname,
             "email": email,
             "country": country,
@@ -167,8 +169,12 @@ class Services {
             "gender": gender
         ]
         
+        let headers: HTTPHeaders = [
+            "User-Id": USER_ID
+        ]
+        
         let serviceName = ServiceName.editUser
-        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
     }
     
     func facebookLogin(user: User) -> ResponseData? {
@@ -308,6 +314,16 @@ class Services {
         return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
+    func login(access_token: String) -> ResponseData? {
+        
+        let parameters: Parameters = [
+            "access_token": access_token
+        ]
+        
+        let serviceName = ServiceName.login
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
+    }
+    
     func login(email: String, password: String) -> ResponseData? {
         
         let parameters: Parameters = [
@@ -379,7 +395,6 @@ class Services {
         ]
         
         parameters["winning_team"] = prediction.winning_team ?? ""
-        parameters["selected_team"] = prediction.selected_team ?? ""
         parameters["date"] = prediction.date ?? ""
         
         let headers: HTTPHeaders = [

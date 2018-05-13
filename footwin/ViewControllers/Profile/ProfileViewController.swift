@@ -40,7 +40,7 @@ class ProfileViewController: BaseViewController, ImagePickerDelegate {
             }
         }
         
-        labelName.text = currentUser.fullname
+        labelName.text = currentUser.fullname?.uppercased()
         
         self.imagePickerDelegate = self
     }

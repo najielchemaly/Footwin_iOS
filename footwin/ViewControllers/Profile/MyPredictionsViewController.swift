@@ -59,7 +59,7 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
                 self.refreshControl.endRefreshing()
                 
                 if Objects.predictions.count == 0 {
-                    self.addEmptyView(message: "YOU STILL DON'T HAVE PREDICTIONS?\nSTART PREDICTING THE WINNING TEAMS, HIT THE FIRST PLACE IN THE LEADERBOARD AND WIN A SPECIAL TRIP TO YOUR FAVORITE TEAM'S COUNTRY!", frame: self.tableView.frame)
+                    self.addEmptyView(message: "NOTHING TO SHOW YET!\nSTART WINNING PREDICTIONS, HIT THE FIRST PLACE IN THE LEADERBOARD AND WIN A SPECIAL TRIP TO YOUR FAVORITE TEAM'S COUNTRY!", frame: self.tableView.frame)
                 } else {
                     self.tableView.reloadData()
                     self.removeEmptyView()
@@ -121,10 +121,10 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
             }
             cell.labelHome.text = prediction.home_name
             cell.labelAway.text = prediction.away_name
-            cell.labelHomeScore.text = prediction.home_score
-            cell.labelAwayScore.text = prediction.away_score
+            cell.labelHomeScore.text = prediction.home_score == "-1" ? "" : prediction.home_score
+            cell.labelAwayScore.text = prediction.away_score == "-1" ? "" : prediction.away_score
             
-            if prediction.selected_team == "home" {
+            if prediction.winning_team == prediction.home_id {
                 cell.homeImage.alpha = 1
                 cell.homeImage.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
                 cell.homeShadow.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
@@ -133,11 +133,10 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
                 cell.awayImage.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
                 cell.awayShadow.alpha = 0
                 cell.viewConfirm.alpha = 1
-                cell.labelVS.alpha = 0
                 cell.buttonDraw.layer.borderColor = Colors.white.cgColor
                 cell.buttonDraw.backgroundColor = .clear
                 cell.buttonDraw.alpha = 0.5
-            } else if prediction.selected_team == "away" {
+            } else if prediction.winning_team == prediction.away_id {
                 cell.homeImage.alpha = 0.5
                 cell.homeImage.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
                 cell.homeShadow.alpha = 0
@@ -146,11 +145,10 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
                 cell.awayShadow.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                 cell.awayShadow.alpha = 1
                 cell.viewConfirm.alpha = 1
-                cell.labelVS.alpha = 0
                 cell.buttonDraw.layer.borderColor = Colors.white.cgColor
                 cell.buttonDraw.backgroundColor = .clear
                 cell.buttonDraw.alpha = 0.5
-            } else if prediction.selected_team == "draw" {
+            } else if prediction.winning_team == "0" {
                 cell.homeImage.alpha = 0.5
                 cell.homeImage.transform = CGAffineTransform.identity
                 cell.homeShadow.transform = CGAffineTransform.identity
@@ -160,25 +158,40 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
                 cell.awayShadow.transform = CGAffineTransform.identity
                 cell.awayShadow.alpha = 0
                 cell.viewConfirm.alpha = 1
-                cell.labelVS.alpha = 0
                 cell.buttonDraw.layer.borderColor = Colors.appBlue.cgColor
                 cell.buttonDraw.backgroundColor = Colors.appBlue
                 cell.buttonDraw.alpha = 1
             }
             
             cell.labelTitle.text = prediction.title
-            if let desc = prediction.desc, !desc.isEmpty {
-                cell.labelDescription.text = desc
-            } else {
-                if let dateString = prediction.date {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-                    if let date = dateFormatter.date(from: dateString) {
-                        cell.labelDescription.setCountDownDate(targetDate: date as NSDate)
-                        if !cell.labelDescription.isCounting {
-                            cell.labelDescription.start()
+            if let status = prediction.status {
+                switch status {
+                case "1":
+                    cell.viewConfirmWidthConstraint.constant = 70
+                    cell.topBarImageView.image = #imageLiteral(resourceName: "time_remaining_background")
+                    if let dateString = prediction.date {
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+                        if let date = dateFormatter.date(from: dateString) {
+                            cell.labelDescription.setCountDownDate(targetDate: date as NSDate)
+                            if !cell.labelDescription.isCounting {
+                                cell.labelDescription.start()
+                            }
                         }
                     }
+                case "2", "3":
+                    cell.viewWinningCoins.alpha = 1
+                    cell.viewConfirmWidthConstraint.constant = 0
+                    cell.topBarImageView.image = #imageLiteral(resourceName: "myprediction_top_green")
+                    cell.labelDescription.text = prediction.desc
+                    if let winning_coins = prediction.winning_coins {
+                        cell.labelWinningCoins.text = "+" + winning_coins
+                    }
+                case "4":
+                    cell.topBarImageView.image = #imageLiteral(resourceName: "myprediction_top_red")
+                    cell.labelDescription.text = prediction.desc
+                default:
+                    break;
                 }
             }
             

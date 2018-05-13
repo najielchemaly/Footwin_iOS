@@ -249,7 +249,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
             cell.labelHome.text = match.home_name
             cell.labelAway.text = match.away_name
             
-            if match.winning_team == "home" {
+            if match.prediction_winning_team == match.home_id {
                 cell.homeImage.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
                 cell.homeShadow.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                 cell.homeShadow.alpha = 1
@@ -257,7 +257,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 cell.awayShadow.alpha = 0
                 cell.viewConfirm.alpha = 1
                 cell.labelVS.alpha = 0
-            } else if match.winning_team == "away" {
+            } else if match.prediction_winning_team == match.away_id {
                 cell.homeImage.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
                 cell.homeShadow.alpha = 0
                 cell.awayImage.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
@@ -265,7 +265,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 cell.awayShadow.alpha = 1
                 cell.viewConfirm.alpha = 1
                 cell.labelVS.alpha = 0
-            } else if match.winning_team == "draw" {
+            } else if match.prediction_winning_team == "0" {
                 cell.homeImage.transform = CGAffineTransform.identity
                 cell.homeShadow.transform = CGAffineTransform.identity
                 cell.homeShadow.alpha = 0
@@ -279,9 +279,11 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 cell.buttonDraw.backgroundColor = Colors.appBlue
             } else {
                 cell.homeImage.transform = CGAffineTransform.identity
+                cell.homeImage.alpha = 1
                 cell.homeShadow.transform = CGAffineTransform.identity
                 cell.homeShadow.alpha = 0
                 cell.awayImage.transform = CGAffineTransform.identity
+                cell.awayImage.alpha = 1
                 cell.awayShadow.transform = CGAffineTransform.identity
                 cell.awayShadow.alpha = 0
                 cell.viewConfirm.alpha = 0
@@ -299,7 +301,21 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 cell.viewConfirm.alpha = 1
                 cell.labelVS.alpha = 0
                 cell.isUserInteractionEnabled = false
-            } else if match.winning_team == nil || (match.winning_team?.isEmpty)! {
+                
+                if match.prediction_winning_team == match.home_id {
+                    cell.homeImage.alpha = 1
+                    cell.awayImage.alpha = 0.5
+                    cell.buttonDraw.alpha = 0.5
+                } else if match.prediction_winning_team == match.away_id {
+                    cell.homeImage.alpha = 0.5
+                    cell.awayImage.alpha = 1
+                    cell.buttonDraw.alpha = 0.5
+                } else if match.prediction_winning_team == "0" {
+                    cell.homeImage.alpha = 0.5
+                    cell.awayImage.alpha = 0.5
+                    cell.buttonDraw.alpha = 1
+                }
+            } else if match.prediction_winning_team == nil || (match.prediction_winning_team?.isEmpty)! {
                 cell.imageCheck.image = #imageLiteral(resourceName: "checked_blue")
                 cell.labelVS.text = "VS"
                 cell.labelVS.font = Fonts.textFont_Bold_XLarge
@@ -309,7 +325,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 cell.viewConfirm.backgroundColor = Colors.white
                 cell.viewConfirm.alpha = 0
                 cell.isUserInteractionEnabled = true
-            } else if match.winning_team != "draw" {
+            } else if match.prediction_winning_team != "0" {
                 cell.imageCheck.image = #imageLiteral(resourceName: "checked_blue")
                 cell.labelConfirm.textColor = Colors.appBlue
                 cell.labelConfirm.text = "CONFIRM?"
@@ -354,8 +370,8 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 exactScoreView.textFieldHome.layer.cornerRadius = 10
                 exactScoreView.textFieldAway.layer.cornerRadius = 10
                 
-                exactScoreView.textFieldHome.text = match.home_score
-                exactScoreView.textFieldAway.text = match.away_score
+                exactScoreView.textFieldHome.text = match.prediction_home_score == "-1" ? "" : match.prediction_home_score
+                exactScoreView.textFieldAway.text = match.prediction_away_score == "-1" ? "" : match.prediction_away_score
                 
                 exactScoreView.buttonConfirm.tag = view.tag
                 
@@ -370,9 +386,10 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    func homeTeamSelected(row: Int) {
-        if Objects.matches[row].winning_team != "home" {
-            Objects.matches[row].winning_team = "home"
+    func homeTeamSelected(row: Int, resetScores: Bool = true) {
+        let match = Objects.matches[row]
+        if match.prediction_winning_team != match.home_id {
+            Objects.matches[row].prediction_winning_team = match.home_id
             if let cell = tableView.cellForRow(at: IndexPath.init(row: row, section: 0)) as? PredictionTableViewCell {
                 UIView.animate(withDuration: 0.3, animations: {
                     cell.homeImage.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
@@ -391,6 +408,11 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         } else {
             self.resetTeamPrediction(row: row)
         }
+        
+        if resetScores {
+            Objects.matches[row].prediction_home_score = "-1"
+            Objects.matches[row].prediction_away_score = "-1"
+        }
     }
     
     @objc func awayTapped(sender: UITapGestureRecognizer) {
@@ -399,9 +421,10 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    func awayTeamSelected(row: Int) {
-        if Objects.matches[row].winning_team != "away" {
-            Objects.matches[row].winning_team = "away"
+    func awayTeamSelected(row: Int, resetScores: Bool = true) {
+        let match = Objects.matches[row]
+        if match.prediction_winning_team != match.away_id {
+            Objects.matches[row].prediction_winning_team = match.away_id
             if let cell = tableView.cellForRow(at: IndexPath.init(row: row, section: 0)) as? PredictionTableViewCell {
                 UIView.animate(withDuration: 0.3, animations: {
                     cell.homeImage.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
@@ -420,15 +443,21 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         } else {
             self.resetTeamPrediction(row: row)
         }
+        
+        if resetScores {
+            Objects.matches[row].prediction_home_score = "-1"
+            Objects.matches[row].prediction_away_score = "-1"
+        }
     }
     
     @objc func drawTapped(sender: UIButton) {
         self.drawSelected(row: sender.tag)
     }
     
-    func drawSelected(row: Int) {
-        if Objects.matches[row].winning_team != "draw" {
-            Objects.matches[row].winning_team = "draw"
+    func drawSelected(row: Int, resetScores: Bool = true) {
+        let match = Objects.matches[row]
+        if match.prediction_winning_team != "0" {
+            Objects.matches[row].prediction_winning_team = "0"
             if let cell = tableView.cellForRow(at: IndexPath.init(row: row, section: 0)) as? PredictionTableViewCell {
                 UIView.animate(withDuration: 0.3, animations: {
                     cell.homeImage.transform = CGAffineTransform.identity
@@ -447,10 +476,15 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         } else {
             self.resetTeamPrediction(row: row)
         }
+        
+        if resetScores {
+            Objects.matches[row].prediction_home_score = "-1"
+            Objects.matches[row].prediction_away_score = "-1"
+        }
     }
     
     func resetTeamPrediction(row: Int) {
-        Objects.matches[view.tag].winning_team = nil
+        Objects.matches[row].prediction_winning_team = nil
         if let cell = tableView.cellForRow(at: IndexPath.init(row: row, section: 0)) as? PredictionTableViewCell {
             UIView.animate(withDuration: 0.3, animations: {
                 cell.homeImage.transform = CGAffineTransform.identity
@@ -473,10 +507,10 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
             if !UserDefaults.standard.bool(forKey: "didShowConfirmAlert") {
                 let match = Objects.matches[view.tag]
                 var message = "ARE YOU SURE YOU WANT TO CONFIRM THE PREDICTION? \nONCE CONFIRMED YOU CANNOT EDIT IT!!"
-                if match.winning_team == "draw" {
+                if match.prediction_winning_team == "0" {
                     message = "ARE YOU SURE YOU WANT TO CONFIRM YOUR DRAW PREDICTION? \nONCE CONFIRMED YOU CANNOT EDIT IT!!"
                 } else {
-                    let winningTeamId = match.winning_team == "home" ? match.home_id : match.away_id
+                    let winningTeamId = match.prediction_winning_team
                     let team = Objects.teams.filter { $0.id == winningTeamId }.first
                     if let winningTeamName = team?.name {
                         message = "ARE YOU SURE YOU WANT TO PREDICT " + winningTeamName + " AS THE WINNING TEAM? \nONCE CONFIRMED YOU CANNOT EDIT IT!!"
@@ -508,21 +542,14 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         prediction.user_id = currentUser.id
         prediction.match_id = match.id
         prediction.status = "1"
-        prediction.home_name = match.home_name
+        prediction.home_name = match.home_name?.uppercased()
         prediction.home_flag = match.home_flag
-        prediction.home_score = match.home_score
-        prediction.away_name = match.away_name
+        prediction.home_score = match.prediction_home_score
+        prediction.away_name = match.away_name?.uppercased()
         prediction.away_flag = match.away_flag
-        prediction.away_score = match.away_score
+        prediction.away_score = match.prediction_away_score
         prediction.date = match.date
-        prediction.selected_team = match.winning_team
-        if prediction.selected_team == "home" {
-            prediction.winning_team = match.home_id
-        } else if prediction.selected_team == "away" {
-            prediction.winning_team = match.away_id
-        } else if prediction.selected_team == "draw" {
-            prediction.winning_team = "0"
-        }
+        prediction.winning_team = match.prediction_winning_team
         Objects.predictions.append(prediction)
         
         DispatchQueue.global(qos: .background).async {
@@ -573,9 +600,9 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     
     @IBAction func buttonViewRulesTapped(_ sender: Any) {
         if let rulesView = self.showView(name: Views.RulesView) as? RulesView {
-            rulesView.labelPredict.text = Objects.activeRound.prediction_coins! + "\nCoins"
-            rulesView.labelWin.text = Objects.activeRound.winning_coins! + "\nCoins"
-            rulesView.labelExactScore.text = Objects.activeRound.exact_score_coins! + "\nCoins"
+            rulesView.labelPredict.text = Objects.activeRound.prediction_coins! + "\nCOINS"
+            rulesView.labelWin.text = Objects.activeRound.winning_coins! + "\nCOINS"
+            rulesView.labelExactScore.text = Objects.activeRound.exact_score_coins! + "\nCOINS"
         }
     }
     

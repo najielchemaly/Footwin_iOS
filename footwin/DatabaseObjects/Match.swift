@@ -26,6 +26,10 @@ public class Match: NSObject, NSCoding {
     public var winning_team: String?
     public var is_confirmed: Bool?
     public var timer: Timer!
+    public var prediction_selected_team: String!
+    public var prediction_winning_team: String!
+    public var prediction_home_score: String!
+    public var prediction_away_score: String!
     
     /**
      Returns an array of models based on given dictionary.
@@ -112,6 +116,13 @@ public class Match: NSObject, NSCoding {
         prediction_coins = dictionary["prediction_coins"] as? String
         winning_coins = dictionary["winning_coins"] as? String
         exact_score_coins = dictionary["exact_score_coins"] as? String
+        if let isConfirmed = dictionary["is_confirmed"] as? String {
+            is_confirmed = isConfirmed == "1" ? true : false
+        }
+        prediction_selected_team = dictionary["prediction_selected_team"] as? String
+        prediction_winning_team = dictionary["prediction_winning_team"] as? String
+        prediction_home_score = dictionary["prediction_home_score"] as? String
+        prediction_away_score = dictionary["prediction_away_score"] as? String
     }
     
     /**
@@ -137,6 +148,11 @@ public class Match: NSObject, NSCoding {
         dictionary.setValue(id, forKey:"prediction_coins")
         dictionary.setValue(winning_coins, forKey:"winning_coins")
         dictionary.setValue(exact_score_coins, forKey:"exact_score_coins")
+        dictionary.setValue(is_confirmed, forKey:"is_confirmed")
+        dictionary.setValue(prediction_selected_team, forKey:"prediction_selected_team")
+        dictionary.setValue(prediction_winning_team, forKey:"prediction_winning_team")
+        dictionary.setValue(prediction_home_score, forKey:"prediction_home_score")
+        dictionary.setValue(prediction_away_score, forKey:"prediction_away_score")
         
         return dictionary
     }
