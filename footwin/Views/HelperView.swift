@@ -10,9 +10,9 @@ import UIKit
 
 class HelperView: UIView {
 
-    @IBOutlet weak var buttonStartTutorial: UIButton!
-    
+    @IBOutlet weak var buttonStartTutorial: UIButton!    
     @IBOutlet weak var labelTitle: UILabel!
+    @IBOutlet weak var textViewDesc: UITextView!
     
     /*
     // Only override draw() if you perform custom drawing.

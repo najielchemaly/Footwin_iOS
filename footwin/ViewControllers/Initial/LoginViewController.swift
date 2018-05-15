@@ -22,6 +22,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var buttonSignup: UIButton!
     @IBOutlet weak var viewEmail: UIView!
     @IBOutlet weak var viewPassword: UIView!
+    @IBOutlet weak var buttonSignupBottomConstraint: NSLayoutConstraint!
     
     var loginButton: FBSDKLoginButton!
     var loginManager: FBSDKLoginManager!
@@ -110,6 +111,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     
     func initializeViews() {
         self.buttonForgotPassword.setAttributedText(firstText: "FORGOT YOUR PASSWORD?", secondText: " RECOVER IT", color: .white)
+        self.buttonForgotPassword.titleLabel?.adjustsFontSizeToFitWidth = true
         
         self.viewEmail.customizeBorder(color: Colors.white)
         self.viewPassword.customizeBorder(color: Colors.white)

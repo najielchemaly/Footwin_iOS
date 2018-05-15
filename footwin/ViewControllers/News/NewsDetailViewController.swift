@@ -34,7 +34,9 @@ class NewsDetailViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+    }
+    
+    override func viewWillLayoutSubviews() {
         self.updateScrollViewContentSize()
     }
     
@@ -64,7 +66,7 @@ class NewsDetailViewController: BaseViewController {
         if let descriptionHeight = NewsDetailViewController.selectedArticle.desc?.height(width: textViewDescription.frame.size.width, font: textViewDescription.font!) {
             textViewHeightConstraint.constant = descriptionHeight+20
             let scrollViewHeight = (scrollView.frame.size.height-textViewDescription.frame.size.height) + descriptionHeight
-            scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: scrollViewHeight+20)
+            scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: scrollViewHeight+70)
         }
     }
 

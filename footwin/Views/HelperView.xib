@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +31,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H5R-wb-8ri">
-                    <rect key="frame" x="8" y="274" width="359" height="140"/>
+                    <rect key="frame" x="8" y="266" width="359" height="156"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELCOME!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hte-fW-Cly">
                             <rect key="frame" x="16" y="16" width="148" height="40.5"/>
@@ -39,14 +39,21 @@
                             <color key="textColor" red="0.050523705779999997" green="0.18217900400000001" blue="0.82575476169999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="02Q-4s-Bu6">
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="02Q-4s-Bu6">
                             <rect key="frame" x="16" y="73" width="311" height="0.0"/>
                             <fontDescription key="fontDescription" name="SourceSansPro-Light" family="Source Sans Pro" pointSize="20"/>
                             <color key="textColor" red="0.050523705779999997" green="0.18217900400000001" blue="0.82575476169999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rR-na-2nv">
+                            <rect key="frame" x="16" y="73" width="311" height="16"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.050523705779999997" green="0.18217900400000001" blue="0.82575476169999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="SourceSansPro-Light" family="Source Sans Pro" pointSize="20"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFP-FK-oym">
-                            <rect key="frame" x="79" y="89" width="200" height="35"/>
+                            <rect key="frame" x="79" y="105" width="200" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="200" id="lHv-B9-YEc"/>
                                 <constraint firstAttribute="height" constant="35" id="qGC-Vl-exI"/>
@@ -59,13 +66,17 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="8rR-na-2nv" firstAttribute="top" secondItem="hte-fW-Cly" secondAttribute="bottom" constant="16" id="31P-t7-xSb"/>
                         <constraint firstItem="02Q-4s-Bu6" firstAttribute="top" secondItem="hte-fW-Cly" secondAttribute="bottom" constant="16" id="33R-wU-le8"/>
-                        <constraint firstItem="GFP-FK-oym" firstAttribute="top" secondItem="02Q-4s-Bu6" secondAttribute="bottom" constant="16" id="6Bh-FU-EDo"/>
+                        <constraint firstItem="8rR-na-2nv" firstAttribute="leading" secondItem="H5R-wb-8ri" secondAttribute="leading" constant="16" id="4ZL-dX-wFx"/>
+                        <constraint firstItem="GFP-FK-oym" firstAttribute="top" secondItem="02Q-4s-Bu6" secondAttribute="bottom" constant="32" id="6Bh-FU-EDo"/>
                         <constraint firstItem="hte-fW-Cly" firstAttribute="top" secondItem="H5R-wb-8ri" secondAttribute="top" constant="16" id="7EH-R7-AzC"/>
                         <constraint firstItem="hte-fW-Cly" firstAttribute="leading" secondItem="H5R-wb-8ri" secondAttribute="leading" constant="16" id="A6p-HK-TiZ"/>
                         <constraint firstItem="GFP-FK-oym" firstAttribute="centerX" secondItem="H5R-wb-8ri" secondAttribute="centerX" id="BAL-YY-CU8"/>
                         <constraint firstAttribute="trailing" secondItem="02Q-4s-Bu6" secondAttribute="trailing" constant="32" id="NhT-hW-Z94"/>
                         <constraint firstItem="02Q-4s-Bu6" firstAttribute="leading" secondItem="H5R-wb-8ri" secondAttribute="leading" constant="16" id="UKc-86-i0J"/>
+                        <constraint firstAttribute="trailing" secondItem="8rR-na-2nv" secondAttribute="trailing" constant="32" id="d5Y-20-DDt"/>
+                        <constraint firstItem="GFP-FK-oym" firstAttribute="top" secondItem="8rR-na-2nv" secondAttribute="bottom" constant="16" id="ql9-c1-11A"/>
                         <constraint firstAttribute="bottom" secondItem="GFP-FK-oym" secondAttribute="bottom" constant="16" id="ufy-34-4rt"/>
                     </constraints>
                 </view>
@@ -95,6 +106,7 @@
             <connections>
                 <outlet property="buttonStartTutorial" destination="GFP-FK-oym" id="j7d-L6-2KH"/>
                 <outlet property="labelTitle" destination="02Q-4s-Bu6" id="ui4-UR-65s"/>
+                <outlet property="textViewDesc" destination="8rR-na-2nv" id="9fe-fc-9DQ"/>
             </connections>
             <point key="canvasLocation" x="26.5" y="51.5"/>
         </view>

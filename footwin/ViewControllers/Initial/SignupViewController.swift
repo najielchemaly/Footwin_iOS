@@ -58,6 +58,12 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.scrollViewInfo.contentSize.height += 50
+    }
+    
     func initializeViews() {
         self.viewFullname.customizeBorder(color: Colors.white)
         self.viewUsername.customizeBorder(color: Colors.white)

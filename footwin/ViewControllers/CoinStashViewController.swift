@@ -9,7 +9,7 @@
 import UIKit
 import CircleProgressView
 
-class CoinStashViewController: BaseViewController {
+class CoinStashViewController: BaseViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var labelTotalCoins: UILabel!
     @IBOutlet weak var labelWinningCoins: UILabel!
@@ -17,6 +17,8 @@ class CoinStashViewController: BaseViewController {
     @IBOutlet weak var buttonGetCoins: UIButton!
     @IBOutlet weak var buttonClose: UIButton!
     @IBOutlet weak var progressView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
     
     var coinsProgressView: CircleProgressView!
     
@@ -36,6 +38,16 @@ class CoinStashViewController: BaseViewController {
         return .default
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x > 0 || scrollView.contentOffset.x < 0 {
+            scrollView.contentOffset.x = 0
+        }
+    }
+    
+//    override func viewWillLayoutSubviews() {
+//        imageViewHeightConstraint.constant = scrollView.contentSize.height
+//    }
+    
     func initializeViews() {
         labelTotalCoins.text = currentUser.coins
         labelWinningCoins.text = currentUser.winning_coins
@@ -49,6 +61,7 @@ class CoinStashViewController: BaseViewController {
         coinsProgressView.progress = 0
         progressView.addSubview(coinsProgressView)
         progressView.sendSubview(toBack: coinsProgressView)
+        scrollView.delegate = self
         
         if let strMinimumCoins = self.labelMinimumCoins.text, let strWinningCoins = self.labelWinningCoins.text {
             if let minimumCoins = Double(strMinimumCoins), let winningCoins = Int(strWinningCoins) {

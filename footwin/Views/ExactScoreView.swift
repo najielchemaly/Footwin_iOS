@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExactScoreView: UIView {
+class ExactScoreView: UIView, UIScrollViewDelegate {
 
     @IBOutlet weak var homeImage: UIImageView!
     @IBOutlet weak var labelHome: UILabel!
@@ -19,6 +19,7 @@ class ExactScoreView: UIView {
     @IBOutlet weak var buttonConfirm: UIButton!
     @IBOutlet weak var buttonCancel: UIButton!
     @IBOutlet weak var stackHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var stackViewOriginalY: CGFloat = 0
     
@@ -41,6 +42,14 @@ class ExactScoreView: UIView {
         self.addGestureRecognizer(tap)
                 
         self.buttonConfirm.addTarget(self, action: #selector(self.buttonConfirmTapped), for: .touchUpInside)
+        
+        self.scrollView.delegate = self
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x > 0 || scrollView.contentOffset.x < 0 {
+            scrollView.contentOffset.x = 0
+        }
     }
     
     @objc func buttonConfirmTapped(sender: UIButton) {

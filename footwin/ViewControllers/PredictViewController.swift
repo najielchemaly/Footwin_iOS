@@ -125,6 +125,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                             if let username = currentUser.username {
                                 if let text = tutorialText {
                                     helperView.labelTitle.text = "HELLO " + username + ", " + text
+                                    helperView.textViewDesc.text = "HELLO " + username + ", " + text
                                 }
                             }
                             
@@ -601,8 +602,16 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     @IBAction func buttonViewRulesTapped(_ sender: Any) {
         if let rulesView = self.showView(name: Views.RulesView) as? RulesView {
             rulesView.labelPredict.text = Objects.activeRound.prediction_coins! + "\nCOINS"
+            rulesView.labelPredict.adjustsFontSizeToFitWidth = true
+            rulesView.labelPredict.minimumScaleFactor = 0.2
+            
             rulesView.labelWin.text = Objects.activeRound.winning_coins! + "\nCOINS"
+            rulesView.labelWin.adjustsFontSizeToFitWidth = true
+            rulesView.labelWin.minimumScaleFactor = 0.2
+            
             rulesView.labelExactScore.text = Objects.activeRound.exact_score_coins! + "\nCOINS"
+            rulesView.labelExactScore.adjustsFontSizeToFitWidth = true
+            rulesView.labelExactScore.minimumScaleFactor = 0.2
         }
     }
     
