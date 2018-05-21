@@ -116,6 +116,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                                 Objects.activeRound = Round.init(dictionary: json)!
                             }
                         }
+                        if let active_reward = dict["active_reward"] {
+                            if let json = active_reward.dictionaryObject as NSDictionary? {
+                                Objects.activeReward = Reward.init(dictionary: json)!
+                            }
+                        }
                         if let is_app_active = dict["is_app_active"] {
                             isAppActive = is_app_active.boolValue
                             if isAppActive {
