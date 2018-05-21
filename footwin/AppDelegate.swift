@@ -12,6 +12,7 @@ import Firebase
 import UserNotifications
 import FBSDKCoreKit
 import SwiftyJSON
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
@@ -38,6 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         }
         
         self.setupConfiguration()
+        
+        GADMobileAds.configure(withApplicationID: ADMOB_APP_ID)
         
         //        Localization.doTheExchange()
         
@@ -273,6 +276,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
             DispatchQueue.main.async {
                 updateNotificationBadge()
                 
+                if let total_winning_coins = userInfo["total_winning_coins"] as? String {
+                    currentUser.winning_coins = total_winning_coins
+                }
+                
                 if let baseVC = currentVC as? BaseViewController {
                     baseVC.redirectToVC(storyboard: mainStoryboard, storyboardId: StoryboardIds.NotificationsViewController, type: .present)
                 }
@@ -280,8 +287,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         }
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
-                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         // If you are receiving a notification message while your app is in the background,
         // this callback will not be fired till the user taps on the notification launching the application.
         // TODO: Handle data of notification
@@ -295,8 +301,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
             DispatchQueue.main.async {
                 updateNotificationBadge()
                 
+                if let total_winning_coins = userInfo["total_winning_coins"] as? String {
+                    currentUser.winning_coins = total_winning_coins
+                }
+                
                 if let predictVC = currentVC as? PredictViewController {
                     predictVC.setNotificationBadgeNumber(label: predictVC.labelBadge)
+                    predictVC.labelWinningCoins.text = currentUser.winning_coins
                 } else if let notificationsVC = currentVC as? NotificationsViewController {
                     notificationsVC.handleRefresh()
                 }

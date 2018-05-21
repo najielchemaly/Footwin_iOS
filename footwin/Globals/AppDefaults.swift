@@ -9,6 +9,8 @@
 import UIKit
 
 let GMS_APIKEY = ""
+let ADMOB_APP_ID = "ca-app-pub-8532510371470349~7075899301"
+let ADMOB_VIDEO_ID = "ca-app-pub-8532510371470349/9735111411"
 let APPLE_LANGUAGE_KEY = "AppleLanguages"
 let DEVICE_LANGUAGE_KEY = "AppleLocale"
 

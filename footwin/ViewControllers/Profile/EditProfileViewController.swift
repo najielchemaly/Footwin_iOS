@@ -126,17 +126,19 @@ class EditProfileViewController: BaseViewController, UIPickerViewDelegate, UIPic
         if !errorMessage.isEmpty {
             return false
         }
-        errorMessage = textFieldPhone.validate(validationType: .MinLength, fieldType: .Phone)
-        if !errorMessage.isEmpty {
-            return false
-        }
-        errorMessage = textFieldPhone.validate(validationType: .MaxLength, fieldType: .Phone)
-        if !isReview && !errorMessage.isEmpty {
-            return false
-        }
-        errorMessage = buttonGender.validate(fieldType: .Phone)
-        if !isReview && !errorMessage.isEmpty {
-            return false
+        if !isReview {
+            errorMessage = textFieldPhone.validate(validationType: .MinLength, fieldType: .Phone)
+            if !errorMessage.isEmpty {
+                return false
+            }
+            errorMessage = textFieldPhone.validate(validationType: .MaxLength, fieldType: .Phone)
+            if !isReview && !errorMessage.isEmpty {
+                return false
+            }
+            errorMessage = buttonGender.validate(fieldType: .Phone)
+            if !isReview && !errorMessage.isEmpty {
+                return false
+            }
         }
         
         return true

@@ -59,7 +59,11 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
                 self.refreshControl.endRefreshing()
                 
                 if Objects.predictions.count == 0 {
-                    self.addEmptyView(message: "NOTHING TO SHOW YET!\nSTART WINNING PREDICTIONS, HIT THE FIRST PLACE IN THE LEADERBOARD AND WIN A SPECIAL TRIP TO YOUR FAVORITE TEAM'S COUNTRY!", frame: self.tableView.frame)
+                    if isReview {
+                        self.addEmptyView(message: "YOU DO NOT HAVE PREDICTIONS YET!", frame: self.tableView.frame)
+                    } else {
+                        self.addEmptyView(message: "NOTHING TO SHOW YET!\nSTART WINNING PREDICTIONS, HIT THE FIRST PLACE IN THE LEADERBOARD AND WIN A SPECIAL TRIP TO YOUR FAVORITE TEAM'S COUNTRY!", frame: self.tableView.frame)
+                    }
                 } else {
                     self.tableView.reloadData()
                     self.removeEmptyView()
@@ -161,6 +165,10 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
                 cell.buttonDraw.layer.borderColor = Colors.appBlue.cgColor
                 cell.buttonDraw.backgroundColor = Colors.appBlue
                 cell.buttonDraw.alpha = 1
+            }
+            
+            if prediction.home_score == "-1" && prediction.away_score == "-1" {
+                cell.labelVS.text = "VS"
             }
             
             cell.labelTitle.text = prediction.title

@@ -53,11 +53,12 @@ class NotificationsViewController: BaseViewController, UITableViewDelegate, UITa
                 
                 self.hideLoader()
                 self.refreshControl.endRefreshing()
+                self.updateNotificationBadge()
                 
                 if Objects.notifications.count == 0 {
                     self.addEmptyView(message: "YOU DO NOT HAVE NOTIFICATIONS YET!!", frame: self.tableView.frame)
                 } else {
-                    self.updateNotificationBadge()
+                    self.tableView.isHidden = false
                     self.tableView.reloadData()
                     self.removeEmptyView()
                 }
@@ -77,6 +78,7 @@ class NotificationsViewController: BaseViewController, UITableViewDelegate, UITa
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.isHidden = true
         
         if #available(iOS 10.0, *) {
             self.tableView.refreshControl = self.refreshControl
@@ -107,11 +109,11 @@ class NotificationsViewController: BaseViewController, UITableViewDelegate, UITa
         let notification = Objects.notifications[indexPath.row]
         var tableRowHeight: CGFloat = 0
         if notification.type?.lowercased() == "get_coins" {
-            tableRowHeight = 75
+            tableRowHeight = 80
         } else if notification.type?.lowercased() == "prediction_result" {
-            tableRowHeight = 125
+            tableRowHeight = 130
         } else {
-            tableRowHeight = 45
+            tableRowHeight = 60
         }
         
         if let estimatedHeight = notification.row_height {

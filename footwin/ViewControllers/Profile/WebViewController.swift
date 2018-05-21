@@ -27,6 +27,10 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
     func initializeViews() {
         if WebViewController.comingFrom.hashValue == WebViewComingFrom.Terms.hashValue {
             self.labelTitle.text = "TERMS & CONDITIONS"

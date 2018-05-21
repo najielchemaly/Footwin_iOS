@@ -8,8 +8,9 @@
 
 import UIKit
 import CircleProgressView
+import GoogleMobileAds
 
-class CoinStashViewController: BaseViewController, UIScrollViewDelegate {
+class CoinStashViewController: BaseViewController, UIScrollViewDelegate, GADRewardBasedVideoAdDelegate {
 
     @IBOutlet weak var labelTotalCoins: UILabel!
     @IBOutlet weak var labelWinningCoins: UILabel!
@@ -19,6 +20,7 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate {
     @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonWatchVideo: UIButton!
     
     var coinsProgressView: CircleProgressView!
     
@@ -27,6 +29,7 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate {
 
         // Do any additional setup after loading the view.
         self.initializeViews()
+        self.setupAddMob()
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,9 +47,52 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate {
         }
     }
     
-//    override func viewWillLayoutSubviews() {
-//        imageViewHeightConstraint.constant = scrollView.contentSize.height
-//    }
+    override func viewWillLayoutSubviews() {
+        imageViewHeightConstraint.constant = scrollView.contentSize.height > self.view.frame.size.height ? scrollView.contentSize.height : self.view.frame.size.height
+    }
+    
+    func setupAddMob() {
+        GADRewardBasedVideoAd.sharedInstance().delegate = self
+    }
+    
+    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
+                            didRewardUserWith reward: GADAdReward) {
+        print("Reward received with currency: \(reward.type), amount \(reward.amount).")
+    }
+    
+    func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd:GADRewardBasedVideoAd) {
+        print("Reward based video ad is received.")
+        
+        if GADRewardBasedVideoAd.sharedInstance().isReady == true {
+            GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
+        }
+    }
+    
+    func rewardBasedVideoAdDidOpen(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        print("Opened reward based video ad.")
+    }
+    
+    func rewardBasedVideoAdDidStartPlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        print("Reward based video ad started playing.")
+    }
+    
+    func rewardBasedVideoAdDidCompletePlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        print("Reward based video ad has completed.")
+    }
+    
+    func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        print("Reward based video ad is closed.")
+    }
+    
+    func rewardBasedVideoAdWillLeaveApplication(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        print("Reward based video ad will leave application.")
+    }
+    
+    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
+                            didFailToLoadWithError error: Error) {
+        print("Reward based video ad failed to load.")
+        buttonWatchVideo.isHidden = true
+    }
     
     func initializeViews() {
         labelTotalCoins.text = currentUser.coins
@@ -86,6 +132,10 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate {
     
     @IBAction func buttonCloseTapped(_ sender: Any) {
         self.dismissVC()
+    }
+    
+    @IBAction func buttonWatchVideoTapped(_ sender: Any) {
+        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(), withAdUnitID: "ca-app-pub-3940256099942544/1712485313")// Replace it by ADMOB_VIDEO_ID
     }
     
     /*

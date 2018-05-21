@@ -10,6 +10,7 @@ import UIKit
 import SwiftyJSON
 import FirebaseMessaging
 import CountdownLabel
+import GoogleMobileAds
 
 class PredictViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -30,7 +31,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         // Do any additional setup after loading the view.
         self.getMatches()
         self.initializeViews()
-        self.setupTableView()
+        self.setupTableView()        
     }
 
     override func didReceiveMemoryWarning() {
@@ -114,7 +115,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 self.refreshControl.endRefreshing()
                 
                 if Objects.matches.count == 0 {
-                    self.addEmptyView(message: "Something went wrong, try to refresh the page", frame: self.tableView.frame)
+                    self.addEmptyView(message: "SOMETHING WENT WRONG, TRY TO REFRESH THE PAGE", frame: self.tableView.frame)
                 } else {
                     self.tableView.reloadData()
                     self.removeEmptyView()
@@ -301,6 +302,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 cell.viewConfirm.backgroundColor = Colors.appGreen
                 cell.viewConfirm.alpha = 1
                 cell.labelVS.alpha = 0
+                cell.viewExactScore.alpha = 0.5
                 cell.isUserInteractionEnabled = false
                 
                 if match.prediction_winning_team == match.home_id {
@@ -530,7 +532,6 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         Objects.matches[sender.tag].is_confirmed = true
         if let cell = tableView.cellForRow(at: IndexPath.init(row: sender.tag, section: 0)) as? PredictionTableViewCell {
             self.sendPrediction(index: sender.tag, cell: cell)
-
             // TODO
 //            UserDefaults.standard.set(true, forKey: "didShowConfirmAlert")
 //            UserDefaults.standard.synchronize()
@@ -567,10 +568,8 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                         cell.labelVS.alpha = 0
                         cell.isUserInteractionEnabled = false
                     }, completion: { _ in })
-                    
 //                    Objects.matches.remove(at: index)
 //                    self.tableView.deleteRows(at: [IndexPath.init(row: index, section: 0)], with: .left)
-                    
                     _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { timer in
                         let contentOffset = self.tableView.contentOffset
                         self.tableView.reloadData()

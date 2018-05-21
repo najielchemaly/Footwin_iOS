@@ -62,11 +62,14 @@ class NewsDetailViewController: BaseViewController {
         }
     }
     
+    let padding: CGFloat = 20
     func updateScrollViewContentSize() {
         if let descriptionHeight = NewsDetailViewController.selectedArticle.desc?.height(width: textViewDescription.frame.size.width, font: textViewDescription.font!) {
-            textViewHeightConstraint.constant = descriptionHeight+20
-            let scrollViewHeight = (scrollView.frame.size.height-textViewDescription.frame.size.height) + descriptionHeight
-            scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: scrollViewHeight+70)
+            let height = (descriptionHeight+padding)
+            let diffHeight = height - textViewHeightConstraint.constant
+            textViewHeightConstraint.constant = height > textViewHeightConstraint.constant ? height+(padding*2) : textViewHeightConstraint.constant
+            let scrollViewHeight = diffHeight > 0 ? (scrollView.frame.size.height + diffHeight) : scrollView.frame.size.height
+            scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: scrollViewHeight)
         }
     }
 

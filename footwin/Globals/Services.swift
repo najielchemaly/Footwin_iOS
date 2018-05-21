@@ -79,7 +79,8 @@ class Services {
         }
     }
     
-    static let ConfigUrl = "http://config.foot-win.com/"
+    static let ConfigUrl = "http://test.config.foot-win.com/"
+//    static let ConfigUrl = "http://config.foot-win.com/"
     //    private let ConfigUrl = "http://localhost/footwin/services/getConfig/"
     
     private static var _BaseUrl: String = ""
@@ -257,7 +258,7 @@ class Services {
         if let favoriteTeam = currentUser.favorite_team {
             serviceName.append(favoriteTeam.lowercased())
         }
-        return makeHttpRequest(method: .get, serviceName: serviceName, isNews: true)
+        return makeHttpRequest(method: .get, serviceName: serviceName, isNews: isReview ? false : true)
     }
     
     func getNotifications() -> ResponseData? {
