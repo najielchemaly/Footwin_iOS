@@ -20,6 +20,7 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
 
         // Do any additional setup after loading the view.
         self.initializeViews()
+        self.setupWebview()
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,12 +44,14 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
         self.webView.delegate = self
         
         if WebViewController.comingFrom.hashValue == WebViewComingFrom.Terms.hashValue {
-            if let termsUrl = URL.init(string: termsUrlString) {
-                self.webView.loadRequest(URLRequest.init(url: termsUrl))
+            if let termsUrl = URL.init(string: termsUrlString.replacingOccurrences(of: "api.", with: "")) {
+                let request = URLRequest.init(url: termsUrl, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
+                self.webView.loadRequest(request)
             }
         } else if WebViewController.comingFrom.hashValue == WebViewComingFrom.Privacy.hashValue {
-            if let privacyUrl = URL.init(string: privacyUrlString) {
-                self.webView.loadRequest(URLRequest.init(url: privacyUrl))
+            if let privacyUrl = URL.init(string: privacyUrlString.replacingOccurrences(of: "api.", with: "")) {
+                let request = URLRequest.init(url: privacyUrl, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
+                self.webView.loadRequest(request)
             }
         }
     }

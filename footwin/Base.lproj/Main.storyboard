@@ -487,7 +487,7 @@ WE CAN HELP YOU WITH THAT</string>
                                             <action selector="buttonGetCoinsTapped:" destination="0gr-Jh-WHU" eventType="touchUpInside" id="i8r-lY-abT"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxY-Us-ZLi">
+                                    <button hidden="YES" opaque="NO" alpha="0.0" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxY-Us-ZLi">
                                         <rect key="frame" x="112" y="608.5" width="150" height="40"/>
                                         <color key="backgroundColor" red="0.027827478950000002" green="0.1012889072" blue="0.48309135440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -1183,8 +1183,8 @@ WE CAN HELP YOU WITH THAT</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWs-W3-Oe3">
-                                <rect key="frame" x="16" y="125.5" width="343" height="483.5"/>
+                            <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWs-W3-Oe3">
+                                <rect key="frame" x="16" y="107.5" width="343" height="501.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </webView>
@@ -1203,7 +1203,7 @@ WE CAN HELP YOU WITH THAT</string>
                             <constraint firstItem="Auj-VA-KPZ" firstAttribute="top" secondItem="MiN-sH-AhK" secondAttribute="bottom" constant="16" id="YTg-WD-A5c"/>
                             <constraint firstItem="Thu-KE-wwW" firstAttribute="top" secondItem="dbp-wa-CG2" secondAttribute="top" id="b1M-PV-3Ir"/>
                             <constraint firstItem="Thu-KE-wwW" firstAttribute="leading" secondItem="yfL-xD-Tn2" secondAttribute="leading" id="bld-Rf-4CL"/>
-                            <constraint firstItem="gWs-W3-Oe3" firstAttribute="top" secondItem="Auj-VA-KPZ" secondAttribute="bottom" constant="8" id="hpl-6U-gvg"/>
+                            <constraint firstItem="gWs-W3-Oe3" firstAttribute="top" secondItem="Auj-VA-KPZ" secondAttribute="bottom" constant="-10" id="hpl-6U-gvg"/>
                             <constraint firstItem="yfL-xD-Tn2" firstAttribute="trailing" secondItem="gWs-W3-Oe3" secondAttribute="trailing" constant="16" id="n85-fq-ISO"/>
                             <constraint firstItem="Ekk-lm-wEF" firstAttribute="bottom" secondItem="yfL-xD-Tn2" secondAttribute="bottom" id="na1-Yl-4b3"/>
                             <constraint firstItem="Auj-VA-KPZ" firstAttribute="leading" secondItem="yfL-xD-Tn2" secondAttribute="leading" constant="20" id="qjq-vz-v89"/>

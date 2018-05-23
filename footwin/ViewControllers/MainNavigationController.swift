@@ -14,6 +14,9 @@ class MainNavigationController: UINavigationController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if let tabbar = self.viewControllers.first as? UITabBarController, isReview {
+            tabbar.viewControllers?.remove(at: 1)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +24,10 @@ class MainNavigationController: UINavigationController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     /*
     // MARK: - Navigation
 
