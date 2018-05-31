@@ -33,8 +33,8 @@ var appDelegate: AppDelegate {
     }
 }
 
-var termsUrlString = Services.getBaseUrl() + "/terms"
-var privacyUrlString = Services.getBaseUrl() + "/privacy"
+var termsUrlString = "http://foot-win.com/terms/"
+var privacyUrlString = "http://foot-win.com/privacy/"
 
 enum Storyboards : String {
     case Main

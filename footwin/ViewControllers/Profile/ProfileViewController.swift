@@ -84,6 +84,11 @@ class ProfileViewController: BaseViewController, ImagePickerDelegate {
         self.redirectToVC(storyboardId: StoryboardIds.MyPredictionsViewController, type: .present)
     }
     
+    @IBAction func buttonPrivacyTapped(_ sender: Any) {
+        WebViewController.comingFrom = WebViewComingFrom.Privacy
+        self.redirectToVC(storyboardId: StoryboardIds.WebViewController, type: .present)
+    }
+    
     @IBAction func buttonEditProfileTapped(_ sender: Any) {
         self.redirectToVC(storyboardId: StoryboardIds.EditProfileViewController, type: .present)
     }

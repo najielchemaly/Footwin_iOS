@@ -39,6 +39,8 @@ struct ServiceName {
     static let updateFirebaseToken = "/updateFirebaseToken/"
     static let updateMatchResult = "/updateMatchResult/"
     static let updateNotification = "/updateNotification/"
+    static let getReward = "/getReward/"
+    static let purchaseCoins = "/purchaseCoins/"
 }
 
 enum ResponseStatus: Int {
@@ -417,6 +419,34 @@ class Services {
         
         let serviceName = ServiceName.updateActiveMatches
         return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers, isAdmin: true)
+    }
+    
+    func getReward(id: String, amount: String) -> ResponseData? {
+        let parameters = [
+            "reward_id": id,
+            "reward_amount": amount
+        ]
+        
+        let headers: HTTPHeaders = [
+            "User-Id": USER_ID
+        ]
+        
+        let serviceName = ServiceName.getReward
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
+    }
+    
+    func purchaseCoins(id: String, amount: String) -> ResponseData? {
+        let parameters = [
+            "package_id": id,
+            "package_amount": amount
+        ]
+        
+        let headers: HTTPHeaders = [
+            "User-Id": USER_ID
+        ]
+        
+        let serviceName = ServiceName.purchaseCoins
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
     }
     
     func updateAvatar(userId: String, image : UIImage, completion:@escaping(_:ResponseData)->Void) {

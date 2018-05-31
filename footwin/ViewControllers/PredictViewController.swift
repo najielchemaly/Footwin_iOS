@@ -12,7 +12,7 @@ import FirebaseMessaging
 import CountdownLabel
 import GoogleMobileAds
 
-class PredictViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class PredictViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, GADInterstitialDelegate {
 
     @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var labelBadge: UILabel!
@@ -24,6 +24,8 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var imageCoins: UIImageView!
     
     var refreshControl = UIRefreshControl()
+    
+    var interstitial: GADInterstitial!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +45,8 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         super.viewWillAppear(animated)
         
         setNotificationBadgeNumber(label: labelBadge)
+        labelCoins.text = currentUser.coins
+        labelWinningCoins.text = currentUser.winning_coins
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -66,6 +70,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
             UIView.animate(withDuration: 0.1, animations: {
                 helperView.alpha = 0
             }, completion: { success in
+                helperView.removeFromSuperview()
                 if let tutorialView = self.showView(name: Views.TutorialView) as? TutorialView {                    
                     tutorialView.imageProfile.layer.cornerRadius = tutorialView.imageProfile.frame.size.width/2
                     tutorialView.imageProfile.image = self.imageProfile.image
@@ -120,7 +125,6 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                     self.tableView.reloadData()
                     self.removeEmptyView()
                     
-                    // TODO
                     if !UserDefaults.standard.bool(forKey: "didShowHelper") {
                         if let helperView = self.showView(name: Views.HelperView) as? HelperView {
                             if let username = currentUser.username {
@@ -164,8 +168,6 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         
         self.labelBadge.layer.cornerRadius = self.labelBadge.frame.size.width/2
         self.labelBadge.clipsToBounds = true
-        
-        self.setNotificationBadgeNumber(label: self.labelBadge)
         
         Objects.predictions = [Prediction]()
     }
@@ -578,6 +580,8 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                     
                     self.updateUserCoins()
                     self.labelCoins.text = currentUser.coins
+                    
+                    self.displayInterstitialAd()
                 } else {
                     Objects.matches[index].is_confirmed = true
                     if let cell = self.tableView.cellForRow(at: IndexPath.init(row: index, section: 0)) as? PredictionTableViewCell {
@@ -612,6 +616,58 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
             rulesView.labelExactScore.adjustsFontSizeToFitWidth = true
             rulesView.labelExactScore.minimumScaleFactor = 0.2
         }
+    }
+    
+    func displayInterstitialAd() {
+        if let predictionCount = UserDefaults.standard.value(forKey: "predictionCount") as? Int {
+            if predictionCount % 3 == 0 {
+                interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+                interstitial.delegate = self
+                interstitial.load(GADRequest())
+            }
+            
+            let count = predictionCount + 1
+            UserDefaults.standard.set(count, forKey: "predictionCount")
+        } else {
+            UserDefaults.standard.set(1, forKey: "predictionCount")
+        }
+        
+        UserDefaults.standard.synchronize()
+    }
+    
+    /// Tells the delegate an ad request succeeded.
+    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+        print("interstitialDidReceiveAd")
+        
+        if interstitial.isReady {
+            interstitial.present(fromRootViewController: self)
+        }
+    }
+    
+    /// Tells the delegate an ad request failed.
+    func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
+        print("interstitial:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+    
+    /// Tells the delegate that an interstitial will be presented.
+    func interstitialWillPresentScreen(_ ad: GADInterstitial) {
+        print("interstitialWillPresentScreen")
+    }
+    
+    /// Tells the delegate the interstitial is to be animated off the screen.
+    func interstitialWillDismissScreen(_ ad: GADInterstitial) {
+        print("interstitialWillDismissScreen")
+    }
+    
+    /// Tells the delegate the interstitial had been animated off the screen.
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        print("interstitialDidDismissScreen")
+    }
+    
+    /// Tells the delegate that a user click will open another app
+    /// (such as the App Store), backgrounding the current app.
+    func interstitialWillLeaveApplication(_ ad: GADInterstitial) {
+        print("interstitialWillLeaveApplication")
     }
     
     /*

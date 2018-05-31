@@ -23,6 +23,14 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
         self.setupWebview()
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if let helperView = appDelegate.window?.subviews.last as? HelperView {
+            helperView.alpha = 1
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -44,12 +52,12 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
         self.webView.delegate = self
         
         if WebViewController.comingFrom.hashValue == WebViewComingFrom.Terms.hashValue {
-            if let termsUrl = URL.init(string: termsUrlString.replacingOccurrences(of: "api.", with: "")) {
+            if let termsUrl = URL.init(string: termsUrlString) {
                 let request = URLRequest.init(url: termsUrl, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
                 self.webView.loadRequest(request)
             }
         } else if WebViewController.comingFrom.hashValue == WebViewComingFrom.Privacy.hashValue {
-            if let privacyUrl = URL.init(string: privacyUrlString.replacingOccurrences(of: "api.", with: "")) {
+            if let privacyUrl = URL.init(string: privacyUrlString) {
                 let request = URLRequest.init(url: privacyUrl, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
                 self.webView.loadRequest(request)
             }
@@ -62,6 +70,12 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         self.hideLoader()
+    }
+    
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        self.hideLoader()
+        
+        self.showAlertView(message: "An error has occured, please try again later!")
     }
     
     @IBAction func buttonCloseTapped(_ sender: Any) {

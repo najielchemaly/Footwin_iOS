@@ -228,6 +228,15 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         self.redirectToVC(storyboard: adminStoryboard, storyboardId: StoryboardIds.AdminNavigationController, type: .present)
     }
     
+    @IBAction func buttonPrivacyTapped(_ sender: Any) {
+        WebViewController.comingFrom = .Privacy
+        self.redirectToVC(storyboardId: StoryboardIds.WebViewController, type: .present)
+    }
+    
+    @IBAction func buttonTermsTapped(_ sender: Any) {
+        WebViewController.comingFrom = .Terms
+        self.redirectToVC(storyboardId: StoryboardIds.WebViewController, type: .present)
+    }
     /*
      // MARK: - Navigation
      

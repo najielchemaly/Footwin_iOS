@@ -51,12 +51,42 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, GADRewa
         imageViewHeightConstraint.constant = scrollView.contentSize.height > self.view.frame.size.height ? scrollView.contentSize.height : self.view.frame.size.height
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        scrollView.contentSize.height += 50
+    }
+    
     func setupAddMob() {
         GADRewardBasedVideoAd.sharedInstance().delegate = self
     }
     
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
                             didRewardUserWith reward: GADAdReward) {
+        self.showLoader()
+        DispatchQueue.global(qos: .background).async {
+            let response = appDelegate.services.getReward(id: Objects.activeReward.id!, amount: Objects.activeReward.amount!)
+            
+            DispatchQueue.main.async {
+                if response?.status == ResponseStatus.SUCCESS.rawValue {
+                    if let message = response?.message {
+                        self.showAlertView(message: message)
+                    }
+                    
+                    if let json = response?.json?.first {
+                        if let coins = json["coins"] as? String {
+                            currentUser.coins = coins
+                            
+                            self.labelTotalCoins.text = coins
+                            
+                            self.saveUserInUserDefaults()
+                        }
+                    }
+                }
+                
+                self.hideLoader()
+            }
+        }
         print("Reward received with currency: \(reward.type), amount \(reward.amount).")
     }
     
