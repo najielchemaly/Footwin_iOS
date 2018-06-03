@@ -426,6 +426,11 @@ class OptionViewController: BaseViewController, UITableViewDelegate, UITableView
     
     @objc func confirmTapped(sender: UITapGestureRecognizer) {
         if let view = sender.view {
+            let match = self.matches[view.tag]
+            if match.home_score == nil || match.away_score == nil {
+                self.showAlertView(message: "YOU MUST ENTER THE EXACT SCORES!")
+                return
+            }
             if let cell = tableView.cellForRow(at: IndexPath.init(row: view.tag, section: 0)) as? MatchTableViewCell {
                 UIView.animate(withDuration: 0.3, animations: {
                     cell.imageCheck.image = #imageLiteral(resourceName: "checked_white")
@@ -436,7 +441,6 @@ class OptionViewController: BaseViewController, UITableViewDelegate, UITableView
                     cell.labelVS.alpha = 0
                     cell.isUserInteractionEnabled = false
                 }, completion: { _ in
-                    let match = self.matches[view.tag]
                     self.showLoader()
                     
                     DispatchQueue.global(qos: .background).async {

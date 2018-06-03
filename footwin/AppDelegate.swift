@@ -138,7 +138,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                         }
                         if let is_app_active = dict["is_app_active"] {
                             isAppActive = is_app_active.boolValue
-                            if isAppActive {
+//                            if isAppActive {
                                 DispatchQueue.main.async {
                                     if UserDefaults.standard.bool(forKey: "didLaunchFirstTime") {
                                         if let data = UserDefaults.standard.data(forKey: "user"),
@@ -164,7 +164,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                                                                             baseVC.saveUserInUserDefaults()
                                                                         }
                                                                         
-                                                                        self.goToMainNavigation()
+                                                                        if isAppActive {
+                                                                            self.goToMainNavigation()
+                                                                        } else {
+                                                                            self.goToYoutubeNavigation()
+                                                                        }
                                                                     }
                                                                 }
                                                             }
@@ -183,11 +187,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
 //                                        self.goToYoutubeNavigation()
                                     }
                                 }
-                            } else {
-                                DispatchQueue.main.async {
-                                    self.goToYoutubeNavigation()
-                                }
-                            }
+//                            }
+//                            else {
+//                                DispatchQueue.main.async {
+//                                    self.goToYoutubeNavigation()
+//                                }
+//                            }
                         }
                     }
                 }

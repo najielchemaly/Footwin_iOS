@@ -55,8 +55,8 @@ class ExactScoreView: UIView, UIScrollViewDelegate {
     @objc func buttonConfirmTapped(sender: UIButton) {
         if !textFieldHome.isEmpty() && !textFieldAway.isEmpty() {
             if let optionViewController = currentVC as? OptionViewController {
-                optionViewController.matches[sender.tag].prediction_home_score = textFieldHome.text
-                optionViewController.matches[sender.tag].prediction_away_score = textFieldAway.text
+                optionViewController.matches[sender.tag].home_score = textFieldHome.text
+                optionViewController.matches[sender.tag].away_score = textFieldAway.text
             } else {
                 Objects.matches[sender.tag].prediction_home_score = textFieldHome.text
                 Objects.matches[sender.tag].prediction_away_score = textFieldAway.text

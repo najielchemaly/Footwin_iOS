@@ -383,7 +383,6 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
                                             if let userId = currentUser.id {
                                                 DispatchQueue.global(qos: .background).async {
                                                     appDelegate.services.updateAvatar(userId: userId, image: self.tempUser.image!, completion: { data in
-                                                        
                                                         DispatchQueue.main.async {
                                                             if let json = data.json?.first {
                                                                 if let status = json["status"] as? Int, status == ResponseStatus.SUCCESS.rawValue {
@@ -393,7 +392,11 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
                                                                     
                                                                     self.saveUserInUserDefaults()
                                                                     
-                                                                    self.redirectToVC(storyboardId: StoryboardIds.MainNavigationController, type: .present)
+                                                                    if isAppActive {
+                                                                        self.redirectToVC(storyboardId: StoryboardIds.MainNavigationController, type: .present)
+                                                                    } else {
+                                                                        self.goToYoutubeNavigation()
+                                                                    }
                                                                 } else {
                                                                     self.showAlertView(message: ResponseMessage.SERVER_UNREACHABLE.rawValue)
                                                                 }
@@ -422,6 +425,10 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
                 break
             }
         }
+    }
+    
+    func goToYoutubeNavigation() {
+        self.redirectToVC(storyboardId: StoryboardIds.YoutubePlayerViewController, type: .present)
     }
     
     @IBAction func buttonBackTapped(_ sender: Any) {

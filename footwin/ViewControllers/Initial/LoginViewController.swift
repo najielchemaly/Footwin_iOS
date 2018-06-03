@@ -126,7 +126,6 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         self.showLoader()
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "email, name, gender, location, picture, birthday"])
         graphRequest.start(completionHandler: { (connection, result, error) -> Void in
-            
             if (error == nil)
             {
                 if let dict = result as? NSDictionary {
@@ -221,7 +220,13 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @objc func navigateToHome() {
-        self.redirectToVC(storyboardId: StoryboardIds.MainNavigationController, type: .present)
+        if isAppActive {
+            self.redirectToVC(storyboardId: StoryboardIds.MainNavigationController, type: .present)
+        } else {
+            DispatchQueue.main.async {
+                self.goToYoutubeNavigation()
+            }
+        }
     }
     
     @objc func navigateToAdmin() {
@@ -237,6 +242,11 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         WebViewController.comingFrom = .Terms
         self.redirectToVC(storyboardId: StoryboardIds.WebViewController, type: .present)
     }
+    
+    func goToYoutubeNavigation() {
+        self.redirectToVC(storyboardId: StoryboardIds.YoutubePlayerViewController, type: .present)
+    }
+    
     /*
      // MARK: - Navigation
      

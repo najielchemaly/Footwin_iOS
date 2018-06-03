@@ -81,8 +81,8 @@ class Services {
         }
     }
     
-//    static let ConfigUrl = "http://test.config.foot-win.com/"
-    static let ConfigUrl = "http://config.foot-win.com/"
+    static let ConfigUrl = "http://test.config.foot-win.com/"
+//    static let ConfigUrl = "http://config.foot-win.com/"
     //    private let ConfigUrl = "http://localhost/footwin/services/getConfig/"
     
     private static var _BaseUrl: String = ""
@@ -227,7 +227,7 @@ class Services {
     func getGlobalData() -> ResponseData? {
         
         let headers: HTTPHeaders = [
-            "User-Id": USER_ID
+            "Admin-Id": USER_ID
         ]
         
         let serviceName = ServiceName.getGlobalData
@@ -381,7 +381,7 @@ class Services {
         ]
         
         let headers: HTTPHeaders = [
-            "User-Id": USER_ID
+            "Admin-Id": USER_ID
         ]
         
         let serviceName = ServiceName.sendNotification
@@ -414,7 +414,7 @@ class Services {
         ]
         
         let headers: HTTPHeaders = [
-            "User-Id": USER_ID
+            "Admin-Id": USER_ID
         ]
         
         let serviceName = ServiceName.updateActiveMatches
@@ -516,7 +516,7 @@ class Services {
         ]
         
         let headers: HTTPHeaders = [
-            "User-Id": USER_ID
+            "Admin-Id": USER_ID
         ]
         
         let serviceName = ServiceName.updateMatchResult
