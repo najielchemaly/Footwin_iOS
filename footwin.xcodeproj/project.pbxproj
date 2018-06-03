@@ -199,6 +199,7 @@
 		42C6F54420B3443700681A64 /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
 		42C86DEA208C79810096A3E6 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		42C86DED208CB4DD0096A3E6 /* CoinProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinProducts.swift; sourceTree = "<group>"; };
+		42E323A020C07DC700976865 /* footwin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "footwin-Bridging-Header.h"; sourceTree = "<group>"; };
 		42F8DE582080B50D006B3323 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		42F8DE5A2080B7DF006B3323 /* RulesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RulesView.xib; sourceTree = "<group>"; };
 		42F8DE5C2080B7F0006B3323 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
@@ -262,6 +263,7 @@
 				420AE3E92069823400A24AD5 /* Info.plist */,
 				420E117920861FB000E4642D /* GoogleService-Info.plist */,
 				420AE3E12069823400A24AD5 /* footwin.xcdatamodeld */,
+				42E323A020C07DC700976865 /* footwin-Bridging-Header.h */,
 			);
 			path = footwin;
 			sourceTree = "<group>";
@@ -855,6 +857,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.we-devapp.footwin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "footwin/footwin-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -877,6 +880,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.we-devapp.footwin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "footwin/footwin-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

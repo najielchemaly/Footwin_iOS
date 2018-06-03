@@ -1872,7 +1872,7 @@ WE CAN HELP YOU WITH THAT</string>
                                             <constraint firstAttribute="height" constant="50" id="Q3B-OP-0d2"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="17"/>
-                                        <state key="normal" title="SUBSCRIBE TO OUR NEWS AND GET NOTIFIED WHEN WER ARE LIVE!">
+                                        <state key="normal" title="SUBSCRIBE TO OUR NEWS AND GET NOTIFIED WHEN WE ARE LIVE!">
                                             <color key="titleColor" red="0.054170526560000001" green="0.1853607297" blue="0.84208017589999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>

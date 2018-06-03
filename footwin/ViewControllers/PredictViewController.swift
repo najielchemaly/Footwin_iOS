@@ -329,6 +329,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 cell.labelConfirm.text = "CONFIRM?"
                 cell.viewConfirm.backgroundColor = Colors.white
                 cell.viewConfirm.alpha = 0
+                cell.viewExactScore.alpha = 1
                 cell.isUserInteractionEnabled = true
             } else if match.prediction_winning_team != "0" {
                 cell.imageCheck.image = #imageLiteral(resourceName: "checked_blue")
@@ -336,6 +337,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 cell.labelConfirm.text = "CONFIRM?"
                 cell.viewConfirm.backgroundColor = Colors.white
                 cell.viewConfirm.alpha = 1
+                cell.viewExactScore.alpha = 1
                 cell.buttonDraw.layer.borderColor = Colors.white.cgColor
                 cell.buttonDraw.backgroundColor = .clear
                 cell.isUserInteractionEnabled = true
@@ -620,7 +622,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     
     func displayInterstitialAd() {
         if let predictionCount = UserDefaults.standard.value(forKey: "predictionCount") as? Int {
-            if predictionCount % 3 == 0 {
+            if predictionCount % 5 == 0 {
                 interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
                 interstitial.delegate = self
                 interstitial.load(GADRequest())

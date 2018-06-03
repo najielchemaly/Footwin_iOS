@@ -28,16 +28,12 @@ class YoutubePlayerViewController: BaseViewController, YTPlayerViewDelegate {
         self.youtubePlayer.alpha = 0
         self.viewCountdown.alpha = 1
         
-        var worldCupDateString = "2018-06-16"
+        let worldCupDateString = "2018-06-11 12:00"
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         if let date = dateFormatter.date(from: worldCupDateString) {
-            dateFormatter.dateFormat = "EEEE, MMM dd, yyyy"
-            worldCupDateString = dateFormatter.string(from: date)
-            if let finalDate = dateFormatter.date(from: worldCupDateString) {
-                labelCountdown.setCountDownDate(targetDate: finalDate as NSDate)
-                labelCountdown.start()
-            }
+            labelCountdown.setCountDownDate(targetDate: date as NSDate)
+            labelCountdown.start()
         }
         
 //        self.setupYoutubePlayer()

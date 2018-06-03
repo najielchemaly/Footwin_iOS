@@ -10,12 +10,15 @@ import Foundation
 
 public struct CoinProducts {
 
-    public static let starterPack = "com.footwin.starterpack"
-    public static let hatTrickPack = "com.footwin.hattrickpack"
-    public static let halfTimePack = "com.footwin.halftimepack"
-    public static let superHatTrickPack = "com.footwin.superhattrickpack"
-    public static let footwinSpecialPack = "com.footwin.footinwspecialpack"
-    public static let jokerPack = "com.footwin.jokerpack"
+//    private static let bundleItendifier = "com.we-devapp.footwin"
+    private static let bundleItendifier = ""
+    
+    public static let starterPack = CoinProducts.bundleItendifier + "com.footwin.starterpack"
+    public static let hatTrickPack = CoinProducts.bundleItendifier + "com.footwin.hattrickpack"
+    public static let halfTimePack = CoinProducts.bundleItendifier + "com.footwin.halftimepack"
+    public static let superHatTrickPack = CoinProducts.bundleItendifier + "com.footwin.superhattrickpack"
+    public static let footwinSpecialPack = CoinProducts.bundleItendifier + "com.footwin.footinwspecialpack"
+    public static let jokerPack = CoinProducts.bundleItendifier + "com.footwin.jokerpack"
     
     fileprivate static let productIdentifiers: Set<ProductIdentifier> = [
         CoinProducts.starterPack,

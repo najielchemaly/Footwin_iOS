@@ -42,6 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         
         GADMobileAds.configure(withApplicationID: ADMOB_APP_ID)
         
+        self.setupGoogleAnalytics()
+        
         //        Localization.doTheExchange()
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -70,6 +72,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         }
         
         return true
+    }
+    
+    func setupGoogleAnalytics() {
+        guard let gai = GAI.sharedInstance() else {
+            assert(false, "Google Analytics not configured correctly")
+        }
+        gai.tracker(withTrackingId: GOOGLE_TRACKING_ID)
+        // Optional: automatically report uncaught exceptions.
+        gai.trackUncaughtExceptions = true
+        
+        // Optional: set Logger to VERBOSE for debug information.
+        // Remove before app release.
+        gai.logger.logLevel = .verbose
     }
     
     func setupConfiguration() {
