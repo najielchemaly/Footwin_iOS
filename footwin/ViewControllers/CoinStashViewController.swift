@@ -99,6 +99,7 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, GADRewa
     }
     
     func rewardBasedVideoAdDidOpen(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        self.hideLoader()
         print("Opened reward based video ad.")
     }
     
@@ -120,8 +121,8 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, GADRewa
     
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
                             didFailToLoadWithError error: Error) {
+        self.hideLoader()
         print("Reward based video ad failed to load.")
-        buttonWatchVideo.isHidden = true
     }
     
     func initializeViews() {
@@ -165,6 +166,7 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, GADRewa
     }
     
     @IBAction func buttonWatchVideoTapped(_ sender: Any) {
+        self.showLoader()
         GADRewardBasedVideoAd.sharedInstance().load(GADRequest(), withAdUnitID: "ca-app-pub-3940256099942544/1712485313")// Replace it by ADMOB_VIDEO_ID
     }
     

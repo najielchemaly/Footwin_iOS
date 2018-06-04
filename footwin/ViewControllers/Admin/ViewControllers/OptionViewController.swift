@@ -30,6 +30,7 @@ class OptionViewController: BaseViewController, UITableViewDelegate, UITableView
     var selectedType: String!
     var selectedMatch: String!
     var selectedUserId: String!
+    var selectedUsername: String!
     
     let textViewPlaceholder = "ENTER MESSAGE"
     let matchPlaceholder = "SELECT MATCH"
@@ -113,7 +114,7 @@ class OptionViewController: BaseViewController, UITableViewDelegate, UITableView
         } else if pickerView.tag == 2 {
             return notificationTypes.count
         } else if pickerView.tag == 3 {
-            return 0 // matches
+            return Objects.matches.count
         }
         
         return 0
@@ -129,6 +130,10 @@ class OptionViewController: BaseViewController, UITableViewDelegate, UITableView
         } else if pickerView.tag == 2 {
             return notificationTypes[row].title
         } else if pickerView.tag == 3 {
+            let match = Objects.matches[row]
+            if let homeName = match.home_name, let awayName = match.away_name {
+                return homeName + " VS " + awayName
+            }
             return ""
         }
         
@@ -155,7 +160,12 @@ class OptionViewController: BaseViewController, UITableViewDelegate, UITableView
                 self.view.layoutIfNeeded()
             })
         } else if pickerView.tag == 3 {
+            let match = Objects.matches[row]
+            if let homeName = match.home_name, let awayName = match.away_name {
+                self.buttonMatch.setTitle(homeName + " VS " + awayName, for: .normal)
+            }
             
+            self.selectedMatch = match.id
         }
         
         self.hidePicker()
@@ -210,6 +220,7 @@ class OptionViewController: BaseViewController, UITableViewDelegate, UITableView
             self.initializeViews()
             
             selectedUserId = users[indexPath.row].id
+            selectedUsername = users[indexPath.row].username
             UIView.animate(withDuration: 0.3, animations: {
                 self.tableView.alpha = 0
             }, completion: { success in
@@ -521,7 +532,7 @@ class OptionViewController: BaseViewController, UITableViewDelegate, UITableView
             let message = textViewMessage.text
             
             DispatchQueue.global(qos: .background).async {
-                let response = appDelegate.services.sendNotification(user_id: self.selectedUserId ?? "", title: title!, message: message!, type: self.selectedType ?? "", match_id: self.selectedMatch ?? "")
+                let response = appDelegate.services.sendNotification(user_id: self.selectedUserId ?? "", username: self.selectedUsername ?? "", title: title!, message: message!, type: self.selectedType ?? "", match_id: self.selectedMatch ?? "")
                 
                 DispatchQueue.main.async {
                     if response?.status == ResponseStatus.SUCCESS.rawValue {
@@ -569,7 +580,7 @@ class OptionViewController: BaseViewController, UITableViewDelegate, UITableView
             errorMessage = "YOU MUST SELECT A SPECIFIC MATCH TO PROCEED"
             return false
         }
-        if textFieldTitle.isEmpty() {
+        if textFieldTitle.isEmpty() && selectedType != "1" {
             errorMessage = "TITLE FIELD CANNOT BE EMPTY"
             return false
         }

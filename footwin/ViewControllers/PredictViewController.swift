@@ -24,8 +24,8 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var imageCoins: UIImageView!
     
     var refreshControl = UIRefreshControl()
-    
     var interstitial: GADInterstitial!
+    var currentDate: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         // Do any additional setup after loading the view.
         self.getMatches()
         self.initializeViews()
-        self.setupTableView()        
+        self.setupTableView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -100,14 +100,15 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
             DispatchQueue.main.async {
                 if response?.status == ResponseStatus.SUCCESS.rawValue {
                     if let json = response?.json?.first {
-                        if Objects.predictions.count == 0 {
-                            if let jsonArray = json["matches"] as? [NSDictionary] {
-                                Objects.matches = [Match]()
-                                for json in jsonArray {
-                                    let match = Match.init(dictionary: json)
-                                    Objects.matches.append(match!)
-                                }
+                        if let jsonArray = json["matches"] as? [NSDictionary] {
+                            Objects.matches = [Match]()
+                            for json in jsonArray {
+                                let match = Match.init(dictionary: json)
+                                Objects.matches.append(match!)
                             }
+                        }
+                        if let currentDate = json["current_date"] as? String {
+                            self.currentDate = currentDate
                         }
                     }
                 } else {
@@ -122,6 +123,8 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 if Objects.matches.count == 0 {
                     self.addEmptyView(message: "SOMETHING WENT WRONG, TRY TO REFRESH THE PAGE", frame: self.tableView.frame)
                 } else {
+                    self.labelRound.text = Objects.activeRound.title
+                    
                     self.tableView.reloadData()
                     self.removeEmptyView()
                     
@@ -153,8 +156,6 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         
         self.labelCoins.text = currentUser.coins
         self.labelWinningCoins.text = currentUser.winning_coins
-        
-        self.labelRound.text = Objects.activeRound.title
         
         if let avatar = currentUser.avatar, !avatar.isEmpty {
             self.imageProfile.kf.setImage(with: URL(string: Services.getMediaUrl() + avatar))
@@ -197,7 +198,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     }
     
     @objc func handleRefresh(fromNotification: Bool = false) {
-        if Objects.matches.count == 0 {
+        if Objects.matches.count == 0 || fromNotification {
             self.showLoader()
         }
         
@@ -344,11 +345,11 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
             }
 
             cell.labelTimeTitle.text = "TIME REMAINING"
-            if let dateString = match.date {
+            if let dateString = match.date, let currentDateString = currentDate {
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-                if let date = dateFormatter.date(from: dateString) {
-                    cell.labelTime.setCountDownDate(targetDate: date as NSDate)
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                if let date = dateFormatter.date(from: dateString+":00"), let currentDate = dateFormatter.date(from: currentDateString) {
+                    cell.labelTime.setCountDownDate(fromDate: currentDate as NSDate, targetDate: date as NSDate)
                     if !cell.labelTime.isCounting {
                         cell.labelTime.start()
                     }
@@ -585,19 +586,24 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                     
                     self.displayInterstitialAd()
                 } else {
-                    Objects.matches[index].is_confirmed = true
-                    if let cell = self.tableView.cellForRow(at: IndexPath.init(row: index, section: 0)) as? PredictionTableViewCell {
-                        cell.imageCheck.image = #imageLiteral(resourceName: "checked_blue")
-                        cell.labelConfirm.textColor = Colors.appBlue
-                        cell.labelConfirm.text = "CONFIRM?"
-                        cell.viewConfirm.backgroundColor = Colors.white
-                        cell.viewConfirm.alpha = 1
-                        cell.labelVS.alpha = 0
-                        cell.isUserInteractionEnabled = true
-                    }
+//                    Objects.matches[index].is_confirmed = true
+//                    if let cell = self.tableView.cellForRow(at: IndexPath.init(row: index, section: 0)) as? PredictionTableViewCell {
+//                        cell.imageCheck.image = #imageLiteral(resourceName: "checked_blue")
+//                        cell.labelConfirm.textColor = Colors.appBlue
+//                        cell.labelConfirm.text = "CONFIRM?"
+//                        cell.viewConfirm.backgroundColor = Colors.white
+//                        cell.viewConfirm.alpha = 1
+//                        cell.labelVS.alpha = 0
+//                        cell.isUserInteractionEnabled = true
+//                    }
                     
                     if let message = response?.message {
                         self.showAlertView(message: message)
+                    }
+                    
+                    if let error_code = response?.json?.first?["error_code"] as? Int, error_code == 404 {
+                        Objects.matches.remove(at: index)
+                        self.tableView.deleteRows(at: [IndexPath.init(row: index, section: 0)], with: .left)
                     }
                 }
             }

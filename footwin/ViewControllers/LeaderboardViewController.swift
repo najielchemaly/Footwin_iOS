@@ -99,6 +99,12 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
                     self.labelFullname.text = Objects.leaderboard[0].fullname?.uppercased()
                     if let avatar = Objects.leaderboard[0].avatar, !avatar.isEmpty {
                         self.imageProfile.kf.setImage(with: URL(string: Services.getMediaUrl() + avatar))
+                    } else {
+                        if let gender = Objects.leaderboard[0].gender, gender.lowercased() == "male" {
+                            self.imageProfile.image = #imageLiteral(resourceName: "avatar_male")
+                        } else if let gender = Objects.leaderboard[0].gender, gender.lowercased() == "female" {
+                            self.imageProfile.image = #imageLiteral(resourceName: "avatar_female")
+                        }
                     }
                     
                     Objects.leaderboard.remove(at: 0)
@@ -153,7 +159,14 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
             let leaderboard = Objects.leaderboard[indexPath.row]
             if let avatar = leaderboard.avatar, !avatar.isEmpty {
                 cell.imageProfile.kf.setImage(with: URL(string: Services.getMediaUrl() + avatar))
+            } else {
+                if let gender = leaderboard.gender, gender.lowercased() == "female" {
+                    cell.imageProfile.image = #imageLiteral(resourceName: "avatar_female")
+                } else {
+                    cell.imageProfile.image = #imageLiteral(resourceName: "avatar_male")
+                }
             }
+            
             cell.imageProfile.layer.cornerRadius = cell.imageProfile.frame.size.width/2
             cell.imageProfile.layer.borderColor = Colors.lightGray.cgColor
             cell.imageProfile.layer.borderWidth = 1

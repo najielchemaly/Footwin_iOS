@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     private var _services: Services!
     var services: Services {
         get {
-            if _services == nil {
+//            if _services == nil {
                 _services = Services.init()
-            }
+//            }
             
             return _services
         }
@@ -92,6 +92,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
             if let jsonData = data as Data? {
                 if let json = String(data: jsonData, encoding: .utf8) {
                     if let dict = JSON.init(parseJSON: json).dictionary {
+                        if let version_ios = dict["version_ios"], let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                            if let recVersion = Double(version_ios.stringValue), let currentVersion = Double(version) {
+                                if recVersion > currentVersion {
+                                    DispatchQueue.main.async {
+                                        if let rootVC = self.window?.rootViewController {
+                                            let alert = UIAlertController(title: "OOPS", message: "YOUR CURRENT VERSION IS OUT OF DATE.\nPLEASE UPDATE THE APP.", preferredStyle: .alert)
+                                            alert.addAction(UIAlertAction(title: "UPDATE", style: .default, handler: { action in
+                                                self.openFootinInAppStore()
+                                            }))
+                                            rootVC.present(alert, animated: true, completion: nil)
+                                        }
+                                    }
+                                    
+                                    return
+                                }
+                            }
+                        }
                         if let base_url = dict["base_url"] {
                             Services.setBaseUrl(url: base_url.stringValue)
                         }
@@ -210,6 +227,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         }
     }
     
+    func openFootinInAppStore() {
+        if let url = URL(string: "itms-apps://itunes.apple.com/app/id1373217518"),
+            UIApplication.shared.canOpenURL(url)
+        {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    
     func goToLoginNavigation() {
         if let window = self.window, let loginNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.LoginNavigationController) as? LoginNavigationController {
             window.rootViewController = loginNavigationController
@@ -231,7 +260,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     @objc func getConfig(completion:@escaping (NSData?) -> ()) {
         var request = URLRequest(url: URL(string: Services.ConfigUrl)!)
         request.httpMethod = "POST"
-        request.timeoutInterval = 5
+        request.timeoutInterval = 30
+        request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
         let session = URLSession.shared
         
         session.dataTask(with: request) { data, response, error in
@@ -299,6 +329,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
             print("Message ID: \(messageID)")
             
             DispatchQueue.main.async {
+                if let type = userInfo["type"] as? String, type == "update_active_matches" {
+                    if let predictVC = currentVC as? PredictViewController {
+                        predictVC.handleRefresh(fromNotification: true)
+                    } else {
+                        let response = self.services.getMatches()
+                        if response?.status == ResponseStatus.SUCCESS.rawValue {
+                            if let json = response?.json?.first {
+                                if let jsonArray = json["matches"] as? [NSDictionary] {
+                                    Objects.matches = [Match]()
+                                    for json in jsonArray {
+                                        let match = Match.init(dictionary: json)
+                                        Objects.matches.append(match!)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    let response = self.services.getActiveRound()
+                    if response?.status == ResponseStatus.SUCCESS.rawValue {
+                        if let json = response?.json?.first {
+                            if let active_round = json["active_round"] as? NSDictionary {
+                                Objects.activeRound = Round.init(dictionary: active_round)!
+                            }
+                            if let active_reward = json["active_reward"] as? NSDictionary {
+                                Objects.activeReward = Reward.init(dictionary: active_reward)!
+                            }
+                        }
+                    }
+                    
+                    return
+                }
+                
                 updateNotificationBadge()
                 
                 if let total_winning_coins = userInfo["total_winning_coins"] as? String {
@@ -324,6 +387,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
             print("Message ID: \(messageID)")
             
             DispatchQueue.main.async {
+                if let type = userInfo["type"] as? String, type == "update_active_matches" {
+                    if let predictVC = currentVC as? PredictViewController {
+                        predictVC.handleRefresh(fromNotification: true)
+                    } else {
+                        _ = self.services.getMatches()
+                    }
+                    
+                    return
+                }
+                
                 updateNotificationBadge()
                 
                 if let total_winning_coins = userInfo["total_winning_coins"] as? String {

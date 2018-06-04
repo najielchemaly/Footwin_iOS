@@ -41,6 +41,7 @@ struct ServiceName {
     static let updateNotification = "/updateNotification/"
     static let getReward = "/getReward/"
     static let purchaseCoins = "/purchaseCoins/"
+    static let getActiveRound = "/getActiveRound/"
 }
 
 enum ResponseStatus: Int {
@@ -254,6 +255,16 @@ class Services {
         return makeHttpRequest(method: .post, serviceName: serviceName, headers: headers)
     }
     
+    func getActiveRound() -> ResponseData? {
+        
+        let headers: HTTPHeaders = [
+            "User-Id": USER_ID
+        ]
+        
+        let serviceName = ServiceName.getActiveRound
+        return makeHttpRequest(method: .post, serviceName: serviceName, headers: headers)
+    }
+    
     func getNews() -> ResponseData? {
         
         var serviceName = ""
@@ -371,9 +382,10 @@ class Services {
         return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters)
     }
     
-    func sendNotification(user_id: String, title: String, message: String, type: String, match_id: String) -> ResponseData? {
+    func sendNotification(user_id: String, username: String, title: String, message: String, type: String, match_id: String) -> ResponseData? {
         let parameters = [
             "user_id": user_id,
+            "username": username,
             "title": title,
             "message": message,
             "type": type,
@@ -632,8 +644,8 @@ class Services {
     let manager: SessionManager = {
         
         let configuration = URLSessionConfiguration.default
-        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
-        configuration.timeoutIntervalForRequest = 5
+        configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        configuration.timeoutIntervalForRequest = 30
         return SessionManager(configuration: configuration)
         
     }()

@@ -30,6 +30,7 @@ public class Match: NSObject, NSCoding {
     public var prediction_winning_team: String!
     public var prediction_home_score: String!
     public var prediction_away_score: String!
+    public var current_date: String!
     
     /**
      Returns an array of models based on given dictionary.
@@ -80,6 +81,7 @@ public class Match: NSObject, NSCoding {
         winning_coins = decoder.decodeObject(forKey:"winning_coins") as? String
         exact_score_coins = decoder.decodeObject(forKey:"exact_score_coins") as? String
         is_confirmed = decoder.decodeObject(forKey:"is_confirmed") as? Bool
+        current_date = decoder.decodeObject(forKey:"current_date") as? String
     }
     
     public func encode(with coder: NSCoder) {
@@ -98,6 +100,7 @@ public class Match: NSObject, NSCoding {
         coder.encode(winning_coins, forKey:"winning_coins")
         coder.encode(exact_score_coins, forKey:"exact_score_coins")
         coder.encode(is_confirmed, forKey:"is_confirmed")
+        coder.encode(current_date, forKey:"current_date")
     }
     
     required public init?(dictionary: NSDictionary) {
@@ -123,6 +126,7 @@ public class Match: NSObject, NSCoding {
         prediction_winning_team = dictionary["prediction_winning_team"] as? String
         prediction_home_score = dictionary["prediction_home_score"] as? String
         prediction_away_score = dictionary["prediction_away_score"] as? String
+        current_date = dictionary["current_date"] as? String
     }
     
     /**
@@ -153,6 +157,7 @@ public class Match: NSObject, NSCoding {
         dictionary.setValue(prediction_winning_team, forKey:"prediction_winning_team")
         dictionary.setValue(prediction_home_score, forKey:"prediction_home_score")
         dictionary.setValue(prediction_away_score, forKey:"prediction_away_score")
+        dictionary.setValue(current_date, forKey:"current_date")
         
         return dictionary
     }

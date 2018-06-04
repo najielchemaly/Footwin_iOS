@@ -183,7 +183,9 @@ public class CountdownLabel: LTMorphingLabel {
         
         // if end of timer
         if endOfTimer {
-            text = dateFormatter.string(from: date1970.addingTimeInterval(0) as Date)
+            text = "LIVE NOW!"
+//            textColor = UIColor.init(red: 89, green: 203, blue: 33, alpha: 255)
+//            text = dateFormatter.string(from: date1970.addingTimeInterval(0) as Date)
             countdownDelegate?.countdownFinished?()
             dispose()
             completion?()

@@ -73,6 +73,7 @@ class AdminViewController: BaseViewController, UITableViewDelegate, UITableViewD
                                 let match = Match.init(dictionary: matchJson)
                                 self.matches.append(match!)
                             }
+                            Objects.matches = self.matches
                         }
                         if let roundsArray = json["rounds"] as? [NSDictionary] {
                             self.rounds = [Round]()

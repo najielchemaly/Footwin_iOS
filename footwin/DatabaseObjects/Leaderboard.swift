@@ -15,6 +15,7 @@ public class Leaderboard: NSObject, NSCoding {
     public var rank : String?
     public var avatar: String?
     public var coins: String?
+    public var gender: String?
     
     /**
      Returns an array of models based on given dictionary.
@@ -56,6 +57,7 @@ public class Leaderboard: NSObject, NSCoding {
         rank = decoder.decodeObject(forKey:"rank") as? String
         avatar = decoder.decodeObject(forKey:"avatar") as? String
         coins = decoder.decodeObject(forKey:"coins") as? String
+        gender = decoder.decodeObject(forKey:"gender") as? String
     }
     
     public func encode(with coder: NSCoder) {
@@ -65,6 +67,7 @@ public class Leaderboard: NSObject, NSCoding {
         coder.encode(rank, forKey: "rank")
         coder.encode(avatar, forKey: "avatar")
         coder.encode(coins, forKey: "coins")
+        coder.encode(gender, forKey: "gender")
     }
     
     required public init?(dictionary: NSDictionary) {
@@ -75,6 +78,7 @@ public class Leaderboard: NSObject, NSCoding {
         rank = dictionary["rank"] as? String
         avatar = dictionary["avatar"] as? String
         coins = dictionary["coins"] as? String
+        gender = dictionary["gender"] as? String
     }
     
     /**
@@ -92,6 +96,7 @@ public class Leaderboard: NSObject, NSCoding {
         dictionary.setValue(rank, forKey: "rank")
         dictionary.setValue(avatar, forKey: "avatar")
         dictionary.setValue(coins, forKey: "coins")
+        dictionary.setValue(gender, forKey: "gender")
         
         return dictionary
     }
