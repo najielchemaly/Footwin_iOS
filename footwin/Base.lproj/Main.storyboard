@@ -432,7 +432,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qon-Gi-YT2">
                                         <rect key="frame" x="108" y="67" width="160" height="160"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="winning_coin" translatesAutoresizingMaskIntoConstraints="NO" id="4jk-Dw-uvH">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="winning_coin" translatesAutoresizingMaskIntoConstraints="NO" id="4jk-Dw-uvH">
                                                 <rect key="frame" x="55" y="16" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="VB7-bA-uCV"/>
@@ -470,39 +470,39 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COLLECT" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAi-xX-glV">
-                                        <rect key="frame" x="159" y="247" width="57" height="19"/>
-                                        <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
+                                        <rect key="frame" x="157" y="247" width="61" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="16"/>
                                         <color key="textColor" red="0.13664941920000001" green="0.2343467129" blue="0.4025434141" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDg-Yc-qfj">
-                                        <rect key="frame" x="176.5" y="274" width="0.0" height="0.0"/>
-                                        <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="26"/>
+                                        <rect key="frame" x="176.5" y="275.5" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="28"/>
                                         <color key="textColor" red="0.054170526560000001" green="0.1853607297" blue="0.84208017589999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="winning_coin" translatesAutoresizingMaskIntoConstraints="NO" id="vQi-yR-Ao1">
-                                        <rect key="frame" x="184.5" y="263.5" width="22" height="22"/>
+                                        <rect key="frame" x="184.5" y="265" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="Nro-XR-oEW"/>
                                             <constraint firstAttribute="height" constant="22" id="zjL-Vi-opQ"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TO HIT THE 1ST PLACE IN THE LEADERBOARD" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJY-9Z-x8d">
-                                        <rect key="frame" x="32" y="282" width="312" height="19"/>
-                                        <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
+                                        <rect key="frame" x="32" y="283.5" width="312" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="16"/>
                                         <color key="textColor" red="0.13664941920000001" green="0.2343467129" blue="0.4025434141" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="multiple_coins" translatesAutoresizingMaskIntoConstraints="NO" id="P8c-ah-8qu">
-                                        <rect key="frame" x="80" y="331" width="215" height="100"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="multiple_coins" translatesAutoresizingMaskIntoConstraints="NO" id="P8c-ah-8qu">
+                                        <rect key="frame" x="52.5" y="334" width="250" height="116.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="215" id="JhS-jl-Q3h"/>
+                                            <constraint firstAttribute="width" constant="250" id="JhS-jl-Q3h"/>
                                             <constraint firstAttribute="width" secondItem="P8c-ah-8qu" secondAttribute="height" multiplier="43:20" id="oF7-OE-45w"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSi-dn-Dps">
-                                        <rect key="frame" x="43.5" y="439" width="288.5" height="55.5"/>
+                                        <rect key="frame" x="44" y="458.5" width="288" height="55.5"/>
                                         <string key="text">ALMOST OUT OF COINS?
 WE CAN HELP YOU WITH THAT</string>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="22"/>
@@ -510,7 +510,7 @@ WE CAN HELP YOU WITH THAT</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdC-jn-hoi">
-                                        <rect key="frame" x="112" y="510.5" width="150" height="40"/>
+                                        <rect key="frame" x="112.5" y="530" width="150" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="55X-rn-lqH"/>
@@ -525,7 +525,7 @@ WE CAN HELP YOU WITH THAT</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxY-Us-ZLi">
-                                        <rect key="frame" x="112" y="558.5" width="150" height="40"/>
+                                        <rect key="frame" x="112.5" y="578" width="150" height="40"/>
                                         <color key="backgroundColor" red="0.027827478950000002" green="0.1012889072" blue="0.48309135440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="AaJ-7f-7ET"/>
@@ -546,7 +546,7 @@ WE CAN HELP YOU WITH THAT</string>
                                     <constraint firstItem="qon-Gi-YT2" firstAttribute="centerX" secondItem="qY7-dR-dIb" secondAttribute="centerX" id="EzV-fw-O3V"/>
                                     <constraint firstItem="gSi-dn-Dps" firstAttribute="top" secondItem="P8c-ah-8qu" secondAttribute="bottom" constant="8" id="Iiv-Kn-EhP"/>
                                     <constraint firstItem="fdC-jn-hoi" firstAttribute="centerX" secondItem="gSi-dn-Dps" secondAttribute="centerX" id="JM7-fD-LuT"/>
-                                    <constraint firstItem="P8c-ah-8qu" firstAttribute="centerX" secondItem="fJY-9Z-x8d" secondAttribute="centerX" id="Mb4-AF-DhD"/>
+                                    <constraint firstItem="P8c-ah-8qu" firstAttribute="centerX" secondItem="fJY-9Z-x8d" secondAttribute="centerX" constant="-10.5" id="Mb4-AF-DhD"/>
                                     <constraint firstAttribute="bottom" secondItem="bxY-Us-ZLi" secondAttribute="bottom" constant="-39.5" id="MsH-LB-DMm"/>
                                     <constraint firstAttribute="trailing" secondItem="fJY-9Z-x8d" secondAttribute="trailing" constant="32" id="W1F-jK-2lY"/>
                                     <constraint firstItem="qon-Gi-YT2" firstAttribute="top" secondItem="bdt-nl-8Sf" secondAttribute="bottom" constant="8" id="Wxc-Cd-yDg"/>
@@ -558,7 +558,7 @@ WE CAN HELP YOU WITH THAT</string>
                                     <constraint firstItem="bVc-Ei-pho" firstAttribute="top" secondItem="qY7-dR-dIb" secondAttribute="top" constant="32" id="c4I-0H-wxX"/>
                                     <constraint firstItem="dAi-xX-glV" firstAttribute="centerX" secondItem="qon-Gi-YT2" secondAttribute="centerX" id="cq4-IK-2cs"/>
                                     <constraint firstItem="bxY-Us-ZLi" firstAttribute="centerX" secondItem="qY7-dR-dIb" secondAttribute="centerX" id="ekR-ZB-w4e"/>
-                                    <constraint firstItem="gSi-dn-Dps" firstAttribute="centerX" secondItem="P8c-ah-8qu" secondAttribute="centerX" id="f9A-A2-3hC"/>
+                                    <constraint firstItem="gSi-dn-Dps" firstAttribute="centerX" secondItem="P8c-ah-8qu" secondAttribute="centerX" constant="10.5" id="f9A-A2-3hC"/>
                                     <constraint firstItem="bVc-Ei-pho" firstAttribute="leading" secondItem="bdt-nl-8Sf" secondAttribute="trailing" constant="8" id="gd5-RC-htU"/>
                                     <constraint firstItem="bxY-Us-ZLi" firstAttribute="top" secondItem="fdC-jn-hoi" secondAttribute="bottom" constant="8" id="gvL-f1-vIm"/>
                                     <constraint firstItem="KDg-Yc-qfj" firstAttribute="top" secondItem="dAi-xX-glV" secondAttribute="bottom" constant="8" id="jDb-Dv-hF3"/>
@@ -613,8 +613,11 @@ WE CAN HELP YOU WITH THAT</string>
                     <connections>
                         <outlet property="buttonClose" destination="gRU-le-NEk" id="Ppj-2Y-VYD"/>
                         <outlet property="buttonGetCoins" destination="fdC-jn-hoi" id="Rsc-3l-t0c"/>
+                        <outlet property="buttonGetCoinsHeightConstraint" destination="55X-rn-lqH" id="Ka3-BZ-ZVz"/>
                         <outlet property="buttonWatchVideo" destination="bxY-Us-ZLi" id="EUc-5Y-Y1O"/>
+                        <outlet property="imageIconSmall" destination="vQi-yR-Ao1" id="2A9-Rm-ckN"/>
                         <outlet property="imageViewHeightConstraint" destination="6Y1-1W-Lb9" id="trb-9p-QkU"/>
+                        <outlet property="labelCollect" destination="dAi-xX-glV" id="M3N-Gi-Ko6"/>
                         <outlet property="labelMinimumCoins" destination="KDg-Yc-qfj" id="2Pf-lR-Qp1"/>
                         <outlet property="labelTotalCoins" destination="cKx-6u-J8W" id="5D6-bq-daR"/>
                         <outlet property="labelWinningCoins" destination="chA-5u-Doz" id="KaL-mb-nPq"/>

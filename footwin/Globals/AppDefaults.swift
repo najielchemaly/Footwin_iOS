@@ -18,6 +18,7 @@ let DEVICE_LANGUAGE_KEY = "AppleLocale"
 var currentVC: UIViewController!
 var isUserLoggedIn: Bool = false
 var isReview: Bool = false
+var isIAPReady: Bool = false
 var currentUser: User = User()
 var notificationBadge: Int = 0
 var firebaseToken: String!

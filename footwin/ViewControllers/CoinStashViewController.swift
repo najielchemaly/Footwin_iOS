@@ -21,6 +21,9 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, GADRewa
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var buttonWatchVideo: UIButton!
+    @IBOutlet weak var buttonGetCoinsHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var labelCollect: UILabel!
+    @IBOutlet weak var imageIconSmall: UIImageView!
     
     var coinsProgressView: CircleProgressView!
     
@@ -128,7 +131,13 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, GADRewa
     func initializeViews() {
         labelTotalCoins.text = currentUser.coins
         labelWinningCoins.text = currentUser.winning_coins
-        labelMinimumCoins.text = Objects.activeRound.minimum_amount
+        labelMinimumCoins.text = Objects.winningUser.winning_coins//Objects.activeRound.minimum_amount
+        
+        if labelMinimumCoins.text == nil || (labelMinimumCoins.text?.isEmpty)! || labelMinimumCoins.text == "0" {
+            labelCollect.text = "KEEP WINNING COINS"
+            labelMinimumCoins.isHidden = true
+            imageIconSmall.isHidden = true
+        }
         
         coinsProgressView = CircleProgressView(frame: progressView.bounds)
         coinsProgressView.trackBackgroundColor = Colors.appBlue.withAlphaComponent(0.25)
@@ -144,6 +153,11 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, GADRewa
             if let minimumCoins = Double(strMinimumCoins), let winningCoins = Int(strWinningCoins) {
                 self.updateWinningCoins(progress: minimumCoins, winning: winningCoins)
             }
+        }
+        
+        if !isIAPReady {
+            buttonGetCoinsHeightConstraint.constant = 0
+            buttonGetCoins.isHidden = true
         }
     }
     

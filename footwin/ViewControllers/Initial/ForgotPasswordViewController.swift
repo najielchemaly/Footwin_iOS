@@ -39,14 +39,14 @@ class ForgotPasswordViewController: BaseViewController, UITextFieldDelegate {
                 DispatchQueue.main.async {
                     var alertTitle: String? = nil
                     if response?.status == ResponseStatus.SUCCESS.rawValue {
-                        alertTitle = "WOW!"
-                        
-                        self.alertView.buttonDone.addTarget(self, action: #selector(self.dismissVC), for: .touchUpInside)
+                        alertTitle = "FOOTWIN"
                     }
                     
                     if let message = response?.message {
                         self.showAlertView(title: alertTitle, message: message)
                     }
+                    
+                    self.alertView.buttonDone.addTarget(self, action: #selector(self.dismissVC), for: .touchUpInside)
                     
                     self.hideLoader()
                     self.textFieldEmail.text = nil

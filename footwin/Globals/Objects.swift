@@ -21,6 +21,7 @@ class Objects {
     static var articles: [Article] = [Article]()
     static var leaderboard: [Leaderboard] = [Leaderboard]()
     static var predictions: [Prediction] = [Prediction]()
+    static var winningUser: User = User()
     
     static var gender: [String] = [
         "Male",

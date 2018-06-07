@@ -77,6 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     func setupGoogleAnalytics() {
         guard let gai = GAI.sharedInstance() else {
             assert(false, "Google Analytics not configured correctly")
+            return
         }
         gai.tracker(withTrackingId: GOOGLE_TRACKING_ID)
         // Optional: automatically report uncaught exceptions.
@@ -124,6 +125,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                         if let is_review = dict["is_review"] {
                             isReview = is_review.boolValue
                         }
+                        if let is_iapready = dict["is_iapready"] {
+                            isIAPReady = is_iapready.boolValue
+                        }
                         if let tutorial_text = dict["tutorial_text"] {
                             tutorialText = tutorial_text.stringValue
                         }
@@ -151,6 +155,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                         if let active_reward = dict["active_reward"] {
                             if let json = active_reward.dictionaryObject as NSDictionary? {
                                 Objects.activeReward = Reward.init(dictionary: json)!
+                            }
+                        }
+                        if let winning_user = dict["winning_user"] {
+                            if let json = winning_user.dictionaryObject as NSDictionary? {
+                                Objects.winningUser = User.init(dictionary: json)!
                             }
                         }
                         if let is_app_active = dict["is_app_active"] {
