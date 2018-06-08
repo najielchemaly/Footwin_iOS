@@ -52,6 +52,8 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, GADRewa
     
     override func viewWillLayoutSubviews() {
         imageViewHeightConstraint.constant = scrollView.contentSize.height > self.view.frame.size.height ? scrollView.contentSize.height : self.view.frame.size.height
+        
+//        scrollView.backgroundColor = UIColor(patternImage:  #imageLiteral(resourceName: "coins_background"))
     }
     
     override func viewDidAppear(_ animated: Bool) {
