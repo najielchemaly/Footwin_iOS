@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditProfileViewController: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class EditProfileViewController: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, ImagePickerDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var viewFullname: UIView!
@@ -22,6 +22,9 @@ class EditProfileViewController: BaseViewController, UIPickerViewDelegate, UIPic
     @IBOutlet weak var textFieldPhone: UITextField!
     @IBOutlet weak var viewGender: UIView!
     @IBOutlet weak var buttonGender: UIButton!
+    @IBOutlet weak var imageViewProfile: UIImageView!
+    @IBOutlet weak var labelName: UILabel!
+    @IBOutlet weak var viewOverlay: UIView!
     
     var pickerView: UIPickerView!
     
@@ -55,6 +58,20 @@ class EditProfileViewController: BaseViewController, UIPickerViewDelegate, UIPic
         self.viewPhone.customizeBorder(color: Colors.white)
         self.viewGender.customizeBorder(color: Colors.white)
         self.viewCountry.customizeBorder(color: Colors.white)
+        
+        self.imageViewProfile.layer.cornerRadius = self.imageViewProfile.frame.size.width/2
+        self.viewOverlay.layer.cornerRadius = self.viewOverlay.frame.size.width/2
+        if let avatar = currentUser.avatar, !avatar.isEmpty {
+            self.imageViewProfile.kf.setImage(with: URL(string: Services.getMediaUrl() + avatar))
+        } else {
+            if let gender = currentUser.gender, gender.lowercased() == "male" {
+                self.imageViewProfile.image = #imageLiteral(resourceName: "avatar_male")
+            } else if let gender = currentUser.gender, gender.lowercased() == "female" {
+                self.imageViewProfile.image = #imageLiteral(resourceName: "avatar_female")
+            }
+        }
+        
+        labelName.text = currentUser.fullname?.uppercased()
         
         if isReview {
             self.textFieldPhone.placeholder = "(Optional)"
@@ -110,6 +127,8 @@ class EditProfileViewController: BaseViewController, UIPickerViewDelegate, UIPic
     func setupDelegates() {
         textFieldFullname.delegate = self
         textFieldEmail.delegate = self
+        
+        self.imagePickerDelegate = self
     }
     
     var errorMessage: String!
@@ -142,6 +161,16 @@ class EditProfileViewController: BaseViewController, UIPickerViewDelegate, UIPic
         }
         
         return true
+    }
+    
+    func didFinishPickingMedia(data: UIImage?) {
+        if let image = data {
+            self.imageViewProfile.image = image
+        }
+    }
+    
+    func didCancelPickingMedia() {
+        
     }
     
     @IBAction func buttonCountryTapped(_ sender: Any) {
@@ -184,9 +213,7 @@ class EditProfileViewController: BaseViewController, UIPickerViewDelegate, UIPic
                                     currentUser = user
                                     
                                     self.saveUserInUserDefaults()
-                                    
-                                    self.showAlertView(message: "YOUR PROFILE HAS BEEN UPDATED SUCCESSFULLY")
-                                    self.alertView.buttonDone.addTarget(self, action: #selector(self.dismissVC), for: .touchUpInside)
+                                    self.updateImageProfile()
                                 }
                             }
                         }
@@ -199,6 +226,35 @@ class EditProfileViewController: BaseViewController, UIPickerViewDelegate, UIPic
             }
         } else {
             self.showAlertView(message: errorMessage)
+        }
+    }
+    
+    @IBAction func buttonCameraTapped(_ sender: Any) {
+        self.handleCameraTap()
+    }
+    
+    func updateImageProfile() {
+        if let userId = currentUser.id, let image = imageViewProfile.image {
+            DispatchQueue.global(qos: .background).async {
+                appDelegate.services.updateAvatar(userId: userId, image: image, completion: { data in
+                    
+                    DispatchQueue.main.async {
+                        if let json = data.json?.first {
+                            if let status = json["status"] as? Int, status == ResponseStatus.SUCCESS.rawValue {
+                                self.saveUserInUserDefaults()
+                                
+                                self.showAlertView(message: "YOUR PROFILE HAS BEEN UPDATED SUCCESSFULLY")
+                                self.alertView.buttonDone.addTarget(self, action: #selector(self.dismissVC), for: .touchUpInside)
+//                                self.showAlertView(message: "YOUR PROFILE PICTURE HAS BEEN UPDATED SUCCESSFULLY")
+                            } else {
+                                self.showAlertView(message: ResponseMessage.SERVER_UNREACHABLE.rawValue)
+                            }
+                        }
+                        
+                        self.hideLoader()
+                    }
+                })
+            }
         }
     }
     

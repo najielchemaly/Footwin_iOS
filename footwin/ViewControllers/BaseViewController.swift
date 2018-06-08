@@ -218,6 +218,13 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             }, completion: { success in
                 self.alertView.removeFromSuperview()
             })
+        } else if let alertView = appDelegate.window?.subviews.last as? AlertView {
+            alertView.viewCenterYConstraint.constant = alertView.frame.size.height
+            UIView.animate(withDuration: 0.2, animations: {
+                appDelegate.window?.layoutIfNeeded()
+            }, completion: { success in
+                alertView.removeFromSuperview()
+            })
         }
     }
     

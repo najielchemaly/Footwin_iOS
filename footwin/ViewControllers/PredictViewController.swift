@@ -629,7 +629,8 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     func displayInterstitialAd() {
         if let predictionCount = UserDefaults.standard.value(forKey: "predictionCount") as? Int {
             if predictionCount % 5 == 0 {
-                interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+//                interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+                interstitial = GADInterstitial(adUnitID: ADMOB_IMAGE_ID)
                 interstitial.delegate = self
                 interstitial.load(GADRequest())
             }
