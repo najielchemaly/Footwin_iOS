@@ -208,6 +208,12 @@ public enum WebViewComingFrom {
     case Privacy
 }
 
+public enum SignupComingFrom {
+    case None
+    case RegisterFromApp
+    case RegisterFromFacebook
+}
+
 enum FieldType: String {
     case Fullname
     case Username

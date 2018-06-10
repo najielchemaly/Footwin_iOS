@@ -42,6 +42,8 @@ struct ServiceName {
     static let getReward = "/getReward/"
     static let purchaseCoins = "/purchaseCoins/"
     static let getActiveRound = "/getActiveRound/"
+    static let updateFavoriteTeam = "/updateFavoriteTeam/"
+    static let checkVersion = "/checkVersion/"
 }
 
 enum ResponseStatus: Int {
@@ -82,7 +84,7 @@ class Services {
         }
     }
     
-    static let ConfigUrl = "http://test.config.foot-win.com/"
+    static let ConfigUrl = "http://config.foot-win.com/"
 //    static let ConfigUrl = "http://config.foot-win.com/"
     //    private let ConfigUrl = "http://localhost/footwin/services/getConfig/"
     
@@ -546,6 +548,32 @@ class Services {
         
         let serviceName = ServiceName.updateNotification
         _ = makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
+    }
+    
+    func updateFavoriteTeam(favoriteTeam: String) -> ResponseData? {
+        let parameters: Parameters = [
+            "favorite_team": favoriteTeam
+        ]
+        
+        let headers: HTTPHeaders = [
+            "User-Id": USER_ID
+        ]
+        
+        let serviceName = ServiceName.updateFavoriteTeam
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
+    }
+    
+    func checkVersion() -> ResponseData? {
+        let parameters: Parameters = [
+            "version_ios": ""
+        ]
+        
+        let headers: HTTPHeaders = [
+            "User-Id": USER_ID
+        ]
+        
+        let serviceName = ServiceName.checkVersion
+        return makeHttpRequest(method: .post, serviceName: serviceName, parameters: parameters, headers: headers)
     }
     
     /************* SERVER REQUEST *************/

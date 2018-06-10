@@ -109,7 +109,7 @@ extension UIView {
     
     func isEnabled(enable: Bool) {
         self.isUserInteractionEnabled = enable
-        self.alpha = enable ? 1 : 0.8
+        self.alpha = enable ? 1 : 0.5
     }
     
     func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {

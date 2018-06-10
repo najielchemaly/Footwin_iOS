@@ -46,10 +46,10 @@ class EditProfileViewController: BaseViewController, UIPickerViewDelegate, UIPic
     func fillUserInfo() {
         textFieldFullname.text = currentUser.fullname
         textFieldEmail.text = currentUser.email
-        buttonCountry.setTitle(currentUser.country, for: .normal)
-        labelDialingCode.text = currentUser.phone_code
+        buttonCountry.setTitle((currentUser.country?.isEmpty)! ? "COUNTRY" : currentUser.country, for: .normal)
+        labelDialingCode.text = (currentUser.phone_code?.isEmpty)! ? "CODE" : currentUser.phone_code
         textFieldPhone.text = currentUser.phone
-        buttonGender.setTitle(currentUser.gender, for: .normal)
+        buttonGender.setTitle((currentUser.gender?.isEmpty)! ? "GENDER" : currentUser.gender, for: .normal)
     }
     
     func initializeViews() {

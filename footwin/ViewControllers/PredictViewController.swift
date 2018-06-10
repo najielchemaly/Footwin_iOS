@@ -128,24 +128,40 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                     self.tableView.reloadData()
                     self.removeEmptyView()
                     
-                    if !UserDefaults.standard.bool(forKey: "didShowHelper") {
-                        if let helperView = self.showView(name: Views.HelperView) as? HelperView {
-                            if let username = currentUser.username {
-                                if let text = tutorialText {
-                                    helperView.labelTitle.text = "HELLO " + username + ", " + text
-                                    helperView.textViewDesc.text = "HELLO " + username + ", " + text
-                                }
-                            }
-                            
-                            helperView.buttonStartTutorial.addTarget(self, action: #selector(self.startTutorial(sender:)), for: .touchUpInside)
-                        }
+                    if currentUser.facebook_id != nil && !(currentUser.facebook_id?.isEmpty)! &&
+                        (currentUser.favorite_team == nil || (currentUser.favorite_team?.isEmpty)!) {
+                        SignupViewController.comingFrom = .RegisterFromFacebook
+                        self.redirectToVC(storyboardId: StoryboardIds.SignupViewController, type: .present)
+                    } else {
+                        self.checkTutorial()
                     }
                 }
             }
         }
     }
     
+    func checkTutorial() {
+        if !UserDefaults.standard.bool(forKey: "didShowHelper") {
+            if let helperView = self.showView(name: Views.HelperView) as? HelperView {
+                if let username = currentUser.username {
+                    if let text = tutorialText {
+                        helperView.labelTitle.text = "HELLO " + username + ", " + text
+                        helperView.textViewDesc.text = "HELLO " + username + ", " + text
+                    }
+                }
+                
+                helperView.buttonStartTutorial.addTarget(self, action: #selector(self.startTutorial(sender:)), for: .touchUpInside)
+            }
+        }
+    }
+    
     func initializeViews() {
+        if currentUser.username == nil || currentUser.username == "" {
+            if let fullname = currentUser.fullname {
+                currentUser.username = fullname.lowercased().replacingOccurrences(of: " ", with: "")
+            }
+        }
+        
         self.imageProfile.isUserInteractionEnabled = true
         self.imageProfile.layer.cornerRadius = self.imageProfile.frame.size.width/2
         let profileTap = UITapGestureRecognizer(target: self, action: #selector(navigateToNotifications))

@@ -127,6 +127,7 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, GADRewa
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
                             didFailToLoadWithError error: Error) {
         self.hideLoader()
+        self.showAlertView(message: "No available video, try again later!")
         print("Reward based video ad failed to load.")
     }
     

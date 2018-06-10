@@ -43,6 +43,8 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
     var viewOriginalY: CGFloat!
     var tempUser: User = User()
     
+    static var comingFrom: SignupComingFrom = .None
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -62,6 +64,16 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
         super.viewDidAppear(animated)
         
         self.scrollViewInfo.contentSize.height += 50
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if SignupViewController.comingFrom == .RegisterFromFacebook {
+            if let predictVC = currentVC as? PredictViewController {
+                predictVC.checkTutorial()
+            }
+        }
     }
     
     func initializeViews() {
@@ -88,6 +100,10 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         self.viewOriginalY = self.viewTopConstraint.constant
+        
+        if SignupViewController.comingFrom == .RegisterFromFacebook {
+            self.buttonCancel.isHidden = true
+        }
     }
     
     @objc func keyboardWillHide(_ notification: NSNotification) {
@@ -340,16 +356,39 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
         if let button = sender as? UIButton {
             switch button.tag {
             case 1:
-                if tempUser.favorite_team != nil {
-                    labelStep.text = "STEP 2"
-                    labelTitle.text = "TELL US MORE ABOUT YOU"
-                    buttonBackWidthContraint.constant = 100
-                    collectionViewTeam.alpha = 0
-                    viewTakePicture.alpha = 0
-                    scrollViewInfo.alpha = 1
-                    button.tag = 2
+                if let favoriteTeam = tempUser.favorite_team {
+                    if SignupViewController.comingFrom  == .RegisterFromFacebook {
+                        self.showLoader()
+                        DispatchQueue.global(qos: .background).async {
+                            let response = appDelegate.services.updateFavoriteTeam(favoriteTeam: favoriteTeam)
+                            DispatchQueue.main.async {
+                                if response?.status == ResponseStatus.SUCCESS.rawValue {
+                                    currentUser.favorite_team = favoriteTeam
+                                    self.saveUserInUserDefaults()
+                                    
+                                    self.showAlertView(message: "Your favorite team is updated successfully")
+                                    
+                                    self.alertView.buttonDone.addTarget(self, action: #selector(self.dismissVC), for: .touchUpInside)
+                                } else {
+                                    if let message = response?.message {
+                                        self.showAlertView(message: message)
+                                    }
+                                }
+                                
+                                self.hideLoader()
+                            }
+                        }
+                    } else {
+                        labelStep.text = "STEP 2"
+                        labelTitle.text = "TELL US MORE ABOUT YOU"
+                        buttonBackWidthContraint.constant = 100
+                        collectionViewTeam.alpha = 0
+                        viewTakePicture.alpha = 0
+                        scrollViewInfo.alpha = 1
+                        button.tag = 2
+                    }
                 } else {
-                    self.showAlertView(message: "CHOOSE YOUR FAVORITE TEAM TO PROCEED :D")
+                    self.showAlertView(message: "CHOOSE YOUR FAVORITE TEAM TO PROCEED!")
                 }
                 break
             case 2:

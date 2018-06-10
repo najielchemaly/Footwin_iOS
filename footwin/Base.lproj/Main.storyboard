@@ -171,14 +171,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rex-bs-LXy">
                                         <rect key="frame" x="16" y="353.5" width="343" height="50"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOGIN WITH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdh-Rd-EBk">
-                                                <rect key="frame" x="0.0" y="0.0" width="92" height="50"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOGIN WITH FACEBOOK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Jdh-Rd-EBk">
+                                                <rect key="frame" x="0.0" y="0.0" width="178" height="50"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="18"/>
                                                 <color key="textColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpI-zs-KeV">
-                                                <rect key="frame" x="100" y="5" width="40" height="40"/>
+                                                <rect key="frame" x="186" y="5" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="N1r-F1-V3V"/>
                                                     <constraint firstAttribute="height" constant="40" id="q5F-w6-6Mu"/>
@@ -201,6 +201,7 @@
                                             <constraint firstItem="Jdh-Rd-EBk" firstAttribute="leading" secondItem="rex-bs-LXy" secondAttribute="leading" id="hdW-JH-PEG"/>
                                             <constraint firstItem="Jdh-Rd-EBk" firstAttribute="top" secondItem="rex-bs-LXy" secondAttribute="top" id="uJB-Fd-Cmw"/>
                                             <constraint firstItem="cpI-zs-KeV" firstAttribute="leading" secondItem="Jdh-Rd-EBk" secondAttribute="trailing" constant="8" id="vRh-Z6-Mx0"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cpI-zs-KeV" secondAttribute="trailing" constant="16" id="wL3-RS-4hj"/>
                                             <constraint firstAttribute="height" constant="50" id="xoj-LE-fWX"/>
                                         </constraints>
                                     </view>
@@ -1868,6 +1869,7 @@ WE CAN HELP YOU WITH THAT</string>
                     <tabBarItem key="tabBarItem" title="MY PROFILE" image="tab_profile" id="tcw-MJ-6s1"/>
                     <connections>
                         <outlet property="buttonCamera" destination="DqK-ZX-F7B" id="zfk-GW-JfI"/>
+                        <outlet property="buttonChangePassword" destination="ILS-t1-jSB" id="bsf-S7-3cO"/>
                         <outlet property="imageProfile" destination="8u9-Fh-yXX" id="sEJ-KL-u9M"/>
                         <outlet property="labelName" destination="BF1-vq-rjA" id="qEz-9C-Fo8"/>
                         <outlet property="viewOverlay" destination="cOF-WG-yze" id="hlc-wJ-vmf"/>

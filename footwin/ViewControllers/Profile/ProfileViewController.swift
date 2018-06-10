@@ -14,6 +14,7 @@ class ProfileViewController: BaseViewController, ImagePickerDelegate {
     @IBOutlet weak var buttonCamera: UIButton!
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var viewOverlay: UIView!
+    @IBOutlet weak var buttonChangePassword: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,10 @@ class ProfileViewController: BaseViewController, ImagePickerDelegate {
             } else if let gender = currentUser.gender, gender.lowercased() == "female" {
                 self.imageProfile.image = #imageLiteral(resourceName: "avatar_female")
             }
+        }
+        
+        if currentUser.facebook_id != nil && currentUser.facebook_id != "" {
+            buttonChangePassword.isEnabled(enable: false)
         }
         
         labelName.text = currentUser.fullname?.uppercased()
