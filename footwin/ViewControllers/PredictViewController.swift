@@ -44,9 +44,8 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setNotificationBadgeNumber(label: labelBadge)
-        labelCoins.text = currentUser.coins
-        labelWinningCoins.text = currentUser.winning_coins
+        self.setUserInfo()
+        self.setNotificationBadgeNumber(label: labelBadge)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -156,12 +155,6 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     }
     
     func initializeViews() {
-        if currentUser.username == nil || currentUser.username == "" {
-            if let fullname = currentUser.fullname {
-                currentUser.username = fullname.lowercased().replacingOccurrences(of: " ", with: "")
-            }
-        }
-        
         self.imageProfile.isUserInteractionEnabled = true
         self.imageProfile.layer.cornerRadius = self.imageProfile.frame.size.width/2
         let profileTap = UITapGestureRecognizer(target: self, action: #selector(navigateToNotifications))
@@ -169,6 +162,19 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
 
         let coinsTap = UITapGestureRecognizer(target: self, action: #selector(navigateToCoinStash))
         self.imageCoins.addGestureRecognizer(coinsTap)
+        
+        self.labelBadge.layer.cornerRadius = self.labelBadge.frame.size.width/2
+        self.labelBadge.clipsToBounds = true
+        
+        Objects.predictions = [Prediction]()
+    }
+    
+    func setUserInfo() {
+        if currentUser.username == nil || currentUser.username == "" {
+            if let fullname = currentUser.fullname {
+                currentUser.username = fullname.lowercased().replacingOccurrences(of: " ", with: "")
+            }
+        }
         
         self.labelCoins.text = currentUser.coins
         self.labelWinningCoins.text = currentUser.winning_coins
@@ -182,11 +188,6 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 self.imageProfile.image = #imageLiteral(resourceName: "avatar_female")
             }
         }
-        
-        self.labelBadge.layer.cornerRadius = self.labelBadge.frame.size.width/2
-        self.labelBadge.clipsToBounds = true
-        
-        Objects.predictions = [Prediction]()
     }
     
     @objc func navigateToNotifications() {

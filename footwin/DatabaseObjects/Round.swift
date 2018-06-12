@@ -49,6 +49,11 @@ public class Round: NSObject, NSCoding {
      - returns: Notifications Instance.
      */
     
+    public init(id: String, title: String) {
+        self.id = id
+        self.title = title
+    }
+    
     required public override init() { }
     
     required public init(coder decoder: NSCoder) {

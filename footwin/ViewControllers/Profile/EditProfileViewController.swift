@@ -241,9 +241,13 @@ class EditProfileViewController: BaseViewController, UIPickerViewDelegate, UIPic
                     DispatchQueue.main.async {
                         if let json = data.json?.first {
                             if let status = json["status"] as? Int, status == ResponseStatus.SUCCESS.rawValue {
-                                self.saveUserInUserDefaults()
+                                if let avatar = json["avatar"] as? String {
+                                    currentUser.avatar = avatar
+                                    self.imageViewProfile.kf.setImage(with: URL(string: avatar))
+                                    self.saveUserInUserDefaults()
+                                }
                                 
-                                self.showAlertView(message: "YOUR PROFILE HAS BEEN UPDATED SUCCESSFULLY")
+                                self.showAlertView(title: "EDIT PROFILE", message: "Your profile has been updated successfully")
                                 self.alertView.buttonDone.addTarget(self, action: #selector(self.dismissVC), for: .touchUpInside)
 //                                self.showAlertView(message: "YOUR PROFILE PICTURE HAS BEEN UPDATED SUCCESSFULLY")
                             } else {

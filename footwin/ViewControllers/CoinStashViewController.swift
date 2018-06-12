@@ -184,7 +184,8 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, GADRewa
     
     @IBAction func buttonWatchVideoTapped(_ sender: Any) {
         self.showLoader()
-//        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(), withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
+//        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),
+//                                                    withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
         GADRewardBasedVideoAd.sharedInstance().load(GADRequest(), withAdUnitID: ADMOB_VIDEO_ID)
     }
     

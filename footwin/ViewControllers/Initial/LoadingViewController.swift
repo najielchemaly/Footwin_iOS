@@ -10,10 +10,13 @@ import UIKit
 
 class LoadingViewController: BaseViewController {
 
+    @IBOutlet weak var imageViewBall: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        imageViewBall.rotate()
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,6 +26,12 @@ class LoadingViewController: BaseViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        imageViewBall.stopRotating()
     }
 
     /*

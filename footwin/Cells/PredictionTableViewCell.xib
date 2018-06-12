@@ -28,7 +28,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bzt-uF-Kuk">
-                        <rect key="frame" x="0.0" y="18" width="375" height="189"/>
+                        <rect key="frame" x="0.0" y="22" width="375" height="185"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DFi-uf-XpR">
                                 <rect key="frame" x="0.0" y="160" width="375" height="35"/>
@@ -61,7 +61,7 @@
                         <color key="backgroundColor" red="0.061553694307804108" green="0.12784776091575623" blue="0.32042750716209412" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="DFi-uf-XpR" secondAttribute="trailing" id="C8g-LI-81X"/>
-                            <constraint firstAttribute="bottom" secondItem="DFi-uf-XpR" secondAttribute="bottom" constant="-6" id="RzX-sp-VjS"/>
+                            <constraint firstAttribute="bottom" secondItem="DFi-uf-XpR" secondAttribute="bottom" constant="-10" id="RzX-sp-VjS"/>
                             <constraint firstItem="DFi-uf-XpR" firstAttribute="leading" secondItem="Bzt-uF-Kuk" secondAttribute="leading" id="o0U-hx-99t"/>
                         </constraints>
                     </view>
@@ -224,7 +224,7 @@
                     <constraint firstItem="nbp-XG-fGc" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="9es-ET-hRN"/>
                     <constraint firstItem="4Wn-JN-fak" firstAttribute="top" secondItem="m9x-Xo-ElJ" secondAttribute="bottom" constant="30" id="FjN-qq-5oH"/>
                     <constraint firstItem="vtW-zK-XVf" firstAttribute="trailing" secondItem="hlB-KC-9Ab" secondAttribute="trailing" id="Gi8-Fb-ujt"/>
-                    <constraint firstItem="Bzt-uF-Kuk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="Kek-yT-Oah"/>
+                    <constraint firstItem="Bzt-uF-Kuk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="22" id="Kek-yT-Oah"/>
                     <constraint firstAttribute="trailing" secondItem="nko-Nd-EHE" secondAttribute="trailing" constant="14" id="Knm-tF-GNP"/>
                     <constraint firstItem="KKh-M9-fH1" firstAttribute="leading" secondItem="nko-Nd-EHE" secondAttribute="leading" id="LrR-Xs-b9b"/>
                     <constraint firstAttribute="trailing" secondItem="Bzt-uF-Kuk" secondAttribute="trailing" id="MBi-Ic-ApS"/>
@@ -266,7 +266,7 @@
                 <outlet property="viewConfirm" destination="nbp-XG-fGc" id="PyH-dQ-QEm"/>
                 <outlet property="viewExactScore" destination="DFi-uf-XpR" id="wxV-LC-Syg"/>
             </connections>
-            <point key="canvasLocation" x="26.5" y="34.5"/>
+            <point key="canvasLocation" x="26.5" y="34"/>
         </tableViewCell>
     </objects>
     <resources>

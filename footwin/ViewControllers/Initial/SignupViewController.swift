@@ -366,7 +366,7 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
                                     currentUser.favorite_team = favoriteTeam
                                     self.saveUserInUserDefaults()
                                     
-                                    self.showAlertView(message: "Your favorite team is updated successfully")
+                                    self.showAlertView(title: "FAVORITE TEAM", message: "Your favorite team is updated successfully")
                                     
                                     self.alertView.buttonDone.addTarget(self, action: #selector(self.dismissVC), for: .touchUpInside)
                                 } else {
@@ -388,7 +388,7 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
                         button.tag = 2
                     }
                 } else {
-                    self.showAlertView(message: "CHOOSE YOUR FAVORITE TEAM TO PROCEED!")
+                    self.showAlertView(title: "CREATE ACCOUNT", message: "Choose your favorite team to proceed!")
                 }
                 break
             case 2:
@@ -457,7 +457,7 @@ class SignupViewController: BaseViewController, UICollectionViewDelegate, UIColl
                         }
                     }
                 } else {
-                    self.showAlertView(message: "PICK YOUR PREFERRABLE PHOTO THAT WILL APPEAR IN THE LEADERBOARD")
+                    self.showAlertView(title: "CREATE ACCOUNT", message: "Pick your preferrable photo that will appear in the leaderboard")
                 }
                 break
             default:

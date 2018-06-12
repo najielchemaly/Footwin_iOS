@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     
     var window: UIWindow?
     
+    var didFinishLaunching: Bool = false
+    
     let gcmMessageIDKey: String = "gcm.message_id"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -37,12 +39,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
             let loadingViewController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.LoadingViewController)
             window.rootViewController = loadingViewController
         }
+
+        // Use Firebase library to configure APIs.
+        FirebaseApp.configure()
         
-        self.setupConfiguration()
-        
+        // Initialize the Google Mobile Ads SDK.
         GADMobileAds.configure(withApplicationID: ADMOB_APP_ID)
         
         self.setupGoogleAnalytics()
+        
+        self.setupConfiguration()
         
         //        Localization.doTheExchange()
         
@@ -50,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         
         let isNotificationOn = UserDefaults.standard.value(forKey: "isNotificationOn")
         if isNotificationOn == nil || (isNotificationOn as? Bool)! {
-            FirebaseApp.configure()
+//            FirebaseApp.configure()
             
             if #available(iOS 10.0, *) {
                 // For iOS 10 display notification (sent via APNS)
@@ -75,17 +81,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     }
     
     func setupGoogleAnalytics() {
-        guard let gai = GAI.sharedInstance() else {
-            assert(false, "Google Analytics not configured correctly")
-            return
-        }
-        gai.tracker(withTrackingId: GOOGLE_TRACKING_ID)
-        // Optional: automatically report uncaught exceptions.
-        gai.trackUncaughtExceptions = true
-        
-        // Optional: set Logger to VERBOSE for debug information.
-        // Remove before app release.
-        gai.logger.logLevel = .verbose
+//        guard let gai = GAI.sharedInstance() else {
+//            assert(false, "Google Analytics not configured correctly")
+//            return
+//        }
+//        gai.tracker(withTrackingId: GOOGLE_TRACKING_ID)
+//        // Optional: automatically report uncaught exceptions.
+//        gai.trackUncaughtExceptions = true
+//        
+//        // Optional: set Logger to VERBOSE for debug information.
+//        // Remove before app release.
+//        gai.logger.logLevel = .verbose
     }
     
     func setupConfiguration() {
@@ -98,8 +104,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                                 if recVersion > currentVersion {
                                     DispatchQueue.main.async {
                                         if let rootVC = self.window?.rootViewController {
-                                            let alert = UIAlertController(title: "OOPS", message: "YOUR CURRENT VERSION IS OUT OF DATE.\nPLEASE UPDATE THE APP.", preferredStyle: .alert)
+                                            let alert = UIAlertController(title: "OOPS", message: "Your current version is out of date.\nPlease update the app!", preferredStyle: .alert)
                                             alert.addAction(UIAlertAction(title: "UPDATE", style: .default, handler: { action in
+                                                self.didFinishLaunching = true
                                                 self.openFootinInAppStore()
                                             }))
                                             rootVC.present(alert, animated: true, completion: nil)
@@ -251,18 +258,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     func goToLoginNavigation() {
         if let window = self.window, let loginNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.LoginNavigationController) as? LoginNavigationController {
             window.rootViewController = loginNavigationController
+            self.didFinishLaunching = true
         }
     }
     
     func goToMainNavigation() {
         if let window = self.window, let mainNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.MainNavigationController) as? MainNavigationController {
             window.rootViewController = mainNavigationController
+            self.didFinishLaunching = true
         }
     }
     
     func goToYoutubeNavigation() {
         if let window = self.window, let youtubePlayerViewController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.YoutubePlayerViewController) as? YoutubePlayerViewController {
             window.rootViewController = youtubePlayerViewController
+            self.didFinishLaunching = true
         }
     }
     
@@ -443,6 +453,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        if didFinishLaunching {
+            DispatchQueue.global(qos: .background).async {
+                let response = self.services.checkVersion()
+                
+                DispatchQueue.main.async {
+                    if response?.status == ResponseStatus.FAILURE.rawValue, let json = response?.json?.first {
+                        if let status = json["status"] as? Int, status == 0 {
+                            if let window = self.window {
+                                var rootVC: UIViewController!
+                                if let loadingVC = window.rootViewController as? LoadingViewController {
+                                    rootVC = loadingVC
+                                } else {
+                                    let loadingViewController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.LoadingViewController)
+                                    window.rootViewController = loadingViewController
+                                    rootVC = loadingViewController
+                                }
+                                
+                                if let message = response?.message {
+                                    let alert = UIAlertController(title: "OOPS", message: message, preferredStyle: .alert)
+                                    alert.addAction(UIAlertAction(title: "UPDATE", style: .default, handler: { action in
+                                        self.openFootinInAppStore()
+                                    }))
+                                    rootVC.present(alert, animated: true, completion: nil)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

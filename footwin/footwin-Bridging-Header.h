@@ -9,7 +9,7 @@
 #ifndef footwin_Bridging_Header_h
 #define footwin_Bridging_Header_h
 
-#import <GoogleAnalytics/GAI.h>
-#import <GoogleAnalytics/GAIDictionaryBuilder.h>
+//#import <GoogleAnalytics/GAI.h>
+//#import <GoogleAnalytics/GAIDictionaryBuilder.h>
 
 #endif /* footwin_Bridging_Header_h */

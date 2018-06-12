@@ -44,6 +44,7 @@ struct ServiceName {
     static let getActiveRound = "/getActiveRound/"
     static let updateFavoriteTeam = "/updateFavoriteTeam/"
     static let checkVersion = "/checkVersion/"
+    static let getScheduleMatches = "/getScheduleMatches/"
 }
 
 enum ResponseStatus: Int {
@@ -84,8 +85,8 @@ class Services {
         }
     }
     
+//    static let ConfigUrl = "http://test.config.foot-win.com/"
     static let ConfigUrl = "http://config.foot-win.com/"
-//    static let ConfigUrl = "http://config.foot-win.com/"
     //    private let ConfigUrl = "http://localhost/footwin/services/getConfig/"
     
     private static var _BaseUrl: String = ""
@@ -254,6 +255,16 @@ class Services {
         ]
         
         let serviceName = ServiceName.getMatches
+        return makeHttpRequest(method: .post, serviceName: serviceName, headers: headers)
+    }
+    
+    func getScheduleMatches() -> ResponseData? {
+        
+        let headers: HTTPHeaders = [
+            "User-Id": USER_ID
+        ]
+        
+        let serviceName = ServiceName.getScheduleMatches
         return makeHttpRequest(method: .post, serviceName: serviceName, headers: headers)
     }
     
@@ -564,8 +575,13 @@ class Services {
     }
     
     func checkVersion() -> ResponseData? {
+        var version_ios = ""
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            version_ios = version
+        }
+        
         let parameters: Parameters = [
-            "version_ios": ""
+            "version_ios": version_ios
         ]
         
         let headers: HTTPHeaders = [

@@ -11,10 +11,13 @@ import UIKit
 let GMS_APIKEY = ""
 let GOOGLE_TRACKING_ID = "UA-63962416-1"
 let ADMOB_APP_ID = "ca-app-pub-8532510371470349~7075899301"
-let ADMOB_VIDEO_ID = "ca-app-pub-8532510371470349/9735111411"
-let ADMOB_IMAGE_ID = "ca-app-pub-8532510371470349/9724446042"
+//let ADMOB_VIDEO_ID = "ca-app-pub-8532510371470349/9735111411"
+let ADMOB_VIDEO_ID = "ca-app-pub-8532510371470349/2715150728"
+//let ADMOB_IMAGE_ID = "ca-app-pub-8532510371470349/9724446042"
+let ADMOB_IMAGE_ID = "ca-app-pub-8532510371470349/7073623165"
 let APPLE_LANGUAGE_KEY = "AppleLanguages"
 let DEVICE_LANGUAGE_KEY = "AppleLocale"
+let kRotationAnimationKey = "rotationanimationkey"
 
 var currentVC: UIViewController!
 var isUserLoggedIn: Bool = false
@@ -147,6 +150,7 @@ struct StoryboardIds {
     static let AdminNavigationController: String = "AdminNavigationController"
     static let OptionViewController: String = "OptionViewController"
     static let YoutubePlayerViewController: String = "YoutubePlayerViewController"
+    static let ScheduleViewController: String = "ScheduleViewController"
 }
 
 struct CellIds {
@@ -160,6 +164,7 @@ struct CellIds {
     static let CountryTableViewCell: String = "CountryTableViewCell"
     static let AdminTableViewCell: String = "AdminTableViewCell"
     static let MatchTableViewCell: String = "MatchTableViewCell"
+    static let ScheduleTableViewCell: String = "ScheduleTableViewCell"
 }
 
 struct Views {

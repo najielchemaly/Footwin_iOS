@@ -28,9 +28,25 @@ class ProfileViewController: BaseViewController, ImagePickerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.setUserInfo()
+    }
+    
     func initializeViews() {
         self.imageProfile.layer.cornerRadius = self.imageProfile.frame.size.width/2
         self.viewOverlay.layer.cornerRadius = self.viewOverlay.frame.size.width/2
+        
+        if currentUser.facebook_id != nil && currentUser.facebook_id != "" {
+            buttonChangePassword.isEnabled(enable: false)
+        }
+        
+        self.imagePickerDelegate = self
+    }
+    
+    func setUserInfo() {
+        labelName.text = currentUser.fullname?.uppercased()
         if let avatar = currentUser.avatar, !avatar.isEmpty {
             self.imageProfile.kf.setImage(with: URL(string: Services.getMediaUrl() + avatar))
         } else {
@@ -40,14 +56,6 @@ class ProfileViewController: BaseViewController, ImagePickerDelegate {
                 self.imageProfile.image = #imageLiteral(resourceName: "avatar_female")
             }
         }
-        
-        if currentUser.facebook_id != nil && currentUser.facebook_id != "" {
-            buttonChangePassword.isEnabled(enable: false)
-        }
-        
-        labelName.text = currentUser.fullname?.uppercased()
-        
-        self.imagePickerDelegate = self
     }
     
     func didFinishPickingMedia(data: UIImage?) {
@@ -63,7 +71,7 @@ class ProfileViewController: BaseViewController, ImagePickerDelegate {
                                 if let status = json["status"] as? Int, status == ResponseStatus.SUCCESS.rawValue {
                                     self.saveUserInUserDefaults()
                                     
-                                    self.showAlertView(message: "YOUR PROFILE PICTURE HAS BEEN UPDATED SUCCESSFULLY")
+                                    self.showAlertView(title: "CHANGE AVATAR", message: "Your profile picture has been updated successfully")
                                 } else {
                                     self.showAlertView(message: ResponseMessage.SERVER_UNREACHABLE.rawValue)
                                 }
@@ -108,7 +116,7 @@ class ProfileViewController: BaseViewController, ImagePickerDelegate {
     }
     
     @IBAction func buttonLogoutTapped(_ sender: Any) {
-        self.showAlertView(title: "WOW", message: "ARE YOU SURE YOU WANT TO LOGOUT?", cancelTitle: "CANCEL", doneTitle: "LOGOUT")
+        self.showAlertView(title: "LOGOUT", message: "Are you sure you want to logout?", cancelTitle: "CANCEL", doneTitle: "YES")
         self.alertView.buttonDone.addTarget(self, action: #selector(self.logout), for: .touchUpInside)
     }
     

@@ -167,18 +167,18 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func removeEmptyView() {
         if self.emptyView != nil {
             self.emptyView.removeFromSuperview()
+            self.emptyView = nil
         }
     }
     
     var alertView: AlertView!
-    func showAlertView(title: String? = nil, message: String, cancelTitle: String? = nil, doneTitle: String? = nil) {
+    func showAlertView(title: String? = "FOOTWIN", message: String, cancelTitle: String? = nil, doneTitle: String? = nil) {
         let view = Bundle.main.loadNibNamed("AlertView", owner: self.view, options: nil)
         if let alertView = view?.first as? AlertView {
             self.alertView = alertView
         }
 
-        self.alertView.labelMessage.text = message.uppercased()
-
+        self.alertView.labelMessage.text = message
         if title != nil {
             self.alertView.labelTitle.text = title
         }

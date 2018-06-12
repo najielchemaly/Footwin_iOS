@@ -13,6 +13,8 @@ class Objects {
     static var countries: [Country] = [Country]()
     static var teams: [Team] = [Team]()
     static var matches: [Match] = [Match]()
+    static var scheduleMatches: [Match] = [Match]()
+    static var rounds: [Round] = [Round]()
     static var activeRound: Round = Round()
     static var activeReward: Reward = Reward()
     static var notifications: [Notification] = [Notification]()

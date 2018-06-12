@@ -15,7 +15,7 @@ class MainNavigationController: UINavigationController {
 
         // Do any additional setup after loading the view.
         if let tabbar = self.viewControllers.first as? UITabBarController, isReview {
-            tabbar.viewControllers?.remove(at: 1)
+            tabbar.viewControllers?.remove(at: 2)
         }
     }
 

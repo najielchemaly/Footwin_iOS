@@ -92,7 +92,7 @@ class ChangePasswordViewController: BaseViewController, UITextFieldDelegate {
                 
                 DispatchQueue.main.async {
                     if response?.status == ResponseStatus.SUCCESS.rawValue {
-                        self.showAlertView(message: "YOUR PASSWORD HAS BEEN CHANGED SUCESSFULLY")
+                        self.showAlertView(title: "CHANGE PASSWORD", message: "Your password has been changed successfully")
                         self.alertView.buttonDone.addTarget(self, action: #selector(self.dismissVC), for: .touchUpInside)
                     } else {
                         if let message = response?.message {

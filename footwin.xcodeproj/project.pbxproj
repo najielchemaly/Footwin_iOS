@@ -87,6 +87,9 @@
 		42C6F54520B3443700681A64 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C6F54420B3443700681A64 /* Reward.swift */; };
 		42C86DEB208C79810096A3E6 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86DEA208C79810096A3E6 /* IAPHelper.swift */; };
 		42C86DEE208CB4DD0096A3E6 /* CoinProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C86DED208CB4DD0096A3E6 /* CoinProducts.swift */; };
+		42F37B9D20CEB36700702B7D /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F37B9C20CEB36700702B7D /* ScheduleViewController.swift */; };
+		42F37BA020CEB81400702B7D /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F37B9E20CEB81400702B7D /* ScheduleTableViewCell.swift */; };
+		42F37BA120CEB81400702B7D /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42F37B9F20CEB81400702B7D /* ScheduleTableViewCell.xib */; };
 		42F8DE592080B50D006B3323 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F8DE582080B50D006B3323 /* Round.swift */; };
 		42F8DE5B2080B7DF006B3323 /* RulesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42F8DE5A2080B7DF006B3323 /* RulesView.xib */; };
 		42F8DE5D2080B7F0006B3323 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F8DE5C2080B7F0006B3323 /* RulesView.swift */; };
@@ -200,6 +203,9 @@
 		42C86DEA208C79810096A3E6 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		42C86DED208CB4DD0096A3E6 /* CoinProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinProducts.swift; sourceTree = "<group>"; };
 		42E323A020C07DC700976865 /* footwin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "footwin-Bridging-Header.h"; sourceTree = "<group>"; };
+		42F37B9C20CEB36700702B7D /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		42F37B9E20CEB81400702B7D /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		42F37B9F20CEB81400702B7D /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		42F8DE582080B50D006B3323 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		42F8DE5A2080B7DF006B3323 /* RulesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RulesView.xib; sourceTree = "<group>"; };
 		42F8DE5C2080B7F0006B3323 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
@@ -282,6 +288,7 @@
 				4285EA9620832397005BE6C2 /* MainNavigationController.swift */,
 				420E117E208628C800E4642D /* CountryViewController.swift */,
 				429AF9E5208BE14B001A3217 /* YoutubePlayerViewController.swift */,
+				42F37B9C20CEB36700702B7D /* ScheduleViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -339,6 +346,8 @@
 				423EDE0D2085499000865F6D /* MyPredictionTableViewCell.xib */,
 				420E11802086293300E4642D /* CountryTableViewCell.swift */,
 				420E11812086293300E4642D /* CountryTableViewCell.xib */,
+				42F37B9E20CEB81400702B7D /* ScheduleTableViewCell.swift */,
+				42F37B9F20CEB81400702B7D /* ScheduleTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -557,6 +566,7 @@
 				423EDE0F2085499000865F6D /* MyPredictionTableViewCell.xib in Resources */,
 				42F946DB2083C22000643EFC /* PurchaseCoinsViewCell.xib in Resources */,
 				429AF9DB208B3F64001A3217 /* AdminTableViewCell.xib in Resources */,
+				42F37BA120CEB81400702B7D /* ScheduleTableViewCell.xib in Resources */,
 				423EDE092084E02300865F6D /* LeaderboardTableViewCell.xib in Resources */,
 				429AF9D6208B3DEF001A3217 /* Admin.storyboard in Resources */,
 				42B73F3B20800DFD003DCB05 /* PredictionTableViewCell.xib in Resources */,
@@ -644,7 +654,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42F37B9D20CEB36700702B7D /* ScheduleViewController.swift in Sources */,
 				425B77FC207CA6E90083D084 /* LoginViewController.swift in Sources */,
+				42F37BA020CEB81400702B7D /* ScheduleTableViewCell.swift in Sources */,
 				425B7818207CA83E0083D084 /* WebViewController.swift in Sources */,
 				429AF9E4208B7379001A3217 /* AdminUser.swift in Sources */,
 				425B7816207CA81E0083D084 /* NewsDetailViewController.swift in Sources */,
