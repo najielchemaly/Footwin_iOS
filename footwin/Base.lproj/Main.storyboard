@@ -2078,7 +2078,7 @@ WE CAN HELP YOU WITH THAT</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wu9-Lv-PJg">
-                                <rect key="frame" x="16" y="112" width="343" height="1"/>
+                                <rect key="frame" x="16" y="141" width="343" height="1"/>
                                 <color key="backgroundColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="gW3-sC-jDF"/>
@@ -2087,14 +2087,31 @@ WE CAN HELP YOU WITH THAT</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="g56-0G-kDY">
+                                <rect key="frame" x="137" y="97" width="100" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Qdf-2Q-JbY"/>
+                                    <constraint firstAttribute="height" constant="40" id="xMW-3y-OZx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="13"/>
+                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal">
+                                    <string key="title">  WATCH VIDEO
+GET FREE COINS</string>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonWatchVideoTapped:" destination="sJV-Q2-nAx" eventType="touchUpInside" id="iDd-Jg-Jnf"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ROUND 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1bg-kh-eWx">
-                                <rect key="frame" x="16" y="129" width="80" height="29"/>
+                                <rect key="frame" x="16" y="158" width="80" height="29"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2S-Y3-DyH">
-                                <rect key="frame" x="291" y="129" width="68" height="29"/>
+                                <rect key="frame" x="291" y="158" width="68" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="68" id="zGm-Fw-XZ2"/>
                                 </constraints>
@@ -2107,25 +2124,27 @@ WE CAN HELP YOU WITH THAT</string>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="npQ-BF-FCK">
-                                <rect key="frame" x="0.0" y="166" width="375" height="452"/>
+                                <rect key="frame" x="0.0" y="195" width="375" height="423"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="npQ-BF-FCK" firstAttribute="top" secondItem="1bg-kh-eWx" secondAttribute="bottom" constant="8" id="4Df-fs-LZs"/>
+                            <constraint firstItem="g56-0G-kDY" firstAttribute="centerX" secondItem="Slz-VN-Q7G" secondAttribute="centerX" id="6VK-Gg-blj"/>
                             <constraint firstItem="qZf-q4-1kC" firstAttribute="top" secondItem="tcP-OU-dKl" secondAttribute="bottom" constant="-20" id="7Yd-0s-rPE"/>
                             <constraint firstItem="T2S-Y3-DyH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1bg-kh-eWx" secondAttribute="trailing" constant="8" id="9iN-nm-P3z"/>
                             <constraint firstItem="ktw-wq-zP8" firstAttribute="centerY" secondItem="qZf-q4-1kC" secondAttribute="centerY" id="BZP-ZS-ezB"/>
                             <constraint firstItem="npQ-BF-FCK" firstAttribute="leading" secondItem="Slz-VN-Q7G" secondAttribute="leading" id="CHn-RA-Y7H"/>
                             <constraint firstItem="Slz-VN-Q7G" firstAttribute="trailing" secondItem="ktw-wq-zP8" secondAttribute="trailing" constant="16" id="Fef-rF-qyv"/>
+                            <constraint firstItem="Wu9-Lv-PJg" firstAttribute="top" secondItem="g56-0G-kDY" secondAttribute="bottom" constant="4" id="GLB-DX-Hgn"/>
                             <constraint firstItem="qOc-VS-zEV" firstAttribute="bottom" secondItem="Slz-VN-Q7G" secondAttribute="bottom" id="MwJ-xI-NcX"/>
                             <constraint firstItem="7eH-ON-ktf" firstAttribute="leading" secondItem="tVi-cA-r6b" secondAttribute="trailing" constant="8" id="RVp-5n-Y5Y"/>
                             <constraint firstItem="T2S-Y3-DyH" firstAttribute="top" secondItem="Wu9-Lv-PJg" secondAttribute="bottom" constant="16" id="UP8-NC-Ylj"/>
                             <constraint firstItem="Slz-VN-Q7G" firstAttribute="trailing" secondItem="T2S-Y3-DyH" secondAttribute="trailing" constant="16" id="YER-f4-GRc"/>
                             <constraint firstItem="T2S-Y3-DyH" firstAttribute="centerY" secondItem="1bg-kh-eWx" secondAttribute="centerY" id="Yc6-Er-7H2"/>
                             <constraint firstItem="tVi-cA-r6b" firstAttribute="centerY" secondItem="7eH-ON-ktf" secondAttribute="centerY" id="d0X-wG-yc9"/>
-                            <constraint firstItem="Wu9-Lv-PJg" firstAttribute="top" secondItem="qZf-q4-1kC" secondAttribute="bottom" constant="16" id="dSq-QS-5Lu"/>
+                            <constraint firstItem="Wu9-Lv-PJg" firstAttribute="top" secondItem="qZf-q4-1kC" secondAttribute="bottom" constant="45" id="dSq-QS-5Lu"/>
                             <constraint firstItem="npQ-BF-FCK" firstAttribute="trailing" secondItem="Slz-VN-Q7G" secondAttribute="trailing" id="jTW-BC-ups"/>
                             <constraint firstItem="Slz-VN-Q7G" firstAttribute="trailing" secondItem="Wu9-Lv-PJg" secondAttribute="trailing" constant="16" id="ju1-Hl-pn8"/>
                             <constraint firstItem="ktw-wq-zP8" firstAttribute="leading" secondItem="KTZ-9Z-GGF" secondAttribute="trailing" constant="8" id="nMD-qN-2wm"/>
@@ -2156,6 +2175,7 @@ WE CAN HELP YOU WITH THAT</string>
                         <outlet property="labelCoins" destination="pv1-a5-o0v" id="Drt-AH-uhp"/>
                         <outlet property="labelRound" destination="1bg-kh-eWx" id="9Eb-7g-1K8"/>
                         <outlet property="labelWinningCoins" destination="rKD-E4-UfJ" id="bLS-mu-ubD"/>
+                        <outlet property="stackViewCoins" destination="KTZ-9Z-GGF" id="r5p-QI-u0L"/>
                         <outlet property="tableView" destination="npQ-BF-FCK" id="Qeh-rR-QWU"/>
                     </connections>
                 </viewController>

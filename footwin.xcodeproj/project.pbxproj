@@ -29,6 +29,7 @@
 		42419F602084AE6600A6F19D /* CountingProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42419F5F2084AE6600A6F19D /* CountingProcess.swift */; };
 		42419F632084C92700A6F19D /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42419F612084C92700A6F19D /* NewsTableViewCell.swift */; };
 		42419F642084C92700A6F19D /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42419F622084C92700A6F19D /* NewsTableViewCell.xib */; };
+		4255326B20D064FE000C1323 /* InMobiSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4255326A20D064FE000C1323 /* InMobiSDK.framework */; };
 		425B77FC207CA6E90083D084 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B77FB207CA6E90083D084 /* LoginViewController.swift */; };
 		425B77FE207CA6F60083D084 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B77FD207CA6F60083D084 /* ForgotPasswordViewController.swift */; };
 		425B7800207CA7190083D084 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B77FF207CA7190083D084 /* SignupViewController.swift */; };
@@ -144,6 +145,7 @@
 		42419F5F2084AE6600A6F19D /* CountingProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountingProcess.swift; sourceTree = "<group>"; };
 		42419F612084C92700A6F19D /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		42419F622084C92700A6F19D /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
+		4255326A20D064FE000C1323 /* InMobiSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = InMobiSDK.framework; sourceTree = "<group>"; };
 		425B77FB207CA6E90083D084 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		425B77FD207CA6F60083D084 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		425B77FF207CA7190083D084 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			files = (
 				C2569F0A044CAC9A839B17A6 /* Pods_footwin.framework in Frameworks */,
 				420E117D20861FD600E4642D /* StoreKit.framework in Frameworks */,
+				4255326B20D064FE000C1323 /* InMobiSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +474,7 @@
 		FBC08AE99A3782560D128BDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4255326A20D064FE000C1323 /* InMobiSDK.framework */,
 				420E117C20861FD600E4642D /* StoreKit.framework */,
 				3DB19A8AA5D2245E1E2EDEEB /* Pods_footwin.framework */,
 			);

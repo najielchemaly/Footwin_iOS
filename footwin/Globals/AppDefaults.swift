@@ -18,6 +18,9 @@ let ADMOB_IMAGE_ID = "ca-app-pub-8532510371470349/7073623165"
 let APPLE_LANGUAGE_KEY = "AppleLanguages"
 let DEVICE_LANGUAGE_KEY = "AppleLocale"
 let kRotationAnimationKey = "rotationanimationkey"
+let InMobiVideoPlacementID = "1528148722041"
+let InMobiImagePlacementID = "1528148722041"
+let InMobiAccountID = "41b5063fb23f4f72824f9052138bb33d"
 
 var currentVC: UIViewController!
 var isUserLoggedIn: Bool = false

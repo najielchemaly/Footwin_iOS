@@ -10,9 +10,10 @@ import UIKit
 import SwiftyJSON
 import FirebaseMessaging
 import CountdownLabel
-import GoogleMobileAds
+//import GoogleMobileAds
+import InMobiSDK
 
-class PredictViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, GADInterstitialDelegate {
+class PredictViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, IMInterstitialDelegate {
 
     @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var labelBadge: UILabel!
@@ -22,9 +23,12 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var buttonViewRules: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageCoins: UIImageView!
+    @IBOutlet weak var stackViewCoins: UIStackView!
     
     var refreshControl = UIRefreshControl()
-    var interstitial: GADInterstitial!
+//    var interstitial: GADInterstitial!
+    var interstitialMobiVideo: IMInterstitial!
+    var interstitialMobiImage: IMInterstitial!
     var currentDate: String!
     
     override func viewDidLoad() {
@@ -34,6 +38,8 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         self.getMatches()
         self.initializeViews()
         self.setupTableView()
+//        self.setupInMobi()
+//        self.setupAdMob()
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,6 +68,100 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         }
         
         self.getPackages()
+    }
+    
+    func setupAdMob() {
+//        self.interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+//        interstitial = GADInterstitial(adUnitID: ADMOB_IMAGE_ID)
+//        self.interstitial.delegate = self
+    }
+
+    func setupInMobi() {
+//        if let id = Int64(InMobiVideoPlacementID) {
+//            self.interstitialMobiVideo = IMInterstitial.init(placementId: id)
+//            self.interstitialMobiVideo.delegate = self
+//        }
+//        if let id = Int64(InMobiImagePlacementID) {
+//            self.interstitialMobiImage = IMInterstitial.init(placementId: id)
+//            self.interstitialMobiImage.delegate = self
+//        }
+    }
+    
+    func interstitialDidFinishLoading(_ interstitial: IMInterstitial!) {
+        print("interstitialDidFinishLoading")
+        
+        self.hideLoader()
+        
+        interstitial.show(from: self, with: .coverVertical)
+    }
+    
+    func interstitial(_ interstitial: IMInterstitial!, didFailToLoadWithError error: IMRequestStatus!) {
+        print("Interstitial failed to load ad")
+        self.hideLoader()
+    }
+    
+    func interstitial(_ interstitial: IMInterstitial!, didFailToPresentWithError error: IMRequestStatus!) {
+        print("Interstitial didFailToPresentWithError")
+        self.hideLoader()
+    }
+    
+    func interstitialWillPresent(_ interstitial: IMInterstitial!) {
+        print("interstitialWillPresent")
+    }
+    
+    func interstitialDidPresent(_ interstitial: IMInterstitial!) {
+        print("interstitialDidPresent")
+    }
+    
+    func interstitialWillDismiss(_ interstitial: IMInterstitial!) {
+        print("interstitialWillDismiss")
+    }
+    
+    func interstitialDidDismiss(_ interstitial: IMInterstitial!) {
+        print("interstitialDidDismiss")
+    }
+    
+    func userWillLeaveApplication(from interstitial: IMInterstitial!) {
+        print("userWillLeaveApplicationFromInterstitial")
+    }
+    
+    func interstitial(_ interstitial: IMInterstitial!, rewardActionCompletedWithRewards rewards: [AnyHashable : Any]!) {
+        print("rewardActionCompletedWithRewards")
+        
+        if interstitial == self.interstitialMobiVideo {
+            self.showLoader()
+            DispatchQueue.global(qos: .background).async {
+                let response = appDelegate.services.getReward(id: Objects.activeReward.id!, amount: Objects.activeReward.amount!)
+                
+                DispatchQueue.main.async {
+                    if response?.status == ResponseStatus.SUCCESS.rawValue {
+                        if let message = response?.message {
+                            self.showAlertView(message: message)
+                        }
+                        
+                        if let json = response?.json?.first {
+                            if let coins = json["coins"] as? String {
+                                currentUser.coins = coins
+                                
+                                self.labelCoins.text = coins
+                                
+                                self.saveUserInUserDefaults()
+                            }
+                        }
+                    }
+                    
+                    self.hideLoader()
+                }
+            }
+        }
+    }
+    
+    func interstitial(_ interstitial: IMInterstitial!, didInteractWithParams params: [AnyHashable : Any]!) {
+        print("InterstitialDidInteractWithParams")
+    }
+    
+    @nonobjc func interstitialDidReceiveAd(_ interstitial: IMInterstitial!) {
+        print("interstitialDidReceiveAd")
     }
     
     @objc func startTutorial(sender: UIButton) {
@@ -645,11 +745,15 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     
     func displayInterstitialAd() {
         if let predictionCount = UserDefaults.standard.value(forKey: "predictionCount") as? Int {
-            if predictionCount % 5 == 0 {
-//                interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
-                interstitial = GADInterstitial(adUnitID: ADMOB_IMAGE_ID)
-                interstitial.delegate = self
-                interstitial.load(GADRequest())
+            if predictionCount % 3 == 0 {
+                if let id = Int64(InMobiImagePlacementID) {
+                    self.interstitialMobiImage = IMInterstitial.init(placementId: id)
+                    if self.interstitialMobiImage != nil {
+                        self.interstitialMobiImage.delegate = self
+                        self.interstitialMobiImage.load()
+                    }
+                }
+//                interstitial.load(GADRequest())
             }
             
             let count = predictionCount + 1
@@ -661,39 +765,51 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         UserDefaults.standard.synchronize()
     }
     
-    /// Tells the delegate an ad request succeeded.
-    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
-        print("interstitialDidReceiveAd")
+//    /// Tells the delegate an ad request succeeded.
+//    @nonobjc func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+//        print("interstitialDidReceiveAd")
+//
+//        if interstitial.isReady {
+//            interstitial.present(fromRootViewController: self)
+//        }
+//    }
+//
+//    /// Tells the delegate an ad request failed.
+//    func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
+//        print("interstitial:didFailToReceiveAdWithError: \(error.localizedDescription)")
+//    }
+//
+//    /// Tells the delegate that an interstitial will be presented.
+//    func interstitialWillPresentScreen(_ ad: GADInterstitial) {
+//        print("interstitialWillPresentScreen")
+//    }
+//
+//    /// Tells the delegate the interstitial is to be animated off the screen.
+//    func interstitialWillDismissScreen(_ ad: GADInterstitial) {
+//        print("interstitialWillDismissScreen")
+//    }
+//
+//    /// Tells the delegate the interstitial had been animated off the screen.
+//    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+//        print("interstitialDidDismissScreen")
+//    }
+//
+//    /// Tells the delegate that a user click will open another app
+//    /// (such as the App Store), backgrounding the current app.
+//    func interstitialWillLeaveApplication(_ ad: GADInterstitial) {
+//        print("interstitialWillLeaveApplication")
+//    }
+    
+    @IBAction func buttonWatchVideoTapped(_ sender: Any) {
+        self.showLoader()
         
-        if interstitial.isReady {
-            interstitial.present(fromRootViewController: self)
+        if let id = Int64(InMobiVideoPlacementID) {
+            self.interstitialMobiVideo = IMInterstitial.init(placementId: id)
+            if self.interstitialMobiVideo != nil {
+                self.interstitialMobiVideo.delegate = self
+                self.interstitialMobiVideo.load()
+            }
         }
-    }
-    
-    /// Tells the delegate an ad request failed.
-    func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
-        print("interstitial:didFailToReceiveAdWithError: \(error.localizedDescription)")
-    }
-    
-    /// Tells the delegate that an interstitial will be presented.
-    func interstitialWillPresentScreen(_ ad: GADInterstitial) {
-        print("interstitialWillPresentScreen")
-    }
-    
-    /// Tells the delegate the interstitial is to be animated off the screen.
-    func interstitialWillDismissScreen(_ ad: GADInterstitial) {
-        print("interstitialWillDismissScreen")
-    }
-    
-    /// Tells the delegate the interstitial had been animated off the screen.
-    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-        print("interstitialDidDismissScreen")
-    }
-    
-    /// Tells the delegate that a user click will open another app
-    /// (such as the App Store), backgrounding the current app.
-    func interstitialWillLeaveApplication(_ ad: GADInterstitial) {
-        print("interstitialWillLeaveApplication")
     }
     
     /*

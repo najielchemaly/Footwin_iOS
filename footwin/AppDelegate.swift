@@ -13,6 +13,7 @@ import UserNotifications
 import FBSDKCoreKit
 import SwiftyJSON
 import GoogleMobileAds
+import InMobiSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
@@ -46,8 +47,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         // Initialize the Google Mobile Ads SDK.
         GADMobileAds.configure(withApplicationID: ADMOB_APP_ID)
         
-        self.setupGoogleAnalytics()
+        // Initialize the InMobi Mobile Ads SDK.
+        IMSdk.initWithAccountID(InMobiAccountID)
+//        IMSdk.setLogLevel(.debug)
         
+        self.setupGoogleAnalytics()
         self.setupConfiguration()
         
         //        Localization.doTheExchange()
@@ -100,7 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                 if let json = String(data: jsonData, encoding: .utf8) {
                     if let dict = JSON.init(parseJSON: json).dictionary {
                         if let version_ios = dict["version_ios"], let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-                            if let recVersion = Double(version_ios.stringValue), let currentVersion = Double(version) {
+                            if let recVersion = Double(version_ios.stringValue.replacingOccurrences(of: ".", with: "")), let currentVersion = Double(version.replacingOccurrences(of: ".", with: "")) {
                                 if recVersion > currentVersion {
                                     DispatchQueue.main.async {
                                         if let rootVC = self.window?.rootViewController {
