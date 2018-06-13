@@ -72,9 +72,9 @@
                         <rect key="frame" x="14" y="60" width="110" height="110"/>
                         <subviews>
                             <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sgG-rr-hPX">
-                                <rect key="frame" x="10" y="5" width="90" height="100"/>
+                                <rect key="frame" x="10" y="10" width="90" height="90"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="InZ-36-4q8"/>
+                                    <constraint firstAttribute="height" constant="90" id="InZ-36-4q8"/>
                                     <constraint firstAttribute="width" constant="90" id="LNh-Lq-mGc"/>
                                 </constraints>
                             </imageView>
@@ -96,9 +96,9 @@
                         <rect key="frame" x="251" y="60" width="110" height="110"/>
                         <subviews>
                             <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qpZ-lB-dEr">
-                                <rect key="frame" x="10" y="5" width="90" height="100"/>
+                                <rect key="frame" x="10" y="10" width="90" height="90"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="8fe-rn-bos"/>
+                                    <constraint firstAttribute="height" constant="90" id="8fe-rn-bos"/>
                                     <constraint firstAttribute="width" constant="90" id="Rev-La-MH6"/>
                                 </constraints>
                             </imageView>
@@ -116,14 +116,16 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="G2a-tM-Gas">
-                        <rect key="frame" x="132" y="68" width="111" height="0.0"/>
-                        <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="G2a-tM-Gas">
+                        <rect key="frame" x="116" y="60" width="143" height="38"/>
+                        <string key="text">Thursday, June 14
+18:00</string>
+                        <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="15"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GF8-oX-MbC">
-                        <rect key="frame" x="161" y="76" width="53" height="60.5"/>
+                        <rect key="frame" x="161" y="98" width="53" height="60.5"/>
                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="48"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -137,15 +139,15 @@
                     <constraint firstItem="GF8-oX-MbC" firstAttribute="top" secondItem="uVz-UM-n2B" secondAttribute="bottom" constant="40" id="FyY-HF-7Sp"/>
                     <constraint firstItem="cVs-l8-pZA" firstAttribute="top" secondItem="uVz-UM-n2B" secondAttribute="bottom" id="HCx-Du-w7H"/>
                     <constraint firstItem="k2D-32-Umf" firstAttribute="top" secondItem="cVs-l8-pZA" secondAttribute="bottom" id="I2p-eD-ePg"/>
-                    <constraint firstItem="G2a-tM-Gas" firstAttribute="leading" secondItem="lva-fv-a8y" secondAttribute="trailing" constant="8" id="LQa-Cy-Gdh"/>
+                    <constraint firstItem="G2a-tM-Gas" firstAttribute="leading" secondItem="lva-fv-a8y" secondAttribute="trailing" constant="-8" id="LQa-Cy-Gdh"/>
                     <constraint firstItem="wDl-px-6sx" firstAttribute="top" secondItem="lva-fv-a8y" secondAttribute="bottom" id="Mfs-w9-cF7"/>
-                    <constraint firstItem="G2a-tM-Gas" firstAttribute="top" secondItem="uVz-UM-n2B" secondAttribute="bottom" constant="8" id="NQ2-t7-lvg"/>
+                    <constraint firstItem="G2a-tM-Gas" firstAttribute="top" secondItem="uVz-UM-n2B" secondAttribute="bottom" id="NQ2-t7-lvg"/>
                     <constraint firstAttribute="trailing" secondItem="owp-Im-LaI" secondAttribute="trailing" id="OSO-pA-qxN"/>
                     <constraint firstItem="wDl-px-6sx" firstAttribute="leading" secondItem="lva-fv-a8y" secondAttribute="leading" id="Rdb-r0-JFd"/>
                     <constraint firstItem="wDl-px-6sx" firstAttribute="trailing" secondItem="lva-fv-a8y" secondAttribute="trailing" id="WyY-oS-xDn"/>
                     <constraint firstItem="lva-fv-a8y" firstAttribute="top" secondItem="uVz-UM-n2B" secondAttribute="bottom" id="bbn-Dv-3Kg"/>
                     <constraint firstAttribute="bottom" secondItem="owp-Im-LaI" secondAttribute="bottom" constant="16" id="c3M-pb-uoE"/>
-                    <constraint firstItem="cVs-l8-pZA" firstAttribute="leading" secondItem="G2a-tM-Gas" secondAttribute="trailing" constant="8" id="fNR-kj-wsF"/>
+                    <constraint firstItem="cVs-l8-pZA" firstAttribute="leading" secondItem="G2a-tM-Gas" secondAttribute="trailing" constant="-8" id="fNR-kj-wsF"/>
                     <constraint firstItem="lva-fv-a8y" firstAttribute="leading" secondItem="dLF-PO-EC7" secondAttribute="leading" constant="14" id="fhh-1q-qHD"/>
                     <constraint firstItem="k2D-32-Umf" firstAttribute="leading" secondItem="cVs-l8-pZA" secondAttribute="leading" id="fk5-d4-tx0"/>
                     <constraint firstItem="uVz-UM-n2B" firstAttribute="top" secondItem="dLF-PO-EC7" secondAttribute="top" id="gSP-Gt-nes"/>
@@ -153,7 +155,7 @@
                     <constraint firstAttribute="trailing" secondItem="uVz-UM-n2B" secondAttribute="trailing" id="uqw-Jd-3oU"/>
                     <constraint firstItem="owp-Im-LaI" firstAttribute="leading" secondItem="dLF-PO-EC7" secondAttribute="leading" id="v7n-8q-ZbU"/>
                     <constraint firstAttribute="trailing" secondItem="cVs-l8-pZA" secondAttribute="trailing" constant="14" id="vAr-3x-4t2"/>
-                    <constraint firstItem="GF8-oX-MbC" firstAttribute="top" secondItem="G2a-tM-Gas" secondAttribute="bottom" constant="8" id="zSJ-Qk-k88"/>
+                    <constraint firstItem="GF8-oX-MbC" firstAttribute="top" secondItem="G2a-tM-Gas" secondAttribute="bottom" id="zSJ-Qk-k88"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">

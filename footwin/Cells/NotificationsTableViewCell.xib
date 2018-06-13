@@ -79,8 +79,8 @@
                                     <constraint firstAttribute="width" constant="60" id="HqM-u5-8fc"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHX-zz-6xq">
-                                <rect key="frame" x="20" y="74" width="60" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ARGENTINA" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHX-zz-6xq">
+                                <rect key="frame" x="18" y="74" width="64" height="16.5"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="13"/>
                                 <color key="textColor" red="0.13664941920000001" green="0.2343467129" blue="0.4025434141" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -107,6 +107,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="fuq-EG-8ec" firstAttribute="leading" secondItem="QY2-63-6v1" secondAttribute="leading" constant="20" id="5HT-Jg-cmc"/>
+                            <constraint firstItem="yHX-zz-6xq" firstAttribute="centerX" secondItem="fuq-EG-8ec" secondAttribute="centerX" id="7gd-cI-hTn"/>
                             <constraint firstItem="nWz-M9-Rdr" firstAttribute="leading" secondItem="fuq-EG-8ec" secondAttribute="trailing" constant="8" id="CNl-U3-K27"/>
                             <constraint firstAttribute="height" constant="100" id="G1g-wh-QqV"/>
                             <constraint firstAttribute="width" constant="240" id="LTa-RW-PsA"/>
@@ -116,6 +117,7 @@
                             <constraint firstItem="fuq-EG-8ec" firstAttribute="top" secondItem="QY2-63-6v1" secondAttribute="top" constant="10" id="WgC-3D-hid"/>
                             <constraint firstItem="nWz-M9-Rdr" firstAttribute="centerY" secondItem="fuq-EG-8ec" secondAttribute="centerY" id="Xfr-hi-45M"/>
                             <constraint firstItem="yHX-zz-6xq" firstAttribute="trailing" secondItem="fuq-EG-8ec" secondAttribute="trailing" id="jWJ-c9-2z3"/>
+                            <constraint firstItem="c15-hV-hu7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yHX-zz-6xq" secondAttribute="trailing" constant="20" id="pyt-bb-DLl"/>
                             <constraint firstItem="c15-hV-hu7" firstAttribute="centerX" secondItem="LL8-BD-JfR" secondAttribute="centerX" id="tkD-Qp-31t"/>
                             <constraint firstItem="c15-hV-hu7" firstAttribute="trailing" secondItem="LL8-BD-JfR" secondAttribute="trailing" id="u4T-td-iey"/>
                             <constraint firstAttribute="trailing" secondItem="LL8-BD-JfR" secondAttribute="trailing" constant="20" id="uIa-b4-UAF"/>
@@ -126,6 +128,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="jWJ-c9-2z3"/>
+                                <exclude reference="vZy-ny-kGQ"/>
                                 <exclude reference="WDN-eg-Swu"/>
                                 <exclude reference="u4T-td-iey"/>
                             </mask>

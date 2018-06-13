@@ -8,10 +8,10 @@
 
 import UIKit
 import CircleProgressView
-import GoogleMobileAds
+//import GoogleMobileAds
 import InMobiSDK
 
-class CoinStashViewController: BaseViewController, UIScrollViewDelegate, GADRewardBasedVideoAdDelegate, IMInterstitialDelegate {
+class CoinStashViewController: BaseViewController, UIScrollViewDelegate, IMInterstitialDelegate {
 
     @IBOutlet weak var labelTotalCoins: UILabel!
     @IBOutlet weak var labelWinningCoins: UILabel!
@@ -28,7 +28,7 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, GADRewa
     
     var coinsProgressView: CircleProgressView!
     
-    var interstitial: IMInterstitial!
+    var interstitialMobiVideo: IMInterstitial!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,6 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, GADRewa
         // Do any additional setup after loading the view.
         self.initializeViews()
 //        self.setupAddMob()
-        self.setupInMobi()
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,29 +65,27 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, GADRewa
         scrollView.contentSize.height += 50
     }
     
-    func setupInMobi() {
-        if let id = Int64(InMobiVideoPlacementID) {
-            self.interstitial = IMInterstitial.init(placementId: id)
-            self.interstitial.delegate = self
-        }
-    }
-    
     func interstitialDidFinishLoading(_ interstitial: IMInterstitial!) {
         print("interstitialDidFinishLoading")
         
         self.hideLoader()
-        
-        interstitial.show(from: self, with: .coverVertical)
+        if interstitial.isReady() {
+            interstitial.show(from: self, with: .coverVertical)
+        }
     }
     
     func interstitial(_ interstitial: IMInterstitial!, didFailToLoadWithError error: IMRequestStatus!) {
         print("Interstitial failed to load ad")
         self.hideLoader()
+        
+        self.showAlertView(message: "No available video, try again later!")
     }
     
     func interstitial(_ interstitial: IMInterstitial!, didFailToPresentWithError error: IMRequestStatus!) {
         print("Interstitial didFailToPresentWithError")
         self.hideLoader()
+        
+        self.showAlertView(message: "No available video, try again later!")
     }
     
     func interstitialWillPresent(_ interstitial: IMInterstitial!) {
@@ -149,73 +146,73 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, GADRewa
     }
     
     func setupAddMob() {
-        GADRewardBasedVideoAd.sharedInstance().delegate = self
+//        GADRewardBasedVideoAd.sharedInstance().delegate = self
     }
     
-    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
-                            didRewardUserWith reward: GADAdReward) {
-        self.showLoader()
-        DispatchQueue.global(qos: .background).async {
-            let response = appDelegate.services.getReward(id: Objects.activeReward.id!, amount: Objects.activeReward.amount!)
-            
-            DispatchQueue.main.async {
-                if response?.status == ResponseStatus.SUCCESS.rawValue {
-                    if let message = response?.message {
-                        self.showAlertView(message: message)
-                    }
-                    
-                    if let json = response?.json?.first {
-                        if let coins = json["coins"] as? String {
-                            currentUser.coins = coins
-                            
-                            self.labelTotalCoins.text = coins
-                            
-                            self.saveUserInUserDefaults()
-                        }
-                    }
-                }
-                
-                self.hideLoader()
-            }
-        }
-        print("Reward received with currency: \(reward.type), amount \(reward.amount).")
-    }
-    
-    func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd:GADRewardBasedVideoAd) {
-        print("Reward based video ad is received.")
-        
-        if GADRewardBasedVideoAd.sharedInstance().isReady == true {
-            GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
-        }
-    }
-    
-    func rewardBasedVideoAdDidOpen(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
-        self.hideLoader()
-        print("Opened reward based video ad.")
-    }
-    
-    func rewardBasedVideoAdDidStartPlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
-        print("Reward based video ad started playing.")
-    }
-    
-    func rewardBasedVideoAdDidCompletePlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
-        print("Reward based video ad has completed.")
-    }
-    
-    func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
-        print("Reward based video ad is closed.")
-    }
-    
-    func rewardBasedVideoAdWillLeaveApplication(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
-        print("Reward based video ad will leave application.")
-    }
-    
-    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
-                            didFailToLoadWithError error: Error) {
-        self.hideLoader()
-        self.showAlertView(message: "No available video, try again later!")
-        print("Reward based video ad failed to load.")
-    }
+//    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
+//                            didRewardUserWith reward: GADAdReward) {
+//        self.showLoader()
+//        DispatchQueue.global(qos: .background).async {
+//            let response = appDelegate.services.getReward(id: Objects.activeReward.id!, amount: Objects.activeReward.amount!)
+//
+//            DispatchQueue.main.async {
+//                if response?.status == ResponseStatus.SUCCESS.rawValue {
+//                    if let message = response?.message {
+//                        self.showAlertView(message: message)
+//                    }
+//
+//                    if let json = response?.json?.first {
+//                        if let coins = json["coins"] as? String {
+//                            currentUser.coins = coins
+//
+//                            self.labelTotalCoins.text = coins
+//
+//                            self.saveUserInUserDefaults()
+//                        }
+//                    }
+//                }
+//
+//                self.hideLoader()
+//            }
+//        }
+//        print("Reward received with currency: \(reward.type), amount \(reward.amount).")
+//    }
+//
+//    func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd:GADRewardBasedVideoAd) {
+//        print("Reward based video ad is received.")
+//
+//        if GADRewardBasedVideoAd.sharedInstance().isReady == true {
+//            GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
+//        }
+//    }
+//
+//    func rewardBasedVideoAdDidOpen(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+//        self.hideLoader()
+//        print("Opened reward based video ad.")
+//    }
+//
+//    func rewardBasedVideoAdDidStartPlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+//        print("Reward based video ad started playing.")
+//    }
+//
+//    func rewardBasedVideoAdDidCompletePlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+//        print("Reward based video ad has completed.")
+//    }
+//
+//    func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+//        print("Reward based video ad is closed.")
+//    }
+//
+//    func rewardBasedVideoAdWillLeaveApplication(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+//        print("Reward based video ad will leave application.")
+//    }
+//
+//    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
+//                            didFailToLoadWithError error: Error) {
+//        self.hideLoader()
+//        self.showAlertView(message: "No available video, try again later!")
+//        print("Reward based video ad failed to load.")
+//    }
     
     func initializeViews() {
         labelTotalCoins.text = currentUser.coins
@@ -270,11 +267,11 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, GADRewa
     
     @IBAction func buttonWatchVideoTapped(_ sender: Any) {
         self.showLoader()
-//        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),
-//                                                    withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
-//        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(), withAdUnitID: ADMOB_VIDEO_ID)
         
-        self.interstitial.load()
+        interstitialMobiVideo = IMInterstitial(placementId: INMOBI_INTERSTITIAL_PLACEMENT_VIDEO, delegate: self)
+        if let interstitial = interstitialMobiVideo {
+            interstitial.load()
+        }
     }
     
     /*

@@ -32,13 +32,13 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ROUND RULES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4B-Nq-sAe">
-                                    <rect key="frame" x="16" y="21" width="343" height="31"/>
+                                    <rect key="frame" x="16" y="21" width="343" height="43"/>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="24"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWb-au-oDZ">
-                                    <rect key="frame" x="120" y="59" width="135" height="135"/>
+                                    <rect key="frame" x="120" y="71" width="135" height="135"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blue_coin_large" translatesAutoresizingMaskIntoConstraints="NO" id="9So-oW-f8P">
                                             <rect key="frame" x="0.0" y="0.0" width="135" height="135"/>
@@ -75,7 +75,7 @@ COINS</string>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b24-Yy-Xyc">
-                                    <rect key="frame" x="100" y="202" width="175" height="175"/>
+                                    <rect key="frame" x="100" y="214" width="175" height="175"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellow_coin_large" translatesAutoresizingMaskIntoConstraints="NO" id="qGe-fC-2vV">
                                             <rect key="frame" x="0.0" y="0.0" width="175" height="175"/>
@@ -112,7 +112,7 @@ COINS</string>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9j-qF-OPh">
-                                    <rect key="frame" x="120" y="385" width="135" height="135"/>
+                                    <rect key="frame" x="120" y="397" width="135" height="135"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellow_coin_large" translatesAutoresizingMaskIntoConstraints="NO" id="6mM-iZ-NaN">
                                             <rect key="frame" x="0.0" y="0.0" width="135" height="135"/>
@@ -148,7 +148,7 @@ COINS</string>
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Hid-iM-Xje">
-                                    <rect key="frame" x="62" y="536" width="251" height="46"/>
+                                    <rect key="frame" x="62" y="548" width="251" height="46"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="251" id="1PQ-co-lrN"/>
                                     </constraints>
@@ -160,6 +160,7 @@ YOU LOSE THE PREDICTION</string>
                                 </label>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="b24-Yy-Xyc" firstAttribute="centerY" secondItem="ygF-Gy-ZBN" secondAttribute="centerY" id="IeM-S1-EdS"/>
                                 <constraint firstItem="QWb-au-oDZ" firstAttribute="trailing" secondItem="d9j-qF-OPh" secondAttribute="trailing" id="Izd-i4-6e7"/>
                                 <constraint firstItem="QWb-au-oDZ" firstAttribute="top" secondItem="h4B-Nq-sAe" secondAttribute="bottom" constant="7" id="NPj-9u-M1Y"/>
                                 <constraint firstItem="Hid-iM-Xje" firstAttribute="top" secondItem="d9j-qF-OPh" secondAttribute="bottom" constant="16" id="Owp-MM-SXV"/>

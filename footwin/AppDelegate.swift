@@ -45,11 +45,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         FirebaseApp.configure()
         
         // Initialize the Google Mobile Ads SDK.
-        GADMobileAds.configure(withApplicationID: ADMOB_APP_ID)
+//        GADMobileAds.configure(withApplicationID: ADMOB_APP_ID)
         
         // Initialize the InMobi Mobile Ads SDK.
-        IMSdk.initWithAccountID(InMobiAccountID)
-//        IMSdk.setLogLevel(.debug)
+        let conscentDict: NSDictionary = [IM_GDPR_CONSENT_AVAILABLE : "true"]
+        IMSdk.initWithAccountID(INMOBI_ACCOUNT_ID, consentDictionary:conscentDict as! [AnyHashable : Any])
+        /*
+         * Enable logging for better debuggability. Please turn off the logs before submitting your App to the AppStore
+         */
+        IMSdk.setLogLevel(IMSDKLogLevel.debug)
         
         self.setupGoogleAnalytics()
         self.setupConfiguration()

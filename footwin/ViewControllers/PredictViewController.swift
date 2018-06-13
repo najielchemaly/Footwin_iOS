@@ -11,7 +11,9 @@ import SwiftyJSON
 import FirebaseMessaging
 import CountdownLabel
 //import GoogleMobileAds
-import InMobiSDK
+//import InMobiSDK
+import InMobiSDK.IMInterstitial
+import InMobiSDK.IMInterstitialDelegate
 
 class PredictViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, IMInterstitialDelegate {
 
@@ -89,20 +91,25 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     
     func interstitialDidFinishLoading(_ interstitial: IMInterstitial!) {
         print("interstitialDidFinishLoading")
-        
+
         self.hideLoader()
-        
-        interstitial.show(from: self, with: .coverVertical)
+        if interstitial.isReady() {
+            interstitial.show(from: self, with: .coverVertical)
+        }
     }
     
     func interstitial(_ interstitial: IMInterstitial!, didFailToLoadWithError error: IMRequestStatus!) {
         print("Interstitial failed to load ad")
         self.hideLoader()
+        
+        self.showAlertView(message: "No available video, try again later!")
     }
     
     func interstitial(_ interstitial: IMInterstitial!, didFailToPresentWithError error: IMRequestStatus!) {
         print("Interstitial didFailToPresentWithError")
         self.hideLoader()
+        
+        self.showAlertView(message: "No available video, try again later!")
     }
     
     func interstitialWillPresent(_ interstitial: IMInterstitial!) {
@@ -379,6 +386,9 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 cell.awayShadow.alpha = 0
                 cell.viewConfirm.alpha = 1
                 cell.labelVS.alpha = 0
+                
+                cell.buttonDraw.layer.borderColor = Colors.white.cgColor
+                cell.buttonDraw.backgroundColor = .clear
             } else if match.prediction_winning_team == match.away_id {
                 cell.homeImage.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
                 cell.homeShadow.alpha = 0
@@ -387,6 +397,9 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                 cell.awayShadow.alpha = 1
                 cell.viewConfirm.alpha = 1
                 cell.labelVS.alpha = 0
+                
+                cell.buttonDraw.layer.borderColor = Colors.white.cgColor
+                cell.buttonDraw.backgroundColor = .clear
             } else if match.prediction_winning_team == "0" {
                 cell.homeImage.transform = CGAffineTransform.identity
                 cell.homeShadow.transform = CGAffineTransform.identity
@@ -693,9 +706,10 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
 //                    Objects.matches.remove(at: index)
 //                    self.tableView.deleteRows(at: [IndexPath.init(row: index, section: 0)], with: .left)
                     _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { timer in
-                        let contentOffset = self.tableView.contentOffset
-                        self.tableView.reloadData()
-                        self.tableView.setContentOffset(contentOffset, animated: false)
+//                        let contentOffset = self.tableView.contentOffset
+//                        self.tableView.reloadData()
+                        self.tableView.reloadRows(at: [IndexPath.init(row: index, section: 0)], with: .none)
+//                        self.tableView.setContentOffset(contentOffset, animated: false)
                     })
                     
                     self.updateUserCoins()
@@ -746,14 +760,10 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     func displayInterstitialAd() {
         if let predictionCount = UserDefaults.standard.value(forKey: "predictionCount") as? Int {
             if predictionCount % 3 == 0 {
-                if let id = Int64(InMobiImagePlacementID) {
-                    self.interstitialMobiImage = IMInterstitial.init(placementId: id)
-                    if self.interstitialMobiImage != nil {
-                        self.interstitialMobiImage.delegate = self
-                        self.interstitialMobiImage.load()
-                    }
+                interstitialMobiImage = IMInterstitial(placementId: INMOBI_INTERSTITIAL_PLACEMENT_IMAGE, delegate: self)
+                if let interstitial = interstitialMobiImage {
+                    interstitial.load()
                 }
-//                interstitial.load(GADRequest())
             }
             
             let count = predictionCount + 1
@@ -803,12 +813,9 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     @IBAction func buttonWatchVideoTapped(_ sender: Any) {
         self.showLoader()
         
-        if let id = Int64(InMobiVideoPlacementID) {
-            self.interstitialMobiVideo = IMInterstitial.init(placementId: id)
-            if self.interstitialMobiVideo != nil {
-                self.interstitialMobiVideo.delegate = self
-                self.interstitialMobiVideo.load()
-            }
+        interstitialMobiVideo = IMInterstitial(placementId: INMOBI_INTERSTITIAL_PLACEMENT_VIDEO, delegate: self)
+        if let interstitial = interstitialMobiVideo {
+            interstitial.load()
         }
     }
     
