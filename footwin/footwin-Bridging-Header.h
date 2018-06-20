@@ -11,5 +11,6 @@
 
 //#import <GoogleAnalytics/GAI.h>
 //#import <GoogleAnalytics/GAIDictionaryBuilder.h>
+#import <AppnextLib/AppnextLib.h>
 
 #endif /* footwin_Bridging_Header_h */

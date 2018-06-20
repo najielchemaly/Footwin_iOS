@@ -147,7 +147,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pq7-o8-89l">
-                        <rect key="frame" x="179" y="58" width="16" height="60.5"/>
+                        <rect key="frame" x="179" y="62" width="16" height="60.5"/>
                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="48"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -230,7 +230,7 @@
                     <constraint firstItem="nF8-Ej-EnS" firstAttribute="trailing" secondItem="dYS-jQ-quf" secondAttribute="trailing" id="VaR-ds-pYf"/>
                     <constraint firstItem="4Ea-dU-fSZ" firstAttribute="top" secondItem="hdo-34-OCA" secondAttribute="top" constant="20" id="XtC-Ao-2B0"/>
                     <constraint firstItem="to2-i1-ffy" firstAttribute="leading" secondItem="Ghp-z0-AUX" secondAttribute="trailing" id="ZD4-DC-2yM"/>
-                    <constraint firstItem="Pq7-o8-89l" firstAttribute="centerY" secondItem="BEp-Ge-wmm" secondAttribute="centerY" constant="8" id="a3V-6m-ugI"/>
+                    <constraint firstItem="Pq7-o8-89l" firstAttribute="centerY" secondItem="BEp-Ge-wmm" secondAttribute="centerY" constant="4" id="a3V-6m-ugI"/>
                     <constraint firstItem="38u-Ww-Md4" firstAttribute="centerX" secondItem="hdo-34-OCA" secondAttribute="centerX" id="aHF-UP-zpi"/>
                     <constraint firstItem="4Ea-dU-fSZ" firstAttribute="leading" secondItem="hdo-34-OCA" secondAttribute="leading" id="beT-Zt-UkX"/>
                     <constraint firstItem="38u-Ww-Md4" firstAttribute="top" secondItem="BEp-Ge-wmm" secondAttribute="bottom" constant="8" id="e5b-cy-Eid"/>

@@ -8,6 +8,7 @@
 
 import UIKit
 import FSPagerView
+import StoreKit
 
 class PurchaseCoinsViewCell: FSPagerViewCell {
 
@@ -17,9 +18,33 @@ class PurchaseCoinsViewCell: FSPagerViewCell {
     @IBOutlet weak var buttonPurchase: UIButton!
     @IBOutlet weak var labelPrice: UILabel!
     
+    var buyButtonHandler: ((_ product: SKProduct) -> ())?
+    
+    var product: SKProduct? {
+        didSet {
+            guard let product = product else { return }
+            
+            textLabel?.text = product.localizedTitle
+            
+            if CoinProducts.store.isProductPurchased(product.productIdentifier) {
+               
+            } else {
+                
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func setupButtonPurchase() {
+        self.buttonPurchase.addTarget(self, action: #selector(buttonPurchaseTapped(sender:)), for: .touchUpInside)
+    }
+    
+    @objc func buttonPurchaseTapped(sender: UIButton) {
+        buyButtonHandler?(product!)
     }
 
 }

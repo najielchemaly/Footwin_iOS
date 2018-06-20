@@ -192,6 +192,7 @@ class Services {
             "fullname": user.fullname ?? "",
             "email": user.email ?? "",
             "gender": user.gender ?? "",
+            "avatar": user.avatar ?? ""
         ]
         
         let serviceName = ServiceName.facebookLogin

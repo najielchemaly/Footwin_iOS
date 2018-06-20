@@ -40,6 +40,7 @@ extension IAPHelper {
     }
     
     public func buyProduct(_ product: SKProduct) {
+        
     }
     
     public func isProductPurchased(_ productIdentifier: ProductIdentifier) -> Bool {
@@ -51,6 +52,7 @@ extension IAPHelper {
     }
     
     public func restorePurchases() {
+        
     }
 }
 

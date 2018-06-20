@@ -33,15 +33,13 @@ class PurchaseCoins: UIView, FSPagerViewDataSource, FSPagerViewDelegate {
         let itemSize = self.pagerView.frame.size.width*0.9
         self.pagerView.itemSize = CGSize(width: itemSize, height: itemSize*1.1)
         pagerHeightConstraint.constant = itemSize*1.1
-        
-        self.pagerView.dataSource = self
-        self.pagerView.delegate = self
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(PurchaseCoins.handlePurchaseNotification(_:)),
                                                name: NSNotification.Name(rawValue: IAPHelper.IAPHelperPurchaseNotification),
                                                object: nil)
         
-        self.reloadProducts()
+        self.pagerView.dataSource = self
+        self.pagerView.delegate = self
     }
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
@@ -61,13 +59,23 @@ class PurchaseCoins: UIView, FSPagerViewDataSource, FSPagerViewDelegate {
             if let price = package.price {
                 cell.labelPrice.text = price + "$"
             }
-            
+                        
+            cell.setupButtonPurchase()
             cell.buttonPurchase.layer.borderColor = Colors.appBlue.cgColor
             cell.buttonPurchase.layer.borderWidth = 1.0
+            cell.buttonPurchase.tag = index
             
             cell.contentView.layer.shadowRadius = 0
             cell.backgroundColor = .clear
             cell.layer.cornerRadius = 20
+            
+            if self.products.count > 0 {
+                let product = self.products[index]
+                cell.product = product
+                cell.buyButtonHandler = { product in
+                    CoinProducts.store.buyProduct(product)
+                }
+            }
             
             return cell
         }
@@ -84,18 +92,18 @@ class PurchaseCoins: UIView, FSPagerViewDataSource, FSPagerViewDelegate {
     }
     
     func reloadProducts() {
-        products = []
-        
-//        tableView.reloadData()
-        
-        CoinProducts.store.requestProducts{success, products in
-            if success {
-                self.products = products!
-                
-//                self.tableView.reloadData()
-            }
+        if let baseVC = currentVC as? BaseViewController {
+            baseVC.showLoader()
             
-//            self.refreshControl?.endRefreshing()
+            products = []
+            
+            CoinProducts.store.requestProducts{success, products in
+                baseVC.hideLoader()
+                
+                if success {
+                    self.products = products!
+                }
+            }
         }
     }
     
@@ -108,8 +116,6 @@ class PurchaseCoins: UIView, FSPagerViewDataSource, FSPagerViewDelegate {
         
         for (index, product) in products.enumerated() {
             guard product.productIdentifier == productID else { continue }
-            
-//            tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
         }
     }
 

@@ -35,22 +35,22 @@
                             <constraint firstAttribute="height" constant="50" id="U3c-Nu-qPb"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CK4-bf-y0q">
-                        <rect key="frame" x="76" y="26.5" width="14" height="33"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CK4-bf-y0q">
+                        <rect key="frame" x="76" y="43" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="26"/>
                         <color key="textColor" red="0.046346366409999999" green="0.10833267119999999" blue="0.2981976569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="NAJI CHEMALY" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vqn-Sh-yYg">
-                        <rect key="frame" x="98" y="31" width="178" height="23"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vqn-Sh-yYg">
+                        <rect key="frame" x="84" y="42.5" width="209" height="0.0"/>
                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="18"/>
                         <color key="textColor" red="0.5725490196078431" green="0.59215686274509804" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2G-UC-K1r">
-                        <rect key="frame" x="284" y="26" width="67" height="33"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2G-UC-K1r">
+                        <rect key="frame" x="301" y="42.5" width="50" height="0.0"/>
                         <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="VTa-K7-kPb"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="VTa-K7-kPb"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="26"/>
                         <color key="textColor" red="0.054170526560000001" green="0.1853607297" blue="0.84208017589999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

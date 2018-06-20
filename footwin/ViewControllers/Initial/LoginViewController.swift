@@ -134,6 +134,8 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                     }
                     if let id = (dict.object(forKey: "id") as? String) {
                         currentUser.facebook_id = id
+                        
+                        currentUser.avatar = "http://graph.facebook.com/\(id)/picture?type=large"
                     }
                     if let name = (dict.object(forKey: "name") as? String) {
                         currentUser.fullname = name
@@ -141,13 +143,13 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                     if let email = (dict.object(forKey: "email") as? String) {
                         currentUser.email = email
                     }
-                    if let picture = (dict.object(forKey: "picture") as? NSDictionary) {
-                        if let data = picture.object(forKey: "data") as? NSDictionary {
-                            if let url = data.object(forKey: "url") as? String {
-                                currentUser.avatar = url
-                            }
-                        }
-                    }
+//                    if let picture = (dict.object(forKey: "picture") as? NSDictionary) {
+//                        if let data = picture.object(forKey: "data") as? NSDictionary {
+//                            if let url = data.object(forKey: "url") as? String {
+//                                currentUser.avatar = url
+//                            }
+//                        }
+//                    }
                     DispatchQueue.global(qos: .background).async {
                         let response = appDelegate.services.facebookLogin(user: currentUser)
                         DispatchQueue.main.async {

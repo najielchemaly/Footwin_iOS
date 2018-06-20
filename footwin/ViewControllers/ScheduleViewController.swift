@@ -7,16 +7,14 @@
 //
 
 import UIKit
-import GoogleMobileAds
 
-class ScheduleViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, GADInterstitialDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class ScheduleViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var labelRound: UILabel!
     @IBOutlet weak var buttonRound: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     var refreshControl = UIRefreshControl()
-    var interstitial: GADInterstitial!
     var pickerView: UIPickerView!
     var currentDate: String!
     

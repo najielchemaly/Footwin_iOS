@@ -87,7 +87,7 @@ COINS</string>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JBD-bG-Hbo">
-                                            <rect key="frame" x="0.0" y="111" width="175" height="56"/>
+                                            <rect key="frame" x="0.0" y="103" width="175" height="56"/>
                                             <string key="text">150
 COINS</string>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="22"/>
@@ -101,9 +101,9 @@ COINS</string>
                                         <constraint firstItem="qGe-fC-2vV" firstAttribute="leading" secondItem="b24-Yy-Xyc" secondAttribute="leading" id="4cj-Sl-O5z"/>
                                         <constraint firstAttribute="trailing" secondItem="crY-7L-gpE" secondAttribute="trailing" id="5SX-CS-YCj"/>
                                         <constraint firstAttribute="trailing" secondItem="JBD-bG-Hbo" secondAttribute="trailing" id="8Xf-Yo-jlh"/>
-                                        <constraint firstItem="JBD-bG-Hbo" firstAttribute="top" secondItem="crY-7L-gpE" secondAttribute="bottom" constant="8" id="Iqh-OB-c1P"/>
+                                        <constraint firstItem="JBD-bG-Hbo" firstAttribute="top" secondItem="crY-7L-gpE" secondAttribute="bottom" id="Iqh-OB-c1P"/>
                                         <constraint firstItem="crY-7L-gpE" firstAttribute="leading" secondItem="b24-Yy-Xyc" secondAttribute="leading" id="UrD-pM-YeL"/>
-                                        <constraint firstAttribute="bottom" secondItem="JBD-bG-Hbo" secondAttribute="bottom" constant="8" id="Xxj-3Y-iEF"/>
+                                        <constraint firstAttribute="bottom" secondItem="JBD-bG-Hbo" secondAttribute="bottom" constant="16" id="Xxj-3Y-iEF"/>
                                         <constraint firstAttribute="height" constant="175" id="bPs-tL-XMT"/>
                                         <constraint firstItem="qGe-fC-2vV" firstAttribute="top" secondItem="b24-Yy-Xyc" secondAttribute="top" id="h3S-Kq-vyZ"/>
                                         <constraint firstAttribute="width" secondItem="b24-Yy-Xyc" secondAttribute="height" multiplier="1:1" id="h8A-2I-DgV"/>

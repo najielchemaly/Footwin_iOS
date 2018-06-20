@@ -12,8 +12,8 @@ import Firebase
 import UserNotifications
 import FBSDKCoreKit
 import SwiftyJSON
-import GoogleMobileAds
-import InMobiSDK
+//import GoogleMobileAds
+//import InMobiSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
@@ -47,13 +47,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         // Initialize the Google Mobile Ads SDK.
 //        GADMobileAds.configure(withApplicationID: ADMOB_APP_ID)
         
-        // Initialize the InMobi Mobile Ads SDK.
-        let conscentDict: NSDictionary = [IM_GDPR_CONSENT_AVAILABLE : "true"]
-        IMSdk.initWithAccountID(INMOBI_ACCOUNT_ID, consentDictionary:conscentDict as! [AnyHashable : Any])
-        /*
-         * Enable logging for better debuggability. Please turn off the logs before submitting your App to the AppStore
-         */
-        IMSdk.setLogLevel(IMSDKLogLevel.debug)
+//        // Initialize the InMobi Mobile Ads SDK.
+//        let conscentDict: NSDictionary = [IM_GDPR_CONSENT_AVAILABLE : "true"]
+//        IMSdk.initWithAccountID(INMOBI_ACCOUNT_ID, consentDictionary:conscentDict as! [AnyHashable : Any])
+//        /*
+//         * Enable logging for better debuggability. Please turn off the logs before submitting your App to the AppStore
+//         */
+//        IMSdk.setLogLevel(IMSDKLogLevel.debug)
         
         self.setupGoogleAnalytics()
         self.setupConfiguration()
@@ -114,7 +114,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                                         if let rootVC = self.window?.rootViewController {
                                             let alert = UIAlertController(title: "OOPS", message: "Your current version is out of date.\nPlease update the app!", preferredStyle: .alert)
                                             alert.addAction(UIAlertAction(title: "UPDATE", style: .default, handler: { action in
-                                                self.didFinishLaunching = true
                                                 self.openFootinInAppStore()
                                             }))
                                             rootVC.present(alert, animated: true, completion: nil)
@@ -266,21 +265,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     func goToLoginNavigation() {
         if let window = self.window, let loginNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.LoginNavigationController) as? LoginNavigationController {
             window.rootViewController = loginNavigationController
-            self.didFinishLaunching = true
         }
     }
     
     func goToMainNavigation() {
         if let window = self.window, let mainNavigationController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.MainNavigationController) as? MainNavigationController {
             window.rootViewController = mainNavigationController
-            self.didFinishLaunching = true
         }
     }
     
     func goToYoutubeNavigation() {
         if let window = self.window, let youtubePlayerViewController = mainStoryboard.instantiateViewController(withIdentifier: StoryboardIds.YoutubePlayerViewController) as? YoutubePlayerViewController {
             window.rootViewController = youtubePlayerViewController
-            self.didFinishLaunching = true
         }
     }
     

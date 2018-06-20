@@ -9,9 +9,9 @@
 import UIKit
 import CircleProgressView
 //import GoogleMobileAds
-import InMobiSDK
+//import InMobiSDK
 
-class CoinStashViewController: BaseViewController, UIScrollViewDelegate, IMInterstitialDelegate {
+class CoinStashViewController: BaseViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var labelTotalCoins: UILabel!
     @IBOutlet weak var labelWinningCoins: UILabel!
@@ -27,8 +27,7 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, IMInter
     @IBOutlet weak var imageIconSmall: UIImageView!
     
     var coinsProgressView: CircleProgressView!
-    
-    var interstitialMobiVideo: IMInterstitial!
+//    var interstitialMobiVideo: IMInterstitial!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,85 +64,85 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, IMInter
         scrollView.contentSize.height += 50
     }
     
-    func interstitialDidFinishLoading(_ interstitial: IMInterstitial!) {
-        print("interstitialDidFinishLoading")
-        
-        self.hideLoader()
-        if interstitial.isReady() {
-            interstitial.show(from: self, with: .coverVertical)
-        }
-    }
-    
-    func interstitial(_ interstitial: IMInterstitial!, didFailToLoadWithError error: IMRequestStatus!) {
-        print("Interstitial failed to load ad")
-        self.hideLoader()
-        
-        self.showAlertView(message: "No available video, try again later!")
-    }
-    
-    func interstitial(_ interstitial: IMInterstitial!, didFailToPresentWithError error: IMRequestStatus!) {
-        print("Interstitial didFailToPresentWithError")
-        self.hideLoader()
-        
-        self.showAlertView(message: "No available video, try again later!")
-    }
-    
-    func interstitialWillPresent(_ interstitial: IMInterstitial!) {
-        print("interstitialWillPresent")
-    }
-    
-    func interstitialDidPresent(_ interstitial: IMInterstitial!) {
-        print("interstitialDidPresent")
-    }
-    
-    func interstitialWillDismiss(_ interstitial: IMInterstitial!) {
-        print("interstitialWillDismiss")
-    }
-    
-    func interstitialDidDismiss(_ interstitial: IMInterstitial!) {
-        print("interstitialDidDismiss")
-    }
-    
-    func userWillLeaveApplication(from interstitial: IMInterstitial!) {
-        print("userWillLeaveApplicationFromInterstitial")
-    }
-    
-    func interstitial(_ interstitial: IMInterstitial!, rewardActionCompletedWithRewards rewards: [AnyHashable : Any]!) {
-        print("rewardActionCompletedWithRewards")
-        
-        self.showLoader()
-        DispatchQueue.global(qos: .background).async {
-            let response = appDelegate.services.getReward(id: Objects.activeReward.id!, amount: Objects.activeReward.amount!)
-            
-            DispatchQueue.main.async {
-                if response?.status == ResponseStatus.SUCCESS.rawValue {
-                    if let message = response?.message {
-                        self.showAlertView(message: message)
-                    }
-                    
-                    if let json = response?.json?.first {
-                        if let coins = json["coins"] as? String {
-                            currentUser.coins = coins
-                            
-                            self.labelTotalCoins.text = coins
-                            
-                            self.saveUserInUserDefaults()
-                        }
-                    }
-                }
-                
-                self.hideLoader()
-            }
-        }
-    }
-    
-    func interstitial(_ interstitial: IMInterstitial!, didInteractWithParams params: [AnyHashable : Any]!) {
-        print("InterstitialDidInteractWithParams")
-    }
-    
-    func interstitialDidReceiveAd(_ interstitial: IMInterstitial!) {
-        print("interstitialDidReceiveAd")
-    }
+//    func interstitialDidFinishLoading(_ interstitial: IMInterstitial!) {
+//        print("interstitialDidFinishLoading")
+//
+//        self.hideLoader()
+//        if interstitial.isReady() {
+//            interstitial.show(from: self, with: .coverVertical)
+//        }
+//    }
+//
+//    func interstitial(_ interstitial: IMInterstitial!, didFailToLoadWithError error: IMRequestStatus!) {
+//        print("Interstitial failed to load ad")
+//        self.hideLoader()
+//
+//        self.showAlertView(message: "No available video, try again later!")
+//    }
+//
+//    func interstitial(_ interstitial: IMInterstitial!, didFailToPresentWithError error: IMRequestStatus!) {
+//        print("Interstitial didFailToPresentWithError")
+//        self.hideLoader()
+//
+//        self.showAlertView(message: "No available video, try again later!")
+//    }
+//
+//    func interstitialWillPresent(_ interstitial: IMInterstitial!) {
+//        print("interstitialWillPresent")
+//    }
+//
+//    func interstitialDidPresent(_ interstitial: IMInterstitial!) {
+//        print("interstitialDidPresent")
+//    }
+//
+//    func interstitialWillDismiss(_ interstitial: IMInterstitial!) {
+//        print("interstitialWillDismiss")
+//    }
+//
+//    func interstitialDidDismiss(_ interstitial: IMInterstitial!) {
+//        print("interstitialDidDismiss")
+//    }
+//
+//    func userWillLeaveApplication(from interstitial: IMInterstitial!) {
+//        print("userWillLeaveApplicationFromInterstitial")
+//    }
+//
+//    func interstitial(_ interstitial: IMInterstitial!, rewardActionCompletedWithRewards rewards: [AnyHashable : Any]!) {
+//        print("rewardActionCompletedWithRewards")
+//
+//        self.showLoader()
+//        DispatchQueue.global(qos: .background).async {
+//            let response = appDelegate.services.getReward(id: Objects.activeReward.id!, amount: Objects.activeReward.amount!)
+//
+//            DispatchQueue.main.async {
+//                if response?.status == ResponseStatus.SUCCESS.rawValue {
+//                    if let message = response?.message {
+//                        self.showAlertView(message: message)
+//                    }
+//
+//                    if let json = response?.json?.first {
+//                        if let coins = json["coins"] as? String {
+//                            currentUser.coins = coins
+//
+//                            self.labelTotalCoins.text = coins
+//
+//                            self.saveUserInUserDefaults()
+//                        }
+//                    }
+//                }
+//
+//                self.hideLoader()
+//            }
+//        }
+//    }
+//
+//    func interstitial(_ interstitial: IMInterstitial!, didInteractWithParams params: [AnyHashable : Any]!) {
+//        print("InterstitialDidInteractWithParams")
+//    }
+//
+//    func interstitialDidReceiveAd(_ interstitial: IMInterstitial!) {
+//        print("interstitialDidReceiveAd")
+//    }
     
     func setupAddMob() {
 //        GADRewardBasedVideoAd.sharedInstance().delegate = self
@@ -229,7 +228,6 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, IMInter
         coinsProgressView.trackBackgroundColor = Colors.appBlue.withAlphaComponent(0.25)
         coinsProgressView.trackFillColor = Colors.appBlue
         coinsProgressView.backgroundColor = .clear
-        coinsProgressView.refreshRate = 0.001
         coinsProgressView.progress = 0
         progressView.addSubview(coinsProgressView)
         progressView.sendSubview(toBack: coinsProgressView)
@@ -258,6 +256,7 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, IMInter
     @IBAction func buttonGetCoinsTapped(_ sender: Any) {
         if let purchaseCoins = self.showView(name: Views.PurchaseCoins) as? PurchaseCoins {
             purchaseCoins.setupPagerView()
+            purchaseCoins.reloadProducts()
         }
     }
     
@@ -268,10 +267,10 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate, IMInter
     @IBAction func buttonWatchVideoTapped(_ sender: Any) {
         self.showLoader()
         
-        interstitialMobiVideo = IMInterstitial(placementId: INMOBI_INTERSTITIAL_PLACEMENT_VIDEO, delegate: self)
-        if let interstitial = interstitialMobiVideo {
-            interstitial.load()
-        }
+//        interstitialMobiVideo = IMInterstitial(placementId: INMOBI_INTERSTITIAL_PLACEMENT_VIDEO, delegate: self)
+//        if let interstitial = interstitialMobiVideo {
+//            interstitial.load()
+//        }
     }
     
     /*

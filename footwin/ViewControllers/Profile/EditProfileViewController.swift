@@ -62,7 +62,8 @@ class EditProfileViewController: BaseViewController, UIPickerViewDelegate, UIPic
         self.imageViewProfile.layer.cornerRadius = self.imageViewProfile.frame.size.width/2
         self.viewOverlay.layer.cornerRadius = self.viewOverlay.frame.size.width/2
         if let avatar = currentUser.avatar, !avatar.isEmpty {
-            self.imageViewProfile.kf.setImage(with: URL(string: Services.getMediaUrl() + avatar))
+            let urlString = avatar.contains("graph.facebook.com") ? avatar : Services.getMediaUrl() + avatar
+            self.imageViewProfile.kf.setImage(with: URL(string: urlString))
         } else {
             if let gender = currentUser.gender, gender.lowercased() == "male" {
                 self.imageViewProfile.image = #imageLiteral(resourceName: "avatar_male")

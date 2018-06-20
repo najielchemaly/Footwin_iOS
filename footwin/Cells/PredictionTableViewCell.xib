@@ -27,7 +27,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bzt-uF-Kuk">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bzt-uF-Kuk">
                         <rect key="frame" x="0.0" y="22" width="375" height="195"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DFi-uf-XpR">
@@ -194,14 +194,20 @@
                                     <constraint firstAttribute="height" constant="40" id="tSW-jW-OXu"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Lub-Q2-JG0">
+                                <rect key="frame" x="17" y="17" width="37" height="37"/>
+                                <color key="color" red="0.050523705779999997" green="0.18217900400000001" blue="0.82575476169999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="70" id="Law-8p-HVp"/>
+                            <constraint firstItem="Lub-Q2-JG0" firstAttribute="centerY" secondItem="nbp-XG-fGc" secondAttribute="centerY" id="T6T-Fv-FYJ"/>
                             <constraint firstItem="iGG-l1-LCW" firstAttribute="leading" secondItem="nbp-XG-fGc" secondAttribute="leading" constant="8" id="Ufy-Ah-mbG"/>
                             <constraint firstAttribute="trailing" secondItem="iGG-l1-LCW" secondAttribute="trailing" constant="8" id="fVg-Zp-bkD"/>
                             <constraint firstItem="iGG-l1-LCW" firstAttribute="centerY" secondItem="nbp-XG-fGc" secondAttribute="centerY" id="ltG-6n-7AE"/>
                             <constraint firstAttribute="height" constant="70" id="ruL-EN-Mxx"/>
+                            <constraint firstItem="Lub-Q2-JG0" firstAttribute="centerX" secondItem="nbp-XG-fGc" secondAttribute="centerX" id="yv5-rp-0YV"/>
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbB-oI-JAd">
@@ -246,6 +252,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="activityIndicator" destination="Lub-Q2-JG0" id="41k-0T-MUl"/>
                 <outlet property="awayImage" destination="2Vi-UC-9Gj" id="fFY-U9-r9s"/>
                 <outlet property="awayShadow" destination="hvH-E9-6l4" id="W3D-1p-rwr"/>
                 <outlet property="awayShadowWidthConstraint" destination="DQn-ku-r1z" id="AHd-iX-kQw"/>

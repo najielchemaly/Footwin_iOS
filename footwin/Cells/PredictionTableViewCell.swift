@@ -30,6 +30,7 @@ class PredictionTableViewCell: UITableViewCell {
     @IBOutlet weak var labelConfirm: UILabel!
     @IBOutlet weak var imageCheck: UIImageView!
     @IBOutlet weak var stackViewTime: UIStackView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

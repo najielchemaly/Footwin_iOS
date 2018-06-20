@@ -48,7 +48,8 @@ class ProfileViewController: BaseViewController, ImagePickerDelegate {
     func setUserInfo() {
         labelName.text = currentUser.fullname?.uppercased()
         if let avatar = currentUser.avatar, !avatar.isEmpty {
-            self.imageProfile.kf.setImage(with: URL(string: Services.getMediaUrl() + avatar))
+            let urlString = avatar.contains("graph.facebook.com") ? avatar : Services.getMediaUrl() + avatar
+            self.imageProfile.kf.setImage(with: URL(string: urlString))
         } else {
             if let gender = currentUser.gender, gender.lowercased() == "male" {
                 self.imageProfile.image = #imageLiteral(resourceName: "avatar_male")

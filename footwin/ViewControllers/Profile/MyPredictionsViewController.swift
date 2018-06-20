@@ -113,7 +113,7 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
             cell.selectionStyle = .none
             cell.isUserInteractionEnabled = false
             
-            cell.viewConfirm.layer.cornerRadius = cell.viewConfirm.frame.size.width/2
+            cell.viewConfirm.layer.cornerRadius = cell.viewConfirmWidthConstraint.constant/2
             cell.buttonDraw.customizeBorder(color: Colors.white)
             
             let prediction = Objects.predictions[indexPath.row]
@@ -169,13 +169,18 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
             
             if prediction.home_score == "-1" && prediction.away_score == "-1" {
                 cell.labelVS.text = "VS"
+            } else {
+                cell.labelVS.text = "-"
             }
             
             cell.labelTitle.text = prediction.title
+            cell.labelDescription.cancel()
             if let status = prediction.status {
                 switch status {
                 case "1":
+                    cell.viewWinningCoins.alpha = 0
                     cell.viewConfirmWidthConstraint.constant = 70
+                    cell.viewConfirm.alpha = 1
                     cell.topBarImageView.image = #imageLiteral(resourceName: "time_remaining_background")
                     if let dateString = prediction.date {
                         let dateFormatter = DateFormatter()
@@ -190,18 +195,29 @@ class MyPredictionsViewController: BaseViewController, UITableViewDelegate, UITa
                 case "2", "3":
                     cell.viewWinningCoins.alpha = 1
                     cell.viewConfirmWidthConstraint.constant = 0
+                    cell.viewConfirm.alpha = 0
                     cell.topBarImageView.image = #imageLiteral(resourceName: "myprediction_top_green")
                     cell.labelDescription.text = prediction.desc
                     if let winning_coins = prediction.winning_coins {
                         cell.labelWinningCoins.text = "+" + winning_coins
                     }
                 case "4":
+                    cell.viewWinningCoins.alpha = 0
                     cell.topBarImageView.image = #imageLiteral(resourceName: "myprediction_top_red")
+                    cell.viewConfirmWidthConstraint.constant = 0
+                    cell.viewConfirm.alpha = 0
                     cell.labelDescription.text = prediction.desc
                 default:
-                    break;
+                    cell.viewWinningCoins.alpha = 0
+                    cell.viewConfirm.alpha = 0
                 }
             }
+            
+            if cell.viewConfirm.layer.cornerRadius == 0 {
+                cell.viewConfirmWidthConstraint.constant = 70
+                cell.viewConfirm.layer.cornerRadius = cell.viewConfirmWidthConstraint.constant/2
+            }
+            
             
             return cell
         }

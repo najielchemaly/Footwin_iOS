@@ -98,7 +98,8 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
                     self.labelCoins.text = Objects.leaderboard[0].coins
                     self.labelFullname.text = Objects.leaderboard[0].fullname?.uppercased()
                     if let avatar = Objects.leaderboard[0].avatar, !avatar.isEmpty {
-                        self.imageProfile.kf.setImage(with: URL(string: Services.getMediaUrl() + avatar))
+                        let urlString = avatar.contains("graph.facebook.com") ? avatar : Services.getMediaUrl() + avatar
+                        self.imageProfile.kf.setImage(with: URL(string: urlString))
                     } else {
                         if let gender = Objects.leaderboard[0].gender, gender.lowercased() == "male" {
                             self.imageProfile.image = #imageLiteral(resourceName: "avatar_male")
@@ -158,7 +159,8 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
             
             let leaderboard = Objects.leaderboard[indexPath.row]
             if let avatar = leaderboard.avatar, !avatar.isEmpty {
-                cell.imageProfile.kf.setImage(with: URL(string: Services.getMediaUrl() + avatar))
+                let urlString = avatar.contains("graph.facebook.com") ? avatar : Services.getMediaUrl() + avatar
+                cell.imageProfile.kf.setImage(with: URL(string: urlString))
             } else {
                 if let gender = leaderboard.gender, gender.lowercased() == "female" {
                     cell.imageProfile.image = #imageLiteral(resourceName: "avatar_female")
