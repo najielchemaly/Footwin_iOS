@@ -25,6 +25,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     
     var refreshControl = UIRefreshControl()
     var rewardedAd: AppnextRewardedVideoAd!
+    var interstitialAd: AppnextInterstitialAd!
     var currentDate: String!
     
     override func viewDidLoad() {
@@ -63,13 +64,6 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         
         self.getPackages()
     }
-
-//    func interstitial(_ interstitial: IMInterstitial!, didFailToLoadWithError error: IMRequestStatus!) {
-//        print("Interstitial failed to load ad")
-//        self.hideLoader()
-//
-//        self.showAlertView(message: "No available video, try again later!")
-//    }
     
 //    func interstitial(_ interstitial: IMInterstitial!, rewardActionCompletedWithRewards rewards: [AnyHashable : Any]!) {
 //        print("rewardActionCompletedWithRewards")
@@ -649,13 +643,8 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                         cell.labelVS.alpha = 0
                         cell.isUserInteractionEnabled = false
                     }, completion: { _ in })
-//                    Objects.matches.remove(at: index)
-//                    self.tableView.deleteRows(at: [IndexPath.init(row: index, section: 0)], with: .left)
                     _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { timer in
-//                        let contentOffset = self.tableView.contentOffset
-//                        self.tableView.reloadData()
                         self.tableView.reloadRows(at: [IndexPath.init(row: index, section: 0)], with: .none)
-//                        self.tableView.setContentOffset(contentOffset, animated: false)
                     })
                     
                     self.updateUserCoins()
@@ -663,17 +652,9 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                     
                     self.displayInterstitialAd()
                 } else {
+                    Objects.matches[index].is_confirmed = false
+                    
                     cell.isUserInteractionEnabled = true
-//                    Objects.matches[index].is_confirmed = true
-//                    if let cell = self.tableView.cellForRow(at: IndexPath.init(row: index, section: 0)) as? PredictionTableViewCell {
-//                        cell.imageCheck.image = #imageLiteral(resourceName: "checked_blue")
-//                        cell.labelConfirm.textColor = Colors.appBlue
-//                        cell.labelConfirm.text = "CONFIRM?"
-//                        cell.viewConfirm.backgroundColor = Colors.white
-//                        cell.viewConfirm.alpha = 1
-//                        cell.labelVS.alpha = 0
-//                        cell.isUserInteractionEnabled = true
-//                    }
                     
                     if let message = response?.message {
                         self.showAlertView(message: message)
@@ -685,7 +666,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
                     }
                 }
                 
-                cell.activityIndicator.stopRotating()
+                cell.activityIndicator.stopAnimating()
             }
         }
     }
@@ -709,10 +690,11 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     func displayInterstitialAd() {
         if let predictionCount = UserDefaults.standard.value(forKey: "predictionCount") as? Int {
             if predictionCount % 3 == 0 {
-//                interstitialMobiImage = IMInterstitial(placementId: INMOBI_INTERSTITIAL_PLACEMENT_IMAGE, delegate: self)
-//                if let interstitial = interstitialMobiImage {
-//                    interstitial.load()
-//                }
+                interstitialAd = AppnextInterstitialAd(placementID: "c0946b60-e4cb-494e-8cdc-f8922001c8c0")
+                if interstitialAd != nil {
+                    interstitialAd.delegate = self
+                    interstitialAd.show()
+                }
             }
             
             let count = predictionCount + 1
@@ -728,8 +710,10 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         self.showLoader()
         
         rewardedAd = AppnextRewardedVideoAd.init(config: getAdConfiguration(), placementID: "6f855293-cc28-4da9-ada3-5e724807733f")
-        rewardedAd.delegate = self
-        rewardedAd.load()
+        if rewardedAd != nil {
+            rewardedAd.delegate = self
+            rewardedAd.load()
+        }
     }
     
     func getAdConfiguration() -> AppnextRewardedVideoAdConfiguration {
@@ -745,7 +729,6 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
 
         return config
     }
-
   
     func adLoaded(_ ad: AppnextAd!) {
         self.hideLoader()
@@ -772,6 +755,8 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
 
     func adError(_ ad: AppnextAd!, error: String!) {
         self.hideLoader()
+        
+        self.showAlertView(message: "No available video, try again later!")
     }
     
     func videoEnded(_ ad: AppnextAd!) {
