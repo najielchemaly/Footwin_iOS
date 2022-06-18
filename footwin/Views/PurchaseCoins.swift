@@ -15,9 +15,7 @@ class PurchaseCoins: UIView, FSPagerViewDataSource, FSPagerViewDelegate {
     @IBOutlet weak var pagerView: FSPagerView!
     @IBOutlet weak var buttonClose: UIButton!
     @IBOutlet weak var pagerHeightConstraint: NSLayoutConstraint!
-    
-    var products = [SKProduct]()
-    
+        
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -33,10 +31,6 @@ class PurchaseCoins: UIView, FSPagerViewDataSource, FSPagerViewDelegate {
         let itemSize = self.pagerView.frame.size.width*0.9
         self.pagerView.itemSize = CGSize(width: itemSize, height: itemSize*1.1)
         pagerHeightConstraint.constant = itemSize*1.1
-
-        NotificationCenter.default.addObserver(self, selector: #selector(PurchaseCoins.handlePurchaseNotification(_:)),
-                                               name: NSNotification.Name(rawValue: IAPHelper.IAPHelperPurchaseNotification),
-                                               object: nil)
         
         self.pagerView.dataSource = self
         self.pagerView.delegate = self
@@ -60,22 +54,12 @@ class PurchaseCoins: UIView, FSPagerViewDataSource, FSPagerViewDelegate {
                 cell.labelPrice.text = price + "$"
             }
                         
-            cell.setupButtonPurchase()
-            cell.buttonPurchase.layer.borderColor = Colors.appBlue.cgColor
-            cell.buttonPurchase.layer.borderWidth = 1.0
+            cell.setupButtonPurchase()            
             cell.buttonPurchase.tag = index
             
             cell.contentView.layer.shadowRadius = 0
             cell.backgroundColor = .clear
             cell.layer.cornerRadius = 20
-            
-            if self.products.count > 0 {
-                let product = self.products[index]
-                cell.product = product
-                cell.buyButtonHandler = { product in
-                    CoinProducts.store.buyProduct(product)
-                }
-            }
             
             return cell
         }
@@ -89,34 +73,6 @@ class PurchaseCoins: UIView, FSPagerViewDataSource, FSPagerViewDelegate {
     
     func numberOfItems(in pagerView: FSPagerView) -> Int {
         return Objects.packages.count
-    }
-    
-    func reloadProducts() {
-        if let baseVC = currentVC as? BaseViewController {
-            baseVC.showLoader()
-            
-            products = []
-            
-            CoinProducts.store.requestProducts{success, products in
-                baseVC.hideLoader()
-                
-                if success {
-                    self.products = products!
-                }
-            }
-        }
-    }
-    
-    func restoreTapped(_ sender: AnyObject) {
-        CoinProducts.store.restorePurchases()
-    }
-    
-    @objc func handlePurchaseNotification(_ notification: NSNotification) {
-        guard let productID = notification.object as? String else { return }
-        
-        for (index, product) in products.enumerated() {
-            guard product.productIdentifier == productID else { continue }
-        }
     }
 
     @IBAction func buttonCloseTapped(_ sender: Any) {

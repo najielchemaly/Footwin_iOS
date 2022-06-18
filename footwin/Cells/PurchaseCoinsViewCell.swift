@@ -18,33 +18,24 @@ class PurchaseCoinsViewCell: FSPagerViewCell {
     @IBOutlet weak var buttonPurchase: UIButton!
     @IBOutlet weak var labelPrice: UILabel!
     
-    var buyButtonHandler: ((_ product: SKProduct) -> ())?
-    
-    var product: SKProduct? {
-        didSet {
-            guard let product = product else { return }
-            
-            textLabel?.text = product.localizedTitle
-            
-            if CoinProducts.store.isProductPurchased(product.productIdentifier) {
-               
-            } else {
-                
-            }
-        }
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
     func setupButtonPurchase() {
+        self.buttonPurchase.layer.borderColor = Colors.appBlue.cgColor
+        self.buttonPurchase.layer.borderWidth = 1.0
         self.buttonPurchase.addTarget(self, action: #selector(buttonPurchaseTapped(sender:)), for: .touchUpInside)
     }
     
     @objc func buttonPurchaseTapped(sender: UIButton) {
-        buyButtonHandler?(product!)
+        if let coinStashViewController = currentVC as? CoinStashViewController {
+            coinStashViewController.buttonPurchaseTapped(index: sender.tag)
+        }
+        else if let predictViewController = currentVC as? PredictViewController {
+            predictViewController.buttonPurchaseTapped(index: sender.tag)
+        }
     }
 
 }

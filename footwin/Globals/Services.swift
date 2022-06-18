@@ -85,8 +85,8 @@ class Services {
         }
     }
     
-    static let ConfigUrl = "http://test.config.foot-win.com/"
-//    static let ConfigUrl = "http://config.foot-win.com/"
+//    static let ConfigUrl = "http://test.config.foot-win.com/"
+    static let ConfigUrl = "http://config.foot-win.com/"
     //    private let ConfigUrl = "http://localhost/footwin/services/getConfig/"
     
     private static var _BaseUrl: String = ""

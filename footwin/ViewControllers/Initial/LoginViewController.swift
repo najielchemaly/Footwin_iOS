@@ -11,7 +11,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import FirebaseMessaging
 
-class LoginViewController: BaseViewController, UITextFieldDelegate {
+class LoginViewController: BaseViewController, UITextFieldDelegate, UIScrollViewDelegate {
     
     @IBOutlet weak var textFieldEmail: UITextField!
     @IBOutlet weak var textFieldPassword: UITextField!
@@ -22,7 +22,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var buttonSignup: UIButton!
     @IBOutlet weak var viewEmail: UIView!
     @IBOutlet weak var viewPassword: UIView!
-    @IBOutlet weak var buttonSignupBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var loginButton: FBSDKLoginButton!
     var loginManager: FBSDKLoginManager!
@@ -45,6 +45,12 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         
         UserDefaults.standard.set(true, forKey: "didLaunchFirstTime")
         UserDefaults.standard.synchronize()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x > 0 || scrollView.contentOffset.x < 0 {
+            scrollView.contentOffset.x = 0
+        }
     }
     
     @IBAction func buttonLoginTapped(_ sender: Any) {
@@ -195,6 +201,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     func setupDelegates() {
         self.textFieldEmail.delegate = self
         self.textFieldPassword.delegate = self
+        self.scrollView.delegate = self
     }
     
     var errorMessage: String!

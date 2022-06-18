@@ -27,14 +27,12 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate {
     @IBOutlet weak var imageIconSmall: UIImageView!
     
     var coinsProgressView: CircleProgressView!
-//    var interstitialMobiVideo: IMInterstitial!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.initializeViews()
-//        self.setupAddMob()
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,8 +52,6 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate {
     
     override func viewWillLayoutSubviews() {
         imageViewHeightConstraint.constant = scrollView.contentSize.height > self.view.frame.size.height ? scrollView.contentSize.height : self.view.frame.size.height
-        
-//        scrollView.backgroundColor = UIColor(patternImage:  #imageLiteral(resourceName: "coins_background"))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -63,50 +59,7 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate {
         
         scrollView.contentSize.height += 50
     }
-    
-//    func interstitialDidFinishLoading(_ interstitial: IMInterstitial!) {
-//        print("interstitialDidFinishLoading")
-//
-//        self.hideLoader()
-//        if interstitial.isReady() {
-//            interstitial.show(from: self, with: .coverVertical)
-//        }
-//    }
-//
-//    func interstitial(_ interstitial: IMInterstitial!, didFailToLoadWithError error: IMRequestStatus!) {
-//        print("Interstitial failed to load ad")
-//        self.hideLoader()
-//
-//        self.showAlertView(message: "No available video, try again later!")
-//    }
-//
-//    func interstitial(_ interstitial: IMInterstitial!, didFailToPresentWithError error: IMRequestStatus!) {
-//        print("Interstitial didFailToPresentWithError")
-//        self.hideLoader()
-//
-//        self.showAlertView(message: "No available video, try again later!")
-//    }
-//
-//    func interstitialWillPresent(_ interstitial: IMInterstitial!) {
-//        print("interstitialWillPresent")
-//    }
-//
-//    func interstitialDidPresent(_ interstitial: IMInterstitial!) {
-//        print("interstitialDidPresent")
-//    }
-//
-//    func interstitialWillDismiss(_ interstitial: IMInterstitial!) {
-//        print("interstitialWillDismiss")
-//    }
-//
-//    func interstitialDidDismiss(_ interstitial: IMInterstitial!) {
-//        print("interstitialDidDismiss")
-//    }
-//
-//    func userWillLeaveApplication(from interstitial: IMInterstitial!) {
-//        print("userWillLeaveApplicationFromInterstitial")
-//    }
-//
+
 //    func interstitial(_ interstitial: IMInterstitial!, rewardActionCompletedWithRewards rewards: [AnyHashable : Any]!) {
 //        print("rewardActionCompletedWithRewards")
 //
@@ -135,19 +88,7 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate {
 //            }
 //        }
 //    }
-//
-//    func interstitial(_ interstitial: IMInterstitial!, didInteractWithParams params: [AnyHashable : Any]!) {
-//        print("InterstitialDidInteractWithParams")
-//    }
-//
-//    func interstitialDidReceiveAd(_ interstitial: IMInterstitial!) {
-//        print("interstitialDidReceiveAd")
-//    }
-    
-    func setupAddMob() {
-//        GADRewardBasedVideoAd.sharedInstance().delegate = self
-    }
-    
+
 //    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
 //                            didRewardUserWith reward: GADAdReward) {
 //        self.showLoader()
@@ -175,42 +116,6 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate {
 //            }
 //        }
 //        print("Reward received with currency: \(reward.type), amount \(reward.amount).")
-//    }
-//
-//    func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd:GADRewardBasedVideoAd) {
-//        print("Reward based video ad is received.")
-//
-//        if GADRewardBasedVideoAd.sharedInstance().isReady == true {
-//            GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
-//        }
-//    }
-//
-//    func rewardBasedVideoAdDidOpen(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
-//        self.hideLoader()
-//        print("Opened reward based video ad.")
-//    }
-//
-//    func rewardBasedVideoAdDidStartPlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
-//        print("Reward based video ad started playing.")
-//    }
-//
-//    func rewardBasedVideoAdDidCompletePlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
-//        print("Reward based video ad has completed.")
-//    }
-//
-//    func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
-//        print("Reward based video ad is closed.")
-//    }
-//
-//    func rewardBasedVideoAdWillLeaveApplication(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
-//        print("Reward based video ad will leave application.")
-//    }
-//
-//    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
-//                            didFailToLoadWithError error: Error) {
-//        self.hideLoader()
-//        self.showAlertView(message: "No available video, try again later!")
-//        print("Reward based video ad failed to load.")
 //    }
     
     func initializeViews() {
@@ -256,8 +161,14 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate {
     @IBAction func buttonGetCoinsTapped(_ sender: Any) {
         if let purchaseCoins = self.showView(name: Views.PurchaseCoins) as? PurchaseCoins {
             purchaseCoins.setupPagerView()
-            purchaseCoins.reloadProducts()
+            
+            self.showLoader()
+            self.initializeIAP()
         }
+    }
+    
+    func buttonPurchaseTapped(index: Int) {
+        IAPHandler.shared.purchaseMyProduct(index: index)
     }
     
     @IBAction func buttonCloseTapped(_ sender: Any) {
@@ -265,12 +176,12 @@ class CoinStashViewController: BaseViewController, UIScrollViewDelegate {
     }
     
     @IBAction func buttonWatchVideoTapped(_ sender: Any) {
-        self.showLoader()
-        
-//        interstitialMobiVideo = IMInterstitial(placementId: INMOBI_INTERSTITIAL_PLACEMENT_VIDEO, delegate: self)
-//        if let interstitial = interstitialMobiVideo {
-//            interstitial.load()
-//        }
+        if let purchaseCoins = self.showView(name: Views.PurchaseCoins) as? PurchaseCoins {
+            purchaseCoins.setupPagerView()
+            
+            self.showLoader()
+            self.initializeIAP()
+        }
     }
     
     /*

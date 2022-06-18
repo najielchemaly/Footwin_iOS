@@ -379,6 +379,22 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
+    func initializeIAP() {
+        IAPHandler.shared.fetchAvailableProducts()
+        IAPHandler.shared.purchaseStatusBlock = {[weak self] (type) in
+            guard let strongSelf = self else{ return }
+            if type == .purchased {
+                print("purchased")
+//                let alertView = UIAlertController(title: "", message: type.message(), preferredStyle: .alert)
+//                let action = UIAlertAction(title: "OK", style: .default, handler: { (alert) in
+//
+//                })
+//                alertView.addAction(action)
+//                strongSelf.present(alertView, animated: true, completion: nil)
+            }
+        }
+    }
+    
     /*
      // MARK: - Navigation
      

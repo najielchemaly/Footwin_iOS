@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,7 +38,7 @@
             </objects>
             <point key="canvasLocation" x="-681" y="89"/>
         </scene>
-        <!--FOOTWIN ADMIN-->
+        <!--ADMIN-->
         <scene sceneID="6Pr-mP-p2f">
             <objects>
                 <viewController storyboardIdentifier="AdminViewController" id="kRR-Bl-YCK" customClass="AdminViewController" customModule="footwin" customModuleProvider="target" sceneMemberID="viewController">
@@ -83,7 +83,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="FOOTWIN ADMIN" id="1ON-Y9-3Oc"/>
+                    <navigationItem key="navigationItem" title="ADMIN" id="1ON-Y9-3Oc"/>
                     <connections>
                         <outlet property="tableView" destination="g0Y-fo-aFL" id="Pl6-nR-mbe"/>
                     </connections>

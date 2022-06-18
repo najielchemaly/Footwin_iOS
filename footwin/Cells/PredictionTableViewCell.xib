@@ -194,7 +194,7 @@
                                     <constraint firstAttribute="height" constant="40" id="tSW-jW-OXu"/>
                                 </constraints>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Lub-Q2-JG0">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Lub-Q2-JG0">
                                 <rect key="frame" x="17" y="17" width="37" height="37"/>
                                 <color key="color" red="0.050523705779999997" green="0.18217900400000001" blue="0.82575476169999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>

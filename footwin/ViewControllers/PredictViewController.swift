@@ -11,7 +11,7 @@ import SwiftyJSON
 import FirebaseMessaging
 import CountdownLabel
 
-class PredictViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, AppnextAdDelegate, AppnextVideoAdDelegate {
+class PredictViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var labelBadge: UILabel!
@@ -24,8 +24,6 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var stackViewCoins: UIStackView!
     
     var refreshControl = UIRefreshControl()
-    var rewardedAd: AppnextRewardedVideoAd!
-    var interstitialAd: AppnextInterstitialAd!
     var currentDate: String!
     
     override func viewDidLoad() {
@@ -690,11 +688,7 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
     func displayInterstitialAd() {
         if let predictionCount = UserDefaults.standard.value(forKey: "predictionCount") as? Int {
             if predictionCount % 3 == 0 {
-                interstitialAd = AppnextInterstitialAd(placementID: "c0946b60-e4cb-494e-8cdc-f8922001c8c0")
-                if interstitialAd != nil {
-                    interstitialAd.delegate = self
-                    interstitialAd.show()
-                }
+
             }
             
             let count = predictionCount + 1
@@ -706,63 +700,19 @@ class PredictViewController: BaseViewController, UITableViewDelegate, UITableVie
         UserDefaults.standard.synchronize()
     }
     
-    @IBAction func buttonWatchVideoTapped(_ sender: Any) {
-        self.showLoader()
-        
-        rewardedAd = AppnextRewardedVideoAd.init(config: getAdConfiguration(), placementID: "6f855293-cc28-4da9-ada3-5e724807733f")
-        if rewardedAd != nil {
-            rewardedAd.delegate = self
-            rewardedAd.load()
-        }
+    func buttonPurchaseTapped(index: Int) {
+        IAPHandler.shared.purchaseMyProduct(index: index)
     }
     
-    func getAdConfiguration() -> AppnextRewardedVideoAdConfiguration {
-        let config = AppnextRewardedVideoAdConfiguration()
-        config.preferredOrientation = kPreferredOrientationTypeStringPortrait
-        config.videoLength = .long
-        config.mute = false
-        config.progressColor = "#0e30dd"
-        config.progressType = .clock
-        config.postback = "postback"
-        config.buttonColor = "#0e30dd"
-        config.categories = "Travel%20Sports%20Adventure%20Casino%20Family%20Finance%20Lifestyle%20News%20Social%20Networking"
-
-        return config
+    @IBAction func buttonWatchVideoTapped(_ sender: Any) {
+        if let purchaseCoins = self.showView(name: Views.PurchaseCoins) as? PurchaseCoins {
+            purchaseCoins.setupPagerView()
+            
+            self.showLoader()
+            self.initializeIAP()
+        }
     }
   
-    func adLoaded(_ ad: AppnextAd!) {
-        self.hideLoader()
-        if self.rewardedAd.adIsLoaded {
-            self.rewardedAd.show()
-        }
-    }
-
-    func adOpened(_ ad: AppnextAd!) {
-
-    }
-    
-    func adClosed(_ ad: AppnextAd!) {
-        
-    }
-
-    func adClicked(_ ad: AppnextAd!) {
-
-    }
-    
-    func adUserWillLeaveApplication(_ ad: AppnextAd!) {
-        
-    }
-
-    func adError(_ ad: AppnextAd!, error: String!) {
-        self.hideLoader()
-        
-        self.showAlertView(message: "No available video, try again later!")
-    }
-    
-    func videoEnded(_ ad: AppnextAd!) {
-        
-    }
-    
     /*
     // MARK: - Navigation
 
